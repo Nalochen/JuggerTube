@@ -1,7 +1,12 @@
 from flask import Flask
-from app.video_blueprint import video_blueprint
-from app.models import db
-from sqlalchemy import create_engine, text
+from models import db
+from sqlalchemy import create_engine
+
+from general.general_blueprint import general_blueprint
+from videos.video_blueprint import video_blueprint
+from channels.channel_blueprint import channel_blueprint
+from teams.team_blueprint import team_blueprint
+from tournaments.tournament_blueprint import tournament_blueprint
 
 app = Flask(__name__)
 
@@ -19,7 +24,11 @@ def init_db():
         db.create_all()
 
 
-app.register_blueprint(video_blueprint)
+app.register_blueprint(video_blueprint, url_prefix="/videos")
+app.register_blueprint(channel_blueprint, url_prefix="/channels")
+app.register_blueprint(general_blueprint)
+app.register_blueprint(team_blueprint, url_prefix="/teams")
+app.register_blueprint(tournament_blueprint, url_prefix="/tournaments")
 
 
 if __name__ == '__main__':

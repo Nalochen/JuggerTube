@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02222a47-ab27-4c10-93e6-7ebb9a089b85" name="Changes" comment="venv">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="02222a47-ab27-4c10-93e6-7ebb9a089b85" name="Changes" comment="sql files">
+      <change afterPath="$PROJECT_DIR$/JuggerTube.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JuggerTubeTestData.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +95,23 @@
       <option name="project" value="LOCAL" />
       <updated>1715628331765</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="venv">
+      <option name="closed" value="true" />
+      <created>1716038416739</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1716038416739</updated>
+    </task>
+    <task id="LOCAL-00004" summary="sql files">
+      <option name="closed" value="true" />
+      <created>1716038460574</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716038460574</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -111,6 +128,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="web-connection works" />
     <MESSAGE value="venv" />
-    <option name="LAST_COMMIT_MESSAGE" value="venv" />
+    <MESSAGE value="sql files" />
+    <option name="LAST_COMMIT_MESSAGE" value="sql files" />
   </component>
 </project>

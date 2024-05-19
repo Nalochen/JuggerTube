@@ -1,7 +1,8 @@
 from flask import Blueprint, jsonify
-from juggertube.app import Session, Video
+from app.models import Video
 
 video_blueprint = Blueprint('videos', __name__)
+
 
 # Helper function to serialize video data
 def serialize_video(video):
@@ -18,36 +19,32 @@ def serialize_video(video):
         'type': video.type
     }
 
+
 @video_blueprint.route('/videos', methods=['GET'])
 def get_videos():
-    session = Session()
-    videos = session.query(Video).all()
+    videos = Video.query.all()
     video_list = [serialize_video(video) for video in videos]
-    session.close()
     return jsonify(video_list)
+
 
 @video_blueprint.route('/videos/team/<int:team_id>', methods=['GET'])
 def get_videos_by_team(team_id):
-    session = Session()
-    videos = session.query(Video).filter((Video.team_one_id == team_id) | (Video.team_two_id == team_id)).all()
+    videos = Video.query.filter((Video.team_one_id == team_id) | (Video.team_two_id == team_id)).all()
     video_list = [serialize_video(video) for video in videos]
-    session.close()
     return jsonify(video_list)
+
 
 @video_blueprint.route('/videos/tournament/<int:tournament_id>', methods=['GET'])
 def get_videos_by_tournament(tournament_id):
-    session = Session()
-    videos = session.query(Video).filter_by(tournament_id=tournament_id).all()
+    videos = Video.query.filter_by(tournament_id=tournament_id).all()
     video_list = [serialize_video(video) for video in videos]
-    session.close()
     return jsonify(video_list)
+
 
 @video_blueprint.route('/videos/tournament/<int:tournament_id>/team/<int:team_id>', methods=['GET'])
 def get_videos_by_tournament_and_team(tournament_id, team_id):
-    session = Session()
-    videos = session.query(Video).filter_by(tournament_id=tournament_id).filter(
+    videos = Video.query.filter_by(tournament_id=tournament_id).filter(
         (Video.team_one_id == team_id) | (Video.team_two_id == team_id)
     ).all()
     video_list = [serialize_video(video) for video in videos]
-    session.close()
     return jsonify(video_list)

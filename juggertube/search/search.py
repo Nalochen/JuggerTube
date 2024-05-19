@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-from juggertube.app.models import Video
+from juggertube.blub.models import Video
 
 search_bp = Blueprint('search_blueprint', __name__)
 
@@ -10,10 +10,12 @@ def list():
     videos = Video.query.all()
     return render_template('videos/list.html', videos=videos)
 
+
 @search_bp.route('/<int:video_id')
 def list(video_id):
     video = Video.query.get(video_id)
     return render_template('videos/list.html', video=video)
+
 
 @search_bp.route('/<int:team_id')
 # überlegen wie Funktionalität

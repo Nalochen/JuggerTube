@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-from juggertube.models import Video
+from juggertube.app.models import Video
 
 search_bp = Blueprint('search_blueprint', __name__)
 

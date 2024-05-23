@@ -22,7 +22,7 @@ def add_channel():
         db.session.add(new_channel)
         db.session.commit()
         return redirect(url_for('general.index'))
-    return render_template('add_channel.html')
+    return render_template('register.html')
 
 
 @channel_blueprint.route('/', methods=['GET'])

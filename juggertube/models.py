@@ -55,8 +55,6 @@ class Video(db.Model):
     team_two_id = db.Column(db.Integer, ForeignKey('teams.team_id', name='fk_videos_team_two'), nullable=False)
     upload_date = db.Column(db.Date, nullable=False)
     comments = db.Column(Text)
-    type = db.Column(Enum('reports', 'highlights', 'tutorials', 'building', 'matches', 'music', 'podcast', 'other'),
-                     nullable=False)
 
 
 user_has_channel = Table('user_has_channel', db.Model.metadata,

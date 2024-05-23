@@ -2,6 +2,8 @@ from flask import Blueprint, request, url_for, redirect, render_template, jsonif
 
 from models import Video, User, Team, Tournament, Channel, db
 
+from tournaments.tournament_blueprint import get_tournament_by_period
+
 video_blueprint = Blueprint('videos', __name__, template_folder='templates')
 
 
@@ -14,9 +16,8 @@ def serialize_video(video):
         'tournament_id': video.tournament_id,
         'team_one_id': video.team_one_id,
         'team_two_id': video.team_two_id,
-        'upload_date': video.upload_date.isoformat(),
+        'upload_date': video.upload_date.strftime('%Y-%m-%d'),
         'comments': video.comments,
-        'type': video.type
     }
 
 
@@ -31,14 +32,13 @@ def add_video():
         team_two_id = request.form['team_two_id']
         upload_date = request.form['upload_date']
         comments = request.form['comments']
-        video_type = request.form['type']
         new_video = Video(name=name, channel_id=channel_id, link=link,
                           tournament_id=tournament_id, team_one_id=team_one_id,
                           team_two_id=team_two_id, upload_date=upload_date,
-                          comments=comments, type=video_type)
+                          comments=comments)
         db.session.add(new_video)
         db.session.commit()
-        return redirect(url_for('index'))
+        return redirect(url_for('general.index'))
     return render_template('add_video.html')
 
 
@@ -70,3 +70,20 @@ def get_videos_by_tournament_and_team(tournament_id, team_id):
     ).all()
     video_list = [serialize_video(video) for video in videos]
     return jsonify(video_list)
+
+
+@video_blueprint.route('/period/<string:beginning>/<string:ending>', methods=['GET'])
+def get_videos_by_period(beginning, ending):
+    try:
+        tournaments = get_tournament_by_period(beginning, ending)
+
+        videos = []
+        for tournament in tournaments:
+            tournament_videos = Video.query.filter_by(tournament_id=tournament.tournament_id).all()
+            videos.extend(tournament_videos)
+
+        video_list = [serialize_video(video) for video in videos]
+        return jsonify(video_list)
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400

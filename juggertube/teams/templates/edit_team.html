@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Team</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block body %}
     <h1>Edit Team</h1>
     <p>Only enter values for the data fields you want to change</p>
     <form method="POST">
@@ -18,5 +13,4 @@
         <input type="text" id="country" name="country">
         <input type="submit">
     </form>
-</body>
-</html>
+{% endblock %}

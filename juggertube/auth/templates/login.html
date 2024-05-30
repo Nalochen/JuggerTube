@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
+{% extends 'base.html' %}
+{% block body %}
 <body>
     <form method="POST">
         <label for="username">Username:</label>
@@ -14,5 +10,4 @@
 
         <input type="submit">
     </form>
-</body>
-</html>
+{% endblock %}

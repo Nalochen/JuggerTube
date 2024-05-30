@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Channel</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block body %}
     <h1>Edit Channel</h1>
     <p>Only enter values for the data fields you want to change</p>
     <form method="POST">
@@ -15,5 +10,5 @@
         <input type="text" id="link" name="link">
 
         <input type="submit">
-</body>
-</html>
+    </form>
+{% endblock %}

@@ -1,24 +1,8 @@
-from flask import Blueprint, request, url_for, redirect, render_template, jsonify
+from flask import Blueprint, request, url_for, redirect, render_template, jsonify, session
 
 from models import db, User
 
 auth_blueprint = Blueprint('auth', __name__, template_folder='templates')
-
-
-def serialize_user(user):
-    return {
-        'user': user.user_id,
-        'email': user.email,
-        'username': user.username,
-        'password': user.password,
-    }
-
-
-@auth_blueprint.route('/', methods=['GET'])
-def get_user():
-    users = User.query.all()
-    user_list = [serialize_user(user) for user in users]
-    return jsonify(user_list)
 
 
 @auth_blueprint.route('/register', methods=['GET', 'POST'])
@@ -42,13 +26,25 @@ def login_user():
 
         users = User.query.filter_by(username=username).all()
 
-        # wenn users leer -> kein User mit Namen gefunden
-
         for user in users:
             if user.password == password:
-                print('user is logged in')
+                session['username'] = username
+                return '<h1>succeeded</h1>'
             else:
-                print('login failed')
+                return '<h1>login failed</h1>'
 
-        return redirect(url_for('general.index'))
+        return '<h1>No User with this name found</h1>'
     return render_template('login.html')
+
+
+@auth_blueprint.route('/logout', methods=['GET'])
+def logout_user():
+    session.pop('username', default=None)
+    return '<h1>User logged out!</h1>'
+
+
+def is_user_logged_in():
+    username = session.get('username')
+    if username is not None:
+        return True
+    return False

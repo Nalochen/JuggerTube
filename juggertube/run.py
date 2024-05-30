@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from flask import Flask
 from models import db
 from sqlalchemy import create_engine
@@ -20,6 +22,10 @@ db_uri = f'mysql+mysqlconnector://{user}:{password}@{host}/{database}'
 
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SESSION_COOKIE_NAME'] = 'jtrsession'
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=24)
+app.config['SECRET_KEY'] = 'kt4vq7bbofhbnp00jum6at717efdn9vajc6r35rvn5ime8tgwj'
+
 
 db.init_app(app)
 engine = create_engine(db_uri)

@@ -1,7 +1,10 @@
 from datetime import timedelta
 
 from flask import Flask
-from models import db
+from flask_login import LoginManager
+from flask_migrate import Migrate
+
+from models import db, User
 from sqlalchemy import create_engine
 
 from general.general_blueprint import general_blueprint
@@ -26,14 +29,23 @@ app.config['SESSION_COOKIE_NAME'] = 'jtrsession'
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=24)
 app.config['SECRET_KEY'] = 'kt4vq7bbofhbnp00jum6at717efdn9vajc6r35rvn5ime8tgwj'
 
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'auth.login'
 
 db.init_app(app)
+migrate = Migrate(app, db)
 engine = create_engine(db_uri)
 
 
 def init_db():
     with app.app_context():
         db.create_all()
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 app.register_blueprint(video_blueprint, url_prefix="/videos")

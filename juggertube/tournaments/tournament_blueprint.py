@@ -1,9 +1,9 @@
 from datetime import datetime
 
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify
+from flask_login import login_required
 
 from models import Video, User, Team, Tournament, Channel, db
-from auth.auth_blueprint import is_user_logged_in
 
 tournament_blueprint = Blueprint('tournaments', __name__, template_folder='templates')
 
@@ -20,64 +20,61 @@ def serialize_tournament(tournament):
 
 
 @tournament_blueprint.route('/add', methods=['GET', 'POST'])
+@login_required
 def add_tournament():
     if request.method == 'POST':
-        if is_user_logged_in():
-            name = request.form['name']
-            date_beginning = request.form['date_beginning']
-            date_ending = request.form['date_ending']
-            city = request.form['city']
-            jtr_link = request.form['jtr_link']
-            new_tournament = Tournament(name=name, date_beginning=date_beginning,
-                                        date_ending=date_ending, city=city,
-                                        jtr_link=jtr_link)
-            db.session.add(new_tournament)
-            db.session.commit()
-            return redirect(url_for('general.index'))
-        return redirect(url_for('auth.login_user'))
+        name = request.form['name']
+        date_beginning = request.form['date_beginning']
+        date_ending = request.form['date_ending']
+        city = request.form['city']
+        jtr_link = request.form['jtr_link']
+        new_tournament = Tournament(name=name, date_beginning=date_beginning,
+                                    date_ending=date_ending, city=city,
+                                    jtr_link=jtr_link)
+        db.session.add(new_tournament)
+        db.session.commit()
+        return redirect(url_for('general.index'))
     return render_template('add_tournament.html')
 
 
 @tournament_blueprint.route('/edit/<int:tournament_id>', methods=['GET', 'POST'])
+@login_required
 def edit_tournament(tournament_id):
     if request.method == 'POST':
-        if is_user_logged_in():
-            tournament = Tournament.query.filter_by(tournament_id=tournament_id).all()
+        tournament = Tournament.query.filter_by(tournament_id=tournament_id).all()
 
-            name = request.form['name']
-            date_beginning = request.form['date_beginning']
-            date_ending = request.form['date_ending']
-            city = request.form['city']
-            jtr_link = request.form['jtr_link']
+        name = request.form['name']
+        date_beginning = request.form['date_beginning']
+        date_ending = request.form['date_ending']
+        city = request.form['city']
+        jtr_link = request.form['jtr_link']
 
-            if name:
-                tournament.name = name
-            if date_beginning:
-                tournament.date_beginning = date_beginning
-            if date_ending:
-                tournament.date_ending = date_ending
-            if city:
-                tournament.city = city
-            if jtr_link:
-                tournament.jtr_link = jtr_link
+        if name:
+            tournament.name = name
+        if date_beginning:
+            tournament.date_beginning = date_beginning
+        if date_ending:
+            tournament.date_ending = date_ending
+        if city:
+            tournament.city = city
+        if jtr_link:
+            tournament.jtr_link = jtr_link
 
-            db.session.commit()
-            return redirect(url_for('general.index'))
-        return redirect(url_for('auth.login_user'))
+        db.session.commit()
+        return redirect(url_for('general.index'))
     return render_template('edit_tournament.html')
 
 
-@tournament_blueprint.route('/delete/<int:tournament_id>', methods=['POST'])
+@tournament_blueprint.route('/delete/<int:tournament_id>', methods=['GET'])
+@login_required
 def delete_tournament(tournament_id):
-    if is_user_logged_in():
-        tournament = Tournament.query.filter_by(tournament_id=tournament_id).all()
+    tournament = Tournament.query.filter_by(tournament_id=tournament_id).first()
 
-        name = tournament.name
+    name = tournament.name
 
-        db.session.delete(tournament)
-        db.session.commit()
-        return f'<h1>Tournament {name} deleted<h1>'
-    return redirect(url_for('auth.login_user'))
+    db.session.delete(tournament)
+    db.session.commit()
+    return f'<h1>Tournament {name} deleted<h1>'
 
 
 @tournament_blueprint.route('/', methods=['GET'])

@@ -1,7 +1,7 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify
+from flask_login import login_required
 
 from models import Team, db
-from auth.auth_blueprint import is_user_logged_in
 
 team_blueprint = Blueprint('teams', __name__, template_folder='templates')
 
@@ -16,54 +16,51 @@ def serialize_team(team):
 
 
 @team_blueprint.route('/add', methods=['GET', 'POST'])
+@login_required
 def add_team():
     if request.method == 'POST':
-        if is_user_logged_in():
-            name = request.form['name']
-            country = request.form['country']
-            city = request.form['city']
-            new_team = Team(name=name, country=country, city=city)
-            db.session.add(new_team)
-            db.session.commit()
-            return redirect(url_for('general.index'))
-        return redirect(url_for('auth.login_user'))
+        name = request.form['name']
+        country = request.form['country']
+        city = request.form['city']
+        new_team = Team(name=name, country=country, city=city)
+        db.session.add(new_team)
+        db.session.commit()
+        return redirect(url_for('general.index'))
     return render_template('add_team.html')
 
 
 @team_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
+@login_required
 def edit_team(team_id):
     if request.method == 'POST':
-        if is_user_logged_in():
-            team = Team.query.filter_by(team_id=team_id).all()
+        team = Team.query.filter_by(team_id=team_id).all()
 
-            name = request.form['name']
-            country = request.form['country']
-            city = request.form['city']
+        name = request.form['name']
+        country = request.form['country']
+        city = request.form['city']
 
-            if name:
-                team.name = name
-            if country:
-                team.country = country
-            if city:
-                team.city = city
+        if name:
+            team.name = name
+        if country:
+            team.country = country
+        if city:
+            team.city = city
 
-            db.session.commit()
-            return redirect(url_for('general.index'))
-        return redirect(url_for('auth.login_user'))
+        db.session.commit()
+        return redirect(url_for('general.index'))
     return render_template('edit_team.html')
 
 
-@team_blueprint.route('/delete/<int:team_id>', methods=['POST'])
+@team_blueprint.route('/delete/<int:team_id>', methods=['GET'])
+@login_required
 def delete_team(team_id):
-    if is_user_logged_in():
-        team = Team.query.filter_by(team_id=team_id).all()
+    team = Team.query.filter_by(team_id=team_id).first()
 
-        name = team.name
+    name = team.name
 
-        db.session.delete(team)
-        db.session.commit()
-        return f'<h1>Team {name} deleted<h1>'
-    return redirect(url_for('auth.login_user'))
+    db.session.delete(team)
+    db.session.commit()
+    return f'<h1>Team {name} deleted<h1>'
 
 
 @team_blueprint.route('/', methods=['GET'])

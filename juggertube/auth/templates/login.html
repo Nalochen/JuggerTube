@@ -2,12 +2,15 @@
 {% block body %}
 <body>
     <form method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+        {{ form.username.label() }}
+		{{ form.username() }}
+		<br/>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+		{{ form.password.label() }}
+		{{ form.password() }}
+		<br/>
 
-        <input type="submit">
+		<br/>
+		{{ form.submit() }}
     </form>
 {% endblock %}

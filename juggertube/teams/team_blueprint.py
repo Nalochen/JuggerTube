@@ -1,7 +1,9 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 from models import Team, db
+
+from juggertube.webforms import TeamForm, EditTeamForm
 
 team_blueprint = Blueprint('teams', __name__, template_folder='templates')
 
@@ -18,37 +20,40 @@ def serialize_team(team):
 @team_blueprint.route('/add', methods=['GET', 'POST'])
 @login_required
 def add_team():
+    form = TeamForm()
     if request.method == 'POST':
-        name = request.form['name']
-        country = request.form['country']
-        city = request.form['city']
+        name = form.name.data
+        country = form.country.data
+        city = form.city.data
         new_team = Team(name=name, country=country, city=city)
         db.session.add(new_team)
         db.session.commit()
         return redirect(url_for('general.index'))
-    return render_template('add_team.html')
+    return render_template('team.html', form=form)
 
 
 @team_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
 @login_required
 def edit_team(team_id):
     if request.method == 'POST':
-        team = Team.query.filter_by(team_id=team_id).all()
+        team = Team.query.get_or_404(team_id=team_id)
+        form = EditTeamForm()
 
-        name = request.form['name']
-        country = request.form['country']
-        city = request.form['city']
+        if form.validate_on_submit():
+            team.name = form.name.data
+            team.country = form.country.data
+            team.city = form.city.data
+            db.session.commit()
+            return redirect(url_for('general.index'))
 
-        if name:
-            team.name = name
-        if country:
-            team.country = country
-        if city:
-            team.city = city
+        if current_user:
+            form.name.data = team.name
+            form.country.data = team.country
+            form.city.data = team.city
+            return render_template('team.html', form=form)
 
-        db.session.commit()
-        return redirect(url_for('general.index'))
-    return render_template('edit_team.html')
+        else:
+            return redirect(url_for('general.index'))
 
 
 @team_blueprint.route('/delete/<int:team_id>', methods=['GET'])

@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from sqlalchemy import Text, Enum, ForeignKey, Table
+from sqlalchemy import Text, ForeignKey, Table
 from sqlalchemy.ext.declarative import declarative_base
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -48,20 +48,12 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password_hash, password)
 
 
-class Channel(db.Model):
-    __tablename__ = 'channels'
-
-    channel_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(75), nullable=False)
-    link = db.Column(db.String(50), nullable=False)
-
-
 class Video(db.Model):
     __tablename__ = 'videos'
 
     video_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
-    channel_id = db.Column(db.Integer, ForeignKey('channels.channel_id'), nullable=False)
+    user_id = db.Column(db.Integer, ForeignKey('users.user_id'), nullable=False)
     link = db.Column(db.String(50), nullable=False)
     tournament_id = db.Column(db.Integer, ForeignKey('tournaments.tournament_id'), nullable=False)
     team_one_id = db.Column(db.Integer, ForeignKey('teams.team_id', name='fk_videos_team_one'), nullable=False)
@@ -72,7 +64,7 @@ class Video(db.Model):
 
 user_has_channel = Table('user_has_channel', db.Model.metadata,
                          db.Column('user_id', db.Integer, ForeignKey('users.user_id'), primary_key=True),
-                         db.Column('channel_id', db.Integer, ForeignKey('channels.channel_id'), primary_key=True)
+                         db.Column('user_id', db.Integer, ForeignKey('channels.user_id'), primary_key=True)
                          )
 
 user_is_part_of_team = Table('user_is_part_of_team', db.Model.metadata,

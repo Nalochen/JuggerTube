@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Video</h1>
+    <form method="POST">
+        {{ form.name.label() }}
+		{{ form.name() }}
+		<br/>
+
+		{{ form.user_id.label() }}
+		{{ form.user_id() }}
+		<br/>
+
+        {{ form.link.label() }}
+		{{ form.link() }}
+		<br/>
+
+		{{ form.tournament_id.label() }}
+		{{ form.tournament_id() }}
+		<br/>
+
+        {{ form.team_one_id.label() }}
+		{{ form.team_one_id() }}
+		<br/>
+
+		{{ form.team_two_id.label() }}
+		{{ form.team_two_id() }}
+		<br/>
+
+        {{ form.date.label() }}
+		{{ form.date() }}
+		<br/>
+
+		{{ form.comments.label() }}
+		{{ form.comments() }}
+		<br/>
+
+		<br/>
+		{{ form.submit() }}
+    </form>
+{% endblock %}

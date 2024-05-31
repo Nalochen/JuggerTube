@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>Tournament</h1>
+    <form method="POST">
+        {{ form.name.label() }}
+		{{ form.name() }}
+		<br/>
+
+		{{ form.date_beginning.label() }}
+		{{ form.date_beginning() }}
+		<br/>
+
+        {{ form.date_ending.label() }}
+		{{ form.date_ending() }}
+		<br/>
+
+		{{ form.city.label() }}
+		{{ form.city() }}
+		<br/>
+
+        {{ form.jtr_link.label() }}
+		{{ form.jtr_link() }}
+		<br/>
+
+		<br/>
+		{{ form.submit() }}
+    </form>
+{% endblock %}

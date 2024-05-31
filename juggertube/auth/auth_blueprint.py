@@ -4,6 +4,8 @@ from models import db, User
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_required, logout_user, login_user
 
+from juggertube.webforms import RegisterForm, LoginForm
+
 auth_blueprint = Blueprint('auth', __name__, template_folder='templates')
 
 
@@ -25,25 +27,27 @@ def get_users():
 
 @auth_blueprint.route('/register', methods=['GET', 'POST'])
 def register_user():
+    form = RegisterForm()
     if request.method == 'POST':
         user = User.query.filter_by(email=request.form['email'])
         if user:
             return redirect(url_for('auth.login'))
 
-        hashed_pw = generate_password_hash(request.form['password'], method='scrypt')
-        new_user = User(email=request.form['email'], username=request.form['username'], password=hashed_pw)
+        hashed_pw = generate_password_hash(form.password.data, method='scrypt')
+        new_user = User(email=form.email.data, username=form.username.data, password=hashed_pw)
         login_user(new_user)
         db.session.add(new_user)
         db.session.commit()
 
-    return render_template('register.html')
+    return render_template('register.html', form=form)
 
 
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
+    form = LoginForm()
     if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
+        username = form.username.data
+        password = form.password.data
 
         user = User.query.filter_by(username=username).first()
 
@@ -55,7 +59,7 @@ def login():
                 return '<h1>login failed</h1>'
 
         return '<h1>No User with this name found</h1>'
-    return render_template('login.html')
+    return render_template('login.html', form=form)
 
 
 @auth_blueprint.route('/logout', methods=['GET'])

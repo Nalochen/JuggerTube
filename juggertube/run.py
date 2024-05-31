@@ -9,7 +9,6 @@ from sqlalchemy import create_engine
 
 from general.general_blueprint import general_blueprint
 from videos.video_blueprint import video_blueprint
-from channels.channel_blueprint import channel_blueprint
 from teams.team_blueprint import team_blueprint
 from tournaments.tournament_blueprint import tournament_blueprint
 from auth.auth_blueprint import auth_blueprint
@@ -49,7 +48,6 @@ def load_user(user_id):
 
 
 app.register_blueprint(video_blueprint, url_prefix="/videos")
-app.register_blueprint(channel_blueprint, url_prefix="/channels")
 app.register_blueprint(general_blueprint)
 app.register_blueprint(team_blueprint, url_prefix="/teams")
 app.register_blueprint(tournament_blueprint, url_prefix="/tournaments")

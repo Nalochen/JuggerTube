@@ -1,6 +1,6 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 
-from models import db, User
+from juggertube.models import db, User
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_required, logout_user, login_user
 
@@ -14,7 +14,7 @@ def serialize_user(user):
         'user_id': user.user_id,
         'username': user.username,
         'email': user.email,
-        'password': user.password,
+        'password_hash': user.password_hash,
     }
 
 
@@ -26,18 +26,22 @@ def get_users():
 
 
 @auth_blueprint.route('/register', methods=['GET', 'POST'])
-def register_user():
+def register():
     form = RegisterForm()
     if request.method == 'POST':
-        user = User.query.filter_by(email=request.form['email'])
+        user = User.query.filter_by(email=form.email.data).first()
         if user:
             return redirect(url_for('auth.login'))
 
-        hashed_pw = generate_password_hash(form.password.data, method='scrypt')
-        new_user = User(email=form.email.data, username=form.username.data, password=hashed_pw)
-        login_user(new_user)
-        db.session.add(new_user)
-        db.session.commit()
+        try:
+            hashed_pw = generate_password_hash(form.password.data, method='scrypt')
+            new_user = User(email=form.email.data, username=form.username.data, password_hash=hashed_pw)
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(new_user)
+            flash('Account successfully created', 'info')
+        except Exception as e:
+            flash(str(e), 'danger')
 
     return render_template('register.html', form=form)
 
@@ -51,14 +55,14 @@ def login():
 
         user = User.query.filter_by(username=username).first()
 
-        if user:
-            if check_password_hash(user.password_hash, password):
-                login_user(user)
-                return '<h1>succeeded</h1>'
-            else:
-                return '<h1>login failed</h1>'
+        if user and check_password_hash(user.password_hash, password):
+            login_user(user)
+            flash('login successful', 'info')
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('general.index'))
+        else:
+            flash('login failed please check username and password', 'info')
 
-        return '<h1>No User with this name found</h1>'
     return render_template('login.html', form=form)
 
 
@@ -77,4 +81,4 @@ def delete_user(user_id):
 
     db.session.delete(user)
     db.session.commit()
-    return f'<h1>Team {name} deleted<h1>'
+    return f'<h1>User {name} deleted<h1>'

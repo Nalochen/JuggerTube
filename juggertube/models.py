@@ -32,20 +32,22 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    email = db.Column(db.String(100), nullable=False)
-    username = db.Column(db.String(50), nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
-
-    @property
-    def password(self):
-        raise AttributeError('password is not a readable attribute!')
-
-    @password.setter
-    def password(self, password):
-        self.password_hash = generate_password_hash(password)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    username = db.Column(db.String(50), nullable=False, unique=True)
+    password_hash = db.Column(db.String(200), nullable=False)
+    authenticated = db.Column(db.Boolean, default=False)
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def is_active(self):
+        return True
+
+    def get_id(self):
+        return str(self.user_id)
+
+    def is_anonymous(self):
+        return False
 
 
 class Video(db.Model):
@@ -61,11 +63,6 @@ class Video(db.Model):
     upload_date = db.Column(db.Date, nullable=False)
     comments = db.Column(Text)
 
-
-user_has_channel = Table('user_has_channel', db.Model.metadata,
-                         db.Column('user_id', db.Integer, ForeignKey('users.user_id'), primary_key=True),
-                         db.Column('user_id', db.Integer, ForeignKey('channels.user_id'), primary_key=True)
-                         )
 
 user_is_part_of_team = Table('user_is_part_of_team', db.Model.metadata,
                              db.Column('user_id', db.Integer, ForeignKey('users.user_id'), primary_key=True),

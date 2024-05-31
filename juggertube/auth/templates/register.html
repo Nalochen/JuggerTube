@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block body %}
     <h1>Register</h1>
-    <form method="POST" action="{{ url_for('register')}}">
+    <form method="POST">
         {{ form.email.label() }}
 		{{ form.email() }}
 		<br/>

@@ -4,7 +4,7 @@ from flask_login import login_required, current_user
 from juggertube.models import Video, db
 
 from juggertube.tournaments.tournament_blueprint import get_tournament_by_period
-from juggertube.webforms import EditVideoForm, VideoForm
+from juggertube.webforms import VideoForm
 
 video_blueprint = Blueprint('videos', __name__, template_folder='templates')
 
@@ -50,7 +50,7 @@ def add_video():
 @login_required
 def edit_video(video_id):
     video = Video.query.get_or_404(video_id)
-    form = EditVideoForm()
+    form = VideoForm()
 
     if form.validate_on_submit():
         video.name = form.name.data

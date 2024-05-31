@@ -3,9 +3,9 @@ from datetime import datetime
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify
 from flask_login import login_required, current_user
 
-from models import Video, User, Team, Tournament, Channel, db
+from juggertube.models import Tournament, db
 
-from juggertube.webforms import TournamentForm, EditTournamentForm
+from juggertube.webforms import TournamentForm
 
 tournament_blueprint = Blueprint('tournaments', __name__, template_folder='templates')
 
@@ -45,7 +45,7 @@ def add_tournament():
 def edit_tournament(tournament_id):
     if request.method == 'POST':
         tournament = Tournament.query.get_or_404(tournament_id=tournament_id)
-        form = EditTournamentForm()
+        form = TournamentForm()
 
         if form.validate_on_submit():
             tournament.name = form.name.data

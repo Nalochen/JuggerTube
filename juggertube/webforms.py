@@ -18,7 +18,7 @@ class RegisterForm(FlaskForm):
 
 class VideoForm(FlaskForm):
 	name = StringField("Name", validators=[DataRequired()])
-	user_id = IntegerField("ChannelID", validators=[DataRequired()])
+	user_id = IntegerField("UserID", validators=[DataRequired()])
 	link = StringField("Link", validators=[DataRequired()])
 	tournament_id = IntegerField("TournamentID", validators=[DataRequired()])
 	team_one_id = IntegerField("TeamOneID", validators=[DataRequired()])
@@ -43,8 +43,3 @@ class TeamForm(FlaskForm):
 	country = StringField("Country", validators=[DataRequired()])
 	submit = SubmitField("Submit")
 
-
-class ChannelForm(FlaskForm):
-	name = StringField("Name", validators=[DataRequired()])
-	link = StringField("Link", validators=[DataRequired()])
-	submit = SubmitField("Submit")

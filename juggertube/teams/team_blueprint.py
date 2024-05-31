@@ -1,9 +1,9 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify
 from flask_login import login_required, current_user
 
-from models import Team, db
+from juggertube.models import Team, db
 
-from juggertube.webforms import TeamForm, EditTeamForm
+from juggertube.webforms import TeamForm
 
 team_blueprint = Blueprint('teams', __name__, template_folder='templates')
 
@@ -37,7 +37,7 @@ def add_team():
 def edit_team(team_id):
     if request.method == 'POST':
         team = Team.query.get_or_404(team_id=team_id)
-        form = EditTeamForm()
+        form = TeamForm()
 
         if form.validate_on_submit():
             team.name = form.name.data

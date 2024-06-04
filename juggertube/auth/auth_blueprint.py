@@ -70,7 +70,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return '<h1>User logged out!</h1>'
+    flash('User logged out!')
 
 
 @auth_blueprint.route('/delete/<int:user_id>', methods=['GET'])
@@ -78,7 +78,9 @@ def delete_user(user_id):
     user = User.query.filter_by(user_id=user_id).first()
 
     name = user.username
-
-    db.session.delete(user)
-    db.session.commit()
-    return f'<h1>User {name} deleted<h1>'
+    try:
+        db.session.delete(user)
+        db.session.commit()
+        flash(f'User {name} deleted')
+    except Exception as e:
+        flash('something went wrong, please try again', str(e))

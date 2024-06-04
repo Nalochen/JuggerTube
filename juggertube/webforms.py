@@ -19,7 +19,6 @@ class RegisterForm(FlaskForm):
 
 class VideoForm(FlaskForm):
 	name = StringField("Name", validators=[DataRequired()])
-	user_id = IntegerField("UserID", validators=[DataRequired()])
 	link = StringField("Link", validators=[DataRequired()])
 	tournament = SelectField("Tournament", validators=[DataRequired()])
 	team_one = SelectField("TeamOne", validators=[DataRequired()])

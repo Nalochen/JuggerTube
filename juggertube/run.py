@@ -60,4 +60,4 @@ if __name__ == '__main__':
     cert_path = os.path.join(base_dir, 'selfsigned.crt')
     key_path = os.path.join(base_dir, 'selfsigned.key')
     context = (cert_path, key_path)
-    app.run(ssl_context='adhoc', debug=True, host='0.0.0.0', port=5000)
+    app.run(ssl_context='context', debug=True, host='0.0.0.0', port=5000)

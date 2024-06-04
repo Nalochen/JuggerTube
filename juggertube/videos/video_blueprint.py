@@ -1,3 +1,4 @@
+import flask_login
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 from flask_login import login_required, current_user
 
@@ -29,17 +30,13 @@ def add_video():
     form = VideoForm()
     if request.method == 'POST':
         name = form.name.data
-        user_id = form.user_id.data
+        user_id = flask_login.current_user.user_id
         link = form.link.data
         tournament_id = form.tournament.data
         team_one_id = form.team_one.data
         team_two_id = form.team_two.data
         upload_date = form.date.data
         comments = form.comments.data
-
-        form.tournament.choices = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
-        form.team_one.choices = [(team.id, team.name) for team in Team.query.all()]
-        form.team_two.choices = [(team.id, team.name) for team in Team.query.all()]
 
         new_video = Video(name=name, user_id=user_id, link=link,
                           tournament_id=tournament_id, team_one_id=team_one_id,
@@ -48,6 +45,10 @@ def add_video():
         db.session.add(new_video)
         db.session.commit()
         return redirect(url_for('general.index'))
+
+    form.tournament.choices = [(tournament.tournament_id, tournament.name) for tournament in Tournament.query.all()]
+    form.team_one.choices = [(team.team_id, team.name) for team in Team.query.all()]
+    form.team_two.choices = [(team.team_id, team.name) for team in Team.query.all()]
     return render_template('video.html', form=form)
 
 
@@ -59,7 +60,7 @@ def edit_video(video_id):
 
     if form.validate_on_submit():
         video.name = form.name.data
-        video.user_id = form.user_id.data
+        video.user_id = flask_login.current_user.user_id
         video.link = form.link.data
         video.tournament_id = form.tournament.data
         video.team_one_id = form.team_one.data

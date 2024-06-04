@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from flask import Blueprint, request, url_for, redirect, render_template, jsonify
+from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 from flask_login import login_required, current_user
 
 from juggertube.models import Tournament, db
@@ -34,9 +34,13 @@ def add_tournament():
         new_tournament = Tournament(name=name, date_beginning=date_beginning,
                                     date_ending=date_ending, city=city,
                                     jtr_link=jtr_link)
-        db.session.add(new_tournament)
-        db.session.commit()
-        return redirect(url_for('general.index'))
+        try:
+            db.session.add(new_tournament)
+            db.session.commit()
+            return redirect(url_for('general.index'))
+        except Exception as e:
+            flash('something went wrong, please try again', str(e))
+
     return render_template('tournament.html', form=form)
 
 
@@ -53,8 +57,11 @@ def edit_tournament(tournament_id):
             tournament.date_ending = form.date_ending.data
             tournament.city = form.city.data
             tournament.jtr_link = form.jtr_link.data
-            db.session.commit()
-            return redirect(url_for('general.index'))
+            try:
+                db.session.commit()
+                return redirect(url_for('general.index'))
+            except Exception as e:
+                flash('something went wrong, please try again', str(e))
 
         if current_user:
             form.name.data = tournament.name
@@ -73,10 +80,12 @@ def delete_tournament(tournament_id):
     tournament = Tournament.query.filter_by(tournament_id=tournament_id).first()
 
     name = tournament.name
-
-    db.session.delete(tournament)
-    db.session.commit()
-    return f'<h1>Tournament {name} deleted<h1>'
+    try:
+        db.session.delete(tournament)
+        db.session.commit()
+        flash(f'Tournament {name} deleted')
+    except Exception as e:
+        flash('something went wrong, please try again', str(e))
 
 
 @tournament_blueprint.route('/', methods=['GET'])

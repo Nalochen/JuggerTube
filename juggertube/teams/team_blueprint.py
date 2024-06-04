@@ -1,4 +1,4 @@
-from flask import Blueprint, request, url_for, redirect, render_template, jsonify
+from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 from flask_login import login_required, current_user
 
 from juggertube.models import Team, db
@@ -26,9 +26,14 @@ def add_team():
         country = form.country.data
         city = form.city.data
         new_team = Team(name=name, country=country, city=city)
-        db.session.add(new_team)
-        db.session.commit()
-        return redirect(url_for('general.index'))
+        try:
+            db.session.add(new_team)
+            db.session.commit()
+            return redirect(url_for('general.index'))
+        except Exception as e:
+            flash('Error! looks like there was a problem... please try agin!', str(e))
+            return render_template('team.html', form=form)
+
     return render_template('team.html', form=form)
 
 
@@ -43,8 +48,13 @@ def edit_team(team_id):
             team.name = form.name.data
             team.country = form.country.data
             team.city = form.city.data
-            db.session.commit()
-            return redirect(url_for('general.index'))
+
+            try:
+                db.session.commit()
+                return redirect(url_for('general.index'))
+            except Exception as e:
+                flash('Error! Looks like your inputs are not valid, please check if '
+                      'you wrote something in every input field', str(e))
 
         if current_user:
             form.name.data = team.name
@@ -63,9 +73,12 @@ def delete_team(team_id):
 
     name = team.name
 
-    db.session.delete(team)
-    db.session.commit()
-    return f'<h1>Team {name} deleted<h1>'
+    try:
+        db.session.delete(team)
+        db.session.commit()
+        flash(f'Team {name} deleted')
+    except Exception as e:
+        flash('something went wrong please try again', str(e))
 
 
 @team_blueprint.route('/', methods=['GET'])

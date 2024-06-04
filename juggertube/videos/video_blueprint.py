@@ -42,9 +42,13 @@ def add_video():
                           tournament_id=tournament_id, team_one_id=team_one_id,
                           team_two_id=team_two_id, upload_date=upload_date,
                           comments=comments)
-        db.session.add(new_video)
-        db.session.commit()
-        return redirect(url_for('general.index'))
+
+        try:
+            db.session.add(new_video)
+            db.session.commit()
+            return redirect(url_for('general.index'))
+        except Exception as e:
+            flash('something went wrong, please try again', str(e))
 
     form.tournament.choices = [(tournament.tournament_id, tournament.name) for tournament in Tournament.query.all()]
     form.team_one.choices = [(team.team_id, team.name) for team in Team.query.all()]
@@ -67,7 +71,10 @@ def edit_video(video_id):
         video.team_two_id = form.team_two.data
         video.upload_date = form.date.data
         video.comments = form.comments.data
-        db.session.commit()
+        try:
+            db.session.commit()
+        except Exception as e:
+            flash('something went wrong, please try again', str(e))
 
         form.tournament.choices = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
         form.team_one.choices = [(team.id, team.name) for team in Team.query.all()]
@@ -101,16 +108,18 @@ def delete_video(video_id):
 
     name = video.name
 
-    db.session.delete(video)
-    db.session.commit()
-    return f'<h1>Video {name} deleted<h1>'
+    try:
+        db.session.delete(video)
+        db.session.commit()
+        flash(f'Video {name} deleted')
+    except Exception as e:
+        flash('something went wrong, please try again', str(e))
 
 
 @video_blueprint.route('/', methods=['GET'])
 def get_videos():
     videos = Video.query.all()
     video_list = [serialize_video(video) for video in videos]
-    print('stuff')
     return jsonify(video_list)
 
 

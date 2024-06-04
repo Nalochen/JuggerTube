@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, TextAreaField, IntegerField, DateField, EmailField
+from wtforms.fields.choices import SelectField
 from wtforms.validators import DataRequired
 
 
@@ -20,9 +21,9 @@ class VideoForm(FlaskForm):
 	name = StringField("Name", validators=[DataRequired()])
 	user_id = IntegerField("UserID", validators=[DataRequired()])
 	link = StringField("Link", validators=[DataRequired()])
-	tournament_id = IntegerField("TournamentID", validators=[DataRequired()])
-	team_one_id = IntegerField("TeamOneID", validators=[DataRequired()])
-	team_two_id = IntegerField("TeamTwoID", validators=[DataRequired()])
+	tournament = SelectField("Tournament", validators=[DataRequired()])
+	team_one = SelectField("TeamOne", validators=[DataRequired()])
+	team_two = SelectField("TeamTwo", validators=[DataRequired()])
 	date = DateField("Date", validators=[DataRequired()])
 	comments = TextAreaField("Comments")
 	submit = SubmitField("Submit")

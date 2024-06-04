@@ -1,7 +1,7 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 from flask_login import login_required, current_user
 
-from juggertube.models import Video, db
+from juggertube.models import Video, db, Tournament, Team
 
 from juggertube.tournaments.tournament_blueprint import get_tournament_by_period
 from juggertube.webforms import VideoForm
@@ -31,11 +31,16 @@ def add_video():
         name = form.name.data
         user_id = form.user_id.data
         link = form.link.data
-        tournament_id = form.tournament_id.data
-        team_one_id = form.team_one_id.data
-        team_two_id = form.team_two_id.data
+        tournament_id = form.tournament.data
+        team_one_id = form.team_one.data
+        team_two_id = form.team_two.data
         upload_date = form.date.data
         comments = form.comments.data
+
+        form.tournament.choices = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
+        form.team_one.choices = [(team.id, team.name) for team in Team.query.all()]
+        form.team_two.choices = [(team.id, team.name) for team in Team.query.all()]
+
         new_video = Video(name=name, user_id=user_id, link=link,
                           tournament_id=tournament_id, team_one_id=team_one_id,
                           team_two_id=team_two_id, upload_date=upload_date,
@@ -56,22 +61,32 @@ def edit_video(video_id):
         video.name = form.name.data
         video.user_id = form.user_id.data
         video.link = form.link.data
-        video.tournament_id = form.tournament_id.data
-        video.team_one_id = form.team_one_id.data
-        video.team_two_id = form.team_two_id.data
+        video.tournament_id = form.tournament.data
+        video.team_one_id = form.team_one.data
+        video.team_two_id = form.team_two.data
         video.upload_date = form.date.data
         video.comments = form.comments.data
         db.session.commit()
+
+        form.tournament.choices = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
+        form.team_one.choices = [(team.id, team.name) for team in Team.query.all()]
+        form.team_two.choices = [(team.id, team.name) for team in Team.query.all()]
+
         return redirect(url_for('general.index'))
 
     if current_user.id == video.user_id:
         form.name.data = video.name
         form.link.data = video.link
-        form.tournament_id.data = video.tournament_id
-        form.team_one_id.data = video.team_one_id
-        form.team_two_id.data = video.team_two_id
+        form.tournament.data = video.tournament_id
+        form.team_one.data = video.team_one_id
+        form.team_two.data = video.team_two_id
         form.date.data = video.upload_date
         form.comments.data = video.comments
+
+        form.tournament.choices = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
+        form.team_one.choices = [(team.id, team.name) for team in Team.query.all()]
+        form.team_two.choices = [(team.id, team.name) for team in Team.query.all()]
+
         return render_template('video.html', form=form)
 
     else:

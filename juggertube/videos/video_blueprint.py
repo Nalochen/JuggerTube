@@ -2,9 +2,10 @@ import flask_login
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 from flask_login import login_required, current_user
 
-from juggertube.models import Video, db, Tournament, Team
+from juggertube.game_system_enum import GameSystem
+from juggertube.models import Video, db, Tournament, Team, Channel
 
-from juggertube.tournaments.tournament_blueprint import get_tournament_by_period
+from juggertube.video_type_enum import VideoType
 from juggertube.webforms import VideoForm
 
 video_blueprint = Blueprint('videos', __name__, template_folder='templates')
@@ -13,6 +14,8 @@ video_blueprint = Blueprint('videos', __name__, template_folder='templates')
 def serialize_video(video):
     return {
         'video_id': video.video_id,
+        'channel_id': video.channel_id,
+        'category': video.category,
         'name': video.name,
         'user_id': video.user_id,
         'link': video.link,
@@ -20,6 +23,11 @@ def serialize_video(video):
         'team_one_id': video.team_one_id,
         'team_two_id': video.team_two_id,
         'upload_date': video.upload_date.strftime('%Y-%m-%d'),
+        'date_of_recording': video.date_of_recording.strftime('%Y-%m-%d'),
+        'game_system': video.game_system,
+        'weapon_type': video.weapon_type,
+        'topic': video.topic,
+        'guests': video.guests,
         'comments': video.comments,
     }
 
@@ -30,17 +38,24 @@ def add_video():
     form = VideoForm()
     if request.method == 'POST':
         name = form.name.data
-        user_id = flask_login.current_user.user_id
+        channel_id = form.channel.data
         link = form.link.data
+        category = form.category.data
+        upload_date = form.upload_date.data
         tournament_id = form.tournament.data
         team_one_id = form.team_one.data
         team_two_id = form.team_two.data
-        upload_date = form.date.data
+        date_of_recording = form.date_of_recording.data
+        game_system = form.game_system.data
+        weapon_type = form.weapon_type.data
+        topic = form.topic.data
+        guests = form.guests.data
         comments = form.comments.data
 
-        new_video = Video(name=name, user_id=user_id, link=link,
+        new_video = Video(name=name, channel_id=channel_id, link=link, category=category,
                           tournament_id=tournament_id, team_one_id=team_one_id,
-                          team_two_id=team_two_id, upload_date=upload_date,
+                          team_two_id=team_two_id, upload_date=upload_date, date_of_recording=date_of_recording,
+                          game_system=game_system, weapon_type=weapon_type, topic=topic, guests=guests,
                           comments=comments)
 
         try:
@@ -50,9 +65,12 @@ def add_video():
         except Exception as e:
             flash('something went wrong, please try again', str(e))
 
-    form.tournament.choices = [(tournament.tournament_id, tournament.name) for tournament in Tournament.query.all()]
-    form.team_one.choices = [(team.team_id, team.name) for team in Team.query.all()]
-    form.team_two.choices = [(team.team_id, team.name) for team in Team.query.all()]
+    form.tournament.choices = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
+    form.team_one.choices = [(team.id, team.name) for team in Team.query.all()]
+    form.team_two.choices = [(team.id, team.name) for team in Team.query.all()]
+    form.channel.choices = [(channel.id, channel.name) for channel in Channel.query.all()]
+    form.game_system.choices = GameSystem
+    form.category.choices = VideoType
     return render_template('video.html', form=form)
 
 
@@ -64,12 +82,18 @@ def edit_video(video_id):
 
     if form.validate_on_submit():
         video.name = form.name.data
-        video.user_id = flask_login.current_user.user_id
+        video.channel_id = form.channel.data
         video.link = form.link.data
+        video.category = form.category.data
+        video.upload_date = form.upload_date.data
         video.tournament_id = form.tournament.data
         video.team_one_id = form.team_one.data
         video.team_two_id = form.team_two.data
-        video.upload_date = form.date.data
+        video.date_of_recording = form.date_of_recording.data
+        video.game_system = form.game_system.data
+        video.weapon_type = form.weapon_type.data
+        video.topic = form.topic.data
+        video.guests = form.guests.data
         video.comments = form.comments.data
         try:
             db.session.commit()
@@ -79,21 +103,34 @@ def edit_video(video_id):
         form.tournament.choices = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
         form.team_one.choices = [(team.id, team.name) for team in Team.query.all()]
         form.team_two.choices = [(team.id, team.name) for team in Team.query.all()]
+        form.channel.choices = [(channel.id, channel.name) for channel in Channel.query.all()]
+        form.game_system.choices = GameSystem
+        form.category.choices = VideoType
 
         return redirect(url_for('general.index'))
 
     if current_user.id == video.user_id:
         form.name.data = video.name
+        form.channel.data = video.channel_id
         form.link.data = video.link
+        form.category.data = video.category
+        form.upload_date.data = video.upload_date
         form.tournament.data = video.tournament_id
         form.team_one.data = video.team_one_id
         form.team_two.data = video.team_two_id
-        form.date.data = video.upload_date
+        form.date_of_recording.data = video.date_of_recording
+        form.game_system.data = video.game_system
+        form.weapon_type.data = video.weapon_type
+        form.topic.data = video.topic
+        form.guests.data = video.guests
         form.comments.data = video.comments
 
         form.tournament.choices = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
         form.team_one.choices = [(team.id, team.name) for team in Team.query.all()]
         form.team_two.choices = [(team.id, team.name) for team in Team.query.all()]
+        form.channel.choices = [(channel.id, channel.name) for channel in Channel.query.all()]
+        form.game_system.choices = GameSystem
+        form.category.choices = GameSystem
 
         return render_template('video.html', form=form)
 
@@ -148,16 +185,8 @@ def get_videos_by_tournament_and_team(tournament_id, team_id):
 
 @video_blueprint.route('/period/<string:beginning>/<string:ending>', methods=['GET'])
 def get_videos_by_period(beginning, ending):
-    try:
-        tournaments = get_tournament_by_period(beginning, ending)
-
-        videos = []
-        for tournament in tournaments:
-            tournament_videos = Video.query.filter_by(tournament_id=tournament.tournament_id).all()
-            videos.extend(tournament_videos)
-
-        video_list = [serialize_video(video) for video in videos]
-        return jsonify(video_list)
-
-    except Exception as e:
-        return jsonify({'error': str(e)}), 400
+    videos = Video.query.filter(
+        Video.date_of_recording > beginning, Video.date_of_recording < ending
+    ). all()
+    video_list = [serialize_video(video) for video in videos]
+    return jsonify(video_list)

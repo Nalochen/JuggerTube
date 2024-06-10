@@ -10,6 +10,24 @@
 		{{ form.link() }}
 		<br/>
 
+		{{ form.channel.label() }}
+		{{ form.channel() }}
+		<br/>
+
+		{{ form.category.label() }}
+		{{ form.category() }}
+		<br/>
+
+		{{ form.upload_date.label() }}
+		{{ form.upload_date() }}
+		<br/>
+
+		{{ form.comments.label() }}
+		{{ form.comments() }}
+		<br/>
+
+		<p>Only for Match Videos:</p><br/>
+
 		{{ form.tournament.label() }}
 		{{ form.tournament() }}
 		<br/>
@@ -22,12 +40,26 @@
 		{{ form.team_two() }}
 		<br/>
 
-        {{ form.date.label() }}
-		{{ form.date() }}
+		{{ form.date_of_recording.label() }}
+		{{ form.date_of_recording() }}
 		<br/>
 
-		{{ form.comments.label() }}
-		{{ form.comments() }}
+		{{ form.game_system.label() }}
+		{{ form.game_system() }}
+		<br/>
+
+		<p>Only for other Videos</p><br/>
+
+		{{ form.weapon_type.label() }}
+		{{ form.weapon_type() }}
+		<br/>
+
+		{{ form.topic.label() }}
+		{{ form.topic() }}
+		<br/>
+
+		{{ form.guests.label() }}
+		{{ form.guests() }}
 		<br/>
 
 		<br/>

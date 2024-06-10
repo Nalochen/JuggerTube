@@ -1,6 +1,6 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 
-from juggertube.models import db, User
+from juggertube.models import db, User, Team
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_required, logout_user, login_user
 
@@ -15,6 +15,7 @@ def serialize_user(user):
         'username': user.username,
         'email': user.email,
         'password_hash': user.password_hash,
+        'team': user.team,
     }
 
 
@@ -33,16 +34,20 @@ def register():
         if user:
             return redirect(url_for('auth.login'))
 
+        email = form.email.data
+        username = form.username.data
+        password_hash = generate_password_hash(form.password.data, method='scrypt')
+        team = form.team.data
+
         try:
-            hashed_pw = generate_password_hash(form.password.data, method='scrypt')
-            new_user = User(email=form.email.data, username=form.username.data, password_hash=hashed_pw)
+            new_user = User(email=email, username=username, password_hash=password_hash, team=team)
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user)
             flash('Account successfully created', 'info')
         except Exception as e:
             flash(str(e), 'danger')
-
+    form.team.choices = [(team.id, team.name) for team in Team.query.all()]
     return render_template('register.html', form=form)
 
 

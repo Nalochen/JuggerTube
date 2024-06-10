@@ -14,10 +14,9 @@ def serialize_tournament(tournament):
     return {
         'tournament_id': tournament.tournament_id,
         'name': tournament.name,
-        'date_beginning': tournament.date_beginning.strftime('%Y-%m-%d'),
-        'date_ending': tournament.date_ending.strftime('%Y-%m-%d'),
         'city': tournament.city,
         'jtr_link': tournament.jtr_link,
+        'tugeny_link': tournament.tugeny_link,
     }
 
 
@@ -27,13 +26,11 @@ def add_tournament():
     form = TournamentForm()
     if request.method == 'POST':
         name = form.name.data
-        date_beginning = form.date_beginning.data
-        date_ending = form.date_ending.data
         city = form.city.data
         jtr_link = form.jtr_link.data
-        new_tournament = Tournament(name=name, date_beginning=date_beginning,
-                                    date_ending=date_ending, city=city,
-                                    jtr_link=jtr_link)
+        tugeny_link = form.tugeny_link.data
+        new_tournament = Tournament(name=name, city=city,
+                                    jtr_link=jtr_link, tugeny_link=tugeny_link)
         try:
             db.session.add(new_tournament)
             db.session.commit()
@@ -53,10 +50,9 @@ def edit_tournament(tournament_id):
 
         if form.validate_on_submit():
             tournament.name = form.name.data
-            tournament.date_beginning = form.date_beginning.data
-            tournament.date_ending = form.date_ending.data
             tournament.city = form.city.data
             tournament.jtr_link = form.jtr_link.data
+            tournament.tugeny_link = form.tugeny_link.data
             try:
                 db.session.commit()
                 return redirect(url_for('general.index'))
@@ -65,10 +61,9 @@ def edit_tournament(tournament_id):
 
         if current_user:
             form.name.data = tournament.name
-            form.date_beginning.data = tournament.date_beginning
-            form.date_ending = tournament.date_ending
             form.city.data = tournament.city
-            form.jtr_link = tournament.jtr_link
+            form.jtr_link.data = tournament.jtr_link
+            form.tugeny_link.data = tournament.tugeny_link
             return render_template('tournament.html', form=form)
         else:
             return redirect(url_for('general.index'))
@@ -93,15 +88,3 @@ def get_tournaments():
     tournaments = Tournament.query.all()
     tournament_list = [serialize_tournament(tournament) for tournament in tournaments]
     return jsonify(tournament_list)
-
-
-@tournament_blueprint.route('/period/<string:beginning>/<string:ending>', methods=['GET'])
-def get_tournament_by_period(beginning, ending):
-    beginning_date = datetime.strptime(beginning, '%Y-%m-%d')
-    ending_date = datetime.strptime(ending, '%Y-%m-%d')
-
-    tournaments = Tournament.query.filter(
-        Tournament.date_beginning >= beginning_date,
-        Tournament.date_ending <= ending_date
-    ).all()
-    return tournaments

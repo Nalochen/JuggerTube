@@ -4,8 +4,9 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
+from juggertube.channels.channel_blueprint import channel_blueprint
+from juggertube.init_db import init_db
 from juggertube.models import db, User
-from sqlalchemy import create_engine
 
 from juggertube.general.general_blueprint import general_blueprint
 from juggertube.videos.video_blueprint import video_blueprint
@@ -33,10 +34,6 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     login_manager.init_app(app)
     migrate.init_app(app, db)
 
-    def init_db():
-        with app.app_context():
-            db.create_all()
-
     @login_manager.user_loader
     def load_user(user_id):
         return User.query.get(int(user_id))
@@ -45,10 +42,11 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     app.register_blueprint(general_blueprint)
     app.register_blueprint(team_blueprint, url_prefix="/teams")
     app.register_blueprint(tournament_blueprint, url_prefix="/tournaments")
+    app.register_blueprint(channel_blueprint, url_prefix="/channels")
     app.register_blueprint(auth_blueprint, url_prefix="/auth")
 
     if __name__ == '__main__':
-        init_db()
+        init_db(app)
         base_dir = os.path.dirname(os.path.abspath(__file__))
         cert_path = os.path.join(base_dir, 'selfsigned.crt')
         key_path = os.path.join(base_dir, 'selfsigned.key')

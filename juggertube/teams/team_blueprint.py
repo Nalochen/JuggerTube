@@ -32,9 +32,9 @@ def add_team():
             return redirect(url_for('general.index'))
         except Exception as e:
             flash('Error! looks like there was a problem... please try agin!', str(e))
-            return render_template('team.html', form=form)
+            return render_template('channel.html', form=form)
 
-    return render_template('team.html', form=form)
+    return render_template('channel.html', form=form)
 
 
 @team_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
@@ -60,7 +60,7 @@ def edit_team(team_id):
             form.name.data = team.name
             form.country.data = team.country
             form.city.data = team.city
-            return render_template('team.html', form=form)
+            return render_template('channel.html', form=form)
 
         else:
             return redirect(url_for('general.index'))

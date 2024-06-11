@@ -1,2133 +1,2003 @@
 [
     {
-        "teamname": "!LlukS",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Nein",
+        "name": "!LlukS",
+        "city": "Berlin",
+        "country": "Deutschland",
         "undefined": " 📝 This area finds new Teams that werent added to this sheet.\nIf this list is empty, all good. Otherwise copy the entries to the bottom of the list on the left"
     },
     {
-        "teamname": ".N.O.X.",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": ".N.O.X.",
+        "country": "Deutschland"
     },
     {
-        "teamname": "(Orange) Juggernauts",
-        "cityort": "Nürnberg",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "(Orange) Juggernauts",
+        "city": "Nürnberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "A Pint a Day",
-        "cityort": "Unna-Billmerich",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "A Pint a Day",
+        "city": "Unna-Billmerich",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Affeln mit Waffen",
-        "cityort": "Sulzbach-Rosenberg",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Affeln mit Waffen",
+        "city": "Sulzbach-Rosenberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Affen mit Waffeln",
-        "cityort": "Sulzbach-Rosenberg",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Affen mit Waffeln",
+        "city": "Sulzbach-Rosenberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Affen mit Waffen",
-        "cityort": "Sulzbach-Rosenberg",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Affen mit Waffen",
+        "city": "Sulzbach-Rosenberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Agustiner",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Agustiner",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Ahle Säcke",
-        "cityort": "Rotenburg a. d. Fulda",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Ahle Säcke",
+        "city": "Rotenburg a. d. Fulda",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Aixcalibur",
-        "cityort": "Aachen",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Aixcalibur",
+        "city": "Aachen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "AJgD"
+        "name": "AJgD"
     },
     {
-        "teamname": "Akazuki"
+        "name": "Akazuki"
     },
     {
-        "teamname": "Alchemyst"
+        "name": "Alchemyst"
     },
     {
-        "teamname": "Almoradí Jugger Club",
-        "land": "Spanien",
-        "active": "Ja"
+        "name": "Almoradí Jugger Club",
+        "country": "Spanien"
     },
     {
-        "teamname": "Almoradí Jugger Club B",
-        "land": "Spanien",
-        "active": "Ja"
+        "name": "Almoradí Jugger Club B",
+        "country": "Spanien"
     },
     {
-        "teamname": "Alpaca Team"
+        "name": "Alpaca Team"
     },
     {
-        "teamname": "Amazonenkinder",
-        "cityort": "Jena",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Amazonenkinder",
+        "city": "Jena",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Amsteljugger",
-        "cityort": "Amsterdam",
-        "land": "Niederlande",
-        "active": "Nein"
+        "name": "Amsteljugger",
+        "city": "Amsterdam",
+        "country": "Niederlande"
     },
     {
-        "teamname": "Andrómeda"
+        "name": "Andrómeda"
     },
     {
-        "teamname": "Anima Draconis"
+        "name": "Anima Draconis"
     },
     {
-        "teamname": "Anima Equorum",
-        "cityort": "Halle an der Saale",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Anima Equorum",
+        "city": "Halle an der Saale",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Anima Equorum - Junge Pferde"
+        "name": "Anima Equorum - Junge Pferde"
     },
     {
-        "teamname": "Arena Dragons"
+        "name": "Arena Dragons"
     },
     {
-        "teamname": "Arena Dragons Denia"
+        "name": "Arena Dragons Denia"
     },
     {
-        "teamname": "Arima Galduak"
+        "name": "Arima Galduak"
     },
     {
-        "teamname": "Armageddon"
+        "name": "Armageddon"
     },
     {
-        "teamname": "Assis unter Palmen",
-        "cityort": "Mixteam",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Assis unter Palmen",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Atoxera"
+        "name": "Atoxera"
     },
     {
-        "teamname": "Auenländer Tierschutzpartei",
-        "cityort": "Mixteam",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Auenländer Tierschutzpartei",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Awesome Pirates",
-        "cityort": "Leer",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Awesome Pirates",
+        "city": "Leer",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Baator"
+        "name": "Baator"
     },
     {
-        "teamname": "Barcelona Jugger Club",
-        "cityort": "Barcelona",
-        "land": "Spanien"
+        "name": "Barcelona Jugger Club",
+        "city": "Barcelona",
+        "country": "Spanien"
     },
     {
-        "teamname": "Barcelona Jugger Club B",
-        "cityort": "Barcelona",
-        "land": "Spanien"
+        "name": "Barcelona Jugger Club B",
+        "city": "Barcelona",
+        "country": "Spanien"
     },
     {
-        "teamname": "Batalladores",
-        "land": "Spanien"
+        "name": "Batalladores",
+        "country": "Spanien"
     },
     {
-        "teamname": "Bäuerchen",
-        "cityort": "Paderborn",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Bäuerchen",
+        "city": "Paderborn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Bavaria Plus",
-        "cityort": "Mixteam",
-        "active": "Nein"
+        "name": "Bavaria Plus",
+        "city": "Mixteam"
     },
     {
-        "teamname": "Bavarian Mayhem",
-        "cityort": "Augsburg",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Bavarian Mayhem",
+        "city": "Augsburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Bearserkers"
+        "name": "Bearserkers"
     },
     {
-        "teamname": "BembelMachine",
-        "cityort": "Mixteam",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "BembelMachine",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Bembelritter",
-        "cityort": "Frankfurt",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Bembelritter",
+        "city": "Frankfurt",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Berlin Oldstarz",
-        "land": "Deutschland"
+        "name": "Berlin Oldstarz",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Beulen Eulen",
-        "cityort": "Saarbrücken",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Beulen Eulen",
+        "city": "Saarbrücken",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Bildungsurlaub",
-        "cityort": "Demmin",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Bildungsurlaub",
+        "city": "Demmin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Black Cats",
-        "land": "Spanien"
+        "name": "Black Cats",
+        "country": "Spanien"
     },
     {
-        "teamname": "Black Dragons",
-        "cityort": "Valencia",
-        "land": "Spanien",
-        "active": "Nein"
+        "name": "Black Dragons",
+        "city": "Valencia",
+        "country": "Spanien"
     },
     {
-        "teamname": "Black Jack"
+        "name": "Black Jack"
     },
     {
-        "teamname": "Black Jack ",
-        "cityort": "Mixteam",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Black Jack ",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Black Knights Nürnberg",
-        "cityort": "Nürnberg",
-        "land": "Deutschland"
+        "name": "Black Knights Nürnberg",
+        "city": "Nürnberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Black River Eagles"
+        "name": "Black River Eagles"
     },
     {
-        "teamname": "Blackout",
-        "cityort": "Göttingen",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Blackout",
+        "city": "Göttingen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Blackthorn",
-        "cityort": "Düsseldorf",
-        "land": "Deutschland",
-        "active": "?"
+        "name": "Blackthorn",
+        "city": "Düsseldorf",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Blaubeerenbande (Bonn)",
-        "cityort": "Bonn",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Blaubeerenbande (Bonn)",
+        "city": "Bonn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Blue Fangs",
-        "cityort": "Frankfurt (Oder)",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Blue Fangs",
+        "city": "Frankfurt (Oder)",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Blutgrätsche",
-        "cityort": "Lübeck",
-        "land": "Deutschland"
+        "name": "Blutgrätsche",
+        "city": "Lübeck",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Blutgruppe Nord",
-        "cityort": "Lübeck",
-        "land": "Deutschland"
+        "name": "Blutgruppe Nord",
+        "city": "Lübeck",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Bob Jugger",
-        "cityort": "Karlsruhe",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Bob Jugger",
+        "city": "Karlsruhe",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Bochum Juggers",
-        "cityort": "Bochum",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Bochum Juggers",
+        "city": "Bochum",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Botillo Fighters"
+        "name": "Botillo Fighters"
     },
     {
-        "teamname": "Braunschweig Bier & Brezeln",
-        "cityort": "Braunschweig",
-        "land": "Deutschland"
+        "name": "Braunschweig Bier & Brezeln",
+        "city": "Braunschweig",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Buitres Negros",
-        "land": "Spanien"
+        "name": "Buitres Negros",
+        "country": "Spanien"
     },
     {
-        "teamname": "Burkas Team"
+        "name": "Burkas Team"
     },
     {
-        "teamname": "Bushido",
-        "land": "Spanien"
+        "name": "Bushido",
+        "country": "Spanien"
     },
     {
-        "teamname": "Calzonenkinder",
-        "cityort": "Jena",
-        "land": "Deutschland"
+        "name": "Calzonenkinder",
+        "city": "Jena",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Camada de Fenriss",
-        "land": "Spanien"
+        "name": "Camada de Fenriss",
+        "country": "Spanien"
     },
     {
-        "teamname": "Canadas Pants"
+        "name": "Canadas Pants"
     },
     {
-        "teamname": "Captura"
+        "name": "Captura"
     },
     {
-        "teamname": "Centinela Jedi"
+        "name": "Centinela Jedi"
     },
     {
-        "teamname": "Cerboros"
+        "name": "Cerboros"
     },
     {
-        "teamname": "Cervisia Ultima",
-        "cityort": "Duisburg",
-        "land": "Deutschland"
+        "name": "Cervisia Ultima",
+        "city": "Duisburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Chimaeserkraken",
-        "cityort": "Mixteam",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Chimaeserkraken",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Chimera Brunsviga",
-        "cityort": "Braunschweig",
-        "land": "Deutschland"
+        "name": "Chimera Brunsviga",
+        "city": "Braunschweig",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Chimera Brunsviga II",
-        "cityort": "Braunschweig",
-        "land": "Deutschland"
+        "name": "Chimera Brunsviga II",
+        "city": "Braunschweig",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Ciponejos",
-        "land": "Spanien"
+        "name": "Ciponejos",
+        "country": "Spanien"
     },
     {
-        "teamname": "Ciponejos Hardcore"
+        "name": "Ciponejos Hardcore"
     },
     {
-        "teamname": "Ciponejos Revolution",
-        "land": "Spanien"
+        "name": "Ciponejos Revolution",
+        "country": "Spanien"
     },
     {
-        "teamname": "CJ"
+        "name": "CJ"
     },
     {
-        "teamname": "Cologne Raptors",
-        "cityort": "Köln",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Cologne Raptors",
+        "city": "Köln",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Corvus",
-        "land": "USA/Colorado"
+        "name": "Corvus",
+        "country": "USA/Colorado"
     },
     {
-        "teamname": "Cotorras Invasoras",
-        "land": "Spanien"
+        "name": "Cotorras Invasoras",
+        "country": "Spanien"
     },
     {
-        "teamname": "Cottbus Klatscher",
-        "land": "Deutschland"
+        "name": "Cottbus Klatscher",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Cranium ex Apparatus",
-        "abbreviationabkrzung": "CxA",
-        "cityort": "Harburg",
-        "land": "Deutschland"
+        "name": "Cranium ex Apparatus",
+        "abbreviation": "CxA",
+        "city": "Harburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Cranium Ex Machina",
-        "abbreviationabkrzung": "CxM",
-        "cityort": "Harburg",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Cranium Ex Machina",
+        "abbreviation": "CxM",
+        "city": "Harburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Cranium Hunters",
-        "cityort": "Lüneburg",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Cranium Hunters",
+        "city": "Lüneburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Cruenta Clava",
-        "cityort": "Lüneburg",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Cruenta Clava",
+        "city": "Lüneburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Cú Chulainn"
+        "name": "Cú Chulainn"
     },
     {
-        "teamname": "CVJM Coswig (Jugguars)",
-        "land": "Deutschland"
+        "name": "CVJM Coswig (Jugguars)",
+        "country": "Deutschland"
     },
     {
-        "teamname": "CVJM Coswig I",
-        "land": "Deutschland"
+        "name": "CVJM Coswig I",
+        "country": "Deutschland"
     },
     {
-        "teamname": "CVJM Coswig II",
-        "land": "Deutschland"
+        "name": "CVJM Coswig II",
+        "country": "Deutschland"
     },
     {
-        "teamname": "CVJM Hofheim"
+        "name": "CVJM Hofheim"
     },
     {
-        "teamname": "Dancing Donkeys"
+        "name": "Dancing Donkeys"
     },
     {
-        "teamname": "Darkling Jugg"
+        "name": "Darkling Jugg"
     },
     {
-        "teamname": "Darkwing Jugg",
-        "land": "Deutschland"
+        "name": "Darkwing Jugg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Das Walross-Kollektiv",
-        "cityort": "Karlsruhe",
-        "land": "Deutschland"
+        "name": "Das Walross-Kollektiv",
+        "city": "Karlsruhe",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Dead Rabbits",
-        "cityort": "Lorsch",
-        "land": "Deutschland"
+        "name": "Dead Rabbits",
+        "city": "Lorsch",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Desert Wolves"
+        "name": "Desert Wolves"
     },
     {
-        "teamname": "Desertores",
-        "land": "Spanien"
+        "name": "Desertores",
+        "country": "Spanien"
     },
     {
-        "teamname": "Die 6 Symbole",
-        "land": "Deutschland"
+        "name": "Die 6 Symbole",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Die 8 Lustigen 6",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Die 8 Lustigen 6",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Die deren Name nicht genannt werden darf"
+        "name": "Die deren Name nicht genannt werden darf"
     },
     {
-        "teamname": "Die Goldenen Reiter",
-        "cityort": "Dresden",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Die Goldenen Reiter",
+        "city": "Dresden",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Die Kurzen",
-        "cityort": "Hagen/Wuppertal",
-        "land": "Deutschland"
+        "name": "Die Kurzen",
+        "city": "Hagen/Wuppertal",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Die Leere Menge",
-        "abbreviationabkrzung": "DLM",
-        "cityort": "Greifswald",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Die Leere Menge",
+        "abbreviation": "DLM",
+        "city": "Greifswald",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Die Maximalkonsistente Teilklasse",
-        "abbreviationabkrzung": "MKT",
-        "cityort": "Greifswald",
-        "land": "Deutschland"
+        "name": "Die Maximalkonsistente Teilklasse",
+        "abbreviation": "MKT",
+        "city": "Greifswald",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Die Maximalkonsistente Teilklasse",
-        "cityort": "Greifswald",
-        "land": "Deutschland"
+        "name": "Die Maximalkonsistente Teilklasse",
+        "city": "Greifswald",
+        "country": "Deutschland"
     },
     {
-        "teamname": "die verstörten Zernichter",
-        "cityort": "Würzburg",
-        "land": "Deutschland"
+        "name": "die verstörten Zernichter",
+        "city": "Würzburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Dogfighters"
+        "name": "Dogfighters"
     },
     {
-        "teamname": "Doppelsöldner 2"
+        "name": "Doppelsöldner 2"
     },
     {
-        "teamname": "Drachenblut",
-        "land": "Deutschland"
+        "name": "Drachenblut",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Dragon Duels"
+        "name": "Dragon Duels"
     },
     {
-        "teamname": "Dragons Storm"
+        "name": "Dragons Storm"
     },
     {
-        "teamname": "Dreadnought"
+        "name": "Dreadnought"
     },
     {
-        "teamname": "Dropbears",
-        "cityort": "Canberra ",
-        "land": "Australien"
+        "name": "Dropbears",
+        "city": "Canberra ",
+        "country": "Australien"
     },
     {
-        "teamname": "Dropkick Cologne",
-        "cityort": "Köln",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Dropkick Cologne",
+        "city": "Köln",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Egestas Ratio"
+        "name": "Egestas Ratio"
     },
     {
-        "teamname": "Ehrengarde",
-        "cityort": "Speyer",
-        "land": "Deutschland"
+        "name": "Ehrengarde",
+        "city": "Speyer",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Elements",
-        "cityort": "Museros",
-        "land": "Spanien"
+        "name": "Elements",
+        "city": "Museros",
+        "country": "Spanien"
     },
     {
-        "teamname": "Eppot"
+        "name": "Eppot"
     },
     {
-        "teamname": "Erdmännchen Essen",
-        "cityort": "Essen",
-        "land": "Deutschland"
+        "name": "Erdmännchen Essen",
+        "city": "Essen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Eure Lieblingsberliner ",
-        "cityort": "Berlin",
-        "land": "Deutschland"
+        "name": "Eure Lieblingsberliner ",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Falang"
+        "name": "Falang"
     },
     {
-        "teamname": "Falco Jugger",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Falco Jugger",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Fauna",
-        "land": "Spanien"
+        "name": "Fauna",
+        "country": "Spanien"
     },
     {
-        "teamname": "Federvieh",
-        "cityort": "Berlin",
-        "land": "Deutschland"
+        "name": "Federvieh",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Feedbacks",
-        "land": "Spanien"
+        "name": "Feedbacks",
+        "country": "Spanien"
     },
     {
-        "teamname": "Fémures Huérfanos",
-        "land": "Spanien",
-        "active": "Ja"
+        "name": "Fémures Huérfanos",
+        "country": "Spanien"
     },
     {
-        "teamname": "Fenneck"
+        "name": "Fenneck"
     },
     {
-        "teamname": "Feuersalamander",
-        "cityort": "Marktheidenfeld",
-        "land": "Deutschland"
+        "name": "Feuersalamander",
+        "city": "Marktheidenfeld",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Fianna",
-        "land": "Spanien"
+        "name": "Fianna",
+        "country": "Spanien"
     },
     {
-        "teamname": "Fillis do Norte"
+        "name": "Fillis do Norte"
     },
     {
-        "teamname": "Fischkoppkrieger",
-        "abbreviationabkrzung": "FKK",
-        "cityort": "Kiel",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Fischkoppkrieger",
+        "abbreviation": "FKK",
+        "city": "Kiel",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Fischkoppkrieger2",
-        "abbreviationabkrzung": "FKK2",
-        "cityort": "Kiel",
-        "land": "Deutschland"
+        "name": "Fischkoppkrieger2",
+        "abbreviation": "FKK2",
+        "city": "Kiel",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Five Finger Death Pompfer"
+        "name": "Five Finger Death Pompfer"
     },
     {
-        "teamname": "FKK2",
-        "cityort": "Kiel",
-        "land": "Deutschland"
+        "name": "FKK2",
+        "city": "Kiel",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Fläminger Bumchucks",
-        "land": "Deutschland"
+        "name": "Fläminger Bumchucks",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Flossenhauer",
-        "cityort": "Freiburg",
-        "land": "Deutschland"
+        "name": "Flossenhauer",
+        "city": "Freiburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Flying Hugmen",
-        "cityort": "Bonn",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Flying Hugmen",
+        "city": "Bonn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Flying Juggmen Bonn",
-        "cityort": "Bonn",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Flying Juggmen Bonn",
+        "city": "Bonn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Flying Juggmen Bonn 2",
-        "cityort": "Bonn",
-        "land": "Deutschland"
+        "name": "Flying Juggmen Bonn 2",
+        "city": "Bonn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Flying Wolfmen"
+        "name": "Flying Wolfmen"
     },
     {
-        "teamname": "FlyingRhinos"
+        "name": "FlyingRhinos"
     },
     {
-        "teamname": "FocaMonjes"
+        "name": "FocaMonjes"
     },
     {
-        "teamname": "Fondo del Barnés"
+        "name": "Fondo del Barnés"
     },
     {
-        "teamname": "Frankespavos de Kiev",
-        "cityort": "Valencia",
-        "land": "Spanien"
+        "name": "Frankespavos de Kiev",
+        "city": "Valencia",
+        "country": "Spanien"
     },
     {
-        "teamname": "Freilos"
+        "name": "Freilos"
     },
     {
-        "teamname": "Frostwölfe"
+        "name": "Frostwölfe"
     },
     {
-        "teamname": "G-Hill Deers"
+        "name": "G-Hill Deers"
     },
     {
-        "teamname": "GAG",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "GAG",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Galgenvögel",
-        "land": "Deutschland"
+        "name": "Galgenvögel",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Gallowglass",
-        "cityort": "Dublin",
-        "land": "Irland"
+        "name": "Gallowglass",
+        "city": "Dublin",
+        "country": "Irland"
     },
     {
-        "teamname": "Garres"
+        "name": "Garres"
     },
     {
-        "teamname": "Gasteizko Gorgonak"
+        "name": "Gasteizko Gorgonak"
     },
     {
-        "teamname": "Gegenvorschlag",
-        "land": "Deutschland"
+        "name": "Gegenvorschlag",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Gladiators"
+        "name": "Gladiators"
     },
     {
-        "teamname": "Goldene Reiter"
+        "name": "Goldene Reiter"
     },
     {
-        "teamname": "Gossenbasilisken"
+        "name": "Gossenbasilisken"
     },
     {
-        "teamname": "Gossenhauer",
-        "cityort": "Freiburg",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Gossenhauer",
+        "city": "Freiburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Gossenjugend",
-        "cityort": "Freiburg",
-        "land": "Deutschland"
+        "name": "Gossenjugend",
+        "city": "Freiburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "GossenMachine"
+        "name": "GossenMachine"
     },
     {
-        "teamname": "Gossenpinkler",
-        "cityort": "Darmstadt/Freiburg",
-        "land": "Deutschland"
+        "name": "Gossenpinkler",
+        "city": "Darmstadt/Freiburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Gott AG",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Gott AG",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "GottAG (GAG)"
+        "name": "GottAG (GAG)"
     },
     {
-        "teamname": "Götter",
-        "cityort": "Murcia",
-        "land": "Spanien"
+        "name": "Götter",
+        "city": "Murcia",
+        "country": "Spanien"
     },
     {
-        "teamname": "Green Panthers"
+        "name": "Green Panthers"
     },
     {
-        "teamname": "Grey Paws",
-        "cityort": "?",
-        "land": "Deutschland"
+        "name": "Grey Paws",
+        "city": "?",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Grimm Racoons",
-        "cityort": "Kassel",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Grimm Racoons",
+        "city": "Kassel",
+        "country": "Deutschland"
     },
     {
-        "teamname": "GSG Neun Demmin",
-        "land": "Deutschland"
+        "name": "GSG Neun Demmin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Gulden Draak"
+        "name": "Gulden Draak"
     },
     {
-        "teamname": "Gummibärchen",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Gummibärchen",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Gurkentruppe",
-        "cityort": "Mixteam",
-        "active": "Ja"
+        "name": "Gurkentruppe",
+        "city": "Mixteam"
     },
     {
-        "teamname": "HaJeWu Allstar$ Ultra",
-        "land": "Deutschland"
+        "name": "HaJeWu Allstar$ Ultra",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Haka Wolves"
+        "name": "Haka Wolves"
     },
     {
-        "teamname": "Hallesche Doppelsöldner",
-        "cityort": "Halle",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Hallesche Doppelsöldner",
+        "city": "Halle",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hallesche Sportsteinschwalben",
-        "land": "Deutschland"
+        "name": "Hallesche Sportsteinschwalben",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hannover Living Undeads",
-        "abbreviationabkrzung": "HLU",
-        "cityort": "Hannover",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Hannover Living Undeads",
+        "abbreviation": "HLU",
+        "city": "Hannover",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hannoveraner Haumichblau",
-        "cityort": "Hannover",
-        "land": "Deutschland"
+        "name": "Hannoveraner Haumichblau",
+        "city": "Hannover",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hans Peters Pawns",
-        "cityort": "München",
-        "land": "Deutschland"
+        "name": "Hans Peters Pawns",
+        "city": "München",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Haralds Blauzähne",
-        "cityort": "Breitenfelde",
-        "land": "Deutschland"
+        "name": "Haralds Blauzähne",
+        "city": "Breitenfelde",
+        "country": "Deutschland"
     },
     {
-        "teamname": "HaWu AllstarZ",
-        "cityort": "Gevelsberg",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "HaWu AllstarZ",
+        "city": "Gevelsberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Heidelberg Nord",
-        "land": "Deutschland"
+        "name": "Heidelberg Nord",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hellfire"
+        "name": "Hellfire"
     },
     {
-        "teamname": "Hellfish"
+        "name": "Hellfish"
     },
     {
-        "teamname": "Hellsing"
+        "name": "Hellsing"
     },
     {
-        "teamname": "Helvetios",
-        "land": "Spanien"
+        "name": "Helvetios",
+        "country": "Spanien"
     },
     {
-        "teamname": "Hermandad"
+        "name": "Hermandad"
     },
     {
-        "teamname": "Herzpompfer",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Herzpompfer",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hidras"
+        "name": "Hidras"
     },
     {
-        "teamname": "Hijos del Mar"
+        "name": "Hijos del Mar"
     },
     {
-        "teamname": "Hipnosapos",
-        "land": "Spanien"
+        "name": "Hipnosapos",
+        "country": "Spanien"
     },
     {
-        "teamname": "Hobbiz",
-        "cityort": "Heidelberg",
-        "land": "Deutschland"
+        "name": "Hobbiz",
+        "city": "Heidelberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hobbiz Kekse",
-        "cityort": "Heidelberg",
-        "land": "Deutschland"
+        "name": "Hobbiz Kekse",
+        "city": "Heidelberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hobbiz Trailerpark",
-        "cityort": "Heidelberg",
-        "land": "Deutschland"
+        "name": "Hobbiz Trailerpark",
+        "city": "Heidelberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hofheimer Hoffnung",
-        "land": "Deutschland"
+        "name": "Hofheimer Hoffnung",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hollow"
+        "name": "Hollow"
     },
     {
-        "teamname": "Homelands"
+        "name": "Homelands"
     },
     {
-        "teamname": "Hornets Butzbach",
-        "cityort": "Butzbach",
-        "land": "Deutschland"
+        "name": "Hornets Butzbach",
+        "city": "Butzbach",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Hunters"
+        "name": "Hunters"
     },
     {
-        "teamname": "Hybris"
+        "name": "Hybris"
     },
     {
-        "teamname": "Hydras"
+        "name": "Hydras"
     },
     {
-        "teamname": "Ignis"
+        "name": "Ignis"
     },
     {
-        "teamname": "Imperia",
-        "cityort": "Konstanz",
-        "land": "Deutschland"
+        "name": "Imperia",
+        "city": "Konstanz",
+        "country": "Deutschland"
     },
     {
-        "teamname": "J-Team Lippstadt",
-        "cityort": "Lippstadt",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "J-Team Lippstadt",
+        "city": "Lippstadt",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jadedrachen",
-        "cityort": "Graben-Neudorf",
-        "land": "Deutschland"
+        "name": "Jadedrachen",
+        "city": "Graben-Neudorf",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Järnboas Järnfalkar",
-        "cityort": "Järnboas",
-        "land": "Schweden"
+        "name": "Järnboas Järnfalkar",
+        "city": "Järnboas",
+        "country": "Schweden"
     },
     {
-        "teamname": "Jugg - the Ripper",
-        "cityort": "Hagen",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Jugg - the Ripper",
+        "city": "Hagen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugg Hunter",
-        "land": "Schweden"
+        "name": "Jugg Hunter",
+        "country": "Schweden"
     },
     {
-        "teamname": "Jugg Jugg Booze",
-        "abbreviationabkrzung": "JJB",
-        "cityort": "Mixteam"
+        "name": "Jugg Jugg Booze",
+        "abbreviation": "JJB",
+        "city": "Mixteam"
     },
     {
-        "teamname": "Jugg Life"
+        "name": "Jugg Life"
     },
     {
-        "teamname": "Jugg Norris 2",
-        "land": "Deutschland"
+        "name": "Jugg Norris 2",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugg Sparrows",
-        "cityort": "Waldsrodee",
-        "land": "Deutschland"
+        "name": "Jugg Sparrows",
+        "city": "Waldsrodee",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugg Warriors",
-        "cityort": "Rotenburg a. d. Fulda",
-        "land": "Deutschland"
+        "name": "Jugg Warriors",
+        "city": "Rotenburg a. d. Fulda",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Juggalagga"
+        "name": "Juggalagga"
     },
     {
-        "teamname": "Jugger Ahaus",
-        "cityort": "Ahaus",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Jugger Ahaus",
+        "city": "Ahaus",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugger Basilisken Basel",
-        "cityort": "Basel",
-        "land": "Schweiz",
-        "active": "Ja"
+        "name": "Jugger Basilisken Basel",
+        "city": "Basel",
+        "country": "Schweiz"
     },
     {
-        "teamname": "Jugger Basilisken Basel 2"
+        "name": "Jugger Basilisken Basel 2"
     },
     {
-        "teamname": "Jugger Helden Bamberg",
-        "cityort": "Bamberg",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Jugger Helden Bamberg",
+        "city": "Bamberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugger Helsinki"
+        "name": "Jugger Helsinki"
     },
     {
-        "teamname": "Jugger Hunter"
+        "name": "Jugger Hunter"
     },
     {
-        "teamname": "Jugger Mönchengladbach",
-        "cityort": "Mönchengladbach",
-        "land": "Deutschland"
+        "name": "Jugger Mönchengladbach",
+        "city": "Mönchengladbach",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugger Schurken Bamberg",
-        "cityort": "Bamberg",
-        "land": "Deutschland"
+        "name": "Jugger Schurken Bamberg",
+        "city": "Bamberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugger Vienna",
-        "cityort": "Wien",
-        "land": "Österreich",
-        "active": "Ja"
+        "name": "Jugger Vienna",
+        "city": "Wien",
+        "country": "Österreich"
     },
     {
-        "teamname": "Jugger Zaragoza"
+        "name": "Jugger Zaragoza"
     },
     {
-        "teamname": "Juggerassics Stammheim",
-        "cityort": "Stuttgart/Stammheim",
-        "land": "Deutschland"
+        "name": "Juggerassics Stammheim",
+        "city": "Stuttgart/Stammheim",
+        "country": "Deutschland"
     },
     {
-        "teamname": "JuggerBeister"
+        "name": "JuggerBeister"
     },
     {
-        "teamname": "Juggerhaufen Bochum",
-        "cityort": "Bochum",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Juggerhaufen Bochum",
+        "city": "Bochum",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Juggerhaufen Bochum 2",
-        "cityort": "Bochum",
-        "land": "Deutschland"
+        "name": "Juggerhaufen Bochum 2",
+        "city": "Bochum",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Juggerheister",
-        "cityort": "Madrid",
-        "land": "Spanien"
+        "name": "Juggerheister",
+        "city": "Madrid",
+        "country": "Spanien"
     },
     {
-        "teamname": "Juggerklubben Bergslagstrollen"
+        "name": "Juggerklubben Bergslagstrollen"
     },
     {
-        "teamname": "Juggermeister",
-        "cityort": "Madrid",
-        "land": "Spanien"
+        "name": "Juggermeister",
+        "city": "Madrid",
+        "country": "Spanien"
     },
     {
-        "teamname": "Juggernauts",
-        "cityort": "Erlangen",
-        "land": "Deutschland"
+        "name": "Juggernauts",
+        "city": "Erlangen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Juggernauts Schädeljäger",
-        "cityort": "Erlangen",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Juggernauts Schädeljäger",
+        "city": "Erlangen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugglers Jugg",
-        "cityort": "Halle an der Saale",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Jugglers Jugg",
+        "city": "Halle an der Saale",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugglers Jugg Academy",
-        "cityort": "Halle Saale",
-        "land": "Deutschland"
+        "name": "Jugglers Jugg Academy",
+        "city": "Halle Saale",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugglers Luck",
-        "cityort": "Halle (Saale)",
-        "land": "Deutschland"
+        "name": "Jugglers Luck",
+        "city": "Halle (Saale)",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jugglers Tusk",
-        "cityort": "Halle Saale",
-        "land": "Deutschland"
+        "name": "Jugglers Tusk",
+        "city": "Halle Saale",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Juggpot"
+        "name": "Juggpot"
     },
     {
-        "teamname": "Jugguars",
-        "cityort": "Coswig",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Jugguars",
+        "city": "Coswig",
+        "country": "Deutschland"
     },
     {
-        "teamname": "JUKK|ER",
-        "cityort": "Schwaikheim",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "JUKK|ER",
+        "city": "Schwaikheim",
+        "country": "Deutschland"
     },
     {
-        "teamname": "JUKKIER",
-        "land": "Deutschland"
+        "name": "JUKKIER",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Julia & die Räuber",
-        "land": "Deutschland"
+        "name": "Julia & die Räuber",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Jumping Juggmen Bonn",
-        "cityort": "Bonn",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Jumping Juggmen Bonn",
+        "city": "Bonn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Kamikaze Eulen ",
-        "cityort": "Rethwisch",
-        "land": "Deutschland"
+        "name": "Kamikaze Eulen ",
+        "city": "Rethwisch",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Kampf Keiler",
-        "cityort": "Oldenburg",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Kampf Keiler",
+        "city": "Oldenburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Kampfkarpfen"
+        "name": "Kampfkarpfen"
     },
     {
-        "teamname": "Kampfkeiler"
+        "name": "Kampfkeiler"
     },
     {
-        "teamname": "Karlshorster Kollektiv",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Karlshorster Kollektiv",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Keine Ahnung?",
-        "cityort": "Bielefeld",
-        "land": "Deutschland",
-        "active": "?"
+        "name": "Keine Ahnung?",
+        "city": "Bielefeld",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Kerberos"
+        "name": "Kerberos"
     },
     {
-        "teamname": "Ketchup",
-        "cityort": "Wuppertal",
-        "land": "Deutschland"
+        "name": "Ketchup",
+        "city": "Wuppertal",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Keulen Eulen",
-        "cityort": "Saarbrücken",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Keulen Eulen",
+        "city": "Saarbrücken",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Killer Kitties"
+        "name": "Killer Kitties"
     },
     {
-        "teamname": "Kleintierrevolte",
-        "land": "Deutschland"
+        "name": "Kleintierrevolte",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Knautschzonenkinder",
-        "cityort": "Jena",
-        "land": "Deutschland"
+        "name": "Knautschzonenkinder",
+        "city": "Jena",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Kolibri"
+        "name": "Kolibri"
     },
     {
-        "teamname": "Konditionssteine",
-        "land": "Deutschland"
+        "name": "Konditionssteine",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Krüppelkeiler",
-        "land": "Deutschland"
+        "name": "Krüppelkeiler",
+        "country": "Deutschland"
     },
     {
-        "teamname": "KSJ"
+        "name": "KSJ"
     },
     {
-        "teamname": "Kuhdorf-Vereinigung",
-        "cityort": "Liebenscheid",
-        "land": "Deutschland"
+        "name": "Kuhdorf-Vereinigung",
+        "city": "Liebenscheid",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Kuschelkätzchen",
-        "cityort": "Karlsruhe",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Kuschelkätzchen",
+        "city": "Karlsruhe",
+        "country": "Deutschland"
     },
     {
-        "teamname": "L.I.N.C.E.S.",
-        "land": "Spanien"
+        "name": "L.I.N.C.E.S.",
+        "country": "Spanien"
     },
     {
-        "teamname": "La Guardia de Acero"
+        "name": "La Guardia de Acero"
     },
     {
-        "teamname": "Lachende Lemure",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Lachende Lemure",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "LachsBoyZ",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "LachsBoyZ",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Lahnpinkchen",
-        "land": "Deutschland"
+        "name": "Lahnpinkchen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Lahnveilchen",
-        "land": "Deutschland"
+        "name": "Lahnveilchen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Lahnveilchen Gießen",
-        "cityort": "Gießen",
-        "land": "Deutschland"
+        "name": "Lahnveilchen Gießen",
+        "city": "Gießen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Las Nueves Ciudades",
-        "cityort": "Zaragoza",
-        "land": "Spanien"
+        "name": "Las Nueves Ciudades",
+        "city": "Zaragoza",
+        "country": "Spanien"
     },
     {
-        "teamname": "Last Man Standing",
-        "cityort": "Hamburg",
-        "land": "Deutschland"
+        "name": "Last Man Standing",
+        "city": "Hamburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Legacies"
+        "name": "Legacies"
     },
     {
-        "teamname": "Legion"
+        "name": "Legion"
     },
     {
-        "teamname": "Legión"
+        "name": "Legión"
     },
     {
-        "teamname": "Legìon",
-        "cityort": "Murcia",
-        "land": "Spanien",
-        "active": "Ja"
+        "name": "Legìon",
+        "city": "Murcia",
+        "country": "Spanien"
     },
     {
-        "teamname": "Leipziger Nachtleben",
-        "cityort": "Leipzig",
-        "land": "Deutschland"
+        "name": "Leipziger Nachtleben",
+        "city": "Leipzig",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Leipziger Nachtwache",
-        "cityort": "Leipzig",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Leipziger Nachtwache",
+        "city": "Leipzig",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Leipziger Partyhände",
-        "cityort": "Leipzig",
-        "land": "Deutschland"
+        "name": "Leipziger Partyhände",
+        "city": "Leipzig",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Les Calanquiers"
+        "name": "Les Calanquiers"
     },
     {
-        "teamname": "Likedeeler",
-        "cityort": "Rostock",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Likedeeler",
+        "city": "Rostock",
+        "country": "Deutschland"
     },
     {
-        "teamname": "LINCES"
+        "name": "LINCES"
     },
     {
-        "teamname": "Lippstadt Leverets"
+        "name": "Lippstadt Leverets"
     },
     {
-        "teamname": "Lokomotive Black Ninja",
-        "cityort": "Göttingen",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Lokomotive Black Ninja",
+        "city": "Göttingen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Los Torpedoz GAG"
+        "name": "Los Torpedoz GAG"
     },
     {
-        "teamname": "LUQVM",
-        "cityort": "München",
-        "land": "Deutschland"
+        "name": "LUQVM",
+        "city": "München",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Mad Fritz (Mixteam)",
-        "cityort": "Wuppertal/Hagen",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Mad Fritz (Mixteam)",
+        "city": "Wuppertal/Hagen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Mad Monkeys",
-        "cityort": "Hagen",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Mad Monkeys",
+        "city": "Hagen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Magnethopollos",
-        "cityort": "Murcia",
-        "land": "Spanien"
+        "name": "Magnethopollos",
+        "city": "Murcia",
+        "country": "Spanien"
     },
     {
-        "teamname": "Magnethopollos",
-        "cityort": "Murcia",
-        "land": "Spanien"
+        "name": "Magnethopollos",
+        "city": "Murcia",
+        "country": "Spanien"
     },
     {
-        "teamname": "Mainzer Deserteure",
-        "cityort": "Mainz",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Mainzer Deserteure",
+        "city": "Mainz",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Mainzer Marodeure",
-        "cityort": "Mainz",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Mainzer Marodeure",
+        "city": "Mainz",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Majoreros"
+        "name": "Majoreros"
     },
     {
-        "teamname": "Malaga United A"
+        "name": "Malaga United A"
     },
     {
-        "teamname": "Malaga United B"
+        "name": "Malaga United B"
     },
     {
-        "teamname": "Mallorca Monks"
+        "name": "Mallorca Monks"
     },
     {
-        "teamname": "Manoeverkritik",
-        "land": "Deutschland"
+        "name": "Manoeverkritik",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Maximal Mortis",
-        "cityort": "Mixteam"
+        "name": "Maximal Mortis",
+        "city": "Mixteam"
     },
     {
-        "teamname": "Meca`Fouine (Paris)"
+        "name": "Meca`Fouine (Paris)"
     },
     {
-        "teamname": "Mécan'Hydre",
-        "cityort": "Paris",
-        "land": "Frankreich",
-        "active": "Ja"
+        "name": "Mécan'Hydre",
+        "city": "Paris",
+        "country": "Frankreich"
     },
     {
-        "teamname": "Mengenleere",
-        "cityort": "Greifswald",
-        "land": "Deutschland"
+        "name": "Mengenleere",
+        "city": "Greifswald",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Midnight Fighters",
-        "land": "Spanien"
+        "name": "Midnight Fighters",
+        "country": "Spanien"
     },
     {
-        "teamname": "Midnight Fighters B"
+        "name": "Midnight Fighters B"
     },
     {
-        "teamname": "Mighty Juggs",
-        "cityort": "Lippstadt",
-        "land": "Deutschland"
+        "name": "Mighty Juggs",
+        "city": "Lippstadt",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Mikado"
+        "name": "Mikado"
     },
     {
-        "teamname": "Mitos"
+        "name": "Mitos"
     },
     {
-        "teamname": "Mixie-Pixie",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Mixie-Pixie",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Mixteam",
-        "land": "/"
+        "name": "Mixteam",
+        "country": "/"
     },
     {
-        "teamname": "Monster Jugger"
+        "name": "Monster Jugger"
     },
     {
-        "teamname": "Moonwalk to Pluto",
-        "cityort": "Göttingen",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Moonwalk to Pluto",
+        "city": "Göttingen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Mugiwara"
+        "name": "Mugiwara"
     },
     {
-        "teamname": "Munich Monks",
-        "cityort": "München",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Munich Monks",
+        "city": "München",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Munich Monks II",
-        "cityort": "München",
-        "land": "Deutschland"
+        "name": "Munich Monks II",
+        "city": "München",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Murcia Jugger Selection"
+        "name": "Murcia Jugger Selection"
     },
     {
-        "teamname": "Myrmidonen",
-        "cityort": "Rotenburg a. d. Fulda",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Myrmidonen",
+        "city": "Rotenburg a. d. Fulda",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Myrtia"
+        "name": "Myrtia"
     },
     {
-        "teamname": "n l g",
-        "cityort": "Lauffen am Neckar",
-        "land": "Deutschland"
+        "name": "n l g",
+        "city": "Lauffen am Neckar",
+        "country": "Deutschland"
     },
     {
-        "teamname": "N.Bees",
-        "cityort": "Neubrandenburg",
-        "land": "Deutschland"
+        "name": "N.Bees",
+        "city": "Neubrandenburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Na Mihc Tire"
+        "name": "Na Mihc Tire"
     },
     {
-        "teamname": "Nachwuchshelden Bamberg",
-        "cityort": "Bamberg",
-        "land": "Deutschland"
+        "name": "Nachwuchshelden Bamberg",
+        "city": "Bamberg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Need for Speed"
+        "name": "Need for Speed"
     },
     {
-        "teamname": "Nightfox Bonn",
-        "cityort": "Bonn",
-        "land": "Deutschland"
+        "name": "Nightfox Bonn",
+        "city": "Bonn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Nikram"
+        "name": "Nikram"
     },
     {
-        "teamname": "Ninjas"
+        "name": "Ninjas"
     },
     {
-        "teamname": "Ninjas Almoradí",
-        "land": "Spanien",
-        "active": "Nein"
+        "name": "Ninjas Almoradí",
+        "country": "Spanien"
     },
     {
-        "teamname": "Ninjas Attack"
+        "name": "Ninjas Attack"
     },
     {
-        "teamname": "NLG",
-        "cityort": "Lauffen am Neckar",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "NLG",
+        "city": "Lauffen am Neckar",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Nòmadas"
+        "name": "Nòmadas"
     },
     {
-        "teamname": "Nord Mead"
+        "name": "Nord Mead"
     },
     {
-        "teamname": "Nordic Titans"
+        "name": "Nordic Titans"
     },
     {
-        "teamname": "Nordische Sport Amateure",
-        "abbreviationabkrzung": "NSA",
-        "cityort": "Flensburg",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Nordische Sport Amateure",
+        "abbreviation": "NSA",
+        "city": "Flensburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Northwest Wolves"
+        "name": "Northwest Wolves"
     },
     {
-        "teamname": "Oldenburger Keiler",
-        "cityort": "Oldenburg",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Oldenburger Keiler",
+        "city": "Oldenburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Oldenburger Keiler 2",
-        "cityort": "Oldenburg",
-        "land": "Deutschland"
+        "name": "Oldenburger Keiler 2",
+        "city": "Oldenburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Onuba Krakens"
+        "name": "Onuba Krakens"
     },
     {
-        "teamname": "Ornitorrincos de la Llama"
+        "name": "Ornitorrincos de la Llama"
     },
     {
-        "teamname": "Osterfehner Wölfe",
-        "cityort": "Ostrhauderfehn",
-        "land": "Deutschland"
+        "name": "Osterfehner Wölfe",
+        "city": "Ostrhauderfehn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Out of Order"
+        "name": "Out of Order"
     },
     {
-        "teamname": "Overlords"
+        "name": "Overlords"
     },
     {
-        "teamname": "Paderbears",
-        "cityort": "Paderborn",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Paderbears",
+        "city": "Paderborn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pandapaches"
+        "name": "Pandapaches"
     },
     {
-        "teamname": "Pandawans",
-        "land": "Spanien"
+        "name": "Pandawans",
+        "country": "Spanien"
     },
     {
-        "teamname": "Panochos Attack"
+        "name": "Panochos Attack"
     },
     {
-        "teamname": "Partykekse"
+        "name": "Partykekse"
     },
     {
-        "teamname": "Peters Pawns",
-        "cityort": "Oerlinghausen",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Peters Pawns",
+        "city": "Oerlinghausen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Phoenix Marburg",
-        "cityort": "Marburg",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Phoenix Marburg",
+        "city": "Marburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pig Pile",
-        "cityort": "Hagen",
-        "land": "Deutschland"
+        "name": "Pig Pile",
+        "city": "Hagen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pink Brain",
-        "cityort": "Darmstadt",
-        "land": "Deutschland"
+        "name": "Pink Brain",
+        "city": "Darmstadt",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pink name",
-        "cityort": "Darmstadt",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Pink name",
+        "city": "Darmstadt",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pink Pain",
-        "cityort": "Darmstadt",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Pink Pain",
+        "city": "Darmstadt",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pink Prain",
-        "land": "Deutschland"
+        "name": "Pink Prain",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pink Saint",
-        "cityort": "Darmstadt",
-        "land": "Deutschland"
+        "name": "Pink Saint",
+        "city": "Darmstadt",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pinke Maronauten",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Pinke Maronauten",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pinke Patrolleure",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Pinke Patrolleure",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pinke Zone",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Pinke Zone",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pinke Zone "
+        "name": "Pinke Zone "
     },
     {
-        "teamname": "PJA Cyber Plague"
+        "name": "PJA Cyber Plague"
     },
     {
-        "teamname": "PJA Hell Gods"
+        "name": "PJA Hell Gods"
     },
     {
-        "teamname": "Plan B",
-        "land": "Deutschland"
+        "name": "Plan B",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pokerbuster"
+        "name": "Pokerbuster"
     },
     {
-        "teamname": "Pompfenbrecher",
-        "cityort": "Breidenbach",
-        "land": "Deutschland"
+        "name": "Pompfenbrecher",
+        "city": "Breidenbach",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pompfenjäger",
-        "cityort": "Greifswald",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Pompfenjäger",
+        "city": "Greifswald",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Pompfritz",
-        "cityort": "Wuppertal",
-        "land": "Deutschland"
+        "name": "Pompfritz",
+        "city": "Wuppertal",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Potsdamer Piranhas",
-        "cityort": "Potsdam",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Potsdamer Piranhas",
+        "city": "Potsdam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "PRISM",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "PRISM",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Problem Machine",
-        "cityort": "Stuttgart/Bensheim",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Problem Machine",
+        "city": "Stuttgart/Bensheim",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Problema Equorum",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Problema Equorum",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Problemeltern",
-        "cityort": "Stuttgart",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Problemeltern",
+        "city": "Stuttgart",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Problemkinder",
-        "cityort": "Stuttgart",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Problemkinder",
+        "city": "Stuttgart",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Punchline"
+        "name": "Punchline"
     },
     {
-        "teamname": "Quack Pack"
+        "name": "Quack Pack"
     },
     {
-        "teamname": "Quackbummenten (Bonn)",
-        "cityort": "Bonn",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Quackbummenten (Bonn)",
+        "city": "Bonn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Radar Love",
-        "cityort": "Gschlachtenbretzingen",
-        "land": "Deutschland"
+        "name": "Radar Love",
+        "city": "Gschlachtenbretzingen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Ragnarok"
+        "name": "Ragnarok"
     },
     {
-        "teamname": "Rampage (Irland)",
-        "cityort": "Dublin",
-        "land": "Irland",
-        "active": "Ja"
+        "name": "Rampage (Irland)",
+        "city": "Dublin",
+        "country": "Irland"
     },
     {
-        "teamname": "RaP",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "RaP",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Ravens"
+        "name": "Ravens"
     },
     {
-        "teamname": "Red Lynx",
-        "cityort": "Rethwisch",
-        "land": "Deutschland"
+        "name": "Red Lynx",
+        "city": "Rethwisch",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Redbacks",
-        "cityort": "Brisbane",
-        "land": "Australien"
+        "name": "Redbacks",
+        "city": "Brisbane",
+        "country": "Australien"
     },
     {
-        "teamname": "Redbacks II",
-        "land": "Australien"
+        "name": "Redbacks II",
+        "country": "Australien"
     },
     {
-        "teamname": "RedCastleSoldiers"
+        "name": "RedCastleSoldiers"
     },
     {
-        "teamname": "Regenbogenkriegerinnen",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Regenbogenkriegerinnen",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Rehalluks"
+        "name": "Rehalluks"
     },
     {
-        "teamname": "Renegados"
+        "name": "Renegados"
     },
     {
-        "teamname": "Rethwisch Rams"
+        "name": "Rethwisch Rams"
     },
     {
-        "teamname": "Rigor Mortis",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Rigor Mortis",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Rigor Mortis II",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "?"
+        "name": "Rigor Mortis II",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Rigor Mortis III",
-        "cityort": "Berlin",
-        "land": "Deutschland"
+        "name": "Rigor Mortis III",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Rigor Mortis IV",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Rigor Mortis IV",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Rigor Mortis Kids"
+        "name": "Rigor Mortis Kids"
     },
     {
-        "teamname": "Rosa Juggs"
+        "name": "Rosa Juggs"
     },
     {
-        "teamname": "Rosa Lux",
-        "cityort": "Berlin",
-        "land": "Deutschland"
+        "name": "Rosa Lux",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Rotbarts Rächer (Bonn)",
-        "cityort": "Bonn",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Rotbarts Rächer (Bonn)",
+        "city": "Bonn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Ruby Rabauken",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Ruby Rabauken",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "S.H.I.E.L.D.",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "S.H.I.E.L.D.",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "S.P.A.T.",
-        "cityort": "Villingen ",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "S.P.A.T.",
+        "city": "Villingen ",
+        "country": "Deutschland"
     },
     {
-        "teamname": "SaarBastion",
-        "land": "Deutschland"
+        "name": "SaarBastion",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Saarkasmus",
-        "land": "Deutschland"
+        "name": "Saarkasmus",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Savage",
-        "cityort": "London",
-        "land": "England",
-        "active": "Ja"
+        "name": "Savage",
+        "city": "London",
+        "country": "England"
     },
     {
-        "teamname": "Schädelschwenker",
-        "cityort": "Homburg",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Schädelschwenker",
+        "city": "Homburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Schatten",
-        "cityort": "Würzburg",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Schatten",
+        "city": "Würzburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Schemen"
+        "name": "Schemen"
     },
     {
-        "teamname": "Schergen von Monasteria",
-        "cityort": "Münster",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Schergen von Monasteria",
+        "city": "Münster",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Schergen von Monasteria 2.0",
-        "cityort": "Münster",
-        "land": "Deutschland"
+        "name": "Schergen von Monasteria 2.0",
+        "city": "Münster",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Schnitzel Pommes",
-        "land": "Deutschland"
+        "name": "Schnitzel Pommes",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Second Cubs",
-        "cityort": "Targu Mures",
-        "land": "Rumänien"
+        "name": "Second Cubs",
+        "city": "Targu Mures",
+        "country": "Rumänien"
     },
     {
-        "teamname": "Setanta",
-        "cityort": "Dublin",
-        "land": "Irland",
-        "active": "Nein"
+        "name": "Setanta",
+        "city": "Dublin",
+        "country": "Irland"
     },
     {
-        "teamname": "Setanta II",
-        "cityort": "Dublin",
-        "land": "Irland",
-        "active": "Nein"
+        "name": "Setanta II",
+        "city": "Dublin",
+        "country": "Irland"
     },
     {
-        "teamname": "Setanta III",
-        "cityort": "Dublin",
-        "land": "Irland",
-        "active": "Nein"
+        "name": "Setanta III",
+        "city": "Dublin",
+        "country": "Irland"
     },
     {
-        "teamname": "Seven Sins",
-        "cityort": "Sinsheim",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Seven Sins",
+        "city": "Sinsheim",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Shadows"
+        "name": "Shadows"
     },
     {
-        "teamname": "Siesta y Fiesta"
+        "name": "Siesta y Fiesta"
     },
     {
-        "teamname": "Silvanos",
-        "land": "Spanien"
+        "name": "Silvanos",
+        "country": "Spanien"
     },
     {
-        "teamname": "Silver Horde",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Silver Horde",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Skoll"
+        "name": "Skoll"
     },
     {
-        "teamname": "Sköll"
+        "name": "Sköll"
     },
     {
-        "teamname": "Skull!",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Skull!",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Skull! (feat. Plan-B)",
-        "land": "Deutschland"
+        "name": "Skull! (feat. Plan-B)",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Sloth Machine",
-        "cityort": "Bensheim",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Sloth Machine",
+        "city": "Bensheim",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Smoking Aces"
+        "name": "Smoking Aces"
     },
     {
-        "teamname": "Smoking Huargos"
+        "name": "Smoking Huargos"
     },
     {
-        "teamname": "Smuggers",
-        "land": "Spanien"
+        "name": "Smuggers",
+        "country": "Spanien"
     },
     {
-        "teamname": "Sonnenveilchenunikornnauts",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Sonnenveilchenunikornnauts",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Sonnenwende",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Sonnenwende",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Sons of Garres",
-        "land": "Spanien"
+        "name": "Sons of Garres",
+        "country": "Spanien"
     },
     {
-        "teamname": "Soul Breakers"
+        "name": "Soul Breakers"
     },
     {
-        "teamname": "Spalter",
-        "cityort": "Hannover",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Spalter",
+        "city": "Hannover",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Spare Chips"
+        "name": "Spare Chips"
     },
     {
-        "teamname": "Spaßbremse",
-        "cityort": "Berlin",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Spaßbremse",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Spaßbremsen",
-        "land": "Deutschland"
+        "name": "Spaßbremsen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Special Phoenix",
-        "cityort": "Mixteam",
-        "land": "Deutschland"
+        "name": "Special Phoenix",
+        "city": "Mixteam",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Spuggers",
-        "land": "Spanien"
+        "name": "Spuggers",
+        "country": "Spanien"
     },
     {
-        "teamname": "SpVgg Rasenschach",
-        "cityort": "Rethwisch",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "SpVgg Rasenschach",
+        "city": "Rethwisch",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Sticker Team"
+        "name": "Sticker Team"
     },
     {
-        "teamname": "Sturmwölfe",
-        "cityort": "Bielefeld",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Sturmwölfe",
+        "city": "Bielefeld",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Superfreunde"
+        "name": "Superfreunde"
     },
     {
-        "teamname": "Surferos del Ebro"
+        "name": "Surferos del Ebro"
     },
     {
-        "teamname": "Swinging Balls",
-        "cityort": "München",
-        "land": "Deutschland"
+        "name": "Swinging Balls",
+        "city": "München",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Tackle Tiger",
-        "cityort": "Karlsruhe",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Tackle Tiger",
+        "city": "Karlsruhe",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Tarrako Jugger"
+        "name": "Tarrako Jugger"
     },
     {
-        "teamname": "Team Hunter",
-        "cityort": "Murcia",
-        "land": "Spanien"
+        "name": "Team Hunter",
+        "city": "Murcia",
+        "country": "Spanien"
     },
     {
-        "teamname": "Team Lüneburg",
-        "land": "Deutschland"
+        "name": "Team Lüneburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Tercios Españoles",
-        "cityort": "Murcia",
-        "land": "Spanien"
+        "name": "Tercios Españoles",
+        "city": "Murcia",
+        "country": "Spanien"
     },
     {
-        "teamname": "The Avengers",
-        "cityort": "Hagen",
-        "land": "Deutschland"
+        "name": "The Avengers",
+        "city": "Hagen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "The Fellowship",
-        "cityort": "Mixteam",
-        "land": "Spanien"
+        "name": "The Fellowship",
+        "city": "Mixteam",
+        "country": "Spanien"
     },
     {
-        "teamname": "The Fighters"
+        "name": "The Fighters"
     },
     {
-        "teamname": "The Legion",
-        "land": "Spanien"
+        "name": "The Legion",
+        "country": "Spanien"
     },
     {
-        "teamname": "Tollwut",
-        "cityort": "Oldenburg",
-        "land": "Deutschland"
+        "name": "Tollwut",
+        "city": "Oldenburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Torpedo Astra",
-        "cityort": "Hamburg",
-        "land": "Deutschland"
+        "name": "Torpedo Astra",
+        "city": "Hamburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Torpedo Bääm!",
-        "cityort": "Hamburg",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Torpedo Bääm!",
+        "city": "Hamburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Torpedo Gorn"
+        "name": "Torpedo Gorn"
     },
     {
-        "teamname": "Torpedo Tortuga",
-        "cityort": "Hamburg",
-        "land": "Deutschland"
+        "name": "Torpedo Tortuga",
+        "city": "Hamburg",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Tragabuche"
+        "name": "Tragabuche"
     },
     {
-        "teamname": "Tribu Mahud"
+        "name": "Tribu Mahud"
     },
     {
-        "teamname": "Tribute"
+        "name": "Tribute"
     },
     {
-        "teamname": "Trollfaust"
+        "name": "Trollfaust"
     },
     {
-        "teamname": "Tsuruchi Samurais"
+        "name": "Tsuruchi Samurais"
     },
     {
-        "teamname": "Tsuruchi Samuráis"
+        "name": "Tsuruchi Samuráis"
     },
     {
-        "teamname": "Two Towers",
-        "cityort": "Vilnius",
-        "land": "Litauen",
-        "active": "Ja"
+        "name": "Two Towers",
+        "city": "Vilnius",
+        "country": "Litauen"
     },
     {
-        "teamname": "Unicorns of Doom",
-        "land": "Deutschland"
+        "name": "Unicorns of Doom",
+        "country": "Deutschland"
     },
     {
-        "teamname": "UniKorn",
-        "cityort": "Berlin",
-        "land": "Deutschland"
+        "name": "UniKorn",
+        "city": "Berlin",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Urcos"
+        "name": "Urcos"
     },
     {
-        "teamname": "Valar Morghulis"
+        "name": "Valar Morghulis"
     },
     {
-        "teamname": "Valkyr"
+        "name": "Valkyr"
     },
     {
-        "teamname": "Verracos",
-        "cityort": "Murcia",
-        "land": "Spanien"
+        "name": "Verracos",
+        "city": "Murcia",
+        "country": "Spanien"
     },
     {
-        "teamname": "VfL Rethwisch Jugger (Mix Team)",
-        "cityort": "Rethwisch",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "VfL Rethwisch Jugger (Mix Team)",
+        "city": "Rethwisch",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Victim",
-        "cityort": "Rethwisch",
-        "land": "Deutschland"
+        "name": "Victim",
+        "city": "Rethwisch",
+        "country": "Deutschland"
     },
     {
-        "teamname": "VX"
+        "name": "VX"
     },
     {
-        "teamname": "W.W.S.A.J.",
-        "cityort": "Hannover",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "W.W.S.A.J.",
+        "city": "Hannover",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Waldmeister",
-        "cityort": "Lollar",
-        "land": "Deutschland"
+        "name": "Waldmeister",
+        "city": "Lollar",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Warthog"
+        "name": "Warthog"
     },
     {
-        "teamname": "Wasted Potential"
+        "name": "Wasted Potential"
     },
     {
-        "teamname": "Wendland Wölfe",
-        "cityort": "Wendland",
-        "land": "Deutschland"
+        "name": "Wendland Wölfe",
+        "city": "Wendland",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Weserkraken Bremen",
-        "cityort": "Bremen",
-        "land": "Deutschland",
-        "active": "?"
+        "name": "Weserkraken Bremen",
+        "city": "Bremen",
+        "country": "Deutschland"
     },
     {
-        "teamname": "White Walkers (Bonn)",
-        "cityort": "Bonn",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "White Walkers (Bonn)",
+        "city": "Bonn",
+        "country": "Deutschland"
     },
     {
-        "teamname": "White Wolves"
+        "name": "White Wolves"
     },
     {
-        "teamname": "Wild Geese",
-        "cityort": "Dublin",
-        "land": "Irland"
+        "name": "Wild Geese",
+        "city": "Dublin",
+        "country": "Irland"
     },
     {
-        "teamname": "Without Rules",
-        "abbreviationabkrzung": "W.o.R.",
-        "cityort": "Rotenburg (Wümme)        ",
-        "land": "Deutschland",
-        "active": "Nein"
+        "name": "Without Rules",
+        "abbreviation": "W.o.R.",
+        "city": "Rotenburg (Wümme)        ",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Wütende Tintenfische",
-        "abbreviationabkrzung": "WTF",
-        "cityort": "Kiel",
-        "land": "Deutschland"
+        "name": "Wütende Tintenfische",
+        "abbreviation": "WTF",
+        "city": "Kiel",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Zonenembryonen",
-        "cityort": "Jena",
-        "land": "Deutschland"
+        "name": "Zonenembryonen",
+        "city": "Jena",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Zonenkinder",
-        "cityort": "Jena",
-        "land": "Deutschland",
-        "active": "Ja"
+        "name": "Zonenkinder",
+        "city": "Jena",
+        "country": "Deutschland"
     },
     {
-        "teamname": "Zonenzwerge",
-        "cityort": "Jena",
-        "land": "Deutschland"
+        "name": "Zonenzwerge",
+        "city": "Jena",
+        "country": "Deutschland"
     }
 ]

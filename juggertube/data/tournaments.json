@@ -1,11 +1,13 @@
 [
     {
         "name": "NRW Winterliga 2019/20 Hagen",
-        "city": "Hagen"
+        "city": "Hagen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=522"
     },
     {
         "name": "1. Rheinhessischer Rauf- und Saufcup",
-        "city": "Bingen"
+        "city": "Bingen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=498"
     },
     {
         "name": "5. Frängsche Meisterschaft",
@@ -13,47 +15,58 @@
     },
     {
         "name": "Pömmeltreff Karlsruhe",
-        "city": "Karlsruhe"
+        "city": "Karlsruhe",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=506"
     },
     {
         "name": "16. Badische Meisterschaft",
-        "city": "Freiburg"
+        "city": "Freiburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=497"
     },
     {
         "name": "Catch the Fish - Kiel International Tournament",
-        "city": "Kiel"
+        "city": "Kiel",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=365"
     },
     {
         "name": "20. Deutsche Meisterschaft (DM 2017)",
-        "city": "Darmstadt"
+        "city": "Darmstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=335"
     },
     {
         "name": "3. Rheinland-Pfälzische Meisterschaft",
-        "city": "Mainz"
+        "city": "Mainz",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=334"
     },
     {
         "name": "1. Darmstädter Meisterschaft",
-        "city": "Darmstadt"
+        "city": "Darmstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=333"
     },
     {
         "name": "9. Hessische Meisterschaft",
-        "city": "Rotenburg an der Fulda"
+        "city": "Rotenburg an der Fulda",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=310"
     },
     {
         "name": "4. Südwest Regionalturnier",
-        "city": "Homburg"
+        "city": "Homburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=313"
     },
     {
         "name": "Open Jugger League 2016",
-        "city": "Darmstadt"
+        "city": "Darmstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=332"
     },
     {
         "name": "16. Bayerische Meisterschaft",
-        "city": "Waidhaus"
+        "city": "Waidhaus",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=273"
     },
     {
         "name": "Holt euch die Banane! 2016",
-        "city": "Sulzbach-Rosenberg"
+        "city": "Sulzbach-Rosenberg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=260"
     },
     {
         "name": "2. Rheinland-Pfälzische Meisterschaft",
@@ -61,106 +74,131 @@
     },
     {
         "name": "14. Badische Meisterschaft 2016",
-        "city": "Villingen"
+        "city": "Villingen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=271"
     },
     {
         "name": "3. Südwest Regionalturnier",
-        "city": "Homburg"
+        "city": "Homburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=264"
     },
     {
         "name": "Open Jugger League 2015",
-        "city": "Freiburg"
+        "city": "Freiburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=235"
     },
     {
         "name": "German Jugger League Playoffs 2016",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=281"
     },
     {
         "name": "18. Deutsche Meisterschaft (DM 2015)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=212"
     },
     {
         "name": "2. Karlsruher Pömmelturnier",
-        "city": "Karlsruhe"
+        "city": "Karlsruhe",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=265"
     },
     {
         "name": "1. Rheinland-Pfälzische Meisterschaft",
-        "city": "Mainz"
+        "city": "Mainz",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=221"
     },
     {
         "name": "15. Bayerische Meisterschaft",
-        "city": "Sulzbach- Rosenberg"
+        "city": "Sulzbach- Rosenberg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=200"
     },
     {
         "name": "2. Frängsche Meisterschaft",
-        "city": "Nürnberg"
+        "city": "Nürnberg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=211"
     },
     {
         "name": "7. Hessische Meisterschaft",
-        "city": "Darmstadt"
+        "city": "Darmstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=231"
     },
     {
         "name": "1. Juggerturnier am Hohen Ufer",
-        "city": "Hannover"
+        "city": "Hannover",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=207"
     },
     {
         "name": "2. Südwest Regionalturnier",
-        "city": "Homburg"
+        "city": "Homburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=192"
     },
     {
         "name": "9. Saarländische Meisterschaft",
-        "city": "Homburg"
+        "city": "Homburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=194"
     },
     {
         "name": "13. Badische Meisterschaft",
-        "city": "Villingen"
+        "city": "Villingen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=196"
     },
     {
         "name": "Holt euch die Banane! 2015",
-        "city": "Sulzbach-Rosenberg"
+        "city": "Sulzbach-Rosenberg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=195"
     },
     {
         "name": "1. Karlsruher Pömmelturnier",
-        "city": "Karlsruhe"
+        "city": "Karlsruhe",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=199"
     },
     {
         "name": "3. Göttinger Winterturnier",
-        "city": "Göttingen"
+        "city": "Göttingen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=191"
     },
     {
         "name": "Open Jugger League 2014",
-        "city": "Freiburg"
+        "city": "Freiburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=186"
     },
     {
         "name": "7. Thüringer Meisterschaft (TM 2014)",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=150"
     },
     {
         "name": "6. Hessische Meisterschaft",
-        "city": "Darmstadt"
+        "city": "Darmstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=159"
     },
     {
         "name": "2. Bergische Meisterschaft",
-        "city": "Wuppertal"
+        "city": "Wuppertal",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=177"
     },
     {
         "name": "12. Badische Meisterschaft ",
-        "city": "Villingen"
+        "city": "Villingen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=145"
     },
     {
         "name": "5. Hessische Meisterschaft",
-        "city": "Darmstadt"
+        "city": "Darmstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=125"
     },
     {
         "name": "8. Berliner Juggerpokal/ 7. Thüringer Meisterschaft"
     },
     {
         "name": "1. Mitteldeutsche Meisterschaft",
-        "city": "Halle (Saale)"
+        "city": "Halle (Saale)",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=176"
     },
     {
         "name": "3. Berlin Masters (BM 2014)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=166"
     },
     {
         "name": "OWL 2014/15 - 1. Spieltag",
@@ -179,31 +217,37 @@
     },
     {
         "name": "15. Deutsche Meisterschaft (DM 2012)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=72"
     },
     {
         "name": "OWL 2013/14",
-        "city": "#REF!"
+        "city": "Cottbus"
     },
     {
         "name": "1. Berlin Masters (BM 2011)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=60"
     },
     {
         "name": "1. Juggerturnier zu Oldenburg",
-        "city": "Oldenburg"
+        "city": "Oldenburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=56"
     },
     {
         "name": "7. Schleswig-Holstein Meisterschaft",
-        "city": "Rethwisch"
+        "city": "Rethwisch",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=78"
     },
     {
         "name": "6. Berliner Juggerpokal (BJP 2012)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=79"
     },
     {
         "name": "5. Thüringer Meisterschaft (TM 2012)",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=74"
     },
     {
         "name": "OWL 2012/13",
@@ -211,51 +255,63 @@
     },
     {
         "name": "7. Berliner Juggerpokal (BJP 2013)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=112"
     },
     {
         "name": "1. Hanseatic Jugger Cup",
-        "city": "Lübeck"
+        "city": "Lübeck",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=105"
     },
     {
         "name": "8. Schleswig-Holstein Meisterschaft",
-        "city": "Rethwisch"
+        "city": "Rethwisch",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=114"
     },
     {
         "name": "2. Berlin Masters (BM 2013)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=104"
     },
     {
         "name": "8. Berliner Juggerpokal (BJP 2014)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=112"
     },
     {
         "name": "2. Hallesche Stadtbalgerei",
-        "city": "Halle (Saale)"
+        "city": "Halle (Saale)",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=109"
     },
     {
         "name": "19. Hamburger Meisterschaft",
-        "city": "Hamburg"
+        "city": "Hamburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=131"
     },
     {
         "name": "6. Thüringer Meisterschaft (TM 2013)",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=113"
     },
     {
         "name": "3. Stuttgarter Kessel-Cup",
-        "city": "Stuttgart"
+        "city": "Stuttgart",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=565"
     },
     {
         "name": "3. Württemberg Cup",
-        "city": "Lauffen am Neckar"
+        "city": "Lauffen am Neckar",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=531"
     },
     {
-        "name": "1. Bonner Wintercup ",
-        "city": "Bonn"
+        "name": "1. Bonner Wintercup",
+        "city": "Bonn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=320"
     },
     {
-        "name": "2. Bonner Wintercup ",
-        "city": "Bonn"
+        "name": "2. Bonner Wintercup",
+        "city": "Bonn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=399"
     },
     {
         "name": "4. Bonner Wintercup",
@@ -271,7 +327,8 @@
     },
     {
         "name": "NRW WL 2016/17 ",
-        "city": "#REF!"
+        "city": "Ahaus",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=308"
     },
     {
         "name": "1. Bonner Hafenderby ",
@@ -283,31 +340,38 @@
     },
     {
         "name": "10. Berliner Juggerpokal (BJP 2016)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=258"
     },
     {
         "name": "12. Berliner Juggerpokal (BJP 2018)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=415"
     },
     {
         "name": "7. Berlin Masters (BM 2018)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=411"
     },
     {
         "name": "11. Thüringer Meisterschaft (TM 2018)",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=405"
     },
     {
         "name": "12. Schleswig- Holstein Meisterschaft",
-        "city": "Rethwisch"
+        "city": "Rethwisch",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=403"
     },
     {
         "name": "5. Mitteldeutsche Meisterschaft",
-        "city": "Halle (Saale)"
+        "city": "Halle (Saale)",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=398"
     },
     {
         "name": "24. Hamburger Meisterschaft",
-        "city": "Hamburg"
+        "city": "Hamburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=426"
     },
     {
         "name": "Sommerfest 2018",
@@ -315,7 +379,8 @@
     },
     {
         "name": "21. Deutsche Meisterschaft (DM 2018)",
-        "city": "Rethwisch"
+        "city": "Rethwisch",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=417"
     },
     {
         "name": "OWL 2018/19",
@@ -331,59 +396,74 @@
     },
     {
         "name": "13. Schleswig-Holstein Meisterschaft",
-        "city": "Rethwisch"
+        "city": "Rethwisch",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=467"
     },
     {
         "name": "1. World Club Championship (WCC 2018)",
-        "city": "Darmstadt"
+        "city": "Darmstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=412"
     },
     {
         "name": "6. Kieler Nordderby",
-        "city": "Kiel"
+        "city": "Kiel",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=445"
     },
     {
         "name": "13. Berliner Juggerpokal (BJP 2019)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=492"
     },
     {
         "name": "8. Berlin Masters (BM 2019)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=455"
     },
     {
         "name": "9. Berlin Masters (BM 2020)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=569",
+        "tugeny_link": "https://tugeny_link.org/tournaments/view/49"
     },
     {
         "name": "Rotenburger Stadtklopperei -Jugendturnier-",
-        "city": "Roteburg a. d. Fulda"
+        "city": "Roteburg a. d. Fulda",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=297"
     },
     {
         "name": "4. Bamberger Jugger Turnier - zur goldenen Pompfe",
-        "city": "Bamberg"
+        "city": "Bamberg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=432"
     },
     {
         "name": "12. Thüringer Meisterschaft (TM 2019)",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=481"
     },
     {
         "name": "22. Deutsche Meisterschaft (DM 2019)",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=515"
     },
     {
         "name": "25. Hamburger Meisterschaft",
-        "city": "Hamburg"
+        "city": "Hamburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=500"
     },
     {
         "name": "Järnsvenskan 2019",
-        "city": "Järnboås"
+        "city": "Järnboås",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=483"
     },
     {
         "name": "14. Deutsche Meisterschaft (DM 2011)",
-        "city": "Waidhaus"
+        "city": "Waidhaus",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=62"
     },
     {
         "name": "4. Freundschaftliche Winterspiele",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=80"
     },
     {
         "name": "1. Berliner Juggerpokal (BJP 2007)",
@@ -391,23 +471,28 @@
     },
     {
         "name": "13. Deutsche Meisterschaft (DM 2010)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=19"
     },
     {
         "name": "5. Berliner Juggerpokal (BJP 2011)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=53"
     },
     {
         "name": "11. Saarländische Meisterschaft",
-        "city": "Homburg"
+        "city": "Homburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=314"
     },
     {
         "name": "2. Deutsche Meisterschaft für Kinder- und Jugendmannschaften (DKJM 2015)",
-        "city": "Hagen"
+        "city": "Hagen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=217"
     },
     {
         "name": "23. Hamburger Meisterschaft",
-        "city": "Hamburg"
+        "city": "Hamburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=364"
     },
     {
         "name": "NRW WL 2014/15",
@@ -415,7 +500,8 @@
     },
     {
         "name": "2. TORNEO INTERNACIONAL DE ESPAÑA (TIE) 2017",
-        "city": "Madrid"
+        "city": "Madrid",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=379"
     },
     {
         "name": "NRW WL 2013/14",
@@ -423,11 +509,13 @@
     },
     {
         "name": "4. NRW Turnier",
-        "city": "Duisburg"
+        "city": "Duisburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=170"
     },
     {
         "name": "12. Deutsche Meisterschaft (DM 2009)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=2"
     },
     {
         "name": "10. Deutsche Meisterschaft (DM 2007)",
@@ -439,15 +527,18 @@
     },
     {
         "name": "17. Deutsche Meisterschaft (DM 2014)",
-        "city": "Villingen"
+        "city": "Villingen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=168"
     },
     {
         "name": "9. Berliner Juggerpokal (BJP 2015)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=203"
     },
     {
         "name": "Graf-Bernhard-Pokal 2016",
-        "city": "Lippstadt"
+        "city": "Lippstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=256"
     },
     {
         "name": "NRW WL 2017/18",
@@ -455,47 +546,58 @@
     },
     {
         "name": "3. Westfälische Meisterschaft",
-        "city": "Lippstadt"
+        "city": "Lippstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=27"
     },
     {
         "name": "1. Lauffener Grabsteinturnier",
-        "city": "Lauffen"
+        "city": "Lauffen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=471"
     },
     {
         "name": "1. NLG Spieltag",
-        "city": "Lauffen"
+        "city": "Lauffen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=566"
     },
     {
         "name": "11. Hessische Meisterschaft",
-        "city": "Darmstadt"
+        "city": "Darmstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=510"
     },
     {
         "name": "18. Bayerische Meisterschaft",
-        "city": "Waidhaus"
+        "city": "Waidhaus",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=495"
     },
     {
         "name": "2. SaarJuggerCup",
-        "city": "Homburg"
+        "city": "Homburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=549"
     },
     {
         "name": "2. Württemberg Cup",
-        "city": "Heilbronn"
+        "city": "Heilbronn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=518"
     },
     {
         "name": "6. Deutsche Meisterschaft für Kinder- und Jugendmannschaften (DKJM 2019)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=486"
     },
     {
         "name": "4. Flensburger Nordstern Turnier",
-        "city": "Flensburg"
+        "city": "Flensburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=480"
     },
     {
         "name": "Paderborner Winterspieltag 19/20",
-        "city": "Paderborn"
+        "city": "Paderborn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=533"
     },
     {
         "name": "Wuppertal WL-Spieltag 2019/20",
-        "city": "Wuppertal"
+        "city": "Wuppertal",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=556"
     },
     {
         "name": "2. Hagener WL-Einladungsturnier",
@@ -503,31 +605,38 @@
     },
     {
         "name": "NRW Winterliga 2019/20 Münster",
-        "city": "Münster"
+        "city": "Münster",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=539"
     },
     {
         "name": "Zoff im Pott im Winter",
-        "city": "Bochum"
+        "city": "Bochum",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=524"
     },
     {
         "name": "Besten im Westen 2019",
-        "city": "Paderborn"
+        "city": "Paderborn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=527"
     },
     {
         "name": "5. Juggerturnier am Hohen Ufer",
-        "city": "Hannover"
+        "city": "Hannover",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=489"
     },
     {
         "name": "5. Turnier zu Münster",
-        "city": "Münster"
+        "city": "Münster",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=494"
     },
     {
         "name": "Zoff im Pott 2019",
-        "city": "Bochum"
+        "city": "Bochum",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=469"
     },
     {
         "name": "6. Bergische Meisterschaft",
-        "city": "Wuppertal"
+        "city": "Wuppertal",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=505"
     },
     {
         "name": "Kölner Sommerfest (Jurassic Cup) 2019",
@@ -535,19 +644,23 @@
     },
     {
         "name": "13. Saarländische Meisterschaft",
-        "city": "Homburg"
+        "city": "Homburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=458"
     },
     {
         "name": "5 1/2 Bergische Meisterschaft",
-        "city": "Wuppertal"
+        "city": "Wuppertal",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=435"
     },
     {
         "name": "NRW WL 2018/19",
-        "city": "#REF!"
+        "city": "Padernborn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=470"
     },
     {
         "name": "1. Ostrhauderfehner Juggerturnier",
-        "city": "Ostrhauderfehn"
+        "city": "Ostrhauderfehn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=452"
     },
     {
         "name": "15. Badische Meisterschaft",
@@ -555,19 +668,23 @@
     },
     {
         "name": "NRW WL 2017/18 ",
-        "city": "#REF!"
+        "city": "Paderborn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=418"
     },
     {
         "name": "4. Juggerturnier am Hohen Ufer",
-        "city": "Hannover"
+        "city": "Hannover",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=430"
     },
     {
         "name": "5. Kieler Nordderby",
-        "city": "Kiel"
+        "city": "Kiel",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=410"
     },
     {
         "name": "3. Hallenturnier zu Oldenburg",
-        "city": "Oldenburg"
+        "city": "Oldenburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=378"
     },
     {
         "name": "Einladungsturnier Hagen 2018",
@@ -575,35 +692,43 @@
     },
     {
         "name": "5. Bergische Meisterschaft",
-        "city": "Wuppertal"
+        "city": "Wuppertal",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=328"
     },
     {
         "name": "2. Flensburger Nordstern Turnier",
-        "city": "Flensburg"
+        "city": "Flensburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=336"
     },
     {
         "name": "1. Rheinische Meisterschaft",
-        "city": "Bonn"
+        "city": "Bonn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=353"
     },
     {
         "name": "19. Deutsche Meisterschaft (DM 2016)",
-        "city": "Waidhaus"
+        "city": "Waidhaus",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=284"
     },
     {
         "name": "2. Juggerturnier am Hohen Ufer",
-        "city": "Hannover"
+        "city": "Hannover",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=279"
     },
     {
         "name": "4. Bergische Meisterschaft",
-        "city": "Wuppertal"
+        "city": "Wuppertal",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=270"
     },
     {
         "name": "5. Hagener Jugger Cup ",
-        "city": "Hagen"
+        "city": "Hagen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=254"
     },
     {
         "name": "2. Rheinland-Pfälzische Meisterschaft ",
-        "city": "Mainz"
+        "city": "Mainz",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=261"
     },
     {
         "name": "NRW WL 2015/16",
@@ -611,15 +736,18 @@
     },
     {
         "name": "3. Bergische Meisterschaft",
-        "city": "Wuppertal"
+        "city": "Wuppertal",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=226"
     },
     {
         "name": "4. Hagener Jugger Cup",
-        "city": "Hagen"
+        "city": "Hagen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=190"
     },
     {
         "name": "8. Thüringer Meisterschaft (TM 2015)",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=201"
     },
     {
         "name": "NRW WL 2016/17",
@@ -627,39 +755,48 @@
     },
     {
         "name": "Irish International Tournament 2014",
-        "city": "Dublin"
+        "city": "Dublin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=409"
     },
     {
         "name": "Metallsvenskan Jugger Turnering 2015",
-        "city": "Örebro"
+        "city": "Örebro",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=189"
     },
     {
         "name": "Respect Gaymes 2015",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=209"
     },
     {
         "name": "4. Berlin Masters (BM 2015)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=214"
     },
     {
         "name": "2. Mitteldeutsche Meisterschaft",
-        "city": "Halle (Saale)"
+        "city": "Halle (Saale)",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=213"
     },
     {
         "name": "1. Leipziger Juggernächte",
-        "city": "Leipzig"
+        "city": "Leipzig",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=225"
     },
     {
         "name": "21. Hamburger Meisterschaft",
-        "city": "Hamburg"
+        "city": "Hamburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=233"
     },
     {
         "name": "3. Greifswalder Strandturnier",
-        "city": "Greifswald"
+        "city": "Greifswald",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=229"
     },
     {
         "name": "GJL Playoff 2015",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=204"
     },
     {
         "name": "Jenaer Neujahrjugger",
@@ -675,15 +812,18 @@
     },
     {
         "name": "1. Bergische Meisterschaft",
-        "city": "Wuppertal"
+        "city": "Wuppertal",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=124"
     },
     {
         "name": "16. Deutsche Meisterschaft (DM 2013)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=127"
     },
     {
-        "name": "Göttniger Hallencup 2014",
-        "city": "Göttingen"
+        "name": "Göttinger Hallencup 2014",
+        "city": "Göttingen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=163"
     },
     {
         "name": "14. Saarländische Meisterschaft",
@@ -695,11 +835,13 @@
     },
     {
         "name": "ANNE BONNY'S LANDRATTEN REGATTA",
-        "city": "Bonn"
+        "city": "Bonn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=593"
     },
     {
         "name": "14. Berliner Jugger Pokal (BJP 2022)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=614"
     },
     {
         "name": "14. Berliner Jugger Pokal",
@@ -723,19 +865,23 @@
     },
     {
         "name": "5. Westfälische Meisterschaft",
-        "city": "Lippstadt"
+        "city": "Lippstadt",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=87"
     },
     {
         "name": "2. Hagener Jugger Cup",
-        "city": "Hagen"
+        "city": "Hagen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=103"
     },
     {
         "name": "3. Oldenburger Kreismeisteschaft",
-        "city": "Oldenburg"
+        "city": "Oldenburg",
+        "jtr_link": "https://www.youtube.com/channel/UCLOZntsDJrCsWxeqfzyGMww"
     },
     {
         "name": "Järnsvenskan 2018",
-        "city": "Järnboås"
+        "city": "Järnboås",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=377"
     },
     {
         "name": "NRW-Winterliga 2019",
@@ -743,7 +889,8 @@
     },
     {
         "name": "12. Saarländische Meisterschaft",
-        "city": "Homburg"
+        "city": "Homburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=389"
     },
     {
         "name": "2. Dorfturnier zu Kerwa",
@@ -751,11 +898,13 @@
     },
     {
         "name": "10. Badische Meisterschaft",
-        "city": "Villingen"
+        "city": "Villingen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=76"
     },
     {
         "name": "2. NLG Spieltag",
-        "city": "Lauffen"
+        "city": "Lauffen",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=568"
     },
     {
         "name": "Göttinger Hallencup 2014",
@@ -787,11 +936,13 @@
     },
     {
         "name": "9. Thüringer Meisterschaft (TM 2016)",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=278"
     },
     {
         "name": "3. Mitteldeutsche Meisterschaft",
-        "city": "Halle (Saale)"
+        "city": "Halle (Saale)",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=272"
     },
     {
         "name": "OWL 2015/2016",
@@ -815,19 +966,23 @@
     },
     {
         "name": "5. Südwest Regionalturnier",
-        "city": "Homburg"
+        "city": "Homburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=388"
     },
     {
         "name": "1. Bremer Landesmeisterschaft",
-        "city": "Bremen"
+        "city": "Bremen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=158"
     },
     {
         "name": "1. Ruhrpott-Pott",
-        "city": "Bochum"
+        "city": "Bochum",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=174"
     },
     {
         "name": "2. Kampf um die rote Stadt",
-        "city": "Rotenburg (Wümme)"
+        "city": "Rotenburg (Wümme)",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=198"
     },
     {
         "name": "4. TORNEO INTERNACIONAL DE ESPAÑA (TIE) 2019",
@@ -940,19 +1095,23 @@
     },
     {
         "name": "Järnsvenskan 2017",
-        "city": "Järnboas"
+        "city": "Järnboas",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=321"
     },
     {
         "name": "Irish International Tournament 2016",
-        "city": "Dublin"
+        "city": "Dublin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=283"
     },
     {
         "name": "1. TORNEO INTERNACIONAL DE ESPAÑA (TIE) 2016",
-        "city": "Madrid"
+        "city": "Madrid",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=289"
     },
     {
         "name": "22. Hamburger Meisterschaft",
-        "city": "Hamburg"
+        "city": "Hamburg",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=294"
     },
     {
         "name": "3. Winter Cup 2015"
@@ -993,7 +1152,8 @@
     },
     {
         "name": "4. Württemberg Cup",
-        "city": "Lauffen"
+        "city": "Lauffen",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=570"
     },
     {
         "name": "7. Südwest Regionalturnier",
@@ -1001,46 +1161,64 @@
     },
     {
         "name": "13. Thüringer Meisterschaft (TM 21)",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=579",
+        "tugeny_link": "https://tugeny_link.org/tournaments/tm-2021/all-teams"
     },
     {
         "name": "2. Lauffener Grabsteinturnier",
-        "city": "Lauffen"
+        "city": "Lauffen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=582"
     },
     {
         "name": "10. Berlin Masters (BM 2021)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=529",
+        "tugeny_link": "https://tugeny_link.org/tournaments/10-berlin-masters/all-teams"
     },
     {
         "name": "6. Bamberger Juggerturnier - zur Goldenen Pompfe",
-        "city": "Bamberg"
+        "city": "Bamberg",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=581"
     },
     {
         "name": "1. Berlin Minors",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=577"
     },
     {
         "name": "5. Württemberg Cup",
-        "city": "Lauffen"
+        "city": "Lauffen",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=571",
+        "tugeny_link": "https://tugeny_link.org/tournaments/5-wuerttemberg-cup-wcc-afterparty/all-teams"
     },
     {
         "name": "Bonner Buccaneer Brawl (BBB 21)",
-        "city": "Bonn"
+        "city": "Bonn",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=590",
+        "tugeny_link": "https://tugeny_link.org/tournaments/bonner-buccaneer-brawl/all-teams"
     },
     {
-        "name": "Einladungsturnier Winterliga in Hagen 1/3"
+        "name": "Einladungsturnier Winterliga in Hagen 1/3",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=595",
+        "tugeny_link": "https://tugeny_link.org/tournaments/einladungsturnier-winterliga-in-hagen-1-3/all-teams"
     },
     {
         "name": "Einladungsturnier Winterliga in Hagen 2/3",
-        "city": "Hagen"
+        "city": "Hagen",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=596",
+        "tugeny_link": "https://tugeny_link.org/tournaments/einladungsturnier-winterliga-in-hagen-2-3/all-teams"
     },
     {
         "name": "Einladungsturnier Winterliga in Hagen 3/3",
-        "city": "Hagen"
+        "city": "Hagen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=597"
     },
     {
         "name": "5. Bonner Wintercup",
-        "city": "Bonn"
+        "city": "Bonn",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=591",
+        "tugeny_link": "https://tugeny_link.org/tournaments/5-bonner-wintercup/all-teams"
     },
     {
         "name": "Einladungsturnier Speyer 2022",
@@ -1048,11 +1226,13 @@
     },
     {
         "name": "1. Strandturnier in Rostock",
-        "city": "Rostock"
+        "city": "Rostock",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=583"
     },
     {
         "name": "14. Thüringer Meisterschaft (TM 22)",
-        "city": "Jena"
+        "city": "Jena",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=607"
     },
     {
         "name": "4. Jugger.cz Open 2022",
@@ -1060,7 +1240,8 @@
     },
     {
         "name": "11. Berlin Masters (BM 2022)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=599"
     },
     {
         "name": "Schattentheater",
@@ -1068,35 +1249,45 @@
     },
     {
         "name": "6. Württemberg Cup",
-        "city": "Lauffen"
+        "city": "Lauffen",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=625",
+        "tugeny_link": "https://tugeny_link.org/tournaments/6-wuerttemberg-cup/all-teams"
     },
     {
         "name": "Wessi Wettstreit",
-        "city": "Bonn"
+        "city": "Bonn",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=626"
     },
     {
         "name": "6. Leipziger Juggernächte",
-        "city": "Leipzig"
+        "city": "Leipzig",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=605"
     },
     {
         "name": "7. Bamberger Juggerturnier - zur Goldenen Pompfe",
-        "city": "Bamberg"
+        "city": "Bamberg",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=609"
     },
     {
         "name": "3. Rheinische Meisterschaft",
-        "city": "Bonn"
+        "city": "Bonn",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=628"
     },
     {
         "name": "5. Lahnveilchencup-Cake",
-        "city": "Gießen"
+        "city": "Gießen",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=619"
     },
     {
         "name": "14. Schleswig-Holstein Meisterschaft",
-        "city": "Rethwisch"
+        "city": "Rethwisch",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=602"
     },
     {
         "name": "6. Turnier zu Münster",
-        "city": "Münster"
+        "city": "Münster",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=620",
+        "tugeny_link": "https://tugeny_link.org/tournaments/6-turnier-zu-muenster/all-teams"
     },
     {
         "name": "7. Bergische Meisterschaft",
@@ -1104,15 +1295,19 @@
     },
     {
         "name": "23. Deutsche Meisterschaft (DM 22)",
-        "city": "Berlin"
+        "city": "Berlin",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=630",
+        "tugeny_link": "https://tugeny_link.org/tournaments/23-deutsche-meisterschaft/all-teams"
     },
     {
         "name": "3. königlich-sächsisches Hofturnier",
-        "city": "Dresden"
+        "city": "Dresden",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=615"
     },
     {
         "name": "Kampf um den goldenen Jugg",
-        "city": "Speyer"
+        "city": "Speyer",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=631"
     },
     {
         "name": "5. TORNEO INTERNACIONAL DE ESPAÑA (TIE) 2022",
@@ -1120,11 +1315,13 @@
     },
     {
         "name": "7. Württemberg Cup",
-        "city": "Lauffen"
+        "city": "Lauffen",
+        "jtr_link": "https://turniere.jugger.org/tournament.result.php?id=629"
     },
     {
         "name": "4. Ostdeutsche Meisterschaft",
-        "city": "#REF!"
+        "city": "Frankfurt (Oder)",
+        "jtr_link": "https://turniere.jugger.org/tournament.php?id=635"
     },
     {
         "name": "16.5 Badische Meisterschaft",

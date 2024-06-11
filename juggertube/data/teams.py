@@ -1,6 +1,7 @@
-from juggertube.models import Team, db
+from juggertube.models import db, Team
 
-teams = [Team(name='!LlukS', city='Berlin', country='Deutschland'),
+teams = [
+    Team(name='!LlukS', city='Berlin', country='Deutschland'),
     Team(name='.N.O.X.', country='Deutschland'),
     Team(name='(Orange) Juggernauts', city='Nürnberg', country='Deutschland'),
     Team(name='A Pint a Day', city='Unna-Billmerich', country='Deutschland'),

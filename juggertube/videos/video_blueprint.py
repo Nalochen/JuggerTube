@@ -1,4 +1,3 @@
-import flask_login
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 from flask_login import login_required, current_user
 

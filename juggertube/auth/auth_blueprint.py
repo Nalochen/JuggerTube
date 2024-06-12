@@ -1,4 +1,5 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
+from sqlalchemy.sql.functions import current_user
 
 from juggertube.models import db, User, Team
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -40,8 +41,17 @@ def register():
         team = form.team.data
 
         try:
-            new_user = User(email=email, username=username, password_hash=password_hash, team=team)
+            new_user = User(email=email, username=username, password_hash=password_hash)
             db.session.add(new_user)
+
+            if team:
+                db.session.flush()
+
+                team_to_add_to = db.session.query(Team).get(team.id)
+
+                team_to_add_to.members.append(new_user)
+                new_user.teams.append(team_to_add_to)
+
             db.session.commit()
             login_user(new_user)
             flash('Account successfully created', 'info')
@@ -69,6 +79,46 @@ def login():
             flash('login failed please check username and password', 'info')
 
     return render_template('login.html', form=form)
+
+
+@auth_blueprint.route('/edit/<int:user_id>', methods=['GET', 'POST'])
+@login_required
+def edit_user(user_id):
+    form = RegisterForm()
+    if request.method == 'POST':
+        user = User.query.get_or_404(user_id=user_id)
+
+        if form.validate_on_submit():
+            user.username = form.username.data
+            user.email = form.email.data
+            user.team = form.team.data
+            user.password_hash = generate_password_hash(form.password.data, method='scrypt')
+
+            try:
+                if user.team:
+                    db.session.flush()
+
+                    team_to_add_to = db.session.query(Team).get(user.team.id)
+
+                    team_to_add_to.members.append(user)
+                    user.teams.append(team_to_add_to)
+
+                db.session.commit()
+                return redirect(url_for('general.index'))
+            except Exception as e:
+                flash('Error! Looks like your inputs are not valid, please check if '
+                      'you wrote something in every input field', str(e))
+
+        if current_user:
+            form.username.data = user.username
+            form.email.data = user.email
+            form.team.data = user.team
+            form.password.data = 'changeme'
+            return render_template('channel.html', form=form)
+
+        else:
+            return redirect(url_for('general.index'))
+    form.team.choices = [(team.id, team.name) for team in Team.query.all()]
 
 
 @auth_blueprint.route('/logout', methods=['GET'])

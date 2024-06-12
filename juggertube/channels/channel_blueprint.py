@@ -1,7 +1,7 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 from flask_login import login_required, current_user
 
-from juggertube.models import Team, db, Channel
+from juggertube.models import Team, db, Channel, User
 from juggertube.video_type_enum import VideoType
 
 from juggertube.webforms import TeamForm, ChannelForm
@@ -15,8 +15,6 @@ def serialize_channel(channel):
         'name': channel.name,
         'link': channel.link,
         'owner': channel.owner,
-        'team': channel.team,
-        'content_type': channel.content_type,
     }
 
 
@@ -28,17 +26,24 @@ def add_channel():
         name = form.name.data
         link = form.link.data
         owner = form.owner.data
-        team = form.team.data
-        content_type = form.content_type.data
-        new_channel = Channel(name=name, link=link, owner=owner, team=team, content_type=content_type)
+        new_channel = Channel(name=name, link=link)
         try:
             db.session.add(new_channel)
+
+            if owner:
+                db.session.flush()
+                owner = db.session.query(User).get(owner.id)
+
+                owner.channels.append(new_channel)
+                new_channel.owners.append(owner)
+
             db.session.commit()
+
             return redirect(url_for('general.index'))
         except Exception as e:
-            flash('Error! looks like there was a problem... please try agin!', str(e))
+            flash('Error! looks like there was a problem... please try again!', str(e))
             return render_template('channel.html', form=form)
-    form.content_type.choices = VideoType
+    form.owner.choices = [(owner.id, owner.name) for owner in User.query.all()]
     return render_template('channel.html', form=form)
 
 
@@ -53,10 +58,15 @@ def edit_channel(channel_id):
             channel.name = form.name.data
             channel.link = form.link.data
             channel.owner = form.owner.data
-            channel.team_id = form.team.data
-            channel.content_type = form.content_type.data
 
             try:
+                if channel.owner:
+                    db.session.flush()
+                    owner = db.session.query(User).get(channel.owner.id)
+
+                    owner.channels.append(channel)
+                    channel.owners.append(owner)
+
                 db.session.commit()
                 return redirect(url_for('general.index'))
             except Exception as e:
@@ -67,8 +77,6 @@ def edit_channel(channel_id):
             form.name.data = channel.name
             form.link.data = channel.link
             form.owner.data = channel.owner
-            form.team.data = channel.team_id
-            form.content_type.data = channel.content_type
             return render_template('channel.html', form=form)
 
         else:

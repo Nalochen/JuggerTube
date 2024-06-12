@@ -48,8 +48,6 @@ class Channel(db.Model):
     name = db.Column(db.String(100), nullable=False)
     link = db.Column(db.String(50), nullable=False)
     owners = db.relationship('Owners', secondary=user_owns_channel, backref='users')
-    team_id = db.Column(db.Integer, ForeignKey('team.team_id'))
-    content_type = db.Column(db.Enum(VideoType))
 
 
 class User(db.Model, UserMixin):

@@ -295,7 +295,7 @@ teams = [
     Team(name='Manoeverkritik', country='Deutschland'),
     Team(name='Maximal Mortis', city='Mixteam'),
     Team(name='Meca`Fouine (Paris)'),
-    Team(name='Mécan'Hydre', city='Paris', country='Frankreich'),
+    Team(name='MécanHydre', city='Paris', country='Frankreich'),
     Team(name='Mengenleere', city='Greifswald', country='Deutschland'),
     Team(name='Midnight Fighters', country='Spanien'),
     Team(name='Midnight Fighters B'),

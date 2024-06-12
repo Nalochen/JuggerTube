@@ -20100,7 +20100,9 @@ videos = [
           game_system=GameSystem.SETS),
 ]
 
-for video in videos:
-    db.session.add(video)
 
-db.session.commit()
+def init_videos():
+    for video in videos:
+        db.session.add(video)
+
+    db.session.commit()

@@ -480,7 +480,9 @@ teams = [
     Team(name='Zonenzwerge', city='Jena', country='Deutschland'),
 ]
 
-for team in teams:
-    db.session.add(team)
 
-db.session.commit()
+def init_teams():
+    for team in teams:
+        db.session.add(team)
+
+    db.session.commit()

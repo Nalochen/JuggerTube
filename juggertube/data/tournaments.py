@@ -470,7 +470,9 @@ tournaments = [
     Tournament(name='3. königliches-sächsisches Hofturnier', city='Dresden'),
 ]
 
-for tournament in tournaments:
-    db.session.add(tournament)
 
-db.session.commit()
+def init_tournaments():
+    for tournament in tournaments:
+        db.session.add(tournament)
+
+    db.session.commit()

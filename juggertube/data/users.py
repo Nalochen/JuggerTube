@@ -52,15 +52,17 @@ new_users = [
                   password=generate_password_hash('test')), "team": 'Karlshorster Kollektiv'},
 ]
 
-for new_user in new_users:
-    db.session.add(new_user.user)
-    db.session.flush()
-    user = db.session.query(User).get(new_user.user.id)
 
-    team_id = Team.query.filter_by(name=new_user.team).id
-    team = db.session.query(Team).get(team_id)
+def init_users():
+    for new_user in new_users:
+        db.session.add(new_user.user)
+        db.session.flush()
+        user = db.session.query(User).get(new_user.user.id)
 
-    user.teams.append(team)
-    team.members.append(user)
+        team_id = Team.query.filter_by(name=new_user.team).id
+        team = db.session.query(Team).get(team_id)
 
-db.session.commit()
+        user.teams.append(team)
+        team.members.append(user)
+
+    db.session.commit()

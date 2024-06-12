@@ -14,8 +14,11 @@ Base = declarative_base()
 
 user_is_part_of_team = Table('user_is_part_of_team', db.Model.metadata,
                              db.Column('user_id', db.Integer, ForeignKey('users.user_id'), primary_key=True),
-                             db.Column('team_id', db.Integer, ForeignKey('teams.team_id'), primary_key=True)
-                             )
+                             db.Column('team_id', db.Integer, ForeignKey('teams.team_id'), primary_key=True))
+
+user_owns_channel = Table('user_owns_channel', db.Model.metadata,
+                             db.Column('user_id', db.Integer, ForeignKey('users.user_id'), primary_key=True),
+                             db.Column('channel_id', db.Integer, ForeignKey('channel.channel_id'), primary_key=True))
 
 
 class Tournament(db.Model):
@@ -24,7 +27,7 @@ class Tournament(db.Model):
     tournament_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
     city = db.Column(db.String(50), nullable=False)
-    jtr_link = db.Column(db.String(100), nullable=False)
+    jtr_link = db.Column(db.String(100))
     tugeny_link = db.Column(db.String(100))
 
 
@@ -33,8 +36,9 @@ class Team(db.Model):
 
     team_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
-    country = db.Column(db.String(50), nullable=False)
-    city = db.Column(db.String(50), nullable=False)
+    country = db.Column(db.String(50))
+    city = db.Column(db.String(50))
+    members = db.relationship('Members', secondary=user_is_part_of_team, backref='users')
 
 
 class Channel(db.Model):
@@ -43,7 +47,7 @@ class Channel(db.Model):
     channel_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(100), nullable=False)
     link = db.Column(db.String(50), nullable=False)
-    owner = db.Column(db.Integer, ForeignKey('user.user_id'))
+    owners = db.relationship('Owners', secondary=user_owns_channel, backref='users')
     team_id = db.Column(db.Integer, ForeignKey('team.team_id'))
     content_type = db.Column(db.Enum(VideoType))
 
@@ -55,7 +59,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(100), nullable=False, unique=True)
     username = db.Column(db.String(50), nullable=False, unique=True)
     password_hash = db.Column(db.String(200), nullable=False)
-    team = db.relationship('Team', secondary=user_is_part_of_team, backref='teams')
+    teams = db.relationship('Teams', secondary=user_is_part_of_team, backref='teams')
+    channels = db.relationship('Channels', secondary=user_owns_channel, backref='channels')
     authenticated = db.Column(db.Boolean, default=False)
 
     def verify_password(self, password):

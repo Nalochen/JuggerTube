@@ -10,7 +10,7 @@ team_blueprint = Blueprint('teams', __name__, template_folder='templates')
 
 def serialize_team(team):
     return {
-        'team_id': team.team_id,
+        'team_id': team.id,
         'name': team.name,
         'country': team.country,
         'city': team.city,
@@ -34,14 +34,14 @@ def add_team():
             flash('Error! looks like there was a problem... please try agin!', str(e))
             return render_template('channel.html', form=form)
 
-    return render_template('channel.html', form=form)
+    return render_template('team.html', form=form)
 
 
 @team_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
 @login_required
 def edit_team(team_id):
     if request.method == 'POST':
-        team = Team.query.get_or_404(team_id=team_id)
+        team = Team.query.get_or_404(id=team_id)
         form = TeamForm()
 
         if form.validate_on_submit():
@@ -69,7 +69,7 @@ def edit_team(team_id):
 @team_blueprint.route('/delete/<int:team_id>', methods=['GET'])
 @login_required
 def delete_team(team_id):
-    team = Team.query.filter_by(team_id=team_id).first()
+    team = Team.query.filter_by(id=team_id).first()
 
     name = team.name
 
@@ -84,5 +84,6 @@ def delete_team(team_id):
 @team_blueprint.route('/', methods=['GET'])
 def get_teams():
     teams = Team.query.all()
+    print(teams)
     team_list = [serialize_team(team) for team in teams]
     return jsonify(team_list)

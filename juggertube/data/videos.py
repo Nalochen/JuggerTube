@@ -2,7 +2,9 @@ from juggertube.game_system_enum import GameSystem
 from juggertube.models import Video, db, Channel, Team, Tournament
 from juggertube.video_type_enum import VideoType
 
-videos = [
+def init_videos(app):
+    with app.app_context():
+        videos = [
     Video(category=VideoType.REPORTS, name='Daniel Danger als Jugger-Spieler | 1LIVE',
           link='https://youtu.be/f27SC622NvE', channel=Channel.query.filter_by(name='1LIVE'), upload_date='2018-03-10',
           tournament_id=Tournament.query.filter_by(name='Duisburg').first()),
@@ -1070,7 +1072,7 @@ videos = [
           team_two_id=Team.query.filter_by(name='Leipziger Nachtwache').first(), game_system=GameSystem.SETS),
     Video(category=VideoType.SPARBUILDING, name='DIY Pompfe Q-Tip', link='https://youtu.be/dT5tVpt1Ih0',
           channel=Channel.query.filter_by(name='Bavaria Scouts'), upload_date='2017-04-19', comment='holz-Vollstab.',
-          weapon_type='Q-Tip '),
+          weapon_type='Q-Tip'),
     Video(category=VideoType.REPORTS, name='Deutsche Jugger-Meisterschaft in der Oberpfalz | BR24',
           link='https://www.youtube.com/watch?v=01WllASUWxg', channel=Channel.query.filter_by(name='BR24').first(),
           upload_date='2016-09-04',
@@ -2183,7 +2185,7 @@ videos = [
           upload_date='2020-03-29',
           tournament_id=Tournament.query.filter_by(name='Drake´s Landrattenregatta').first(), date_of_recording='2020-02-29',
           team_one_id=Team.query.filter_by(name='Flying Juggmen Bonn').first(),
-          team_two_id=Team.query.filter_by(name='Jumping Juggmen Bonn').first(), game_system='Steine '),
+          team_two_id=Team.query.filter_by(name='Jumping Juggmen Bonn').first(), game_system=GameSystem.STONES),
     Video(category=VideoType.MATCH,
           name='Hofheimer Hoffnung vs. Jumping Juggmen 2/2 @ Drake´s Landrattenregatta 2020',
           link='https://www.youtube.com/watch?v=4m7_21BBEu4', channel=Channel.query.filter_by(name='Jugger Bonn').first(),
@@ -2387,7 +2389,7 @@ videos = [
           tournament_id=Tournament.query.filter_by(name='12. Berliner Juggerpokal (BJP 2018)').first(),
           date_of_recording='2018-05-05', team_one_id=Team.query.filter_by(name='GAG').first(),
           team_two_id=Team.query.filter_by(name='Amazonenkinder'),
-          game_system='Satzsystem, '),
+          game_system=GameSystem.SETS),
     Video(category=VideoType.MATCH, name='BJP18 Skull vs Anima Equorum Zwischengruppe',
           link='https://youtu.be/R9AY_fiYwcc', channel=Channel.query.filter_by(name='Jugger e. V.').first(),
           upload_date='2018-05-20',
@@ -2703,7 +2705,7 @@ videos = [
           comment='keine Punktetafel', tournament_id=Tournament.query.filter_by(name='5. Mitteldeutsche Meisterschaft').first(),
           date_of_recording='2018-07-07',
           team_one_id=Team.query.filter_by(name='Seven Sins').first(), team_two_id=Team.query.filter_by(name='GAG'),
-          game_system='Satzsystem,  5:4, '),
+          game_system=GameSystem.SETS),
     Video(category=VideoType.MATCH, name='GAG vs Tropedo Bääm @ Hamburg18 - Relegation - Jugger Match',
           link='https://youtu.be/adQsLqKOhTY', channel=Channel.query.filter_by(name='Jugger e. V.').first(),
           upload_date='2018-07-31',
@@ -6047,7 +6049,7 @@ videos = [
           upload_date='2018-01-30',
           tournament_id=Tournament.query.filter_by(name='NRW WL 2017/18').first(), date_of_recording='2018-01-20',
           team_one_id=Team.query.filter_by(name='Peters Pawns').first(),
-          team_two_id=Team.query.filter_by(name='Jugg - the Ripper').first(), game_system='NRW-System '),
+          team_two_id=Team.query.filter_by(name='Jugg - the Ripper').first(), game_system=GameSystem.NRW),
     Video(category=VideoType.MATCH, name='Peters Pawns gegen Pig Pile | 21.01.2018 Hagen | Jugger',
           link='https://youtu.be/PE4bPj1tvOU', channel=Channel.query.filter_by(name='Peters Pawns').first(),
           upload_date='2018-01-28',
@@ -6059,19 +6061,19 @@ videos = [
           upload_date='2018-01-24',
           tournament_id=Tournament.query.filter_by(name='NRW WL 2017/18').first(), date_of_recording='2018-01-20',
           team_one_id=Team.query.filter_by(name='HaWu AllstarZ').first(),
-          team_two_id=Team.query.filter_by(name='Peters Pawns').first(), game_system='NRW-System '),
+          team_two_id=Team.query.filter_by(name='Peters Pawns').first(), game_system=GameSystem.NRW),
     Video(category=VideoType.MATCH, name='Peters Pawns gegen Schergen von Monasteria | 21.01.2018 Hagen | Jugger',
           link='https://youtu.be/cLD8pj4Ibss', channel=Channel.query.filter_by(name='Peters Pawns').first(),
           upload_date='2018-01-22',
           tournament_id=Tournament.query.filter_by(name='NRW WL 2017/18').first(), date_of_recording='2018-01-20',
           team_one_id=Team.query.filter_by(name='Peters Pawns').first(),
-          team_two_id=Team.query.filter_by(name='Schergen von Monasteria').first(), game_system='NRW-System '),
+          team_two_id=Team.query.filter_by(name='Schergen von Monasteria').first(), game_system=GameSystem.NRW),
     Video(category=VideoType.MATCH, name='Peters Pawns gegen FlyingJUGGmen | 21.01.2018 Hagen | Jugger',
           link='https://youtu.be/6m73RtRBbaw', channel=Channel.query.filter_by(name='Peters Pawns').first(),
           upload_date='2018-01-22',
           tournament_id=Tournament.query.filter_by(name='NRW WL 2017/18').first(), date_of_recording='2018-01-20',
           team_one_id=Team.query.filter_by(name='Peters Pawns').first(),
-          team_two_id=Team.query.filter_by(name='Flying Juggmen Bonn').first(), game_system='NRW-System '),
+          team_two_id=Team.query.filter_by(name='Flying Juggmen Bonn').first(), game_system=GameSystem.NRW),
     Video(category=VideoType.OTHER, name='Trailer 20. Deutsche Meisterschaft Darmstadt',
           link='https://www.facebook.com/498708653551726/videos/1484067265015855/',
           channel=Channel.query.filter_by(name='Pink Pain Facebook-Seite'), upload_date='2017-07-24', comment='Trailer',
@@ -18574,7 +18576,7 @@ videos = [
           tournament_id=Tournament.query.filter_by(name='14. Thüringer Meisterschaft (TM 22)').first(),
           date_of_recording='2022-05-06',
           team_one_id=Team.query.filter_by(name='Peters Pawns').first(), team_two_id=Team.query.filter_by(name='Zonenkinder'),
-          game_system='Satzsystem '),
+          game_system=GameSystem.SETS),
     Video(category=VideoType.MATCH, name='Blutgrätsche gegen Weserkraken | WCC 2020+ | Jugger',
           link='https://youtu.be/954atT20Lu4', channel=Channel.query.filter_by(name='Peters Pawns').first(),
           upload_date='2022-05-30',
@@ -20098,11 +20100,8 @@ videos = [
           date_of_recording='2022-10-17',
           team_one_id=Team.query.filter_by(name='Falco Jugger').first(), team_two_id=Team.query.filter_by(name='GAG').first(),
           game_system=GameSystem.SETS),
-]
+        ]
 
-
-def init_videos(app):
-    with app.app_context():
         for video in videos:
             db.session.add(video)
 

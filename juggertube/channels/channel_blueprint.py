@@ -1,20 +1,18 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 from flask_login import login_required, current_user
 
-from juggertube.models import Team, db, Channel, User
-from juggertube.video_type_enum import VideoType
+from juggertube.models import db, Channel, User
 
-from juggertube.webforms import TeamForm, ChannelForm
+from juggertube.webforms import ChannelForm
 
 channel_blueprint = Blueprint('channels', __name__, template_folder='templates')
 
 
 def serialize_channel(channel):
     return {
-        'channel_id': channel.channel_id,
+        'channel_id': channel.id,
         'name': channel.name,
         'link': channel.link,
-        'owner': channel.owner,
     }
 
 
@@ -22,67 +20,45 @@ def serialize_channel(channel):
 @login_required
 def add_channel():
     form = ChannelForm()
+    form.owner.choices = [(owner.id, owner.username) for owner in User.query.all()]
     if request.method == 'POST':
         name = form.name.data
         link = form.link.data
-        owner = form.owner.data
+        owner = User.query.filter_by(id=form.owner.data).first()
         new_channel = Channel(name=name, link=link)
         try:
+            owner.channels.append(new_channel)
             db.session.add(new_channel)
-
-            if owner:
-                db.session.flush()
-                owner = db.session.query(User).get(owner.id)
-
-                owner.channels.append(new_channel)
-                new_channel.owners.append(owner)
-
             db.session.commit()
 
             return redirect(url_for('general.index'))
         except Exception as e:
             flash('Error! looks like there was a problem... please try again!', str(e))
             return render_template('channel.html', form=form)
-    form.owner.choices = [(owner.id, owner.name) for owner in User.query.all()]
+    form.owner.choices = [(owner.id, owner.username) for owner in User.query.all()]
     return render_template('channel.html', form=form)
 
 
 @channel_blueprint.route('/edit/<int:channel_id>', methods=['GET', 'POST'])
 @login_required
 def edit_channel(channel_id):
+    channel = Channel.query.filter_by(id=channel_id).first()
     form = ChannelForm()
+    form.owner.choices = [(owner.id, owner.username) for owner in User.query.all()]
     if request.method == 'POST':
-        channel = Channel.query.get_or_404(channel_id=channel_id)
+        channel.name = form.name.data
+        channel.link = form.link.data
+        owner = form.owner.data
+        if channel.owners != owner:
+            owner.channels.append(channel)
+        db.session.commit()
+        return redirect(url_for('general.index'))
 
-        if form.validate_on_submit():
-            channel.name = form.name.data
-            channel.link = form.link.data
-            channel.owner = form.owner.data
-
-            try:
-                if channel.owner:
-                    db.session.flush()
-                    owner = db.session.query(User).get(channel.owner.id)
-
-                    owner.channels.append(channel)
-                    channel.owners.append(owner)
-
-                db.session.commit()
-                return redirect(url_for('general.index'))
-            except Exception as e:
-                flash('Error! Looks like your inputs are not valid, please check if '
-                      'you wrote something in every input field', str(e))
-
-        if current_user:
-            form.name.data = channel.name
-            form.link.data = channel.link
-            form.owner.data = channel.owner
-            return render_template('channel.html', form=form)
-
-        else:
-            return redirect(url_for('general.index'))
-
-    form.content_type.choices = VideoType
+    if current_user:
+        form.name.data = channel.name
+        form.link.data = channel.link
+        form.owner.data = channel.owners
+        return render_template('channel.html', form=form)
 
 
 @channel_blueprint.route('/delete/<int:channel_id>', methods=['GET'])

@@ -12,11 +12,11 @@ auth_blueprint = Blueprint('auth', __name__, template_folder='templates')
 
 def serialize_user(user):
     return {
-        'user_id': user.user_id,
+        'user_id': user.id,
         'username': user.username,
         'email': user.email,
         'password_hash': user.password_hash,
-        'team': user.team,
+        'teams': user.teams,
     }
 
 

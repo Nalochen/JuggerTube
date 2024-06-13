@@ -46,6 +46,7 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     app.register_blueprint(auth_blueprint, url_prefix="/auth")
 
     if __name__ == '__main__':
+        print('stuff')
         init_db(app)
         base_dir = os.path.dirname(os.path.abspath(__file__))
         cert_path = os.path.join(base_dir, 'selfsigned.crt')

@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block body %}
-    <h1>Team</h1>
+    <h1>Channel</h1>
     <form method="POST">
         {{ form.name.label() }}
 		{{ form.name() }}
@@ -12,14 +12,6 @@
 
         {{ form.owner.label() }}
 		{{ form.owner() }}
-		<br/>
-
-		{{ form.team.label() }}
-		{{ form.team() }}
-		<br/>
-
-		{{ form.content_type.label() }}
-		{{ form.content_type() }}
 		<br/>
 
 		<br/>

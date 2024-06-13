@@ -15,7 +15,7 @@ class RegisterForm(FlaskForm):
 	username = StringField("Username", validators=[DataRequired()])
 	password = PasswordField("Password", validators=[DataRequired(), EqualTo('password2', message='Passwords must match!')])
 	password2 = PasswordField("Confirm 'Password", validators=[DataRequired()])
-	team = SelectField("Team", validators=[DataRequired()])
+	team = SelectField("Team")
 	submit = SubmitField("Submit")
 
 
@@ -56,6 +56,5 @@ class ChannelForm(FlaskForm):
 	name = StringField("Name", validators=[DataRequired()])
 	link = StringField("Link", validators=[DataRequired()])
 	owner = SelectField("Owner", validators=[DataRequired()])
-	team = SelectField("Team")
-	content_type = SelectField("Content Type")
+	submit = SubmitField("Submit")
 

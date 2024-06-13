@@ -481,8 +481,9 @@ teams = [
 ]
 
 
-def init_teams():
-    for team in teams:
-        db.session.add(team)
+def init_teams(app):
+    with app.app_context():
+        for team in teams:
+            db.session.add(team)
 
-    db.session.commit()
+        db.session.commit()

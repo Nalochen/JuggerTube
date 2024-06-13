@@ -471,8 +471,9 @@ tournaments = [
 ]
 
 
-def init_tournaments():
-    for tournament in tournaments:
-        db.session.add(tournament)
+def init_tournaments(app):
+    with app.app_context():
+        for tournament in tournaments:
+            db.session.add(tournament)
 
-    db.session.commit()
+        db.session.commit()

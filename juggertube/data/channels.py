@@ -98,16 +98,17 @@ new_channels = [
 ]
 
 
-def init_channels():
-    for new_channel in new_channels:
-        db.session.add(new_channel.channel)
-        db.session.flush()
-        channel = db.session.query(Channel).get(new_channel.channel.id)
+def init_channels(app):
+    with app.app_context():
+        for new_channel in new_channels:
+            db.session.add(new_channel.channel)
+            db.session.flush()
+            channel = db.session.query(Channel).get(new_channel.channel.id)
 
-        user_id = User.query.filter_by(name=new_channel.owner).id
-        user = db.session.query(User).get(user_id)
+            user_id = User.query.filter_by(name=new_channel.owner).id
+            user = db.session.query(User).get(user_id)
 
-        channel.owners.append(user)
-        user.channels.append(channel)
+            channel.owners.append(user)
+            user.channels.append(channel)
 
-    db.session.commit()
+        db.session.commit()

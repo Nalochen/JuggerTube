@@ -20101,8 +20101,9 @@ videos = [
 ]
 
 
-def init_videos():
-    for video in videos:
-        db.session.add(video)
+def init_videos(app):
+    with app.app_context():
+        for video in videos:
+            db.session.add(video)
 
-    db.session.commit()
+        db.session.commit()

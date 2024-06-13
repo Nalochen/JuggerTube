@@ -1,7 +1,3 @@
-from juggertube.data import channels, users
-from juggertube.data.teams import teams
-from juggertube.data.tournaments import tournaments
-from juggertube.data.videos import videos
 from juggertube.models import db
 
 
@@ -10,10 +6,10 @@ def init_db(app):
         db.drop_all()
         db.create_all()
 
-        teams.init_teams()
-        tournaments.init_tournaments()
-        users.init_users()
-        channels.init_channels()
-        videos.init_videos()
+        #teams.init_teams(app)
+        #tournaments.init_tournaments(app)
+        #users.init_users(app)
+        #channels.init_channels(app)
+        #videos.init_videos(app)
 
         db.session.commit()

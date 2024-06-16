@@ -3,6 +3,7 @@ import os
 from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
+from flask_wtf import CSRFProtect
 
 from juggertube.channels.channel_blueprint import channel_blueprint
 from juggertube.init_db import init_db
@@ -26,6 +27,8 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'kt4vq7bbofhbnp00jum6at717efdn9vajc6r35rvn5ime8tgwj'
 
+    csrf = CSRFProtect(app)
+
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
     migrate = Migrate(app, db)
@@ -33,6 +36,9 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     db.init_app(app)
     login_manager.init_app(app)
     migrate.init_app(app, db)
+
+    with app.app_context():
+        db.create_all()
 
     @login_manager.user_loader
     def load_user(user_id):
@@ -46,8 +52,6 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     app.register_blueprint(auth_blueprint, url_prefix="/auth")
 
     if __name__ == '__main__':
-        print('stuff')
-        init_db(app)
         base_dir = os.path.dirname(os.path.abspath(__file__))
         cert_path = os.path.join(base_dir, 'selfsigned.crt')
         key_path = os.path.join(base_dir, 'selfsigned.key')

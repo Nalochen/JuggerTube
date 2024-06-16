@@ -2,19 +2,23 @@
 {% block body %}
     <h1>Channel</h1>
     <form method="POST">
-        {{ form.name.label() }}
-		{{ form.name() }}
-		<br/>
+		{{ form.hidden_tag() }}
+		<div>
+			{{ form.name.label() }}
+			{{ form.name() }}
+			<br/>
 
-		{{ form.link.label() }}
-		{{ form.link() }}
-		<br/>
+			{{ form.link.label() }}
+			{{ form.link() }}
+			<br/>
 
-        {{ form.owner.label() }}
-		{{ form.owner() }}
-		<br/>
-
-		<br/>
-		{{ form.submit() }}
+			{{ form.owner.label() }}
+			{{ form.owner() }}
+			<br/>
+		</div>
+		<div>
+			<br/>
+			{{ form.submit() }}
+		</div>
     </form>
 {% endblock %}

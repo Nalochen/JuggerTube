@@ -2,67 +2,71 @@
 {% block body %}
 <h1>Video</h1>
     <form method="POST">
-        {{ form.name.label() }}
-		{{ form.name() }}
-		<br/>
+		{{ form.hidden_tag() }}
+		<div>
+			{{ form.name.label() }}
+			{{ form.name() }}
+			<br/>
 
-        {{ form.link.label() }}
-		{{ form.link() }}
-		<br/>
+			{{ form.link.label() }}
+			{{ form.link() }}
+			<br/>
 
-		{{ form.channel.label() }}
-		{{ form.channel() }}
-		<br/>
+			{{ form.channel.label() }}
+			{{ form.channel() }}
+			<br/>
 
-		{{ form.category.label() }}
-		{{ form.category() }}
-		<br/>
+			{{ form.category.label() }}
+			{{ form.category() }}
+			<br/>
 
-		{{ form.upload_date.label() }}
-		{{ form.upload_date() }}
-		<br/>
+			{{ form.upload_date.label() }}
+			{{ form.upload_date() }}
+			<br/>
 
-		{{ form.comments.label() }}
-		{{ form.comments() }}
-		<br/>
+			{{ form.comments.label() }}
+			{{ form.comments() }}
+			<br/>
 
-		<p>Only for Match Videos:</p><br/>
+			<p>Only for Match Videos:</p><br/>
 
-		{{ form.tournament.label() }}
-		{{ form.tournament() }}
-		<br/>
+			{{ form.tournament.label() }}
+			{{ form.tournament() }}
+			<br/>
 
-        {{ form.team_one.label() }}
-		{{ form.team_one() }}
-		<br/>
+			{{ form.team_one.label() }}
+			{{ form.team_one() }}
+			<br/>
 
-		{{ form.team_two.label() }}
-		{{ form.team_two() }}
-		<br/>
+			{{ form.team_two.label() }}
+			{{ form.team_two() }}
+			<br/>
 
-		{{ form.date_of_recording.label() }}
-		{{ form.date_of_recording() }}
-		<br/>
+			{{ form.date_of_recording.label() }}
+			{{ form.date_of_recording() }}
+			<br/>
 
-		{{ form.game_system.label() }}
-		{{ form.game_system() }}
-		<br/>
+			{{ form.game_system.label() }}
+			{{ form.game_system() }}
+			<br/>
 
-		<p>Only for other Videos</p><br/>
+			<p>Only for other Videos</p><br/>
 
-		{{ form.weapon_type.label() }}
-		{{ form.weapon_type() }}
-		<br/>
+			{{ form.weapon_type.label() }}
+			{{ form.weapon_type() }}
+			<br/>
 
-		{{ form.topic.label() }}
-		{{ form.topic() }}
-		<br/>
+			{{ form.topic.label() }}
+			{{ form.topic() }}
+			<br/>
 
-		{{ form.guests.label() }}
-		{{ form.guests() }}
-		<br/>
-
-		<br/>
-		{{ form.submit() }}
+			{{ form.guests.label() }}
+			{{ form.guests() }}
+			<br/>
+		</div>
+        <div>
+			<br/>
+			{{ form.submit() }}
+		</div>
     </form>
 {% endblock %}

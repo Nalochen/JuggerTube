@@ -28,18 +28,21 @@ class Video(db.Model):
     __tablename__ = 'videos'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    name = db.Column(db.String(100), nullable=False)
+    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'))
     category = db.Column(db.Enum(VideoType), nullable=False)
-    link = db.Column(db.String(50), nullable=False)
+    link = db.Column(db.String(50))
     upload_date = db.Column(db.Date, nullable=False)
+    comments = db.Column(Text)
+
+    tournament_id = db.Column(db.Integer, db.ForeignKey('tournaments.id'))
+    team_id = db.Column(db.Integer, db.ForeignKey('teams.id')) # change
     date_of_recording = db.Column(db.Date)
     game_system = db.Column(db.Enum(GameSystem))
+
     weapon_type = db.Column(db.String(100))
     topic = db.Column(db.String(100))
     guests = db.Column(db.String(100))
-    comments = db.Column(Text)
-    channel_id = db.Column(db.Integer, db.ForeignKey('channels.id'))
-    tournament_id = db.Column(db.Integer, db.ForeignKey('tournaments.id'))
-    team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
 
 
 class Tournament(db.Model):

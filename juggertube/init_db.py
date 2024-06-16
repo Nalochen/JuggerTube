@@ -1,8 +1,11 @@
+from flask import flash
+
 from juggertube.data import users, channels, teams, tournaments, videos
 from juggertube.models import db
 
 
 def init_db(app):
+    flash('stuff')
     with app.app_context():
         db.create_all()
 

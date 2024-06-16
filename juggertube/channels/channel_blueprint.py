@@ -19,7 +19,7 @@ def serialize_channel(channel):
 @channel_blueprint.route('/add', methods=['GET', 'POST'])
 @login_required
 def add_channel():
-    form = ChannelForm()
+    form = ChannelForm(request.form)
     form.owner.choices = [(owner.id, owner.username) for owner in User.query.all()]
     if request.method == 'POST':
         name = form.name.data
@@ -43,28 +43,30 @@ def add_channel():
 @login_required
 def edit_channel(channel_id):
     channel = Channel.query.filter_by(id=channel_id).first()
-    form = ChannelForm()
+    form = ChannelForm(channel=request.form)
     form.owner.choices = [(owner.id, owner.username) for owner in User.query.all()]
-    if request.method == 'POST':
-        channel.name = form.name.data
-        channel.link = form.link.data
-        owner = form.owner.data
-        if channel.owners != owner:
-            owner.channels.append(channel)
-        db.session.commit()
-        return redirect(url_for('general.index'))
-
-    if current_user:
+    if request.method == 'GET':
         form.name.data = channel.name
         form.link.data = channel.link
         form.owner.data = channel.owners
-        return render_template('channel.html', form=form)
+
+    if form.validate_on_submit():
+        channel.name = form.name.data
+        channel.link = form.link.data
+        try:
+            db.session.commit()
+            return redirect(url_for('general.index'))
+        except Exception as e:
+            db.session.rollback()
+            flash('something went wrong, please try again', str(e))
+
+    return render_template('channel.html', form=form)
 
 
 @channel_blueprint.route('/delete/<int:channel_id>', methods=['GET'])
 @login_required
 def delete_channel(channel_id):
-    channel = Channel.query.filter_by(channel_id=channel_id).first()
+    channel = Channel.query.filter_by(id=channel_id).first()
 
     name = channel.name
 
@@ -74,6 +76,8 @@ def delete_channel(channel_id):
         flash(f'channel {name} deleted')
     except Exception as e:
         flash('something went wrong please try again', str(e))
+
+    return redirect(url_for('general.index'))
 
 
 @channel_blueprint.route('/', methods=['GET'])

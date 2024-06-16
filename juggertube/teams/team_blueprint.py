@@ -20,7 +20,7 @@ def serialize_team(team):
 @team_blueprint.route('/add', methods=['GET', 'POST'])
 @login_required
 def add_team():
-    form = TeamForm()
+    form = TeamForm(request.form)
     if request.method == 'POST':
         name = form.name.data
         country = form.country.data
@@ -40,30 +40,27 @@ def add_team():
 @team_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
 @login_required
 def edit_team(team_id):
-    if request.method == 'POST':
-        team = Team.query.get_or_404(id=team_id)
-        form = TeamForm()
+    team = Team.query.filter_by(id=team_id).first()
+    form = TeamForm(team=request.form)
 
-        if form.validate_on_submit():
-            team.name = form.name.data
-            team.country = form.country.data
-            team.city = form.city.data
+    if request.method == 'GET':
+        form.name.data = team.name
+        form.country.data = team.country
+        form.city.data = team.city
 
-            try:
-                db.session.commit()
-                return redirect(url_for('general.index'))
-            except Exception as e:
-                flash('Error! Looks like your inputs are not valid, please check if '
-                      'you wrote something in every input field', str(e))
+    if form.validate_on_submit():
+        team.name = form.name.data
+        team.country = form.country.data
+        team.city = form.city.data
 
-        if current_user:
-            form.name.data = team.name
-            form.country.data = team.country
-            form.city.data = team.city
-            return render_template('channel.html', form=form)
-
-        else:
+        try:
+            db.session.commit()
             return redirect(url_for('general.index'))
+        except Exception as e:
+            flash('Error! Looks like your inputs are not valid, please check if '
+                  'you wrote something in every input field', str(e))
+
+    return render_template('team.html', form=form)
 
 
 @team_blueprint.route('/delete/<int:team_id>', methods=['GET'])
@@ -79,6 +76,8 @@ def delete_team(team_id):
         flash(f'Team {name} deleted')
     except Exception as e:
         flash('something went wrong please try again', str(e))
+
+    return redirect(url_for('general.index'))
 
 
 @team_blueprint.route('/', methods=['GET'])

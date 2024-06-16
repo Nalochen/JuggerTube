@@ -2,23 +2,27 @@
 {% block body %}
     <h1>Tournament</h1>
     <form method="POST">
-        {{ form.name.label() }}
-		{{ form.name() }}
-		<br/>
+		{{ form.hidden_tag() }}
+		<div>
+			{{ form.name.label() }}
+			{{ form.name() }}
+			<br/>
 
-		{{ form.city.label() }}
-		{{ form.city() }}
-		<br/>
+			{{ form.city.label() }}
+			{{ form.city() }}
+			<br/>
 
-        {{ form.jtr_link.label() }}
-		{{ form.jtr_link() }}
-		<br/>
+			{{ form.jtr_link.label() }}
+			{{ form.jtr_link() }}
+			<br/>
 
-		{{ form.tugeny_link.label() }}
-		{{ form.tugeny_link() }}
-		<br/>
-
-		<br/>
-		{{ form.submit() }}
+			{{ form.tugeny_link.label() }}
+			{{ form.tugeny_link() }}
+			<br/>
+		</div>
+		<div>
+			<br/>
+			{{ form.submit() }}
+		</div>
     </form>
 {% endblock %}

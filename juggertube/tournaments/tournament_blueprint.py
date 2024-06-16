@@ -12,7 +12,7 @@ tournament_blueprint = Blueprint('tournaments', __name__, template_folder='templ
 
 def serialize_tournament(tournament):
     return {
-        'tournament_id': tournament.tournament_id,
+        'tournament_id': tournament.id,
         'name': tournament.name,
         'city': tournament.city,
         'jtr_link': tournament.jtr_link,
@@ -23,7 +23,7 @@ def serialize_tournament(tournament):
 @tournament_blueprint.route('/add', methods=['GET', 'POST'])
 @login_required
 def add_tournament():
-    form = TournamentForm()
+    form = TournamentForm(request.form)
     if request.method == 'POST':
         name = form.name.data
         city = form.city.data
@@ -44,35 +44,34 @@ def add_tournament():
 @tournament_blueprint.route('/edit/<int:tournament_id>', methods=['GET', 'POST'])
 @login_required
 def edit_tournament(tournament_id):
-    if request.method == 'POST':
-        tournament = Tournament.query.get_or_404(tournament_id=tournament_id)
-        form = TournamentForm()
+    tournament = Tournament.query.filter_by(id=tournament_id).first()
+    form = TournamentForm(tournament=request.form)
 
-        if form.validate_on_submit():
-            tournament.name = form.name.data
-            tournament.city = form.city.data
-            tournament.jtr_link = form.jtr_link.data
-            tournament.tugeny_link = form.tugeny_link.data
-            try:
-                db.session.commit()
-                return redirect(url_for('general.index'))
-            except Exception as e:
-                flash('something went wrong, please try again', str(e))
+    if request.method == 'GET':
+        form.name.data = tournament.name
+        form.city.data = tournament.city
+        form.jtr_link.data = tournament.jtr_link
+        form.tugeny_link.data = tournament.tugeny_link
 
-        if current_user:
-            form.name.data = tournament.name
-            form.city.data = tournament.city
-            form.jtr_link.data = tournament.jtr_link
-            form.tugeny_link.data = tournament.tugeny_link
-            return render_template('tournament.html', form=form)
-        else:
+    if form.validate_on_submit():
+        tournament.name = form.name.data
+        tournament.city = form.city.data
+        tournament.jtr_link = form.jtr_link.data
+        tournament.tugeny_link = form.tugeny_link.data
+        try:
+            db.session.commit()
             return redirect(url_for('general.index'))
+        except Exception as e:
+            db.session.rollback()
+            flash('something went wrong, please try again', str(e))
+
+    return render_template('tournament.html', form=form, tournament=tournament)
 
 
 @tournament_blueprint.route('/delete/<int:tournament_id>', methods=['GET'])
 @login_required
 def delete_tournament(tournament_id):
-    tournament = Tournament.query.filter_by(tournament_id=tournament_id).first()
+    tournament = Tournament.query.filter_by(id=tournament_id).first()
 
     name = tournament.name
     try:
@@ -81,6 +80,8 @@ def delete_tournament(tournament_id):
         flash(f'Tournament {name} deleted')
     except Exception as e:
         flash('something went wrong, please try again', str(e))
+
+    return redirect(url_for('general.index'))
 
 
 @tournament_blueprint.route('/', methods=['GET'])

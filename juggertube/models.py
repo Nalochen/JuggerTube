@@ -36,7 +36,16 @@ class Video(db.Model):
     comments = db.Column(Text)
 
     tournament_id = db.Column(db.Integer, db.ForeignKey('tournaments.id'))
-    team_id = db.Column(db.Integer, db.ForeignKey('teams.id')) # change
+    team_one_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
+    team_one = db.relationship('Team',
+                               foreign_keys=[team_one_id],
+                               backref='video_team_one'
+                               )
+    team_two_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
+    team_two = db.relationship('Team',
+                               foreign_keys=[team_two_id],
+                               backref='video_team_two'
+                               )
     date_of_recording = db.Column(db.Date)
     game_system = db.Column(db.Enum(GameSystem))
 
@@ -66,10 +75,6 @@ class Team(db.Model):
     name = db.Column(db.String(100), nullable=False)
     country = db.Column(db.String(50))
     city = db.Column(db.String(50))
-    videos = db.relationship(
-        Video,
-        backref='team'
-    )
 
 
 class Channel(db.Model):

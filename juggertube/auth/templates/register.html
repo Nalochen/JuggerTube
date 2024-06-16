@@ -2,27 +2,31 @@
 {% block body %}
     <h1>Register</h1>
     <form method="POST">
-        {{ form.email.label() }}
-		{{ form.email() }}
-		<br/>
+		{{ form.hidden_tag() }}
+		<div>
+			{{ form.email.label() }}
+			{{ form.email() }}
+			<br/>
 
-		{{ form.username.label() }}
-		{{ form.username() }}
-		<br/>
+			{{ form.username.label() }}
+			{{ form.username() }}
+			<br/>
 
-        {{ form.password.label() }}
-		{{ form.password() }}
-		<br/>
+			{{ form.password.label() }}
+			{{ form.password() }}
+			<br/>
 
-		{{ form.password2.label() }}
-		{{ form.password2() }}
-		<br/>
+			{{ form.password2.label() }}
+			{{ form.password2() }}
+			<br/>
 
-		{{ form.team.label() }}
-		{{ form.team() }}
-		<br/>
-
-		<br/>
-		{{ form.submit() }}
+			{{ form.team.label() }}
+			{{ form.team() }}
+			<br/>
+		</div>
+		<div>
+			<br/>
+			{{ form.submit() }}
+		</div>
     </form>
 {% endblock %}

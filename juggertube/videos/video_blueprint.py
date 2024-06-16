@@ -13,12 +13,13 @@ video_blueprint = Blueprint('videos', __name__, template_folder='templates')
 def serialize_video(video):
     return {
         'video_id': video.id,
-        'channel_id': video.channel_id,
+        'channel': video.channel.name,
         'category': video.category.value,
         'name': video.name,
         'link': video.link,
-        'tournament_id': video.tournament_id if video.tournament_id else None,
-        'team_one_id': video.team_id if video.team_id else None,
+        'tournament': video.tournament.name if video.tournament else None,
+        'team_one': video.team_one.name if video.team_one else None,
+        'team_two': video.team_two.name if video.team_two else None,
         'upload_date': video.upload_date.strftime('%Y-%m-%d'),
         'date_of_recording': video.date_of_recording.strftime('%Y-%m-%d') if video.date_of_recording else None,
         'game_system': video.game_system.value if video.game_system else None,
@@ -33,15 +34,20 @@ def serialize_video(video):
 @login_required
 def add_video():
     form = VideoForm(request.form)
+    form.tournament.choices = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
+    form.team_one.choices = [(team.id, team.name) for team in Team.query.all()]
+    form.team_two.choices = [(team.id, team.name) for team in Team.query.all()]
+    form.channel.choices = [(channel.id, channel.name) for channel in Channel.query.all()]
+
     if request.method == 'POST':
         name = form.name.data
-        channel_id = form.channel.data
+        channel = Channel.query.filter_by(id=form.channel.data).first()
         link = form.link.data
         category = VideoType[form.category.data]
         upload_date = form.upload_date.data
-        tournament_id = form.tournament.data
-        team_one_id = form.team_one.data
-        team_two_id = form.team_two.data
+        tournament = Tournament.query.filter_by(id=form.tournament.data).first()
+        team_one = Team.query.filter_by(id=form.team_one.data).first()
+        team_two = Team.query.filter_by(id=form.team_two.data).first()
         date_of_recording = form.date_of_recording.data
         game_system = form.game_system.data
         weapon_type = form.weapon_type.data
@@ -54,10 +60,11 @@ def add_video():
         else:
             game_system = GameSystem[game_system]
 
-        new_video = Video(name=name, channel_id=channel_id, link=link, category=category,
-                          tournament_id=tournament_id, team_id=team_one_id, upload_date=upload_date, date_of_recording=date_of_recording,
-                          game_system=game_system, weapon_type=weapon_type, topic=topic, guests=guests,
-                          comments=comments)
+        new_video = Video(name=name, channel_id=channel.id, channel=channel, link=link, category=category,
+                          tournament_id=tournament.id, tournament=tournament, team_one_id=team_one.id, team_one=team_one,
+                          team_two_id=team_two.id, team_two=team_two, upload_date=upload_date,
+                          date_of_recording=date_of_recording, game_system=game_system, weapon_type=weapon_type,
+                          topic=topic, guests=guests, comments=comments)
 
         try:
             db.session.add(new_video)
@@ -66,10 +73,6 @@ def add_video():
         except Exception as e:
             flash('something went wrong, please try again', str(e))
 
-    form.tournament.choices = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
-    form.team_one.choices = [(team.id, team.name) for team in Team.query.all()]
-    form.team_two.choices = [(team.id, team.name) for team in Team.query.all()]
-    form.channel.choices = [(channel.id, channel.name) for channel in Channel.query.all()]
     return render_template('video.html', form=form)
 
 
@@ -85,12 +88,13 @@ def edit_video(video_id):
 
     if request.method == 'GET':
         form.name.data = video.name
-        form.channel.data = video.channel_id
+        form.channel.data = video.channel
         form.link.data = video.link
         form.category.data = video.category.value
         form.upload_date.data = video.upload_date
-        form.tournament.data = video.tournament_id
-        form.team_one.data = video.team_id
+        form.tournament.data = video.tournament
+        form.team_one.data = video.team_one
+        form.team_two.data = video.team_two
         form.date_of_recording.data = video.date_of_recording if video.date_of_recording else ''
         form.game_system.data = video.game_system.value if video.game_system else ''
         form.weapon_type.data = video.weapon_type
@@ -106,7 +110,9 @@ def edit_video(video_id):
         video.upload_date = form.upload_date.data
         video.tournament_id = form.tournament.data
         video.team_one_id = form.team_one.data
+        video.team_one = Team.query.filter_by(id=form.team_one.data).first()
         video.team_two_id = form.team_two.data
+        video.team_two = Team.query.filter_by(id=form.team_two.data).first()
         video.date_of_recording = form.date_of_recording.data
         if form.game_system.data == '':
             video.game_system = None
@@ -153,7 +159,7 @@ def get_videos():
 
 @video_blueprint.route('/team/<int:team_id>', methods=['GET'])
 def get_videos_by_team(team_id):
-    videos = Video.query.filter((Video.team_one_id == team_id) | (Video.team_two_id == team_id)).all()
+    videos = Video.query.filter((Video.team_one == team_id) | (Video.team_two == team_id)).all()
     video_list = [serialize_video(video) for video in videos]
     return jsonify(video_list)
 
@@ -168,7 +174,7 @@ def get_videos_by_tournament(tournament_id):
 @video_blueprint.route('/tournament/<int:tournament_id>/team/<int:team_id>', methods=['GET'])
 def get_videos_by_tournament_and_team(tournament_id, team_id):
     videos = Video.query.filter_by(tournament_id=tournament_id).filter(
-        (Video.team_one_id == team_id) | (Video.team_two_id == team_id)
+        (Video.team_one == team_id) | (Video.team_two == team_id)
     ).all()
     video_list = [serialize_video(video) for video in videos]
     return jsonify(video_list)

@@ -29,7 +29,7 @@ def get_users():
 
 @auth_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
-    form = RegisterForm()
+    form = RegisterForm(request.form)
     if request.method == 'POST':
         user = User.query.filter_by(email=form.email.data).first()
         if user:
@@ -43,14 +43,7 @@ def register():
         try:
             new_user = User(email=email, username=username, password_hash=password_hash)
             db.session.add(new_user)
-
-            if team:
-                db.session.flush()
-
-                team_to_add_to = db.session.query(Team).get(team.id)
-
-                team_to_add_to.members.append(new_user)
-                new_user.teams.append(team_to_add_to)
+            new_user.teams.append(Team.query.filter_by(id=form.team.data).first())
 
             db.session.commit()
             login_user(new_user)
@@ -63,7 +56,7 @@ def register():
 
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    form = LoginForm(request.form)
     if request.method == 'POST':
         username = form.username.data
         password = form.password.data
@@ -86,7 +79,7 @@ def login():
 def edit_user(user_id):
     form = RegisterForm()
     if request.method == 'POST':
-        user = User.query.get_or_404(user_id=user_id)
+        user = User.query.filter_by(id=user_id).first()
 
         if form.validate_on_submit():
             user.username = form.username.data
@@ -130,7 +123,7 @@ def logout():
 
 @auth_blueprint.route('/delete/<int:user_id>', methods=['GET'])
 def delete_user(user_id):
-    user = User.query.filter_by(user_id=user_id).first()
+    user = User.query.filter_by(id=user_id).first()
 
     name = user.username
     try:

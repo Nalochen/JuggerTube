@@ -59,8 +59,6 @@ def init_channels(app):
             {"channel": Channel(name='Tobias Lunever (Saarland)',
                                 link='https://www.youtube.com/channel/UCff21s6RdFLmXd3pgmnzKig/'), "owner": ''},
             {"channel": Channel(name='Trashcore', link='https://soundcloud.com/trashcore1'), "owner": ["Jens"]},
-            {"channel": Channel(name='Uhus Jugger Tutorials', link='https://www.youtube.com/user/EinUhu'),
-             "owner": ["Uhu/Ruben"]},
             {"channel": Channel(name='Verstörte Zernichter',
                                 link='https://www.youtube.com/channel/UCpnNhuA3b_6v4BZaZHmM8kQ'),
              "owner": ["Nikolay"]},
@@ -119,13 +117,17 @@ def init_channels(app):
         ]
 
         for new_channel in new_channels:
-            db.session.add(new_channel["channel"])
-            db.session.flush()
-            channel = db.session.query(Channel).filter_by(new_channel["channel"]).first()
+            existing_channel = Channel.query.filter_by(name=new_channel["channel"].name).first()
 
-            if not new_channel["owner"] == '':
-                user = User.query.filter_by(name=new_channel["owner"]).first()
+            if not existing_channel:
+                db.session.add(new_channel["channel"])
+                db.session.flush()
+                channel = db.session.query(Channel).filter_by(id=new_channel["channel"].id).first()
 
-                user.channels.append(channel)
+                if not new_channel["owner"] == '':
+                    for owner in new_channel["owner"]:
+                        owner_to_append = User.query.filter_by(username=owner).first()
+
+                    channel.owners.append(owner_to_append)
 
         db.session.commit()

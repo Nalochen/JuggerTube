@@ -42,8 +42,6 @@ def init_users(app):
                           password_hash=generate_password_hash('test', method='scrypt')), "team": 'Sloth Machine'},
             {"user": User(username='Jens', email='testtest16.de',
                           password_hash=generate_password_hash('test', method='scrypt')), "team": 'Problemkinder'},
-            {"user": User(username='Uhu/Ruben', email='testtest17.de',
-                          password_hash=generate_password_hash('test', method='scrypt')), "team": 'JCE Schädeljäger'},
             {"user": User(username='Nikolay', email='testtest18.de',
                           password_hash=generate_password_hash('test', method='scrypt')),
              "team": 'die verstörten Zernichter'},
@@ -67,14 +65,16 @@ def init_users(app):
         ]
 
         for new_user in new_users:
-            db.session.add(new_user["user"])
-            db.session.flush()
-            user = db.session.query(User).filter_by(id=new_user["user"].id).first()
+            existing_user = User.query.filter_by(username=new_user["user"].username).first()
 
-            if not new_user["team"] == '':
-                team = Team.query.filter_by(name=new_user["team"]).first()
+            if not existing_user:
+                db.session.add(new_user["user"])
+                db.session.flush()
+                user = db.session.query(User).filter_by(id=new_user["user"].id).first()
 
-                user.teams.append(team)
-                team.members.append(user)
+                if not new_user["team"] == '':
+                    team = Team.query.filter_by(name=new_user["team"]).first()
+
+                    user.teams.append(team)
 
         db.session.commit()

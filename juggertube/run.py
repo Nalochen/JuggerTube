@@ -38,7 +38,7 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     migrate.init_app(app, db)
 
     with app.app_context():
-        db.create_all()
+        init_db(app)
 
     @login_manager.user_loader
     def load_user(user_id):

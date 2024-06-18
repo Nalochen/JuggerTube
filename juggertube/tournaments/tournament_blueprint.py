@@ -38,7 +38,7 @@ def add_tournament():
         except Exception as e:
             flash('something went wrong, please try again', str(e))
 
-    return render_template('tournament.html', form=form)
+    return render_template('post-tournaments.html', form=form)
 
 
 @tournament_blueprint.route('/edit/<int:tournament_id>', methods=['GET', 'POST'])
@@ -65,7 +65,7 @@ def edit_tournament(tournament_id):
             db.session.rollback()
             flash('something went wrong, please try again', str(e))
 
-    return render_template('tournament.html', form=form, tournament=tournament)
+    return render_template('post-tournaments.html', form=form, tournament=tournament)
 
 
 @tournament_blueprint.route('/delete/<int:tournament_id>', methods=['GET'])
@@ -88,4 +88,4 @@ def delete_tournament(tournament_id):
 def get_tournaments():
     tournaments = Tournament.query.all()
     tournament_list = [serialize_tournament(tournament) for tournament in tournaments]
-    return jsonify(tournament_list)
+    return render_template('show-tournaments.html', channel_list=jsonify(tournament_list))

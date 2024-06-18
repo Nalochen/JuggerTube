@@ -108,7 +108,7 @@ def edit_user(user_id):
             form.email.data = user.email
             form.team.data = user.team
             form.password.data = 'changeme'
-            return render_template('channel.html', form=form)
+            return render_template('post-channel.html', form=form)
 
         else:
             return redirect(url_for('general.index'))

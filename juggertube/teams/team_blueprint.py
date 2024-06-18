@@ -32,9 +32,9 @@ def add_team():
             return redirect(url_for('general.index'))
         except Exception as e:
             flash('Error! looks like there was a problem... please try agin!', str(e))
-            return render_template('channel.html', form=form)
+            return render_template('post-channel.html', form=form)
 
-    return render_template('team.html', form=form)
+    return render_template('post-team.html', form=form)
 
 
 @team_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
@@ -60,7 +60,7 @@ def edit_team(team_id):
             flash('Error! Looks like your inputs are not valid, please check if '
                   'you wrote something in every input field', str(e))
 
-    return render_template('team.html', form=form)
+    return render_template('post-team.html', form=form)
 
 
 @team_blueprint.route('/delete/<int:team_id>', methods=['GET'])
@@ -83,6 +83,5 @@ def delete_team(team_id):
 @team_blueprint.route('/', methods=['GET'])
 def get_teams():
     teams = Team.query.all()
-    print(teams)
     team_list = [serialize_team(team) for team in teams]
-    return jsonify(team_list)
+    return render_template('show-teams.html', channel_list=jsonify(team_list))

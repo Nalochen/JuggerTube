@@ -73,7 +73,7 @@ def add_video():
         except Exception as e:
             flash('something went wrong, please try again', str(e))
 
-    return render_template('video.html', form=form)
+    return render_template('get-video.html', form=form)
 
 
 @video_blueprint.route('/edit/<int:video_id>', methods=['GET', 'POST'])
@@ -132,7 +132,7 @@ def edit_video(video_id):
 
         return redirect(url_for('general.index'))
 
-    return render_template('video.html', form=form, video=video)
+    return render_template('get-video.html', form=form, video=video)
 
 
 @video_blueprint.route('/delete/<int:video_id>', methods=['GET'])

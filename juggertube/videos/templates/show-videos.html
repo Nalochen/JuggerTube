@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Video Output</h1>
+    {% for video in video_list %}
+        <div>
+            <p>
+                channel: {{ video.channel.name }}
+            </p>
+            <p>
+                category: {{ video.category.value }}
+            </p>
+            <p>
+                name: {{ video.name }}
+            </p>
+            <a href="{{ video.link }}">
+                link: {{ video.link }}
+            </a>
+            <p>
+                upload_date: {{ video.upload_date }}
+            </p>
+            <p>
+                comments: {{ video.comments }}
+            </p>
+
+            {% if video.category == VideoType.MATCH %}
+                <p>
+                    tournament: {{ video.tournament.name }}
+                </p>
+                <p>
+                    team_one: {{ video.team_one.name }}
+                </p>
+                <p>
+                    team_two: {{ video.team_two.name }}
+                </p>
+                <p>
+                    date_of_recording: {{ video.date_of_recording }}
+                </p>
+                <p>
+                    game_system: {{ video.game_system }}
+                </p>
+            {% endif %}
+            {% if video.category == VideoType.OTHER %}
+                <p>
+                    weapon_type: {{ video.weapon_type }}
+                </p>
+                <p>
+                    topic: {{ video.topic }}
+                </p>
+                <p>
+                    guests: {{ video.guests }}
+                </p>
+            {% endif %}
+        </div>
+    {% endfor %}
+{% endblock %}

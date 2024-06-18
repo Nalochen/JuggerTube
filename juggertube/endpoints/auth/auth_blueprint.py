@@ -51,8 +51,10 @@ def register():
             flash('Account successfully created', 'info')
         except Exception as e:
             flash(str(e), 'danger')
-    form.team.choices = [(team.id, team.name) for team in Team.query.all()]
-    return render_template('register.html', form=form)
+
+    if request.method == 'GET':
+        form.team.choices = [(team.id, team.name) for team in Team.query.all()]
+        return render_template('register.html', form=form)
 
 
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
@@ -72,13 +74,15 @@ def login():
         else:
             flash('login failed please check username and password', 'info')
 
-    return render_template('login.html', form=form)
+    if request.method == 'GET':
+        return render_template('login.html', form=form)
 
 
 @auth_blueprint.route('/edit/<int:user_id>', methods=['GET', 'POST'])
 @login_required
 def edit_user(user_id):
     form = RegisterForm()
+    form.team.choices = [(team.id, team.name) for team in Team.query.all()]
     if request.method == 'POST':
         user = User.query.filter_by(id=user_id).first()
 
@@ -112,7 +116,6 @@ def edit_user(user_id):
 
         else:
             return redirect(url_for('general.index'))
-    form.team.choices = [(team.id, team.name) for team in Team.query.all()]
 
 
 @auth_blueprint.route('/logout', methods=['GET'])
@@ -122,7 +125,7 @@ def logout():
     flash('User logged out!')
 
 
-@auth_blueprint.route('/delete/<int:user_id>', methods=['GET'])
+@auth_blueprint.route('/delete/<int:user_id>', methods=['POST'])
 def delete_user(user_id):
     user = User.query.filter_by(id=user_id).first()
 

@@ -73,7 +73,8 @@ def add_video():
         except Exception as e:
             flash('something went wrong, please try again', str(e))
 
-    return render_template('post-video.html', form=form)
+    if request.method == 'GET':
+        return render_template('post-video.html', form=form)
 
 
 @video_blueprint.route('/edit/<int:video_id>', methods=['GET', 'POST'])
@@ -132,10 +133,11 @@ def edit_video(video_id):
 
         return redirect(url_for('general.index'))
 
-    return render_template('post-video.html', form=form, video=video)
+    if request.method == 'GET':
+        return render_template('post-video.html', form=form, video=video)
 
 
-@video_blueprint.route('/delete/<int:video_id>', methods=['GET'])
+@video_blueprint.route('/delete/<int:video_id>', methods=['POST'])
 @login_required
 def delete_video(video_id):
     video = Video.query.filter_by(id=video_id).first()

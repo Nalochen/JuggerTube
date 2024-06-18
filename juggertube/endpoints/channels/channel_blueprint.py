@@ -35,8 +35,10 @@ def add_channel():
         except Exception as e:
             flash('Error! looks like there was a problem... please try again!', str(e))
             return render_template('post-channel.html', form=form)
-    form.owner.choices = [(owner.id, owner.username) for owner in User.query.all()]
-    return render_template('post-channel.html', form=form)
+
+    if request.method == 'GET':
+        form.owner.choices = [(owner.id, owner.username) for owner in User.query.all()]
+        return render_template('post-channel.html', form=form)
 
 
 @channel_blueprint.route('/edit/<int:channel_id>', methods=['GET', 'POST'])
@@ -60,10 +62,11 @@ def edit_channel(channel_id):
             db.session.rollback()
             flash('something went wrong, please try again', str(e))
 
-    return render_template('post-channel.html', form=form)
+    if request.method == 'GET':
+        return render_template('post-channel.html', form=form)
 
 
-@channel_blueprint.route('/delete/<int:channel_id>', methods=['GET'])
+@channel_blueprint.route('/delete/<int:channel_id>', methods=['POST'])
 @login_required
 def delete_channel(channel_id):
     channel = Channel.query.filter_by(id=channel_id).first()

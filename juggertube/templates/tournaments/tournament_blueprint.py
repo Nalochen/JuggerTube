@@ -38,7 +38,8 @@ def add_tournament():
         except Exception as e:
             flash('something went wrong, please try again', str(e))
 
-    return render_template('post-tournaments.html', form=form)
+    if request.method == 'GET':
+        return render_template('post-tournaments.html', form=form)
 
 
 @tournament_blueprint.route('/edit/<int:tournament_id>', methods=['GET', 'POST'])
@@ -65,10 +66,11 @@ def edit_tournament(tournament_id):
             db.session.rollback()
             flash('something went wrong, please try again', str(e))
 
-    return render_template('post-tournaments.html', form=form, tournament=tournament)
+    if request.method == 'GET':
+        return render_template('post-tournaments.html', form=form, tournament=tournament)
 
 
-@tournament_blueprint.route('/delete/<int:tournament_id>', methods=['GET'])
+@tournament_blueprint.route('/delete/<int:tournament_id>', methods=['POST'])
 @login_required
 def delete_tournament(tournament_id):
     tournament = Tournament.query.filter_by(id=tournament_id).first()

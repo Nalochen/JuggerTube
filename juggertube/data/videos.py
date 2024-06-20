@@ -20071,7 +20071,7 @@ videos = [
         "category": VideoType.REPORTS,
         "name": "KAMPF UM EINEN HUNDESCHÄDEL: Die seltsamste Sportart Deutschlands | taff | ProSieben",
         "link": "https://youtu.be/HSTvQ3DKs0Q",
-        "channel": "Taff",
+        "channel": "taff",
         "dateOfUpload": "2017-06-04T22:00:00",
         "comments": "Deutschland Extrem",
         "tournament": "Berlin"

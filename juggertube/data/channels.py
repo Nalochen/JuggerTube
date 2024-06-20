@@ -113,7 +113,9 @@ def init_channels(app):
             {"channel": Channel(name='Asociacíon Aragonesa de Jugger',
                                 link='https://www.youtube.com/user/juggeraragon/featured'), "owner": ''},
             {"channel": Channel(name='Leipziger Nachtwache', link='https://www.youtube.com/@leipzigernachtwache92800'),
-             "owner": ["Ludwig"]}
+             "owner": ["Ludwig"]},
+            {"channel": Channel(name='Leipziger Nachtwache', link='https://www.youtube.com/@leipzigernachtwache92800'),
+             "owner": ["Ludwig"]},
         ]
 
         for new_channel in new_channels:

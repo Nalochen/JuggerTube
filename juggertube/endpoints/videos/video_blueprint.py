@@ -161,25 +161,25 @@ def get_videos():
 
 @video_blueprint.route('/team/<int:team_id>', methods=['GET'])
 def get_videos_by_team(team_id):
-    videos = Video.query.filter((Video.team_one == team_id) | (Video.team_two == team_id)).all()
+    videos = Video.query.filter((Video.team_one_id == team_id) or (Video.team_two_id == team_id)).all()
     video_list = [serialize_video(video) for video in videos]
-    return render_template('show-videos.html', video_list=jsonify(video_list))
+    return render_template('show-videos.html', video_list=video_list, VideoType=VideoType)
 
 
 @video_blueprint.route('/tournament/<int:tournament_id>', methods=['GET'])
 def get_videos_by_tournament(tournament_id):
     videos = Video.query.filter_by(tournament_id=tournament_id).all()
     video_list = [serialize_video(video) for video in videos]
-    return render_template('show-videos.html', video_list=jsonify(video_list))
+    return render_template('show-videos.html', video_list=video_list, VideoType=VideoType)
 
 
 @video_blueprint.route('/tournament/<int:tournament_id>/team/<int:team_id>', methods=['GET'])
 def get_videos_by_tournament_and_team(tournament_id, team_id):
     videos = Video.query.filter_by(tournament_id=tournament_id).filter(
-        (Video.team_one == team_id) | (Video.team_two == team_id)
+        (Video.team_one_id == team_id) or (Video.team_two_id == team_id)
     ).all()
     video_list = [serialize_video(video) for video in videos]
-    return render_template('show-videos.html', video_list=jsonify(video_list))
+    return render_template('show-videos.html', video_list=video_list, VideoType=VideoType)
 
 
 @video_blueprint.route('/period/<string:beginning>/<string:ending>', methods=['GET'])
@@ -188,4 +188,4 @@ def get_videos_by_period(beginning, ending):
         Video.date_of_recording > beginning, Video.date_of_recording < ending
     ). all()
     video_list = [serialize_video(video) for video in videos]
-    return render_template('show-videos.html', video_list=jsonify(video_list))
+    return render_template('show-videos.html', video_list=video_list, VideoType=VideoType)

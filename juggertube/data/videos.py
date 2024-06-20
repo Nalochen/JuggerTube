@@ -10969,7 +10969,7 @@ videos = [
     },
     {
         "category": VideoType.REPORTS,
-        "name": "Niko bewegt sich - Pilot, Folge 1",
+        "name": "Niko bewegt sich - Pilot, FBlickfang: Jugger, Bouldern, Deutsches Sportabzeichenolge 1",
         "link": "https://youtu.be/gRcr7tZPsP8",
         "channel": "Nikobewegtsich",
         "dateOfUpload": "2012-07-23T22:00:00",
@@ -12238,14 +12238,6 @@ videos = [
         "dateOfUpload": "2019-05-28T22:00:00",
         "comments": "Beitrag von Medienstudenten",
         "tournament": "Paderborn"
-    },
-    {
-        "category": VideoType.REPORTS,
-        "name": "11- Roadtrip: Externsteine & Paderborn City, See und Jugger (Mannschafts- Kampfspiel)",
-        "link": "https://youtu.be/ViCqIjA6xY8",
-        "channel": "ON A JOURNEY",
-        "dateOfUpload": "2020-08-31T22:00:00",
-        "city": "Paderborn"
     },
     {
         "category": VideoType.MATCH,
@@ -20071,7 +20063,7 @@ videos = [
         "category": VideoType.REPORTS,
         "name": "Trendsport Jugger: Pompfe trifft auf Hundeschädel - SPIEGEL TV",
         "link": "https://www.youtube.com/watch?v=bnCy4W-HYwY",
-        "channel": "SPIEGEL TV",
+        "channel": "DER SPIEGEL",
         "dateOfUpload": "2011-07-28T22:00:00",
         "tournament": "Berlin"
     },

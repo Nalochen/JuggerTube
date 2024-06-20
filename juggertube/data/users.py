@@ -62,6 +62,9 @@ def init_users(app):
                           password_hash=generate_password_hash('test', method='scrypt')), "team": ''},
             {"user": User(username='Robert', email='testtest26.de',
                           password_hash=generate_password_hash('test')), "team": 'Karlshorster Kollektiv'},
+            {"user": User(username='Nalo', email='testtest27.de',
+                          password_hash=generate_password_hash('test', method='scrypt')),
+             "team": 'Cranium Ex Machina'},
         ]
 
         for new_user in new_users:

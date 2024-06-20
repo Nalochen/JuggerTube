@@ -1,6 +1,6 @@
 import os
 
-from apiflask import APIFlask
+from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_wtf import CSRFProtect
@@ -22,7 +22,7 @@ database = 'JuggerTube'
 
 
 def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{database}'):
-    app = APIFlask(__name__, spec_path='/openapi.yaml')
+    app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'kt4vq7bbofhbnp00jum6at717efdn9vajc6r35rvn5ime8tgwj'

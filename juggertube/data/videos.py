@@ -10969,7 +10969,7 @@ videos = [
     },
     {
         "category": VideoType.REPORTS,
-        "name": "Niko bewegt sich - Pilot, FBlickfang: Jugger, Bouldern, Deutsches Sportabzeichenolge 1",
+        "name": "Niko bewegt sich - Pilot, Blickfang: Jugger, Bouldern, Deutsches Sportabzeichenolge 1",
         "link": "https://youtu.be/gRcr7tZPsP8",
         "channel": "Nikobewegtsich",
         "dateOfUpload": "2012-07-23T22:00:00",
@@ -12229,15 +12229,6 @@ videos = [
         "team2": "Hans Peters Pawns",
         "gameSystem": GameSystem.SETS,
         "result": "5:2, 5:4"
-    },
-    {
-        "category": VideoType.REPORTS,
-        "name": "Blickfang: Jugger, Bouldern, Deutsches Sportabzeichen",
-        "link": "https://www.youtube.com/user/JuggerBerlin",
-        "channel": "NRWVision",
-        "dateOfUpload": "2019-05-28T22:00:00",
-        "comments": "Beitrag von Medienstudenten",
-        "tournament": "Paderborn"
     },
     {
         "category": VideoType.MATCH,

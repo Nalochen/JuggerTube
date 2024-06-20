@@ -484,6 +484,9 @@ def init_teams(app):
         ]
 
         for team in teams:
-            db.session.add(team)
+            existing_team = Team.query.filter_by(name=team.name).first()
+
+            if not existing_team:
+                db.session.add(team)
 
         db.session.commit()

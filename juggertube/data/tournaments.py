@@ -498,6 +498,9 @@ def init_tournaments(app):
         ]
 
         for tournament in tournaments:
-            db.session.add(tournament)
+            existing_tournament = Tournament.query.filter_by(name=tournament.name).first()
+
+            if not existing_tournament:
+                db.session.add(tournament)
 
         db.session.commit()

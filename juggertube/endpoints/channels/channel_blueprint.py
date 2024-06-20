@@ -87,4 +87,4 @@ def delete_channel(channel_id):
 def get_channels():
     channels = Channel.query.all()
     channel_list = [serialize_channel(channel) for channel in channels]
-    return render_template('show-channels.html', channel_list=jsonify(channel_list))
+    return render_template('show-channels.html', channel_list=channel_list)

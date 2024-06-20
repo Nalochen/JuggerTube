@@ -90,4 +90,4 @@ def delete_tournament(tournament_id):
 def get_tournaments():
     tournaments = Tournament.query.all()
     tournament_list = [serialize_tournament(tournament) for tournament in tournaments]
-    return render_template('show-tournaments.html', channel_list=jsonify(tournament_list))
+    return render_template('show-tournaments.html', tournament_list=tournament_list)

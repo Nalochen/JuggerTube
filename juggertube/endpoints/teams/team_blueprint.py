@@ -86,4 +86,4 @@ def delete_team(team_id):
 def get_teams():
     teams = Team.query.all()
     team_list = [serialize_team(team) for team in teams]
-    return render_template('show-teams.html', channel_list=jsonify(team_list))
+    return render_template('show-teams.html', team_list=team_list)

@@ -12,7 +12,7 @@ from juggertube.endpoints.channels.channel_blueprint import channel_blueprint
 from juggertube.endpoints.general.general_blueprint import general_blueprint
 from juggertube.endpoints.videos.video_blueprint import video_blueprint
 from juggertube.endpoints.teams.team_blueprint import team_blueprint
-from juggertube.templates.tournaments.tournament_blueprint import tournament_blueprint
+from juggertube.endpoints.tournaments.tournament_blueprint import tournament_blueprint
 from juggertube.endpoints.auth.auth_blueprint import auth_blueprint
 
 user = 'macromedia'

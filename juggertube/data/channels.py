@@ -152,6 +152,8 @@ def init_channels(app):
              "owner": ''},
             {"channel": Channel(name='JuggerAlicante', link='https://www.youtube.com/@JuggerAlicante'),
              "owner": ''},
+            {"channel": Channel(name='Main Stream', link='https://www.youtube.com/@mainstream3068'),
+             "owner": ''},
         ]
 
         for new_channel in new_channels:

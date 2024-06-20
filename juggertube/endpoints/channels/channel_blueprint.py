@@ -66,7 +66,7 @@ def edit_channel(channel_id):
         return render_template('post-channel.html', form=form)
 
 
-@channel_blueprint.route('/delete/<int:channel_id>', methods=['POST'])
+@channel_blueprint.route('/delete/<int:channel_id>', methods=['GET'])
 @login_required
 def delete_channel(channel_id):
     channel = Channel.query.filter_by(id=channel_id).first()

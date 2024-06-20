@@ -73,6 +73,7 @@ def login():
             return redirect(next_page) if next_page else redirect(url_for('general.index'))
         else:
             flash('login failed please check username and password', 'info')
+            return render_template('login.html', form=form)
 
     if request.method == 'GET':
         return render_template('login.html', form=form)
@@ -83,9 +84,9 @@ def login():
 def edit_user(user_id):
     form = RegisterForm()
     form.team.choices = [(team.id, team.name) for team in Team.query.all()]
-    if request.method == 'POST':
-        user = User.query.filter_by(id=user_id).first()
+    user = User.query.filter_by(id=user_id).first()
 
+    if request.method == 'POST':
         if form.validate_on_submit():
             user.username = form.username.data
             user.email = form.email.data
@@ -106,16 +107,17 @@ def edit_user(user_id):
             except Exception as e:
                 flash('Error! Looks like your inputs are not valid, please check if '
                       'you wrote something in every input field', str(e))
-
-        if current_user:
-            form.username.data = user.username
-            form.email.data = user.email
-            form.team.data = user.team
-            form.password.data = 'changeme'
-            return render_template('post-channel.html', form=form)
+                return render_template('post-channel.html', form=form)
 
         else:
             return redirect(url_for('general.index'))
+
+    if request.method == 'GET':
+        form.username.data = user.username
+        form.email.data = user.email
+        form.team.data = user.team
+        form.password.data = 'changeme'
+        return render_template('post-channel.html', form=form)
 
 
 @auth_blueprint.route('/logout', methods=['GET'])
@@ -123,6 +125,7 @@ def edit_user(user_id):
 def logout():
     logout_user()
     flash('User logged out!')
+    return redirect(url_for('general.index'))
 
 
 @auth_blueprint.route('/delete/<int:user_id>', methods=['POST'])
@@ -134,5 +137,7 @@ def delete_user(user_id):
         db.session.delete(user)
         db.session.commit()
         flash(f'User {name} deleted')
+        return redirect(url_for('general.index'))
     except Exception as e:
         flash('something went wrong, please try again', str(e))
+        return redirect(url_for('auth.delete_user/{user_id}'))

@@ -4,10 +4,13 @@
     {% for video in video_list %}
         <div>
             <p>
-                channel: {{ video.channel.name }}
+                video_id: {{ video.video_id }}
             </p>
             <p>
-                category: {{ video.category.value }}
+                channel: {{ video.channel }}
+            </p>
+            <p>
+                category: {{ video.category }}
             </p>
             <p>
                 name: {{ video.name }}
@@ -21,16 +24,15 @@
             <p>
                 comments: {{ video.comments }}
             </p>
-
             {% if video.category == VideoType.MATCH %}
                 <p>
-                    tournament: {{ video.tournament.name }}
+                    tournament: {{ video.tournament}}
                 </p>
                 <p>
-                    team_one: {{ video.team_one.name }}
+                    team_one: {{ video.team_one }}
                 </p>
                 <p>
-                    team_two: {{ video.team_two.name }}
+                    team_two: {{ video.team_two}}
                 </p>
                 <p>
                     date_of_recording: {{ video.date_of_recording }}
@@ -50,6 +52,7 @@
                     guests: {{ video.guests }}
                 </p>
             {% endif %}
+            <br>
         </div>
     {% endfor %}
 {% endblock %}

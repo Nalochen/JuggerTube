@@ -65,7 +65,7 @@ def edit_team(team_id):
         return render_template('post-team.html', form=form)
 
 
-@team_blueprint.route('/delete/<int:team_id>', methods=['POST'])
+@team_blueprint.route('/delete/<int:team_id>', methods=['GET'])
 @login_required
 def delete_team(team_id):
     team = Team.query.filter_by(id=team_id).first()

@@ -5,11 +5,11 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_wtf import CSRFProtect
 
-from juggertube.endpoints.channels import channel_blueprint
 from juggertube.init_db import init_db
 from juggertube.models import db, User
 
-from juggertube.endpoints.general import general_blueprint
+from juggertube.endpoints.channels.channel_blueprint import channel_blueprint
+from juggertube.endpoints.general.general_blueprint import general_blueprint
 from juggertube.endpoints.videos.video_blueprint import video_blueprint
 from juggertube.endpoints.teams.team_blueprint import team_blueprint
 from juggertube.templates.tournaments.tournament_blueprint import tournament_blueprint

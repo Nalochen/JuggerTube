@@ -12,6 +12,6 @@ def init_db(app):
         #tournaments.init_tournaments(app)
         #users.init_users(app)
         #channels.init_channels(app)
-        videos.init_videos(app)
+        #videos.init_videos(app)
 
         db.session.commit()

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>Team</h1>
+    <form method="POST">
+		{{ form.hidden_tag() }}
+		<div>
+			{{ form.name.label() }}
+			{{ form.name() }}
+			<br/>
+
+			{{ form.city.label() }}
+			{{ form.city() }}
+			<br/>
+
+			{{ form.country.label() }}
+			{{ form.country() }}
+			<br/>
+		</div>
+		<div>
+			<br/>
+			{{ form.submit() }}
+		</div>
+    </form>
+{% endblock %}

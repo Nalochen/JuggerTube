@@ -46,7 +46,7 @@ def edit_team(team_id):
 
         if request.method == 'GET':
             response = team_api_blueprint.edit_team(team_id)
-            data = response.get_json
+            data = response.get_json()
 
             form.name.data = data['name']
             form.country.data = data['country']

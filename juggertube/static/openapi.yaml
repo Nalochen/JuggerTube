@@ -59,7 +59,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /teams/edit/{teamId}:
+  /api/teams/edit/{teamId}:
     post:
       tags:
         - team
@@ -110,7 +110,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /teams/delete/{teamId}:
+  /api/teams/delete/{teamId}:
     get:
       tags:
         - team

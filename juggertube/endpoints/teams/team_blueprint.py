@@ -41,45 +41,40 @@ def add_team():
 @team_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
 @login_required
 def edit_team(team_id):
-    team = Team.query.filter_by(id=team_id).first()
-    form = TeamForm(team=request.form)
+    with current_app.test_client() as client:
+        form = TeamForm(team=request.form)
 
-    if request.method == 'GET':
-        form.name.data = team.name
-        form.country.data = team.country
-        form.city.data = team.city
+        if request.method == 'GET':
+            response = team_api_blueprint.edit_team(team_id)
+            data = response.get_json
 
-    if form.validate_on_submit():
-        team.name = form.name.data
-        team.country = form.country.data
-        team.city = form.city.data
+            form.name.data = data['name']
+            form.country.data = data['country']
+            form.city.data = data['city']
 
-        try:
-            db.session.commit()
-            return redirect(url_for('general.index'))
-        except Exception as e:
-            flash('Error! Looks like your inputs are not valid, please check if '
-                  'you wrote something in every input field', str(e))
+            return render_template('post-team.html', form=form)
 
-    if request.method == 'GET':
-        return render_template('post-team.html', form=form)
+        if request.method == 'POST':
+            if form.validate_on_submit():
+                post_data = {
+                    "name": form.name.data,
+                    "country": form.country.data,
+                    "city": form.city.data
+                }
+
+                response = client.post(f'/api/teams/edit/{team_id}', query_string=post_data)
+                data = response.get_json()
+                return data
+            else:
+                return render_template('post-team.html', form=form)
 
 
 @team_blueprint.route('/delete/<int:team_id>', methods=['GET'])
 @login_required
 def delete_team(team_id):
-    team = Team.query.filter_by(id=team_id).first()
-
-    name = team.name
-
-    try:
-        db.session.delete(team)
-        db.session.commit()
-        flash(f'Team {name} deleted')
-    except Exception as e:
-        flash('something went wrong please try again', str(e))
-
-    return redirect(url_for('general.index'))
+    response = team_api_blueprint.delete_team(team_id)
+    deleted_team = response.get_json
+    return deleted_team
 
 
 @team_blueprint.route('/', methods=['GET'])

@@ -34,34 +34,30 @@ def add_team():
             return jsonify(team), 200
 
         except Exception as e:
-            return jsonify('an error occured please try again'), 400
+            return jsonify(str(e)), 400
 
 
 @team_api_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
 @login_required
 def edit_team(team_id):
     team = Team.query.filter_by(id=team_id).first()
-    form = TeamForm(team=request.form)
 
     if request.method == 'GET':
-        form.name.data = team.name
-        form.country.data = team.country
-        form.city.data = team.city
+        return jsonify(serialize_team(team))
 
-    if form.validate_on_submit():
-        team.name = form.name.data
-        team.country = form.country.data
-        team.city = form.city.data
+    if request.method == 'POST':
+        post_data = request.args
+        team.name = post_data["name"]
+        team.city = post_data["city"]
+        team.country = post_data["country"]
 
         try:
             db.session.commit()
-            return redirect(url_for('general.index'))
-        except Exception as e:
-            flash('Error! Looks like your inputs are not valid, please check if '
-                  'you wrote something in every input field', str(e))
 
-    if request.method == 'GET':
-        return render_template('post-team.html', form=form)
+            edited_team = serialize_team(Team.query.filter_by(id=team.id).first())
+            return jsonify(edited_team), 200
+        except Exception as e:
+            return jsonify(str(e)), 400
 
 
 @team_api_blueprint.route('/delete/<int:team_id>', methods=['GET'])
@@ -74,11 +70,11 @@ def delete_team(team_id):
     try:
         db.session.delete(team)
         db.session.commit()
-        flash(f'Team {name} deleted')
-    except Exception as e:
-        flash('something went wrong please try again', str(e))
 
-    return redirect(url_for('general.index'))
+        return jsonify(f'Team {name} deleted'), 200
+
+    except Exception as e:
+        return jsonify(str(e)), 400
 
 
 @team_api_blueprint.route('/', methods=['GET'])

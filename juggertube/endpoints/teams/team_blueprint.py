@@ -22,21 +22,16 @@ def serialize_team(team):
 @login_required
 def add_team():
     form = TeamForm(request.form)
+
+    if request.method == 'GET':
+        return render_template('post-team.html', form=form)
+
     if request.method == 'POST':
         name = form.name.data
         country = form.country.data
         city = form.city.data
-        new_team = Team(name=name, country=country, city=city)
-        try:
-            db.session.add(new_team)
-            db.session.commit()
-            return redirect(url_for('general.index'))
-        except Exception as e:
-            flash('Error! looks like there was a problem... please try agin!', str(e))
-            return render_template('post-channel.html', form=form)
 
-    if request.method == 'GET':
-        return render_template('post-team.html', form=form)
+        return team_api_blueprint.add_team(name, country, city)
 
 
 @team_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])

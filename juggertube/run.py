@@ -3,7 +3,6 @@ import os
 from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
-from flask_wtf import CSRFProtect
 
 from juggertube.init_db import init_db
 from juggertube.models import db, User
@@ -28,8 +27,6 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SECRET_KEY'] = 'kt4vq7bbofhbnp00jum6at717efdn9vajc6r35rvn5ime8tgwj'
     app.config['SPEC_FORMAT'] = 'yaml'
-
-    csrf = CSRFProtect(app)
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'

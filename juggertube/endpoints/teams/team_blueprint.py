@@ -1,5 +1,5 @@
-from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
-from flask_login import login_required, current_user
+from flask import Blueprint, request, url_for, redirect, render_template, current_app, flash
+from flask_login import login_required
 
 from juggertube.api import team_api_blueprint
 from juggertube.models import Team, db
@@ -21,17 +21,21 @@ def serialize_team(team):
 @team_blueprint.route('/add', methods=['GET', 'POST'])
 @login_required
 def add_team():
-    form = TeamForm(request.form)
+    with current_app.test_client() as client:
+        form = TeamForm(request.form)
 
-    if request.method == 'GET':
-        return render_template('post-team.html', form=form)
+        if request.method == 'GET':
+            return render_template('post-team.html', form=form)
 
-    if request.method == 'POST':
-        name = form.name.data
-        country = form.country.data
-        city = form.city.data
-
-        return team_api_blueprint.add_team(name, country, city)
+        if request.method == 'POST':
+            post_data = {
+                "name": form.name.data,
+                "country": form.country.data,
+                "city": form.city.data
+            }
+            response = client.post('/api/teams/add', query_string=post_data)
+            data = response.get_json()
+            return data
 
 
 @team_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])

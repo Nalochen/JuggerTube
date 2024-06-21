@@ -18,18 +18,23 @@ def serialize_team(team):
 
 
 @team_api_blueprint.route('/add', methods=['POST'])
-@login_required
-def add_team(name, country, city):
-    new_team = Team(name=name, country=country, city=city)
-    try:
-        db.session.add(new_team)
-        db.session.commit()
+def add_team():
+    post_data = request.args
+    new_team = Team(name=post_data["name"], country=post_data["country"], city=post_data["city"])
 
-        team = serialize_team(Team.query(new_team))
-        return jsonify(team), 200
+    existing_team = Team.query.filter_by(name=new_team.name).first()
+    if existing_team:
+        return jsonify(serialize_team(existing_team), 'team already exists'), 400
+    else:
+        try:
+            db.session.add(new_team)
+            db.session.commit()
 
-    except Exception as e:
-        return jsonify(e), 400
+            team = serialize_team(Team.query.filter_by(name=new_team.name).first())
+            return jsonify(team), 200
+
+        except Exception as e:
+            return jsonify('an error occured please try again'), 400
 
 
 @team_api_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])

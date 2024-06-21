@@ -14,6 +14,7 @@ from juggertube.endpoints.videos.video_blueprint import video_blueprint
 from juggertube.endpoints.teams.team_blueprint import team_blueprint
 from juggertube.endpoints.tournaments.tournament_blueprint import tournament_blueprint
 from juggertube.endpoints.auth.auth_blueprint import auth_blueprint
+from juggertube.api.team_api_blueprint import team_api_blueprint
 
 user = 'macromedia'
 password = 'macromedia'
@@ -51,6 +52,7 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     app.register_blueprint(tournament_blueprint, url_prefix="/tournaments")
     app.register_blueprint(channel_blueprint, url_prefix="/channels")
     app.register_blueprint(auth_blueprint, url_prefix="/auth")
+    app.register_blueprint(team_api_blueprint, url_prefix="/api/teams")
 
     if __name__ == '__main__':
         base_dir = os.path.dirname(os.path.abspath(__file__))

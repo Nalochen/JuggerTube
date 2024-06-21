@@ -1,12 +1,11 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 from flask_login import login_required, current_user
 
-from juggertube.api import team_api_blueprint
 from juggertube.models import Team, db
 
 from juggertube.webforms import TeamForm
 
-team_blueprint = Blueprint('teams', __name__, template_folder='templates')
+team_api_blueprint = Blueprint('api/teams', __name__)
 
 
 def serialize_team(team):
@@ -18,7 +17,7 @@ def serialize_team(team):
     }
 
 
-@team_blueprint.route('/add', methods=['GET', 'POST'])
+@team_api_blueprint.route('/add', methods=['GET', 'POST'])
 @login_required
 def add_team():
     form = TeamForm(request.form)
@@ -39,7 +38,7 @@ def add_team():
         return render_template('post-team.html', form=form)
 
 
-@team_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
+@team_api_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
 @login_required
 def edit_team(team_id):
     team = Team.query.filter_by(id=team_id).first()
@@ -66,7 +65,7 @@ def edit_team(team_id):
         return render_template('post-team.html', form=form)
 
 
-@team_blueprint.route('/delete/<int:team_id>', methods=['GET'])
+@team_api_blueprint.route('/delete/<int:team_id>', methods=['GET'])
 @login_required
 def delete_team(team_id):
     team = Team.query.filter_by(id=team_id).first()
@@ -83,8 +82,8 @@ def delete_team(team_id):
     return redirect(url_for('general.index'))
 
 
-@team_blueprint.route('/', methods=['GET'])
+@team_api_blueprint.route('/', methods=['GET'])
 def get_teams():
-    response = team_api_blueprint.get_teams()
-    teams_list = response.get_json()
-    return render_template('show-teams.html', team_list=teams_list)
+    teams = Team.query.all()
+    team_list = [serialize_team(team) for team in teams]
+    return jsonify(team_list)

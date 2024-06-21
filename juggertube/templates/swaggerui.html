@@ -13,6 +13,22 @@
     <div id="swagger-ui"></div>
     <script src="{{ url_for('static', filename='js/swagger-ui-bundle.js') }}"> </script>
     <script src="{{ url_for('static', filename='js/swagger-ui-standalone-preset') }}.js"> </script>
-    <script src="{{ url_for('static', filename='js/swagger-initializer.js') }}"> </script>
+    <script>
+      window.onload = function() {
+      window.ui = SwaggerUIBundle({
+        url: "{{ url_for('static', filename='openapi.yaml') }}",
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout"
+      });
+    };
+    </script>
   </body>
 </html>

@@ -45,7 +45,7 @@ def edit_tournament(tournament_id):
             form.jtr_link.data = data['jtr_link']
             form.tugeny_link.data = data['tugeny_link']
 
-            return render_template('post-tournaments.html', form=form)
+            return render_template('post-tournament.html', form=form)
 
         if request.method == 'POST':
             if form.validate_on_submit():
@@ -60,7 +60,7 @@ def edit_tournament(tournament_id):
                 data = response.get_json()
                 return data
             else:
-                return render_template('post-tournaments.html', form=form)
+                return render_template('post-tournament.html', form=form)
 
 
 @tournament_blueprint.route('/delete/<int:tournament_id>', methods=['GET'])

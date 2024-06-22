@@ -15,34 +15,23 @@ def add_tournament():
         'city': post_data["city"]
     }
 
-    print(1)
-
     if post_data["jtrLink"] is not None:
-        print(10)
         tournament_data['jtr_link'] = post_data["jtrLink"]
 
     if post_data["tugenyLink"] is not None:
-        print(11)
         tournament_data['tugeny_link'] = post_data["tugenyLink"]
 
-    print(2)
     new_tournament = Tournament(**tournament_data)
 
-    print(3)
     existing_tournament = Tournament.query.filter_by(name=new_tournament.name).first()
-    print(4)
     if existing_tournament:
-        print(40)
         return jsonify(serialize_tournament(existing_tournament), 'tournament already exists'), 400
     else:
         try:
-            print(5)
             db.session.add(new_tournament)
             db.session.commit()
 
-            print(6)
-            tournament = serialize_tournament(Team.query.filter_by(name=new_tournament.name).first())
-            print(7)
+            tournament = serialize_tournament(Tournament.query.filter_by(name=new_tournament.name).first())
             return jsonify(tournament), 200
 
         except Exception as e:
@@ -55,14 +44,28 @@ def edit_tournament(tournament_id):
     tournament = Tournament.query.filter_by(id=tournament_id).first()
 
     if request.method == 'GET':
+        if not tournament:
+            return jsonify('Tournament not found'), 404
         return jsonify(serialize_tournament(tournament))
 
     if request.method == 'POST':
         post_data = request.args
+
+        if not tournament:
+            return jsonify('Tournament not found'), 404
+
         tournament.name = post_data["name"]
         tournament.city = post_data["city"]
-        tournament.jtr_link = post_data["jtr_link"]
-        tournament.tugeny_link = post_data["tugeny_link"]
+
+        if post_data["jtrLink"] is not None:
+            tournament.jtr_link = post_data["jtrLink"]
+        else:
+            tournament.jtr_link = None
+
+        if post_data["tugenyLink"] is not None:
+            tournament.tugeny_link = post_data["tugenyLink"]
+        else:
+            tournament.tugeny_link = None
 
         try:
             db.session.commit()

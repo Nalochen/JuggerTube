@@ -1,20 +1,12 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
 from flask_login import login_required, current_user
 
+from juggertube.api.serializing import serialize_team
 from juggertube.models import Team, db
 
 from juggertube.webforms import TeamForm
 
 team_api_blueprint = Blueprint('api/teams', __name__)
-
-
-def serialize_team(team):
-    return {
-        'team_id': team.id,
-        'name': team.name,
-        'country': team.country,
-        'city': team.city,
-    }
 
 
 @team_api_blueprint.route('/add', methods=['POST'])

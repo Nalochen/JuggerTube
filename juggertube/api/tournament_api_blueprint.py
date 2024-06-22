@@ -1,19 +1,10 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
 
+from juggertube.api.serializing import serialize_tournament
 from juggertube.models import Team, db, Tournament
 
 tournament_api_blueprint = Blueprint('api/teams', __name__)
-
-
-def serialize_tournament(tournament):
-    return {
-        'tournament_id': tournament.id,
-        'name': tournament.name,
-        'city': tournament.city,
-        'jtr_link': tournament.jtr_link,
-        'tugeny_link': tournament.tugeny_link,
-    }
 
 
 @tournament_api_blueprint.route('/add', methods=['POST'])
@@ -37,7 +28,7 @@ def add_tournament():
             return jsonify(str(e)), 400
 
 
-@tournament_api_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
+@tournament_api_blueprint.route('/edit/<int:tournament_id>', methods=['GET', 'POST'])
 @login_required
 def edit_tournament(tournament_id):
     tournament = Tournament.query.filter_by(id=tournament_id).first()
@@ -61,7 +52,7 @@ def edit_tournament(tournament_id):
             return jsonify(str(e)), 400
 
 
-@tournament_api_blueprint.route('/delete/<int:team_id>', methods=['GET'])
+@tournament_api_blueprint.route('/delete/<int:tournament_id>', methods=['GET'])
 @login_required
 def delete_tournament(tournament_id):
     tournament = Tournament.query.filter_by(id=tournament_id).first()

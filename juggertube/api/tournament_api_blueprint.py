@@ -10,19 +10,39 @@ tournament_api_blueprint = Blueprint('api/tournaments', __name__)
 @tournament_api_blueprint.route('/add', methods=['POST'])
 def add_tournament():
     post_data = request.args
-    print(1)
-    new_tournament = Tournament(name=post_data["name"], city=post_data["city"], jtr_link=post_data["jtr_link"],
-                                tugeny_link=post_data["tugrny_link"])
+    tournament_data = {
+        'name': post_data["name"],
+        'city': post_data["city"]
+    }
 
+    print(1)
+
+    if post_data["jtrLink"] is not None:
+        print(10)
+        tournament_data['jtr_link'] = post_data["jtrLink"]
+
+    if post_data["tugenyLink"] is not None:
+        print(11)
+        tournament_data['tugeny_link'] = post_data["tugenyLink"]
+
+    print(2)
+    new_tournament = Tournament(**tournament_data)
+
+    print(3)
     existing_tournament = Tournament.query.filter_by(name=new_tournament.name).first()
+    print(4)
     if existing_tournament:
+        print(40)
         return jsonify(serialize_tournament(existing_tournament), 'tournament already exists'), 400
     else:
         try:
+            print(5)
             db.session.add(new_tournament)
             db.session.commit()
 
+            print(6)
             tournament = serialize_tournament(Team.query.filter_by(name=new_tournament.name).first())
+            print(7)
             return jsonify(tournament), 200
 
         except Exception as e:

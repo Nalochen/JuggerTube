@@ -53,3 +53,11 @@ def serialize_user(user):
         'email': user.email,
         'teams': teams
     }
+
+
+def serialize_choices(choice):
+    choice_id, name = choice
+    return {
+        'choice_id': choice_id,
+        'name': name
+    }

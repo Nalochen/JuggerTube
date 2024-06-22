@@ -1,7 +1,7 @@
 from flask import Blueprint, request, url_for, redirect, render_template, flash, current_app
 from flask_login import login_required
 
-from juggertube.api.tournament_api_blueprint import tournament_api_blueprint
+from juggertube.api import tournament_api_blueprint
 from juggertube.models import Tournament, db
 
 from juggertube.webforms import TournamentForm

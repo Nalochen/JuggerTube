@@ -1,6 +1,6 @@
 from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash, current_app
 
-from juggertube.api.auth_api_blueprint import auth_api_blueprint
+from juggertube.api import auth_api_blueprint
 from juggertube.models import db, User, Team
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import login_required, logout_user, login_user
@@ -8,6 +8,12 @@ from flask_login import login_required, logout_user, login_user
 from juggertube.webforms import RegisterForm, LoginForm
 
 auth_blueprint = Blueprint('auth', __name__, template_folder='templates')
+
+
+@auth_blueprint.route('/', methods=['GET'])
+def get_users():
+    response = auth_api_blueprint.get_users()
+    return response
 
 
 @auth_blueprint.route('/register', methods=['GET', 'POST'])
@@ -29,7 +35,7 @@ def register():
                 "team": form.team.data
             }
 
-            response = client.post('/api/register', query_string=post_data)
+            response = client.post('/api/auth/register', query_string=post_data)
             data = response.get_json()
             return data
 
@@ -42,17 +48,17 @@ def login():
             return render_template('login.html', form=form)
 
         if request.method == 'POST':
+            next_page = request.args.get('next')
             post_data = {
                 "username": form.username.data,
-                "password_hash": generate_password_hash(form.password.data, method='scrypt')
+                "password": form.password.data #ask prof at thursday!
             }
 
-            response = client.post('/api/register', query_string=post_data)
+            response = client.post('/api/auth/login', query_string=post_data)
             data = response.get_json()
 
             if response.status_code == 200:
                 flash(data, 'info')
-                next_page = request.args.get('next')
                 return redirect(next_page) if next_page else redirect(url_for('general.index'))
             else:
                 flash(data, 'info')
@@ -71,7 +77,7 @@ def edit_user(user_id):
 
             form.team.choices = data
 
-            response = auth_api_blueprint.edit_usr(user_id)
+            response = auth_api_blueprint.edit_user(user_id)
             data = response.get_json()
 
             form.username.data = data["username"]
@@ -106,8 +112,8 @@ def logout():
     return redirect(url_for('general.index'))
 
 
-@auth_blueprint.route('/delete/<int:user_id>', methods=['POST'])
+@auth_blueprint.route('/delete/<int:user_id>', methods=['GET'])
 def delete_user(user_id):
     response = auth_api_blueprint.delete_user(user_id)
-    deleted_user = response.get_json
+    deleted_user = response[0].get_json()
     return deleted_user

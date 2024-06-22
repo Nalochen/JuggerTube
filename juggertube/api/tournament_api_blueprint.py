@@ -4,12 +4,13 @@ from flask_login import login_required
 from juggertube.api.serializing import serialize_tournament
 from juggertube.models import Team, db, Tournament
 
-tournament_api_blueprint = Blueprint('api/teams', __name__)
+tournament_api_blueprint = Blueprint('api/tournaments', __name__)
 
 
 @tournament_api_blueprint.route('/add', methods=['POST'])
 def add_tournament():
     post_data = request.args
+    print(1)
     new_tournament = Tournament(name=post_data["name"], city=post_data["city"], jtr_link=post_data["jtr_link"],
                                 tugeny_link=post_data["tugrny_link"])
 

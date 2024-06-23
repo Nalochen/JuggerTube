@@ -2,7 +2,6 @@ from flask import Blueprint, request, url_for, redirect, render_template, flash,
 from flask_login import login_required
 
 from juggertube.api import tournament_api_blueprint
-from juggertube.models import Tournament, db
 
 from juggertube.webforms import TournamentForm
 
@@ -67,7 +66,7 @@ def edit_tournament(tournament_id):
 @login_required
 def delete_tournament(tournament_id):
     response = tournament_api_blueprint.delete_tournament(tournament_id)
-    deleted_tournament = response.get_json
+    deleted_tournament = response[0]
     return deleted_tournament
 
 

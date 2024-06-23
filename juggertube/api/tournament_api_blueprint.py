@@ -11,18 +11,23 @@ tournament_api_blueprint = Blueprint('api/tournaments', __name__)
 def add_tournament():
     post_data = request.args
     tournament_data = {
-        'name': post_data["name"],
-        'city': post_data["city"]
+        'name': post_data.get("name"),
+        'city': post_data.get("city")
     }
 
-    if post_data["jtrLink"] is not None:
-        tournament_data['jtr_link'] = post_data["jtrLink"]
+    if not tournament_data['name'] or not tournament_data['city']:
+        return jsonify({'error': 'Name and city are required'}), 400
 
-    if post_data["tugenyLink"] is not None:
-        tournament_data['tugeny_link'] = post_data["tugenyLink"]
+    jtr_link = post_data.get("jtrLink")
+    tugeny_link = post_data.get("tugenyLink")
+
+    if jtr_link:
+        tournament_data['jtr_link'] = jtr_link
+
+    if tugeny_link:
+        tournament_data['tugeny_link'] = tugeny_link
 
     new_tournament = Tournament(**tournament_data)
-
     existing_tournament = Tournament.query.filter_by(name=new_tournament.name).first()
     if existing_tournament:
         return jsonify(serialize_tournament(existing_tournament), 'tournament already exists'), 400
@@ -54,16 +59,25 @@ def edit_tournament(tournament_id):
         if not tournament:
             return jsonify('Tournament not found'), 404
 
-        tournament.name = post_data["name"]
-        tournament.city = post_data["city"]
+        name = post_data.get("name")
+        city = post_data.get("city")
 
-        if post_data["jtrLink"] is not None:
-            tournament.jtr_link = post_data["jtrLink"]
+        if not name or not city:
+            return jsonify({'error': 'Name and city are required'}), 400
+
+        tournament.name = name
+        tournament.city = city
+
+        jtr_link = post_data.get("jtrLink")
+        tugeny_link = post_data.get("tugenyLink")
+
+        if jtr_link:
+            tournament.jtr_link = jtr_link
         else:
             tournament.jtr_link = None
 
-        if post_data["tugenyLink"] is not None:
-            tournament.tugeny_link = post_data["tugenyLink"]
+        if tugeny_link:
+            tournament.tugeny_link = tugeny_link
         else:
             tournament.tugeny_link = None
 
@@ -80,6 +94,9 @@ def edit_tournament(tournament_id):
 @login_required
 def delete_tournament(tournament_id):
     tournament = Tournament.query.filter_by(id=tournament_id).first()
+
+    if not tournament:
+        return jsonify('Tournament not found'), 404
 
     name = tournament.name
 

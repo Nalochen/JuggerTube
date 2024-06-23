@@ -1,8 +1,10 @@
 def serialize_channel(channel):
+    owners = [owner.username for owner in channel.owners]
     return {
         'channel_id': channel.id,
         'name': channel.name,
         'link': channel.link,
+        'owners': owners
     }
 
 

@@ -60,9 +60,12 @@ def login():
 
         if user and check_password_hash(user.password_hash, password):
             login_user(user)
-            flash('login_successful', 'info')
+            flash('login successful', 'info')
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('general.index'))
+        else:
+            flash('login seems to not have worked, please try again', 'info')
+            return render_template('login.html', form=form)
 
 
 @auth_blueprint.route('edit/<int:user_id>', methods=['GET', 'POST'])

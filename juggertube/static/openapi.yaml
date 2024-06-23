@@ -304,6 +304,17 @@ paths:
           required: true
           schema:
             type: string
+        - name: owner
+          in: query
+          description: List of owner IDs (comma-separated) or a single owner ID
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+            example: [1,2,3]
+            style: form
+            explode: false
       responses:
         '200':
           description: successful operation
@@ -336,6 +347,17 @@ paths:
           description: Link to Channel Overview
           schema:
             type: string
+        - name: owner
+          in: query
+          description: List of owner IDs (comma-separated) or a single owner ID
+          required: false
+          schema:
+            type: array
+            items:
+              type: integer
+            example: [ 1,2,3 ]
+            style: form
+            explode: false
       requestBody:
         content:
           application/octet-stream:

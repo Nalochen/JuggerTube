@@ -14,13 +14,16 @@
             </p>
 
             {% if tournament.jtr_link %}
+                <p>jtr_link: </p>
                 <a href="{{ tournament.jtr_link }}">
-                    jtr_link: {{ tournament.jtr_link }}
+                    {{ tournament.jtr_link }}
                 </a>
             {% endif %}
             {% if tournament.tugeny_link %}
+                <br>
+                <p>tugeny_link: </p>
                 <a href="{{ tournament.tugeny_link }}">
-                    tugeny_link: {{ tournament.tugeny_link }}
+                    {{ tournament.tugeny_link }}
                 </a>
             {% endif %}
         </div>

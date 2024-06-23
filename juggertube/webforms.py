@@ -1,6 +1,5 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, TextAreaField, DateField, EmailField
-from wtforms.fields import choices
 from wtforms.fields.choices import SelectField
 from wtforms.validators import DataRequired, EqualTo, Optional
 
@@ -51,7 +50,7 @@ class VideoForm(FlaskForm):
 class TournamentForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
     city = StringField("City", validators=[DataRequired()])
-    jtr_link = StringField("JTRLink", validators=[DataRequired()])
+    jtr_link = StringField("JTRLink")
     tugeny_link = StringField("Tugeny Link")
     submit = SubmitField("Submit")
 

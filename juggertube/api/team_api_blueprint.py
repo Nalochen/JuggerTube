@@ -12,7 +12,14 @@ team_api_blueprint = Blueprint('api/teams', __name__)
 @team_api_blueprint.route('/add', methods=['POST'])
 def add_team():
     post_data = request.args
-    new_team = Team(name=post_data["name"], country=post_data["country"], city=post_data["city"])
+    name = post_data.get("name")
+    country = post_data.get("country")
+    city = post_data.get("city")
+
+    if not name or not country or not city:
+        return jsonify({'error': 'Name, Country and City are required'}), 400
+
+    new_team = Team(name=name, country=country, city=city)
 
     existing_team = Team.query.filter_by(name=new_team.name).first()
     if existing_team:
@@ -39,9 +46,16 @@ def edit_team(team_id):
 
     if request.method == 'POST':
         post_data = request.args
-        team.name = post_data["name"]
-        team.city = post_data["city"]
-        team.country = post_data["country"]
+        name = post_data.get("name")
+        city = post_data.get("city")
+        country = post_data.get("country")
+
+        if not name or not country or not city:
+            return jsonify({'error': 'Name, Country and City are required'}), 400
+
+        team.name = name
+        team.city = city
+        team.country = country
 
         try:
             db.session.commit()
@@ -56,6 +70,9 @@ def edit_team(team_id):
 @login_required
 def delete_team(team_id):
     team = Team.query.filter_by(id=team_id).first()
+
+    if not team:
+        return jsonify('Team not found'), 404
 
     name = team.name
 

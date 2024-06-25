@@ -1,15 +1,14 @@
-from flask import Blueprint, request, url_for, redirect, render_template, jsonify, flash
-from flask_login import login_required, current_user
+from flask import Blueprint, request, jsonify
+from flask_login import login_required
 
 from juggertube.api.serializing import serialize_team
 from juggertube.models import Team, db
-
-from juggertube.webforms import TeamForm
 
 team_api_blueprint = Blueprint('api/teams', __name__)
 
 
 @team_api_blueprint.route('/add', methods=['POST'])
+@login_required
 def add_team():
     post_data = request.args
     name = post_data.get("name")
@@ -41,8 +40,11 @@ def add_team():
 def edit_team(team_id):
     team = Team.query.filter_by(id=team_id).first()
 
+    if not team:
+        return jsonify({'error': 'Team not found'}), 404
+
     if request.method == 'GET':
-        return jsonify(serialize_team(team))
+        return jsonify(serialize_team(team)), 200
 
     if request.method == 'POST':
         post_data = request.args

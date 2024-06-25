@@ -7,19 +7,19 @@ from flask_migrate import Migrate
 from juggertube.init_db import init_db
 from juggertube.models import db, User
 
-from juggertube.endpoints.channels.channel_blueprint import channel_blueprint
-from juggertube.endpoints.general.general_blueprint import general_blueprint
-from juggertube.endpoints.videos.video_blueprint import video_blueprint
-from juggertube.endpoints.teams.team_blueprint import team_blueprint
-from juggertube.endpoints.tournaments.tournament_blueprint import tournament_blueprint
-from juggertube.endpoints.auth.auth_blueprint import auth_blueprint
+from juggertube.frontend.channels.channel_blueprint import channel_blueprint
+from juggertube.frontend.general.general_blueprint import general_blueprint
+from juggertube.frontend.videos.video_blueprint import video_blueprint
+from juggertube.frontend.teams.team_blueprint import team_blueprint
+from juggertube.frontend.tournaments.tournament_blueprint import tournament_blueprint
+from juggertube.frontend.auth.auth_blueprint import auth_blueprint
 from juggertube.api.team_api_blueprint import team_api_blueprint
 from juggertube.api.video_api_blueprint import video_api_blueprint
 from juggertube.api.channel_api_blueprint import channel_api_blueprint
 from juggertube.api.tournament_api_blueprint import tournament_api_blueprint
 
-user = 'macromedia'
-password = 'macromedia'
+user = 'juggertube'
+password = '6dr497820t~s,.-zunDTHEVRTrwjiocüt'
 host = 'localhost'
 database = 'JuggerTube'
 

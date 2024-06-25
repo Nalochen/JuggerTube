@@ -8,6 +8,7 @@ tournament_api_blueprint = Blueprint('api/tournaments', __name__)
 
 
 @tournament_api_blueprint.route('/add', methods=['POST'])
+@login_required
 def add_tournament():
     post_data = request.args
     tournament_data = {

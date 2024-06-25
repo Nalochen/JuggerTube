@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash
 
-from juggertube.game_system_enum import GameSystem
+from juggertube.enums.game_system_enum import GameSystem
 from juggertube.video_type_enum import VideoType
 
 db = SQLAlchemy()

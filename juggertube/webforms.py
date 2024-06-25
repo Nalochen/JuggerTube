@@ -3,7 +3,7 @@ from wtforms import StringField, SubmitField, PasswordField, TextAreaField, Date
 from wtforms.fields.choices import SelectField
 from wtforms.validators import DataRequired, EqualTo, Optional
 
-from juggertube.game_system_enum import GameSystem
+from juggertube.enums.game_system_enum import GameSystem
 from juggertube.video_type_enum import VideoType
 
 

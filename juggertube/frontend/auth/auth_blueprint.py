@@ -9,13 +9,6 @@ from juggertube.webforms import RegisterForm, LoginForm
 auth_blueprint = Blueprint('auth', __name__, template_folder='templates')
 
 
-@auth_blueprint.route('/', methods=['GET'])
-def get_users():
-    users = User.query.all()
-    user_list = [serialize_user(user) for user in users]
-    return jsonify(user_list)
-
-
 @auth_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm(request.form)

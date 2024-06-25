@@ -3,9 +3,8 @@ from datetime import datetime
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
 
-from juggertube.api.serializing import serialize_video, serialize_team, serialize_tournament, serialize_channel, \
-    serialize_choices
-from juggertube.game_system_enum import GameSystem
+from juggertube.api.serializing import serialize_video, serialize_choices
+from juggertube.enums.game_system_enum import GameSystem
 from juggertube.models import Video, db, Team, Channel, Tournament
 from juggertube.video_type_enum import VideoType
 
@@ -13,6 +12,7 @@ video_api_blueprint = Blueprint('api/videos', __name__)
 
 
 @video_api_blueprint.route('/add', methods=['GET', 'POST'])
+@login_required
 def add_video():
     if request.method == 'POST':
         post_data = request.args

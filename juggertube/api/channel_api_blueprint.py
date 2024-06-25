@@ -10,6 +10,7 @@ channel_api_blueprint = Blueprint('api/channels', __name__)
 # Es soll in Zukunft auch möglich sein mehrere Owner einem Channel zuzuweisen, dieses Feature ist teilweise in der
 # Struktur schon vorbereitet, ist aber aus Zeit- und Komplexitätsgründen noch nicht umgesetzt worden
 @channel_api_blueprint.route('/add', methods=['POST'])
+@login_required
 def add_channel():
     post_data = request.args
     name = post_data.get('name')

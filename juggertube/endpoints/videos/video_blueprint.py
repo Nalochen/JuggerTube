@@ -68,13 +68,13 @@ def edit_video(video_id):
             form.name.data = data["name"]
             form.channel.data = data["channel"]
             form.link.data = data["link"]
-            form.category.data = data["category"].value
-            form.upload_date.data = data["upload_date"]
+            form.category.data = data["category"]
+            form.upload_date.data = data["upload_date"].strftime('%Y-%m-%dT23-00-00')
             form.tournament.data = data["tournament"]
             form.team_one.data = data["team_one"]
             form.team_two.data = data["team_two"]
-            form.date_of_recording.data = data["date_of_recording"] if data["date_of_recording"] else ''
-            form.game_system.data = data["game_system"].value if data["game_system"] else ''
+            form.date_of_recording.data = data["date_of_recording"].strftime('%Y-%m-%dT23-00-00') if data["date_of_recording"] else ''
+            form.game_system.data = data["game_system"] if data["game_system"] else ''
             form.weapon_type.data = data["weapon_type"]
             form.topic.data = data["topic"]
             form.guests.data = data["guests"]
@@ -113,7 +113,7 @@ def edit_video(video_id):
 @login_required
 def delete_video(video_id):
     response = video_api_blueprint.delete_video(video_id)
-    deleted_video = response.get_json
+    deleted_video = response[0]
     return deleted_video
 
 

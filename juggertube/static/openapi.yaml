@@ -698,7 +698,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /api/videos/edit/{videoId}:
+  /api/videos/edit/{video_id}:
     post:
       tags:
         - video

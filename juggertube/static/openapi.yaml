@@ -199,11 +199,13 @@ paths:
         - name: jtrLink
           in: query
           description: Link to JTR-Entry of Tournament (optional)
+          required: false
           schema:
             type: string
         - name: tugenyLink
           in: query
-          description: Link to Tugeny-Entry of Tournament 
+          description: Link to Tugeny-Entry of Tournament
+          required: false
           schema:
             type: string
       responses:
@@ -247,11 +249,13 @@ paths:
         - name: jtrLink
           in: query
           description: Link to JTR-Entry of Tournament
+          required: false
           schema:
             type: string
         - name: tugenyLink
           in: query
           description: Link to Tugeny-Entry of Tournament
+          required: false
           schema:
             type: string
       requestBody:
@@ -641,49 +645,58 @@ paths:
         - name: comments
           in: query
           description: ''
+          required: false
           schema:
             type: string
         - name: tournament_id
           in: query
           description: ID of Tournament where video took place
+          required: false
           schema:
             type: integer
             format: int64
         - name: team_one_id
           in: query
           description: ID of first Team shown in the video
+          required: false
           schema:
             type: integer
             format: int64
         - name: team_two_id
           in: query
           description: ID of second Team shown in the video
+          required: false
           schema:
             type: integer
             format: int64
         - name: date_of_recording
           in: query
           description: Date Video was recorded, format has to be like YYYY-mm-dd'T'hh-mm-ss
+          required: false
           schema:
             type: string
         - name: game_system
           in: query
           description: Game System of the Match
+          required: false
           schema:
             $ref: '#/components/schemas/GameSystem'
         - name: weapon_type
           in: query
           description: type of weapon mentioned in the video
+          required: false
           schema:
             type: string
         - name: topic
           in: query
           description: topic of the video
+          required: false
           schema:
             type: string
         - name: guests
           in: query
           description: guests in the video
+          required: false
           schema:
             type: string
       responses:
@@ -746,50 +759,59 @@ paths:
         - name: comments
           in: query
           description: ''
+          required: false
           schema:
             type: string
         - name: tournament_id
           in: query
           description: ID of Tournament where video took place
+          required: false
           schema:
             type: integer
             format: int64
         - name: team_one_id
           in: query
           description: ID of first Team shown in the video
+          required: false
           schema:
             type: integer
             format: int64
         - name: team_two_id
           in: query
           description: ID of second Team shown in the video
+          required: false
           schema:
             type: integer
             format: int64
         - name: date_of_recording
           in: query
           description: Date Video was recorded, format has to be like YYYY-mm-dd'T'hh-mm-ss
+          required: false
           schema:
             type: string
         - name: game_system
           in: query
           description: Game System of Match
+          required: false
           schema:
             type: string
             $ref: '#/components/schemas/GameSystem'
         - name: weapon_type
           in: query
           description: type of weapon mentioned in the video
+          required: false
           schema:
             type: string
         - name: topic
           in: query
           description: topic of the video
+          required: false
           schema:
             type: string
         - name: guests
           in: query
           description: guests in the video
+          required: false
           schema:
             type: string
       requestBody:

@@ -16,83 +16,79 @@ video_api_blueprint = Blueprint('api/videos', __name__)
 def add_video():
     if request.method == 'POST':
         post_data = request.args
-        video_data = {
-            'name': post_data.get('name'),
-            'channel_id': post_data.get('channel_id'),
-            'category': VideoType[post_data.get('category')],
-            'link': post_data.get('link'),
-            'upload_date': post_data.get('upload_date'),
-        }
+        try:
+            name = post_data.get('name')
+            channel_id = post_data.get('channel_id')
+            link = post_data.get('link')
+            category = post_data.get('category')
+            upload_date = post_data.get('upload_date')
+            comments = post_data.get('comments')
 
-        if (not video_data['name'] or not video_data['channel_id'] or not video_data['category']
-                or not video_data['link'] or not video_data['upload_date']):
-            return jsonify({'error': 'name, channel_id, category, link and uploadDate are required'}), 400
+            tournament_id = post_data.get('tournament_id')
+            team_one_id = post_data.get('team_one_id')
+            team_two_id = post_data.get('team_two_id')
+            date_of_recording = post_data.get('date_of_recording')
+            game_system = post_data.get('game_system')
+            weapon_type = post_data.get('weapon_type')
+            topic = post_data.get('topic')
+            guests = post_data.get('guests')
 
-        comments = post_data.get("comments")
-        tournament_id = post_data.get("tournament_id")
-        team_one_id = post_data.get("team_one_id")
-        team_two_id = post_data.get("team_two_id")
-        date_of_recording = post_data.get('date_of_recording')
-        weapon_type = post_data.get("weapon_type")
-        topic = post_data.get("topic")
-        guests = post_data.get("guests")
-        if post_data.get('game_system'):
-            video_data['game_system'] = GameSystem[post_data.get('game_system')]
+            if not name or not channel_id or not category or not link or not upload_date:
+                return jsonify({'error': 'Missing required parameters'}), 400
 
-        if video_data['category'] == VideoType.MATCH and not (tournament_id and team_one_id and team_two_id
-                                                              and date_of_recording and video_data['game_system']):
-            return jsonify({'error': 'When the Video is a Match, tournament_id, team_one_id, team_two_id, '
-                                     'date_of_recording and game_system are required'}), 400
-
-        if tournament_id:
-            video_data['tournament_id'] = tournament_id
-        if team_one_id:
-            team_one = Team.query.filter_by(id=team_one_id).first()
-            if not team_one:
-                return jsonify({'error': 'Team One does not exist'}), 400
-            video_data['team_one_id'] = team_one_id
-            video_data['team_one'] = team_one
-        if team_two_id:
-            team_two = Team.query.filter_by(id=team_two_id).first()
-            if not team_two:
-                return jsonify({'error': 'Team Two does not exist'}), 400
-            video_data['team_two_id'] = team_two_id
-            video_data['team_two'] = team_two
-        if date_of_recording:
-            video_data['date_of_recording'] = date_of_recording
-
-        if comments:
-            video_data['comments'] = comments
-        if weapon_type:
-            video_data['weapon_type'] = weapon_type
-        if topic:
-            video_data['topic'] = topic
-        if guests:
-            video_data['guests'] = guests
-
-        new_video = Video(**video_data)
-
-        existing_video = Video.query.filter_by(name=new_video.name).first()
-        if existing_video:
-            return jsonify(serialize_video(existing_video), 'video already exists'), 400
-        else:
             try:
-                db.session.add(new_video)
-                db.session.commit()
+                category = VideoType[category]
+            except KeyError:
+                return jsonify({'error': 'Invalid category'}), 400
 
-                video = Video.query.filter_by(name=new_video.name).first()
-                serialized_video = serialize_video(video)
-                return jsonify(serialized_video), 200
-            except Exception as e:
-                db.session.rollback()
-                return jsonify(str(e)), 400
+            if category == VideoType.MATCH and not (tournament_id and team_one_id and team_two_id and date_of_recording
+                                                    and game_system):
+                return jsonify({'error': 'Missing required parameters tournament_id, team_one_id, team_two_id, '
+                                         'date_of_recording and game_system for category = MATCH'}), 400
+
+            if game_system:
+                try:
+                    game_system = GameSystem[game_system]
+                except KeyError:
+                    return jsonify({'error': 'Invalid game_system'}), 400
+            else:
+                game_system = None
+
+            upload_date = datetime.strptime(upload_date, '%Y-%m-%dT%H-%M-%S')
+            date_of_recording = datetime.strptime(date_of_recording, '%Y-%m-%dT%H-%M-%S') \
+                if date_of_recording else None
+
+            new_video = Video(
+                name=name,
+                channel_id=channel_id,
+                category=category,
+                link=link,
+                upload_date=upload_date,
+                comments=comments if comments else None,
+                tournament_id=tournament_id if tournament_id else None,
+                team_one_id=team_one_id if team_one_id else None,
+                team_two_id=team_two_id if team_two_id else None,
+                date_of_recording=date_of_recording,
+                game_system=game_system,
+                weapon_type=weapon_type if weapon_type else None,
+                topic=topic if topic else None,
+                guests=guests if guests else None
+            )
+
+            db.session.add(new_video)
+            db.session.commit()
+
+            video = Video.query.filter_by(name=name).first()
+            return jsonify(serialize_video(video)), 200
+        except Exception as e:
+            db.session.rollback()
+            return jsonify(str(e)), 500
 
 
 @video_api_blueprint.route('/edit/<int:video_id>', methods=['GET', 'POST'])
 @login_required
 def edit_video(video_id):
     video = Video.query.filter_by(id=video_id).first()
-
     if not video:
         return jsonify({'error': 'video not found'}), 404
 
@@ -101,77 +97,72 @@ def edit_video(video_id):
 
     if request.method == 'POST':
         post_data = request.args
-        print(1)
-
-        if (not post_data.get('name') or not post_data.get('channel_id') or not post_data.get('category')
-                or not post_data.get('link') or not post_data.get('upload_date')):
-            return jsonify({'error': 'name, channel_id, category, link and uploadDate are required'}), 400
-
-        print(2)
-        video.name = post_data.get('name'),
-        video.channel_id = post_data.get('channel_id'),
-        video.category = VideoType[post_data.get('category')],
-        video.link = post_data.get('link'),
-        video.upload_date = post_data.get('upload_date'),
-        print(3)
-
-        if post_data.get('category') == VideoType.MATCH and not (post_data.get("tournament_id")
-                                                                 and post_data.get("team_one_id")
-                                                                 and post_data.get("team_two_id")
-                                                                 and post_data.get('date_of_recording')
-                                                                 and post_data.get('game_system')):
-            return jsonify({'error': 'When the Video is a Match, tournament_id, team_one_id, team_two_id, '
-                                     'date_of_recording and game_system are required'}), 400
-        print(4)
-
-        if post_data.get("tournament_id"):
-            print(5)
-            video.tournament_id = post_data.get("tournament_id")
-        if post_data.get("team_one_id"):
-            print(post_data.get("team_one_id"))
-            team_one = Team.query.filter_by(id=post_data.get("team_one_id")).first()
-            print(team_one)
-            if not team_one:
-                return jsonify({'error': 'Team One does not exist'}), 400
-            print(team_one)
-            video.team_one_id = post_data.get("team_one_id")
-            video.team_one = team_one
-        if post_data.get("team_two_id"):
-            print(7)
-            team_two = Team.query.filter_by(id=post_data.get("team_two_id")).first()
-            if not team_two:
-                return jsonify({'error': 'Team Two does not exist'}), 400
-            video.team_two_id = post_data.get("team_two_id")
-            video.team_two = team_two
-        if post_data.get('date_of_recording'):
-            print(8)
-            video.date_of_recording = post_data.get('date_of_recording')
-        if post_data.get('game_system'):
-            print(9)
-            video.game_system = GameSystem[post_data.get('game_system')]
-
-        if post_data.get("comments"):
-            print(10)
-            video.comments = post_data.get("comments")
-        if post_data.get("weapon_type"):
-            print(11)
-            video.weapon_type = post_data.get("weapon_type")
-        if post_data.get("topic"):
-            print(12)
-            video.topic = post_data.get("topic")
-        if post_data.get("guests"):
-            print(13)
-            video.guests = post_data.get("guests")
-
         try:
-            print(14)
+            name = post_data.get('name')
+            channel_id = post_data.get('channel_id')
+            link = post_data.get('link')
+            category = post_data.get('category')
+            upload_date = post_data.get('upload_date')
+            comments = post_data.get('comments')
+
+            tournament_id = post_data.get('tournament_id')
+            team_one_id = post_data.get('team_one_id')
+            team_two_id = post_data.get('team_two_id')
+            date_of_recording = post_data.get('date_of_recording')
+            game_system = post_data.get('game_system')
+            weapon_type = post_data.get('weapon_type')
+            topic = post_data.get('topic')
+            guests = post_data.get('guests')
+
+            if name:
+                video.name = name
+            if channel_id:
+                video.channel_id = channel_id
+            if category:
+                try:
+                    video.category = VideoType[category]
+                except KeyError:
+                    return jsonify({'error': 'Invalid category'}), 400
+            if link:
+                video.link = link
+            if upload_date:
+                try:
+                    video.upload_date = datetime.strptime(upload_date, '%Y-%m-%dT%H-%M-%S')
+                except ValueError:
+                    return jsonify({'error': 'Invalid upload_date format'}), 400
+            if comments:
+                video.comments = comments
+            if tournament_id:
+                video.tournament_id = tournament_id
+            if team_one_id:
+                video.team_one_id = team_one_id
+            if team_two_id:
+                video.team_two_id = team_two_id
+            if date_of_recording:
+                try:
+                    video.date_of_recording = datetime.strptime(date_of_recording, '%Y-%m-%dT%H-%M-%S')
+                except ValueError:
+                    return jsonify({'error': 'Invalid upload_date format'}), 400
+            if game_system:
+                try:
+                    video.game_system = GameSystem[game_system]
+                except KeyError:
+                    return jsonify({'error': 'Invalid game_system'}), 400
+            if weapon_type:
+                video.weapon_type = weapon_type
+            if topic:
+                video.topic = topic
+            if guests:
+                video.guests = guests
+
             db.session.commit()
 
-            print(15)
-            edited_video = serialize_video(Video.query.filter_by(id=video.id).first())
-            return jsonify(edited_video), 200
+            updated_video = Video.query.filter_by(id=video_id).first()
+            return jsonify(serialize_video(updated_video)), 200
+
         except Exception as e:
-            return jsonify(str(e)), 400
+            db.session.rollback()
+            return jsonify(str(e)), 500
 
 
 @video_api_blueprint.route('/delete/<int:video_id>', methods=['GET'])

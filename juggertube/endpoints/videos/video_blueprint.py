@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import Blueprint, request, render_template, current_app
 from flask_login import login_required
 
@@ -17,7 +19,8 @@ def add_video():
         response = video_api_blueprint.get_form_choices()
         data = response.get_json()
 
-        form.tournament.choices = [(tournament['choice_id'], tournament['name']) for tournament in data["tournament_choices"]]
+        form.tournament.choices = [(tournament['choice_id'], tournament['name']) for tournament in
+                                   data["tournament_choices"]]
         form.team_one.choices = [(team['choice_id'], team['name']) for team in data["team_choices"]]
         form.team_two.choices = [(team['choice_id'], team['name']) for team in data["team_choices"]]
         form.channel.choices = [(channel['choice_id'], channel['name']) for channel in data["channel_choices"]]
@@ -56,10 +59,11 @@ def edit_video(video_id):
         choice_response = video_api_blueprint.get_form_choices()
         choice_data = choice_response.get_json()
 
-        form.tournament.choices = choice_data["tournament_choices"]
-        form.team_one.choices = choice_data["team_choices"]
-        form.team_two.choices = choice_data["team_choices"]
-        form.channel.choices = choice_data["channel_choices"]
+        form.tournament.choices = [(tournament['choice_id'], tournament['name']) for tournament in
+                                   choice_data["tournament_choices"]]
+        form.team_one.choices = [(team['choice_id'], team['name']) for team in choice_data["team_choices"]]
+        form.team_two.choices = [(team['choice_id'], team['name']) for team in choice_data["team_choices"]]
+        form.channel.choices = [(channel['choice_id'], channel['name']) for channel in choice_data["channel_choices"]]
 
         if request.method == 'GET':
             response = video_api_blueprint.edit_video(video_id)
@@ -69,11 +73,11 @@ def edit_video(video_id):
             form.channel.data = data["channel"]
             form.link.data = data["link"]
             form.category.data = data["category"]
-            form.upload_date.data = data["upload_date"].strftime('%Y-%m-%dT23-00-00')
+            form.upload_date.data = datetime.strptime(data["upload_date"], '%Y-%m-%d')
             form.tournament.data = data["tournament"]
             form.team_one.data = data["team_one"]
             form.team_two.data = data["team_two"]
-            form.date_of_recording.data = data["date_of_recording"].strftime('%Y-%m-%dT23-00-00') if data["date_of_recording"] else ''
+            form.date_of_recording.data = datetime.strptime(data["date_of_recording"], '%Y-%m-%d')
             form.game_system.data = data["game_system"] if data["game_system"] else ''
             form.weapon_type.data = data["weapon_type"]
             form.topic.data = data["topic"]
@@ -90,11 +94,11 @@ def edit_video(video_id):
                     "channel_id": form.channel.data,
                     "link": form.link.data,
                     "category": form.category.data,
-                    "upload_date": form.upload_date.data,
+                    "upload_date": datetime.strftime(form.upload_date.data, '%Y-%m-%dT23-00-00'),
                     "tournament_id": form.tournament.data,
                     "team_one_id": form.team_one.data,
                     "team_two_id": form.team_two.data,
-                    "date_of_recording": form.date_of_recording.data,
+                    "date_of_recording": datetime.strftime(form.date_of_recording.data, '%Y-%m-%dT23-00-00'),
                     "game_system": form.game_system.data,
                     "weapon_type": form.weapon_type.data,
                     "topic": form.topic.data,

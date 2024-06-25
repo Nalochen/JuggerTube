@@ -24,7 +24,7 @@
             <p>
                 comments: {{ video.comments }}
             </p>
-            {% if video.category == VideoType.MATCH %}
+            {% if video.category == VideoType.MATCH.value %}
                 <p>
                     tournament: {{ video.tournament}}
                 </p>

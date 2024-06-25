@@ -39,7 +39,7 @@ def serialize_team(team):
 
 def serialize_tournament(tournament):
     return {
-        'tournament_id': tournament.id,
+        'tournament_id': tournament.tournament_id,
         'name': tournament.name,
         'city': tournament.city,
         'jtr_link': tournament.jtr_link,

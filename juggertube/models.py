@@ -1,10 +1,7 @@
-from typing import List
-
 from flask_login import UserMixin
-from sqlalchemy import Text, ForeignKey, Table
+from sqlalchemy import Text
 from sqlalchemy.ext.declarative import declarative_base
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import Mapped
 from werkzeug.security import check_password_hash
 
 from juggertube.game_system_enum import GameSystem

@@ -7,12 +7,14 @@ from juggertube.models import Channel, db, User
 channel_api_blueprint = Blueprint('api/channels', __name__)
 
 
+# Es soll in Zukunft auch möglich sein mehrere Owner einem Channel zuzuweisen, dieses Feature ist teilweise in der
+# Struktur schon vorbereitet, ist aber aus Zeit- und Komplexitätsgründen noch nicht umgesetzt worden
 @channel_api_blueprint.route('/add', methods=['POST'])
 def add_channel():
     post_data = request.args
     name = post_data.get('name')
     link = post_data.get('link')
-    owners = post_data.get('owners')
+    owner_id = post_data.get('owner')
 
     if not name or not link:
         return jsonify({'error': 'Name and link are required'}), 400
@@ -21,24 +23,11 @@ def add_channel():
     if existing_channel:
         return jsonify(serialize_channel(existing_channel), 'channel already exists'), 400
 
-    owner_ids = []
-    if owners:
-        try:
-            owner_ids = [int(owner_id) for owner_id in owners.split(',')]
-        except ValueError:
-            jsonify({'error': 'Owners must be comma-separated list of integers'})
-    else:
-        owner_ids = []
+    owner = User.query.filter_by(id=owner_id).first()
+    if not owner:
+        return jsonify({'error': f'Owner with ID {owner_id} not found'}), 400
 
-    valid_owners = []
-    for owner_id in owner_ids:
-        owner = User.query.filter_by(id=owner_id).first()
-        if owner:
-            valid_owners.append(owner)
-        else:
-            return jsonify({'error': f'Owner with ID {owner_id} not found'}), 400
-
-    new_channel = Channel(name=post_data["name"], link=post_data["link"], owners=valid_owners)
+    new_channel = Channel(name=name, link=link, owners=[owner])
 
     try:
         db.session.add(new_channel)
@@ -65,7 +54,7 @@ def edit_channel(channel_id):
         post_data = request.args
         name = post_data.get('name')
         link = post_data.get('link')
-        owners = post_data.get('owners')
+        owners = post_data.get('owner')
 
         if not name or not link:
             return jsonify({'error': 'Name and link are required'}), 400
@@ -104,6 +93,9 @@ def edit_channel(channel_id):
 @login_required
 def delete_channel(channel_id):
     channel = Channel.query.filter_by(id=channel_id).first()
+
+    if not channel:
+        return jsonify('Channel not found'), 404
 
     name = channel.name
 

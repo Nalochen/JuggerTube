@@ -5,6 +5,7 @@ from flask import Blueprint, request, render_template, current_app
 from flask_login import login_required
 
 from juggertube.api import channel_api_blueprint
+from juggertube.api.video_api_blueprint import video_api_blueprint
 from juggertube.webforms import ChannelForm
 
 channel_blueprint = Blueprint('channels', __name__, template_folder='templates')
@@ -24,12 +25,10 @@ def add_channel():
             return render_template('post-channel.html', form=form)
 
         if request.method == 'POST':
-            owners_dict = ast.literal_eval(form.owner.data)
-
             post_data = {
                 "name": form.name.data,
                 "link": form.link.data,
-                "owners": [owners_dict['choice_id']]
+                "owner": form.owner.data,
             }
 
             response = client.post('/api/channels/add', query_string=post_data)
@@ -42,6 +41,12 @@ def add_channel():
 def edit_channel(channel_id):
     with current_app.test_client() as client:
         form = ChannelForm(team=request.form)
+        choice_response = channel_api_blueprint.get_owner_choices()
+        choice_data = choice_response.get_json()
+
+        choice_data_formatted = [(owner["choice_id"], owner["name"]) for owner in choice_data]
+
+        form.owner.choices = choice_data_formatted
 
         if request.method == 'GET':
             response = channel_api_blueprint.edit_channel(channel_id)
@@ -57,6 +62,7 @@ def edit_channel(channel_id):
                 post_data = {
                     "name": form.name.data,
                     "link": form.link.data,
+                    "owner": form.owner.data,
                 }
 
                 response = client.post(f'/api/channels/edit/{channel_id}', query_string=post_data)
@@ -70,7 +76,7 @@ def edit_channel(channel_id):
 @login_required
 def delete_channel(channel_id):
     response = channel_api_blueprint.delete_channel(channel_id)
-    deleted_channel = response.get_json
+    deleted_channel = response[0]
     return deleted_channel
 
 

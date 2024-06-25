@@ -21,7 +21,7 @@ def add_video():
             'channel_id': post_data.get('channel_id'),
             'category': VideoType[post_data.get('category')],
             'link': post_data.get('link'),
-            'upload_date': datetime.strptime(post_data.get('upload_date'), '%Y-%m-%dT%H-%M-%S'),
+            'upload_date': post_data.get('upload_date'),
         }
 
         print(video_data)
@@ -34,7 +34,7 @@ def add_video():
         tournament_id = post_data.get("tournament_id")
         team_one_id = post_data.get("team_one_id")
         team_two_id = post_data.get("team_two_id")
-        date_of_recording = post_data.get('date_of_recording'),
+        date_of_recording = post_data.get('date_of_recording')
         weapon_type = post_data.get("weapon_type")
         topic = post_data.get("topic")
         guests = post_data.get("guests")
@@ -49,11 +49,17 @@ def add_video():
         if tournament_id:
             video_data['tournament_id'] = tournament_id
         if team_one_id:
+            team_one = Team.query.filter_by(id=team_one_id).first()
+            if not team_one:
+                return jsonify({'error': 'Team One does not exist'}), 400
             video_data['team_one_id'] = team_one_id
-            video_data['team_one'] = Team.query.filter_by(id=team_one_id).first()
+            video_data['team_one'] = team_one
         if team_two_id:
+            team_two = Team.query.filter_by(id=team_two_id).first()
+            if not team_two:
+                return jsonify({'error': 'Team Two does not exist'}), 400
             video_data['team_two_id'] = team_two_id
-            video_data['team_two'] = Team.query.filter_by(id=team_two_id).first()
+            video_data['team_two'] = team_two
         if date_of_recording:
             video_data['date_of_recording'] = date_of_recording
 

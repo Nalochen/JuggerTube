@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Teams Output</h1>
+    {% for team in team_list %}
+        <div>
+            <p>
+                id: {{ team.team_id }}
+            </p>
+            <p>
+                name: {{ team.name }}
+            </p>
+            <p>
+                city: {{ team.city }}
+            </p>
+            <p>
+                country: {{ team.country }}
+            </p>
+        </div>
+        <br>
+    {% endfor %}
+{% endblock %}

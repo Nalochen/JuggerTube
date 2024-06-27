@@ -15,7 +15,7 @@
     <script src="{{ url_for('static', filename='js/swagger-ui-standalone-preset') }}.js"> </script>
     <script>
       window.onload = function() {
-      window.ui = SwaggerUIBundle({
+       window.ui = SwaggerUIBundle({
         url: "{{ url_for('static', filename='openapi.yaml') }}",
         dom_id: '#swagger-ui',
         deepLinking: true,
@@ -28,6 +28,8 @@
         ],
         layout: "StandaloneLayout"
       });
+
+
     };
     </script>
   </body>

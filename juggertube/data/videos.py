@@ -1,4 +1,4 @@
-from juggertube.game_system_enum import GameSystem
+from juggertube.enums.game_system_enum import GameSystem
 from juggertube.video_type_enum import VideoType
 
 videos = [

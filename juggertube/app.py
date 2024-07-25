@@ -1,5 +1,3 @@
-import os
-
 from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
@@ -58,10 +56,6 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     app.register_blueprint(video_api_blueprint, url_prefix="/api/videos")
 
     if __name__ == '__main__':
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        cert_path = os.path.join(base_dir, 'selfsigned.crt')
-        key_path = os.path.join(base_dir, 'selfsigned.key')
-        context = (cert_path, key_path)
-        app.run(ssl_context=context, debug=True, host='0.0.0.0', port=5000)
+        app.run(host='0.0.0.0', port=5000)
 
     return app

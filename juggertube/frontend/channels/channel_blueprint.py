@@ -21,13 +21,16 @@ def add_channel():
             return render_template('post-channel.html', form=form)
 
         if request.method == 'POST':
+            api_key = {
+                "api_key": "559c59c6b0454e9898b389cdele0322d"
+            }
             post_data = {
                 "name": form.name.data,
                 "link": form.link.data,
                 "owner": form.owner.data,
             }
 
-            response = client.post('/api/channels/add', query_string=post_data)
+            response = client.post('/api/channels/add', query_string=post_data, api_key=api_key)
             data = response.get_json()
             return data
 
@@ -51,7 +54,11 @@ def edit_channel(channel_id):
             form.name.data = data['name']
             form.link.data = data['link']
 
-            return render_template('post-channel.html', form=form)
+            api_key = {
+                "api_key": "559c59c6b0454e9898b389cdele0322d"
+            }
+
+            return render_template('post-channel.html', form=form, api_key=api_key)
 
         if request.method == 'POST':
             if form.validate_on_submit():
@@ -59,6 +66,7 @@ def edit_channel(channel_id):
                     "name": form.name.data,
                     "link": form.link.data,
                     "owner": form.owner.data,
+                    "api_key": "559c59c6b0454e9898b389cdele0322d"
                 }
 
                 response = client.post(f'/api/channels/edit/{channel_id}', query_string=post_data)
@@ -71,7 +79,10 @@ def edit_channel(channel_id):
 @channel_blueprint.route('/delete/<int:channel_id>', methods=['GET'])
 @login_required
 def delete_channel(channel_id):
-    response = channel_api_blueprint.delete_channel(channel_id)
+    api_key = {
+        "api_key": "559c59c6b0454e9898b389cdele0322d"
+    }
+    response = channel_api_blueprint.delete_channel(channel_id, api_key)
     deleted_channel = response[0]
     return deleted_channel
 

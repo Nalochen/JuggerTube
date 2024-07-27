@@ -8,7 +8,7 @@ from juggertube.models import Device
 api_blueprint = Blueprint('api', __name__)
 
 
-@api_blueprint.route('/add-device', methods=['GET, POST'])
+@api_blueprint.route('/add-device', methods=['POST'])
 @login_required
 def add_device():
     post_data = request.args
@@ -24,7 +24,7 @@ def add_device():
     try:
         new_device.save_to_db()
 
-        device = new_device.json()
+        device = Device.query.filter_by(device_name=new_device.device_name).first().json()
         return jsonify(device), 200
 
     except Exception as e:

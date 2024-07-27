@@ -3,12 +3,13 @@ from flask_login import login_required
 
 from juggertube.api.serializing import serialize_tournament
 from juggertube.models import Team, db, Tournament
+from juggertube.security import api_required
 
 tournament_api_blueprint = Blueprint('api/tournaments', __name__)
 
 
 @tournament_api_blueprint.route('/add', methods=['POST'])
-@login_required
+@api_required
 def add_tournament():
     post_data = request.args
     tournament_data = {
@@ -45,7 +46,7 @@ def add_tournament():
 
 
 @tournament_api_blueprint.route('/edit/<int:tournament_id>', methods=['GET', 'POST'])
-@login_required
+@api_required
 def edit_tournament(tournament_id):
     tournament = Tournament.query.filter_by(id=tournament_id).first()
 
@@ -92,7 +93,7 @@ def edit_tournament(tournament_id):
 
 
 @tournament_api_blueprint.route('/delete/<int:tournament_id>', methods=['GET'])
-@login_required
+@api_required
 def delete_tournament(tournament_id):
     tournament = Tournament.query.filter_by(id=tournament_id).first()
 

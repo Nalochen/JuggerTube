@@ -43,7 +43,8 @@ def add_video():
                 "weapon_type": form.weapon_type.data,
                 "topic": form.topic.data,
                 "guests": form.guests.data,
-                "comments": form.comments.data
+                "comments": form.comments.data,
+                "api_key": "559c59c6b0454e9898b389cdele0322d"
             }
 
             response = client.post('/api/videos/add', query_string=post_data)
@@ -84,7 +85,11 @@ def edit_video(video_id):
             form.guests.data = data["guests"]
             form.comments.data = data["comments"]
 
-            return render_template('post-video.html', form=form)
+            api_key = {
+                "api_key": "559c59c6b0454e9898b389cdele0322d"
+            }
+
+            return render_template('post-video.html', form=form, api_key=api_key)
 
         if request.method == 'POST':
             if form.validate_on_submit():
@@ -104,6 +109,7 @@ def edit_video(video_id):
                     "topic": form.topic.data,
                     "guests": form.guests.data,
                     "comments": form.comments.data,
+                    "api_key": "559c59c6b0454e9898b389cdele0322d"
                 }
 
                 response = client.post(f'/api/videos/edit/{video_id}', query_string=post_data)
@@ -116,6 +122,9 @@ def edit_video(video_id):
 @video_blueprint.route('/delete/<int:video_id>', methods=['GET'])
 @login_required
 def delete_video(video_id):
+    api_key = {
+        "api_key": "559c59c6b0454e9898b389cdele0322d"
+    }
     response = video_api_blueprint.delete_video(video_id)
     deleted_video = response[0]
     return deleted_video

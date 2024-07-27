@@ -6,13 +6,14 @@ from flask_login import login_required
 from juggertube.api.serializing import serialize_video, serialize_choices
 from juggertube.enums.game_system_enum import GameSystem
 from juggertube.models import Video, db, Team, Channel, Tournament
+from juggertube.security import api_required
 from juggertube.video_type_enum import VideoType
 
 video_api_blueprint = Blueprint('api/videos', __name__)
 
 
 @video_api_blueprint.route('/add', methods=['GET', 'POST'])
-@login_required
+@api_required
 def add_video():
     if request.method == 'POST':
         post_data = request.args
@@ -86,7 +87,7 @@ def add_video():
 
 
 @video_api_blueprint.route('/edit/<int:video_id>', methods=['GET', 'POST'])
-@login_required
+@api_required
 def edit_video(video_id):
     video = Video.query.filter_by(id=video_id).first()
     if not video:
@@ -166,7 +167,7 @@ def edit_video(video_id):
 
 
 @video_api_blueprint.route('/delete/<int:video_id>', methods=['GET'])
-@login_required
+@api_required
 def delete_video(video_id):
     video = Video.query.filter_by(id=video_id).first()
 
@@ -222,6 +223,7 @@ def get_videos_by_period(beginning, ending):
 
 
 @video_api_blueprint.route('/form-choices', methods=['GET'])
+@api_required
 def get_form_choices():
     tournaments = [(tournament.id, tournament.name) for tournament in Tournament.query.all()]
     teams = [(team.id, team.name) for team in Team.query.all()]

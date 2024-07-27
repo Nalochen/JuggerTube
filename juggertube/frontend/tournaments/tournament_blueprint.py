@@ -22,7 +22,8 @@ def add_tournament():
                 "name": form.name.data,
                 "city": form.city.data,
                 "jtr_link": form.jtr_link.data,
-                "tugeny_link": form.tugeny_link.data
+                "tugeny_link": form.tugeny_link.data,
+                "api_key": "559c59c6b0454e9898b389cdele0322d"
             }
             response = client.post('/api/tournaments/add', query_string=post_data)
             data = response.get_json()
@@ -44,7 +45,11 @@ def edit_tournament(tournament_id):
             form.jtr_link.data = data['jtr_link']
             form.tugeny_link.data = data['tugeny_link']
 
-            return render_template('post-tournament.html', form=form)
+            api_key = {
+                "api_key": "559c59c6b0454e9898b389cdele0322d"
+            }
+
+            return render_template('post-tournament.html', form=form, api_key=api_key)
 
         if request.method == 'POST':
             if form.validate_on_submit():
@@ -52,7 +57,8 @@ def edit_tournament(tournament_id):
                     "name": form.name.data,
                     "city": form.city.data,
                     "jtr_link": form.jtr_link.data,
-                    "tugeny_link": form.tugeny_link.data
+                    "tugeny_link": form.tugeny_link.data,
+                    "api_key": "559c59c6b0454e9898b389cdele0322d"
                 }
 
                 response = client.post(f'/api/tournaments/edit/{tournament_id}', query_string=post_data)
@@ -65,6 +71,9 @@ def edit_tournament(tournament_id):
 @tournament_blueprint.route('/delete/<int:tournament_id>', methods=['GET'])
 @login_required
 def delete_tournament(tournament_id):
+    api_key = {
+        "api_key": "559c59c6b0454e9898b389cdele0322d"
+    }
     response = tournament_api_blueprint.delete_tournament(tournament_id)
     deleted_tournament = response[0]
     return deleted_tournament

@@ -3,13 +3,15 @@ from flask_login import login_required
 
 from juggertube.api.serializing import serialize_team
 from juggertube.models import Team, db
+from juggertube.security import api_required
 
 team_api_blueprint = Blueprint('api/teams', __name__)
 
 
 @team_api_blueprint.route('/add', methods=['POST'])
-@login_required
+@api_required
 def add_team():
+    print('here')
     post_data = request.args
     name = post_data.get("name")
     country = post_data.get("country")
@@ -36,7 +38,7 @@ def add_team():
 
 
 @team_api_blueprint.route('/edit/<int:team_id>', methods=['GET', 'POST'])
-@login_required
+@api_required
 def edit_team(team_id):
     team = Team.query.filter_by(id=team_id).first()
 
@@ -69,7 +71,7 @@ def edit_team(team_id):
 
 
 @team_api_blueprint.route('/delete/<int:team_id>', methods=['GET'])
-@login_required
+@api_required
 def delete_team(team_id):
     team = Team.query.filter_by(id=team_id).first()
 

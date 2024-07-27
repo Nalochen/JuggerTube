@@ -21,7 +21,8 @@ def add_team():
             post_data = {
                 "name": form.name.data,
                 "country": form.country.data,
-                "city": form.city.data
+                "city": form.city.data,
+                "api_key": "559c59c6b0454e9898b389cdele0322d"
             }
             response = client.post('/api/teams/add', query_string=post_data)
             data = response.get_json()
@@ -49,7 +50,8 @@ def edit_team(team_id):
                 post_data = {
                     "name": form.name.data,
                     "country": form.country.data,
-                    "city": form.city.data
+                    "city": form.city.data,
+                    "api_key": "559c59c6b0454e9898b389cdele0322d"
                 }
 
                 response = client.post(f'/api/teams/edit/{team_id}', query_string=post_data)
@@ -62,6 +64,9 @@ def edit_team(team_id):
 @team_blueprint.route('/delete/<int:team_id>', methods=['GET'])
 @login_required
 def delete_team(team_id):
+    api_key = {
+        "api_key": "559c59c6b0454e9898b389cdele0322d"
+    }
     response = team_api_blueprint.delete_team(team_id)
     deleted_team = response.get_json
     return deleted_team

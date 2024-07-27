@@ -21,7 +21,7 @@ def add_device():
                 "device_name": form.device_name.data,
             }
 
-            response = client.post('/api/add_device', query_string=post_data)
+            response = client.post('/api/add-device', query_string=post_data)
             data = response.get_json()
             return data
 

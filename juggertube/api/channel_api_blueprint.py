@@ -3,6 +3,7 @@ from flask_login import login_required
 
 from juggertube.api.serializing import serialize_channel, serialize_user, serialize_choices
 from juggertube.models import Channel, db, User
+from juggertube.security import api_required
 
 channel_api_blueprint = Blueprint('api/channels', __name__)
 
@@ -10,8 +11,9 @@ channel_api_blueprint = Blueprint('api/channels', __name__)
 # Es soll in Zukunft auch möglich sein mehrere Owner einem Channel zuzuweisen, dieses Feature ist teilweise in der
 # Struktur schon vorbereitet, ist aber aus Zeit- und Komplexitätsgründen noch nicht umgesetzt worden
 @channel_api_blueprint.route('/add', methods=['POST'])
-@login_required
+@api_required
 def add_channel():
+    print('here')
     post_data = request.args
     name = post_data.get('name')
     link = post_data.get('link')
@@ -42,7 +44,7 @@ def add_channel():
 
 
 @channel_api_blueprint.route('/edit/<int:channel_id>', methods=['GET', 'POST'])
-@login_required
+@api_required
 def edit_channel(channel_id):
     channel = Channel.query.filter_by(id=channel_id).first()
     if not channel:
@@ -91,7 +93,7 @@ def edit_channel(channel_id):
 
 
 @channel_api_blueprint.route('/delete/<int:channel_id>', methods=['GET'])
-@login_required
+@api_required
 def delete_channel(channel_id):
     channel = Channel.query.filter_by(id=channel_id).first()
 

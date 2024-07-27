@@ -1,4 +1,4 @@
-from flask import Blueprint, request, url_for, redirect, render_template, flash, current_app
+from flask import Blueprint, request, render_template, current_app
 from flask_login import login_required
 
 from juggertube.api import tournament_api_blueprint

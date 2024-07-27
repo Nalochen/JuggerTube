@@ -1,4 +1,44 @@
 {% extends 'base.html' %}
 {% block body %}
-    <h1>welcome to Juggertube</h1>
+<h1>welcome to Juggertube</h1>
+<br>
+<p>API</p>
+<a href="/api/docs">swagger ui</a><br>
+<br>
+<p>Authentication and Authorization</p>
+<a href="/auth/register">register</a><br>
+<a href="/auth/login">login</a><br>
+<a>/auth/edit/{user_id}</a><br>
+<a href="/auth/logout">logout</a><br>
+<a>/auth/delete/{user_id}</a><br>
+<br>
+<p>Videos</p>
+<a href="/videos/add">add video</a><br>
+<a>/videos/edit/{video_id}</a><br>
+<a>/videos/delete/{video_id}</a><br>
+<a href="/videos">get all videos</a><br>
+<a>/videos/team/{team_id}</a><br>
+<a>/videos/tournament/{tournament_id}</a><br>
+<a>/videos/tournament/{tournament_id}/team/{team_id}</a><br>
+<a>/videos/period/{beginning}/{ending}</a><br>
+<br>
+<p>Tournaments</p>
+<a href="/tournaments/add">add tournament</a><br>
+<a>/tournaments/edit/{tournament_id}</a><br>
+<a>/tournaments/delete/{tournaments_id}</a><br>
+<a href="/tournaments">get all tournaments</a><br>
+<br>
+<p>Channels</p>
+<a href="/channels/add">add channel</a><br>
+<a>/channels/edit/{channel_id}</a><br>
+<a>/channels/delete/{channel_i}</a><br>
+<a href="/channels">get all channels</a><br>
+<br>
+<p>Teams</p>
+<a href="/teams/add">add team</a><br>
+<a>/teams/edit/{teams_id}</a><br>
+<a>/teams/delete/{team_id}</a><br>
+<a href="/teams">get all teams</a><br>
+<br>
+
 {% endblock %}

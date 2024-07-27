@@ -1,8 +1,7 @@
-from flask import Blueprint, jsonify, request, render_template, redirect, url_for, flash
+from flask import Blueprint, request, render_template, redirect, url_for, flash
 from flask_login import login_user, login_required, logout_user
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from juggertube.api.serializing import serialize_user
 from juggertube.models import User, Team, db
 from juggertube.webforms import RegisterForm, LoginForm
 

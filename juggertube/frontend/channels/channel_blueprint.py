@@ -1,11 +1,7 @@
-import ast
-import json
-
 from flask import Blueprint, request, render_template, current_app
 from flask_login import login_required
 
 from juggertube.api import channel_api_blueprint
-from juggertube.api.video_api_blueprint import video_api_blueprint
 from juggertube.webforms import ChannelForm
 
 channel_blueprint = Blueprint('channels', __name__, template_folder='templates')

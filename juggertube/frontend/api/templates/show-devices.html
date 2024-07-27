@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Device Output</h1>
+    {% for device in device_list %}
+        <div>
+            <p>
+                id: {{ device.device_id }}
+            </p>
+            <p>
+                device_key: {{ device.device_key }}
+            </p>
+            <p>
+                device_name: {{ device.device_name }}
+            </p>
+            <p>
+                owner: {{ device.owner }}
+            </p>
+        </div>
+        <br>
+        <br>
+    {% endfor %}
+{% endblock %}

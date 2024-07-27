@@ -63,3 +63,12 @@ def serialize_choices(choice):
         'choice_id': choice_id,
         'name': name
     }
+
+
+def serialize_device(device):
+    return {
+        'device_id': device.id,
+        'device_name': device.device_name,
+        'device_key': device.device_key,
+        'device_owner': device.user.username
+    }

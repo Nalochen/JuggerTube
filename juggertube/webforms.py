@@ -67,3 +67,8 @@ class ChannelForm(FlaskForm):
     link = StringField("Link", validators=[DataRequired()])
     owner = SelectField("Owner", validators=[Optional()])
     submit = SubmitField("Submit")
+
+
+class APIDeviceForm(FlaskForm):
+    device_name = StringField("Device Name", validators=[DataRequired()])
+    submit = SubmitField("Submit")

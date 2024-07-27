@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block body %}
+    <h1>Channel</h1>
+    <form method="POST">
+		{{ form.hidden_tag() }}
+		<div>
+			{{ form.device_name.label() }}
+			{{ form.device_name() }}
+		</div>
+		<div>
+			<br/>
+			{{ form.submit() }}
+		</div>
+    </form>
+{% endblock %}

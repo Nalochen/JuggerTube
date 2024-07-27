@@ -2,6 +2,8 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
 
+from juggertube.api.api_blueprint import api_blueprint
+from juggertube.frontend.api.api_blueprint import api_ui_blueprint
 from juggertube.init_db import init_db
 from juggertube.models import db, User
 
@@ -54,6 +56,8 @@ def create_app(db_uri=f'mysql+mysqlconnector://{user}:{password}@{host}/{databas
     app.register_blueprint(tournament_api_blueprint, url_prefix="/api/tournaments")
     app.register_blueprint(channel_api_blueprint, url_prefix="/api/channels")
     app.register_blueprint(video_api_blueprint, url_prefix="/api/videos")
+    app.register_blueprint(api_blueprint, url_prefix="/api")
+    app.register_blueprint(api_ui_blueprint, url_prefix="/api/ui")
 
     if __name__ == '__main__':
         app.run(host='0.0.0.0', port=5000)

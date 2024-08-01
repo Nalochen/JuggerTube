@@ -12,13 +12,18 @@ info:
   version: 1.0.0
 
 paths:
-  /teams:
+  /api/teams:
     get:
       tags:
         - team
       summary: Finds all Teams 
       description: Returns all Teams registered on the platform
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -27,7 +32,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Team'
-  /teams/add:
+  /api/teams/add:
     post:
       tags:
         - team
@@ -53,13 +58,18 @@ paths:
           schema:
             type: string
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /teams/edit/{teamId}:
+  /api/teams/edit/{teamId}:
     post:
       tags:
         - team
@@ -98,6 +108,11 @@ paths:
               type: string
               format: binary
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -110,7 +125,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /teams/delete/{teamId}:
+  /api/teams/delete/{teamId}:
     get:
       tags:
         - team
@@ -125,6 +140,11 @@ paths:
             type: integer
             format: int64
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -137,13 +157,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /tournaments:
+  /api/tournaments:
     get:
       tags:
         - tournament
       summary: Finds all Tournaments 
       description: Returns all Tournaments registered on the platform
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -152,7 +177,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Tournament'
-  /tournaments/add:
+  /api/tournaments/add:
     post:
       tags:
         - tournament
@@ -165,24 +190,37 @@ paths:
           required: true
           schema:
             type: string
+        - name: city
+          in: query
+          description: City where new Tournament takes place
+          required: true
+          schema:
+            type: string
         - name: jtrLink
           in: query
           description: Link to JTR-Entry of Tournament (optional)
+          required: false
           schema:
             type: string
         - name: tugenyLink
           in: query
-          description: Link to Tugeny-Entry of Tournament 
+          description: Link to Tugeny-Entry of Tournament
+          required: false
           schema:
             type: string
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /tournaments/edit/{tournamentId}:
+  /api/tournaments/edit/{tournamentId}:
     post:
       tags:
         - tournament
@@ -202,14 +240,22 @@ paths:
           required: true
           schema:
             type: string
+        - name: city
+          in: query
+          description: City of Tournament
+          required: true
+          schema:
+            type: string
         - name: jtrLink
           in: query
           description: Link to JTR-Entry of Tournament
+          required: false
           schema:
             type: string
         - name: tugenyLink
           in: query
           description: Link to Tugeny-Entry of Tournament
+          required: false
           schema:
             type: string
       requestBody:
@@ -219,6 +265,11 @@ paths:
               type: string
               format: binary
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -231,7 +282,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /tournaments/delete/{tournamentId}:
+  /api/tournaments/delete/{tournamentId}:
     get:
       tags:
         - tournament
@@ -246,6 +297,11 @@ paths:
             type: integer
             format: int64
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -258,13 +314,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /channels:
+  /api/channels:
     get:
       tags:
         - channel
       summary: Finds all Channels 
       description: Returns all Channels registered on the platform
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -273,7 +334,7 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Channel'
-  /channels/add:
+  /api/channels/add:
     post:
       tags:
         - channel
@@ -292,14 +353,26 @@ paths:
           required: true
           schema:
             type: string
+        - name: owner
+          in: query
+          description: ID of Channel Owner
+          required: false
+          schema:
+            type: integer
+            example: 1
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /channels/edit/{channelId}:
+  /api/channels/edit/{channelId}:
     post:
       tags:
         - channel
@@ -324,6 +397,13 @@ paths:
           description: Link to Channel Overview
           schema:
             type: string
+        - name: owner
+          in: query
+          description: ID of Channel Owner
+          required: false
+          schema:
+            type: integer
+            example: 1
       requestBody:
         content:
           application/octet-stream:
@@ -331,6 +411,11 @@ paths:
               type: string
               format: binary
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -343,7 +428,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /channels/delete/{channelId}:
+  /api/channels/delete/{channelId}:
     get:
       tags:
         - channel
@@ -358,6 +443,11 @@ paths:
             type: integer
             format: int64
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -370,13 +460,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /videos:
+  /api/videos:
       get:
         tags:
           - video
         summary: Finds all Videos 
         description: Returns all Videos registered on the platform
         responses:
+          default:
+            description: Unexpected error
+            content:
+              application/json:
+                $ref: '#/components/schemas/ApiResponse'
           '200':
             description: successful operation
             content:
@@ -385,7 +480,131 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/Video'
-  /videos/add:
+  /api/videos/team/{teamId}:
+      get:
+        tags:
+          - video
+        summary: Finds all Videos from Team
+        description: Returns all Videos where Team with given Team ID plays
+        parameters:
+          - name: teamId
+            in: path
+            description: ID of Team
+            required: true
+            schema:
+              type: integer
+              format: int64
+        responses:
+          default:
+            description: Unexpected error
+            content:
+              application/json:
+                $ref: '#/components/schemas/ApiResponse'
+          '200':
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Video'
+  /api/videos/tournament/{tournamentId}:
+    get:
+      tags:
+        - video
+      summary: Finds all Videos from Tournament
+      description: Returns all Videos from Tournament
+      parameters:
+        - name: tournamentId
+          in: path
+          description: ID of Tournament
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Video'
+  /api/videos/tournament/{tournamentId}/team/{teamId}:
+    get:
+      tags:
+        - video
+      summary: Finds all Videos from Team and Tournament
+      description: Returns all Videos where Team with given Team ID plays on Tournament with given ID
+      parameters:
+        - name: teamId
+          in: path
+          description: ID of Team
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: tournamentId
+          in: path
+          description: ID of Tournament
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Video'
+  /api/videos/period/{beginning}/{ending}:
+    get:
+      tags:
+        - video
+      summary: Finds all Videos between beginning and ending date
+      description: Returns all Videos where datOfRecording is between beginning date and ending date
+      parameters:
+        - name: beginning
+          in: path
+          description: beginning date
+          required: true
+          schema:
+            type: string
+        - name: ending
+          in: path
+          description: ending date
+          required: true
+          schema:
+            type: string
+      responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Video'
+  /api/videos/add:
     post:
       tags:
         - video
@@ -417,7 +636,7 @@ paths:
           required: true
           schema:
             type: string
-        - name: uploadDate
+        - name: upload_date
           in: query
           description: Date Video was uploaded, format has to be like YYYY-mm-dd'T'hh-mm-ss
           required: true
@@ -426,66 +645,80 @@ paths:
         - name: comments
           in: query
           description: ''
+          required: false
           schema:
             type: string
-        - name: tournamentId
+        - name: tournament_id
           in: query
           description: ID of Tournament where video took place
+          required: false
           schema:
             type: integer
             format: int64
-        - name: teamOneId
+        - name: team_one_id
           in: query
           description: ID of first Team shown in the video
+          required: false
           schema:
             type: integer
             format: int64
-        - name: teamTwoId
+        - name: team_two_id
           in: query
           description: ID of second Team shown in the video
+          required: false
           schema:
             type: integer
             format: int64
-        - name: dateOfRecording
+        - name: date_of_recording
           in: query
           description: Date Video was recorded, format has to be like YYYY-mm-dd'T'hh-mm-ss
+          required: false
           schema:
             type: string
-        - name: gameSystem
+        - name: game_system
           in: query
           description: Game System of the Match
+          required: false
           schema:
             $ref: '#/components/schemas/GameSystem'
-        - name: weaponType
+        - name: weapon_type
           in: query
           description: type of weapon mentioned in the video
+          required: false
           schema:
             type: string
         - name: topic
           in: query
           description: topic of the video
+          required: false
           schema:
             type: string
         - name: guests
           in: query
           description: guests in the video
+          required: false
           schema:
             type: string
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /videos/edit/{videoId}:
+  /api/videos/edit/{video_id}:
     post:
       tags:
         - video
       summary: Edits an existing video
       description: ''
       parameters:
-        - name: videoId
+        - name: video_id
           in: path
           description: Id of Video to edit
           required: true
@@ -498,7 +731,7 @@ paths:
           required: true
           schema:
             type: string
-        - name: channelId
+        - name: channel_id
           in: query
           description: Id of Channel Video was uploaded of
           required: true
@@ -517,7 +750,7 @@ paths:
           required: true
           schema:
             type: string
-        - name: uploadDate
+        - name: upload_date
           in: query
           description: Date Video was uploaded, format has to be like YYYY-mm-dd'T'hh-mm-ss
           required: true
@@ -526,50 +759,59 @@ paths:
         - name: comments
           in: query
           description: ''
+          required: false
           schema:
             type: string
-        - name: tournamentId
+        - name: tournament_id
           in: query
           description: ID of Tournament where video took place
+          required: false
           schema:
             type: integer
             format: int64
-        - name: teamOneId
+        - name: team_one_id
           in: query
           description: ID of first Team shown in the video
+          required: false
           schema:
             type: integer
             format: int64
-        - name: teamTwoId
+        - name: team_two_id
           in: query
           description: ID of second Team shown in the video
+          required: false
           schema:
             type: integer
             format: int64
-        - name: dateOfRecording
+        - name: date_of_recording
           in: query
           description: Date Video was recorded, format has to be like YYYY-mm-dd'T'hh-mm-ss
+          required: false
           schema:
             type: string
-        - name: gameSystem
+        - name: game_system
           in: query
           description: Game System of Match
+          required: false
           schema:
             type: string
             $ref: '#/components/schemas/GameSystem'
-        - name: weaponType
+        - name: weapon_type
           in: query
           description: type of weapon mentioned in the video
+          required: false
           schema:
             type: string
         - name: topic
           in: query
           description: topic of the video
+          required: false
           schema:
             type: string
         - name: guests
           in: query
           description: guests in the video
+          required: false
           schema:
             type: string
       requestBody:
@@ -579,6 +821,11 @@ paths:
               type: string
               format: binary
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -591,7 +838,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponse'
-  /videos/delete/{videoId}:
+  /api/videos/delete/{videoId}:
     get:
       tags:
         - video
@@ -606,6 +853,11 @@ paths:
             type: integer
             format: int64
       responses:
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              $ref: '#/components/schemas/ApiResponse'
         '200':
           description: successful operation
           content:
@@ -721,21 +973,21 @@ components:
     VideoType:
       type: string
       enum: 
-        - reports
-        - highlights
-        - sparbuilding
-        - match
-        - song
-        - other
-        - podcast
-        - awards
-        - training
+        - REPORTS
+        - HIGHLIGHTS
+        - SPARBUILDING
+        - MATCH
+        - SONG
+        - OTHER
+        - PODCAST
+        - AWARDS
+        - TRAINING
     GameSystem:
       type: string
       enum:
-        - nrw
-        - sets
-        - stones
+        - NRW
+        - SETS
+        - STONES
 
     ApiResponse:
       type: object

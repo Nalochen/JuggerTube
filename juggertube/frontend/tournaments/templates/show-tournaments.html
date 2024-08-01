@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Tournament Output</h1>
+    {% for tournament in tournament_list %}
+        <div>
+            <p>
+                id: {{ tournament.tournament_id }}
+            </p>
+            <p>
+                name: {{ tournament.name }}
+            </p>
+            <p>
+                city: {{ tournament.city }}
+            </p>
+
+            {% if tournament.jtr_link %}
+                <p>jtr_link: </p>
+                <a href="{{ tournament.jtr_link }}">
+                    {{ tournament.jtr_link }}
+                </a>
+            {% endif %}
+            {% if tournament.tugeny_link %}
+                <br>
+                <p>tugeny_link: </p>
+                <a href="{{ tournament.tugeny_link }}">
+                    {{ tournament.tugeny_link }}
+                </a>
+            {% endif %}
+        </div>
+        <br>
+    {% endfor %}
+{% endblock %}

@@ -1,10 +1,9 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField, TextAreaField, DateField, EmailField
-from wtforms.fields import choices
 from wtforms.fields.choices import SelectField
 from wtforms.validators import DataRequired, EqualTo, Optional
 
-from juggertube.game_system_enum import GameSystem
+from juggertube.enums.game_system_enum import GameSystem
 from juggertube.video_type_enum import VideoType
 
 
@@ -20,7 +19,7 @@ class RegisterForm(FlaskForm):
     password = PasswordField("Password",
                              validators=[DataRequired(), EqualTo('password2', message='Passwords must match!')])
     password2 = PasswordField("Confirm 'Password", validators=[DataRequired()])
-    team = SelectField("Team")
+    team = SelectField("Team", validators=[Optional()])
     submit = SubmitField("Submit")
 
 
@@ -51,8 +50,8 @@ class VideoForm(FlaskForm):
 class TournamentForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
     city = StringField("City", validators=[DataRequired()])
-    jtr_link = StringField("JTRLink", validators=[DataRequired()])
-    tugeny_link = StringField("Tugeny Link")
+    jtr_link = StringField("JTRLink", validators=[Optional()])
+    tugeny_link = StringField("Tugeny Link", validators=[Optional()])
     submit = SubmitField("Submit")
 
 
@@ -66,5 +65,5 @@ class TeamForm(FlaskForm):
 class ChannelForm(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
     link = StringField("Link", validators=[DataRequired()])
-    owner = SelectField("Owner", validators=[DataRequired()])
+    owner = SelectField("Owner", validators=[Optional()])
     submit = SubmitField("Submit")

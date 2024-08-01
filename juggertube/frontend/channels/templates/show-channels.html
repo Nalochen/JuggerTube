@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Channels Output</h1>
+    {% for channel in channel_list %}
+        <div>
+            <p>
+                id: {{ channel.channel_id }}
+            </p>
+            <p>
+                name: {{ channel.name }}
+            </p>
+            <a href="{{ channel.link }}">
+                link: {{ channel.link }}
+            </a>
+            {% for owner in channel.owners %}
+                <p>
+                    owner: {{ owner }}
+                </p>
+            {% endfor %}
+        </div>
+        <br>
+        <br>
+    {% endfor %}
+{% endblock %}

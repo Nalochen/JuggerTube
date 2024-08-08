@@ -7,7 +7,7 @@ click==8.1.7
 cryptography==42.0.7
 exceptiongroup==1.2.1
 Flask==3.0.3
-Flask-Login==0.6.3F
+Flask-Login==0.6.3
 Flask-Migrate==4.0.7
 Flask-SQLAlchemy==3.1.1
 Flask-WTF==1.2.1
@@ -37,4 +37,4 @@ SQLAlchemy==2.0.30
 tomli==2.0.1
 typing_extensions==4.11.0
 Werkzeug==3.0.3
-WTForms==3.1.2F
+WTForms==3.1.2

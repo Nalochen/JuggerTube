@@ -1,0 +1,46 @@
+Ziel: Plattform zur Analyse und Metaanalyse von Videos von Jugger-Spielen
+aktueller Stand: https://docs.google.com/spreadsheets/d/12slQSacI9-cZFTQk74cEN2VAcY6opXAyyFC1z0OsLNM/edit?gid=1542698570#gid=1542698570
+
+FE Funktionsumfang:
+- Übersicht über alle Videos -> können gefiltert und sortiert werden
+- neues Video hinzufügen
+- Videodetails anschauen -> eingebettetes Video sehen
+- Kanal erstellen
+
+- Video löschen
+- Turnier löschen
+- Team löschen
+- Account erstellen
+- einloggen
+- Videos nur erstellen, wenn Account mit Kanal verknüpft ist
+
+BE Funktionsumfang:
+Turniere:
+- erstellen
+- ausgeben (alle, gefiltert)
+- löschen
+- bearbeiten
+
+Teams:
+- erstellen
+- ausgeben (alle, gefiltert)
+- löschen
+- bearbeiten
+
+Kanäle:
+- erstellen
+- ausgeben (alle, gefiltert)
+- löschen
+- bearbeiten
+
+Videos:
+- erstellen
+- ausgeben (alle, gefiltert)
+- löschen
+- bearbeiten
+
+User:
+- erstellen
+- ausgeben (alle, gefiltert)
+- löschen
+- bearbeiten

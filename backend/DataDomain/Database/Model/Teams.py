@@ -18,28 +18,13 @@ class Videos(BaseModel, db.Model):
         nullable=False
     )
 
-    city: str = db.Column(
+    country: str = db.Column(
         db.String(50),
         nullable=False
     )
 
-    start_date: datetime = db.Column(
-        db.DateTime,
-        nullable=False,
-    )
-
-    end_date: datetime = db.Column(
-        db.DateTime,
-        nullable=False,
-    )
-
-    address: str = db.Column(
-        db.String(255),
-        nullable=False
-    )
-
-    jtr_link: str = db.Column(
-        db.String(255),
+    city: str = db.Column(
+        db.String(50),
         nullable=False
     )
 

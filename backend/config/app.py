@@ -3,13 +3,12 @@ import os
 from flask import Flask
 from flask_compress import Compress
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
 from flask_talisman import Talisman
 
 from redis import Redis
 from config import Config, cache, limiter
 from DataDomain.Database import db
-
-from ExternalApi.System.config import system
 
 def createApp() -> Flask:
     """Creates the Flask app"""
@@ -29,12 +28,12 @@ def createApp() -> Flask:
 
     db.init_app(app)
 
-    #Migrate(
-    #    app,
-    #    db,
-    #    directory=os.path.join(
-    #        app.config['DATABASE_PATH'],
-    #        'Migration'))
+    Migrate(
+        app,
+        db,
+        directory=os.path.join(
+            app.config['DATABASE_PATH'],
+            'Migration'))
 
     Talisman(app, content_security_policy={
         'default-src': ["'self'"],

@@ -7,9 +7,7 @@ from config.DummyLimiter import DummyLimiter
 
 limiter = Limiter(
     key_func=get_remote_address,
-    storage_uri=f'redis://{
-        os.getenv('CACHE_REDIS_HOST')}:{
-            os.getenv('CACHE_REDIS_PORT')}/0',
+    storage_uri=f"redis://{os.getenv('CACHE_REDIS_HOST')}:{os.getenv('CACHE_REDIS_PORT')}/0",
 )
 
 if os.getenv('FLASK_ENV') == 'development':

@@ -1,9 +1,12 @@
 from datetime import datetime
+from typing import List
 
 from sqlalchemy import func
 
 from DataDomain.Database import db
 from DataDomain.Database.Model import BaseModel
+from sqlalchemy.orm import Mapped
+
 
 class Videos(BaseModel, db.Model):
     __tablename__ = 'tournaments'
@@ -18,27 +21,7 @@ class Videos(BaseModel, db.Model):
         nullable=False
     )
 
-    city: str = db.Column(
-        db.String(50),
-        nullable=False
-    )
-
-    start_date: datetime = db.Column(
-        db.DateTime,
-        nullable=False,
-    )
-
-    end_date: datetime = db.Column(
-        db.DateTime,
-        nullable=False,
-    )
-
-    address: str = db.Column(
-        db.String(255),
-        nullable=False
-    )
-
-    jtr_link: str = db.Column(
+    channel_link: str = db.Column(
         db.String(255),
         nullable=False
     )
@@ -58,4 +41,9 @@ class Videos(BaseModel, db.Model):
         db.DateTime,
         server_default=func.now(),
         onupdate=func.now()
+    )
+
+    videos: Mapped[List['Videos']] = db.relationship(
+        'Videos',
+        back_populates='channel'
     )

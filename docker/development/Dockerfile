@@ -5,18 +5,25 @@ WORKDIR /home
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         curl \
+        default-mysql-server \
+        netcat-openbsd \
         nginx \
         npm \
         python3 \
         python3-pip \
         python3.12-venv \
+        rabbitmq-server \
         redis-server \
         sudo \
         vim && \
     rm -rf /var/lib/apt/lists/*
 
+RUN rabbitmq-plugins enable rabbitmq_management
+
 COPY docker/development/provisioning /opt/scripts/provisioning
 COPY docker/development/scripts /usr/local/bin
+COPY backend /home/backend
+COPY frontend /home/frontend
 
 COPY docker/development/nginx /etc/nginx
 

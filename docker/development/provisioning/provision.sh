@@ -8,11 +8,11 @@ source ${SCRIPT_DIR}/helper/functions.sh
 ####################
 new_section "Initialize Services"
 
-#run_always "Ensure that the MySQL service is started" \
-#  . "/bin/bash ${SCRIPT_DIR}/project/start_mysql.sh"
+run_always "Ensure that the MySQL service is started" \
+  . "/bin/bash ${SCRIPT_DIR}/project/start_mysql.sh"
 
-#run_always "Ensure that the RabbitMQ service is started" \
-#  . "/bin/bash ${SCRIPT_DIR}/project/start_rabbitmq.sh"
+run_always "Ensure that the RabbitMQ service is started" \
+  . "/bin/bash ${SCRIPT_DIR}/project/start_rabbitmq.sh"
 
 run_always "Ensure that the Redis service is started" \
   . "/bin/bash ${SCRIPT_DIR}/project/start_redis.sh"
@@ -23,8 +23,8 @@ new_section "Initialize Application"
 run_once "Ensure that all old caches are deleted" \
  . "/bin/bash ${SCRIPT_DIR}/general/clear-cache.sh"
 
-#run_once "Ensure that the database is up to date" \
-#  . "/bin/bash ${SCRIPT_DIR}/project/database.sh"
+run_once "Ensure that the database is up to date" \
+  . "/bin/bash ${SCRIPT_DIR}/project/database.sh"
 
 run_always "Ensure that all backend packages are installed and up to date" \
   . "/bin/bash ${SCRIPT_DIR}/project/build-backend.sh"
@@ -32,8 +32,8 @@ run_always "Ensure that all backend packages are installed and up to date" \
 run_always "Ensure that all frontend packages are installed and up to date" \
   . "/bin/bash ${SCRIPT_DIR}/project/build-frontend.sh"
 
-#run_always "Ensure that all database tables are created" \
-#  . "/bin/bash ${SCRIPT_DIR}/project/init-database.sh"
+run_always "Ensure that all database tables are created" \
+  . "/bin/bash ${SCRIPT_DIR}/project/init-database.sh"
 
 ####################
 new_section "Start services"

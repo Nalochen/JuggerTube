@@ -1,7 +1,11 @@
 #!/bin/bash
 
-cd /home/backend
+cd /home/backend || exit 1
 
+# Remove old venv if it exists
+rm -rf venv
+
+# Create a new virtual environment inside the container
 python3 -m venv venv
 . venv/bin/activate
 

@@ -99,11 +99,12 @@ function _run_command() {
 }
 
 wait_for_port() {
-    port=$1
-
-    while ! nc -z localhost "$port" > /dev/null 2>&1; do
-      sleep 1
+    local port=$1
+    while ! nc -z localhost $port; do
+        echo "Waiting for port $port to be available..."
+        sleep 1
     done
+    echo "Port $port is now available."
 }
 
 export -f print_section

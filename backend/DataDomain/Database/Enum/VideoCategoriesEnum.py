@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class VideoCategoriesEnum(Enum):
     """Enum class for the videos categories"""
 

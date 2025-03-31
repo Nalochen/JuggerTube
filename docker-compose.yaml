@@ -1,28 +1,75 @@
-version: "3.8"
 services:
-  juggertube-development:
-    build:
-      context: .
-      dockerfile: docker/development/Dockerfile
-    container_name: juggertube
+
+  mysql:
+    image: mysql:8.0.35
+    restart: always
     environment:
-      FLASK_ENV: 'development'
-      CACHE_REDIS_HOST: '0.0.0.0'
-      CACHE_REDIS_PORT: '6379'
-      DATABASE_URL: 'mysql+pymysql://user:password@localhost:3306/juggertube'
       MYSQL_DATABASE: 'juggertube'
+      MYSQL_USER: 'user'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'
-      MYSQL_USER: 'user'
-      GENERATE_TEST_DATA: False
-      RABBITMQ_WORKER_PASS: 'mypass'
-      RABBITMQ_WORKER_USER: 'worker'
-      RABBITMQ_BE_PASS: 'mypass'
-      RABBITMQ_BE_USER: 'backend'
-      SECRET_KEY: 'secret'
+    volumes:
+      - mysql_db_data:/var/lib/mysql
+    networks:
+      - backend_network
+
+  redis:
+    image: redis:latest
+    networks:
+      - backend_network
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: mypass
     ports:
-      - "127.0.0.1:80:80/tcp"
-      - "127.0.0.1:443:443/tcp"
-      - "127.0.0.1:3306:3306/tcp"
-      - "127.0.0.1:8080:8080/tcp"
-      - "127.0.0.1:15672:15672/tcp"
+      - "15672:15672"
+    networks:
+      - backend_network
+
+  backend:
+    build:
+      context: ./
+      dockerfile: docker/development/backend.Dockerfile
+    container_name: backend
+    environment:
+      FLASK_ENV: 'production'
+      CACHE_REDIS_HOST: 'redis'
+      CACHE_REDIS_PORT: '6379'
+      CELERY_BROKER_NAME: 'worker'
+      CELERY_BACKEND_URL: 'amqp://admin:mypass@rabbitmq:5672'
+      CELERY_RESULT_BACKEND: 'rpc://'
+      DATABASE_URL: 'mysql+pymysql://user:password@mysql/juggertube'
+      SECRET_KEY: 'secret'
+      GENERATE_TEST_DATA: True
+    volumes:
+      - ./backend:/app
+      - ./docker/development/assets:/app/DataDomain/assets
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+      - redis
+      - rabbitmq
+    networks:
+      - backend_network
+
+ # frontend:
+ #   build:
+ #     context: ./
+ #     dockerfile: docker/development/frontend.Dockerfile
+ #   volumes:
+ #     - docker/development/assets:/usr/share/nginx/html/assets
+ #   ports:
+ #     - "80:80"
+ #     - "443:443"
+ #   networks:
+ #     - backend_network
+
+networks:
+  backend_network:
+    driver: bridge
+
+volumes:
+  mysql_db_data: { }

@@ -1,15 +1,14 @@
 from datetime import datetime
 
-from sqlalchemy import func
-
-from DataDomain.Database import db
-from DataDomain.Database.Model import BaseModel, Channels
-from sqlalchemy.orm import Mapped
-
 from backend.DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
 from backend.DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
 from backend.DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
 from backend.DataDomain.Database.Model import Teams
+from sqlalchemy import func
+from sqlalchemy.orm import Mapped
+
+from DataDomain.Database import db
+from DataDomain.Database.Model import BaseModel, Channels
 
 
 class Tournaments(BaseModel, db.Model):

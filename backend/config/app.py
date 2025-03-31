@@ -5,10 +5,11 @@ from flask_compress import Compress
 from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
 from flask_talisman import Talisman
-
 from redis import Redis
+
 from config import Config, cache, limiter
 from DataDomain.Database import db
+
 
 def createApp() -> Flask:
     """Creates the Flask app"""
@@ -16,13 +17,13 @@ def createApp() -> Flask:
     app = Flask(__name__)
     Config.init_app(app)
 
-    #app.register_blueprint(team_frontend,
+    # app.register_blueprint(team_frontend,
     #                       url_prefix='/api/team-frontend')
-    #app.register_blueprint(tournament_frontend,
+    # app.register_blueprint(tournament_frontend,
     #                       url_prefix='/api/tournament-frontend')
-    #app.register_blueprint(user_frontend,
+    # app.register_blueprint(user_frontend,
     #                       url_prefix='/api/user-frontend')
-    #app.register_blueprint(system, url_prefix='/api/system')
+    # app.register_blueprint(system, url_prefix='/api/system')
 
     cache.init_app(app)
 
@@ -43,6 +44,8 @@ def createApp() -> Flask:
     })
 
     Compress(app)
+
+    # from DataDomain.Database.Model import Channels, Logs, Teams, Tournaments, Videos
 
     return app
 

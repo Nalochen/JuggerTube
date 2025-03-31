@@ -2,10 +2,10 @@ from datetime import datetime
 from typing import List
 
 from sqlalchemy import func
+from sqlalchemy.orm import Mapped
 
 from DataDomain.Database import db
 from DataDomain.Database.Model import BaseModel
-from sqlalchemy.orm import Mapped
 
 
 class Videos(BaseModel, db.Model):

@@ -2,6 +2,7 @@ import logging
 import os
 
 from flask import Flask
+from flask_migrate import current, upgrade
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
@@ -48,8 +49,8 @@ def initDatabase(app: Flask) -> None:
     """Initializes the database with the given SQL commands"""
 
     with app.app_context():
-        #if current() != 'head':
-        #    upgrade()
+        if current() != 'head':
+            upgrade()
 
         if os.getenv('GENERATE_TEST_DATA'):
             executeSqlCommandsToInitDatabase(app)

@@ -1,15 +1,15 @@
-#!/bin/bash
+#!/bin/sh
 
-cd /home/backend
+cd /app
 
 . venv/bin/activate
 
 echo 'Running isort'
-PYTHONPATH=backend isort .
+isort .
 
 echo 'Running autoflake'
-PYTHONPATH=backend autoflake --in-place --remove-all-unused-imports --ignore-init-module-imports --exclude venv,worker/venv --recursive .
+autoflake --in-place --remove-all-unused-imports --ignore-init-module-imports --exclude venv,worker/venv --recursive .
 
 echo 'Running autopep8'
 #PYTHONPATH=backend autopep8 --in-place --recursive --global-config=./pyproject.toml --exclude=./venv --exclude=./worker/venv .
-find . -name '*.py' -not -path './venv/*' -not -path './worker/venv/*' -exec autopep8 --in-place --aggressive --aggressive --max-line-length 90 {} \;
+find . -name '*.py' -not -path './venv/*' -exec autopep8 --in-place --aggressive --aggressive --max-line-length 90 {} \;

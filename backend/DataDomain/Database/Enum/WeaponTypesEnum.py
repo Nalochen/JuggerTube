@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class WeaponTypesEnum(Enum):
     """Enum class for the weapon types"""
 

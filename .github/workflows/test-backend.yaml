@@ -1,0 +1,61 @@
+name: test backend
+
+on: [push]
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13
+
+      - name: Install dependencies
+        run: pip install -r backend/requirements.txt
+
+      - name: Check server start
+        run:  |
+          set -x # Print commands and their arguments as they are executed.
+          set -e # Exit immediately if a command exits with a non-zero status.
+          set -u # Exit immediately if a variable is not defined.
+
+          #.github/scripts/check_backend_start.sh
+
+      - name: Run tests
+        run: |
+          set -x # Print commands and their arguments as they are executed.
+          set -e # Exit immediately if a command exits with a non-zero status.
+          set -u # Exit immediately if a variable is not defined.
+
+          # We currently have no tests
+          #PYTHONPATH=backend pytest
+
+  code-style:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.13
+
+      - name: Install autopep8 and flake8
+        run: pip install autopep8 flake8
+
+      - name: Run code style checks
+        run: |
+          set -x # Print commands and their arguments as they are executed.
+          set -e # Exit immediately if a command exits with a non-zero status.
+          set -u # Exit immediately if a variable is not defined.
+
+          find ./backend -name '*.py' -exec autopep8 --in-place --aggressive --aggressive --max-line-length 90 {} \;

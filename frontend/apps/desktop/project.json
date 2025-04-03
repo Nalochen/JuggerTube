@@ -23,6 +23,9 @@
           }
         ],
         "styles": ["apps/desktop/src/styles.less"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/desktop/src/assets/styles/less"]
+        },
         "scripts": []
       },
       "configurations": {

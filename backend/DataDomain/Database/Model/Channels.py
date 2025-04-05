@@ -8,7 +8,7 @@ from DataDomain.Database import db
 from DataDomain.Database.Model import BaseModel
 
 
-class Videos(BaseModel, db.Model):
+class Channels(BaseModel, db.Model):
     __tablename__ = 'channels'
 
     id: int = db.Column(
@@ -44,6 +44,6 @@ class Videos(BaseModel, db.Model):
     )
 
     videos: Mapped[List['Videos']] = db.relationship(
-        'videos',
+        'Videos',
         back_populates='channel'
     )

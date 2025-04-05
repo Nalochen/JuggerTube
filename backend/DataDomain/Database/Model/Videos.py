@@ -1,17 +1,16 @@
 from datetime import datetime
 
-from DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
-from DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
-from DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
-from DataDomain.Database.Model import Teams
 from sqlalchemy import func
 from sqlalchemy.orm import Mapped
 
 from DataDomain.Database import db
-from DataDomain.Database.Model import BaseModel, Channels
+from DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
+from DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
+from DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
+from DataDomain.Database.Model import BaseModel, Channels, Teams
 
 
-class Tournaments(BaseModel, db.Model):
+class Videos(BaseModel, db.Model):
     __tablename__ = 'videos'
 
     id: int = db.Column(
@@ -72,12 +71,12 @@ class Tournaments(BaseModel, db.Model):
     )
 
     channel: Mapped['Channels'] = db.relationship(
-        'channels',
+        'Channels',
         back_populates='videos'
     )
 
     tournament: Mapped['Tournaments'] = db.relationship(
-        'tournaments',
+        'Tournaments',
         back_populates='videos'
     )
 
@@ -93,12 +92,12 @@ class Tournaments(BaseModel, db.Model):
     )
 
     team_one: Mapped[Teams] = db.relationship(
-        'teams',
+        'Teams',
         foreign_keys=[team_one_id]
     )
 
     team_two: Mapped[Teams] = db.relationship(
-        'teams',
+        'Teams',
         foreign_keys=[team_two_id]
     )
 

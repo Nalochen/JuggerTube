@@ -1,0 +1,80 @@
+:host {
+  background-color: #fff;
+  display: block;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 10px;
+  color: #333;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+
+  .title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #4a7c7b;
+
+    .title {
+      color: #b8594a;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+
+      > span {
+        padding: 4px 8px;
+        border-radius: 16px;
+        margin-left: 6px;
+        font-size: 12px;
+
+        &.training,
+        &.podcast {
+          background-color: #c5e0df;
+          color: #002727;
+        }
+        &.highlights {
+          background-color: #ebd3d6;
+          color: #66112c;
+        }
+      }
+    }
+  }
+
+  .date-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #9abbba;
+  }
+
+  .description-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8px;
+    font-size: 14px;
+
+    span {
+      display: inline-block;
+      margin-right: 8px;
+      margin-bottom: 4px;
+    }
+  }
+
+  .url-row {
+    text-align: right;
+    font-size: 18px;
+
+    svg {
+      cursor: pointer;
+
+      &:hover {
+        color: darken(#333, 20%);
+      }
+    }
+  }
+}

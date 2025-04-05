@@ -8,13 +8,11 @@ fi
 . venv/bin/activate
 pip install -r requirements.txt
 
-if [ ! nc mysql 3306 ]; then
-  echo "Waiting for MySQL to start"
-  while ! nc -z mysql 3306; do
-    sleep 1
-  done
-  echo "MySQL started"
-fi
+echo "Waiting for MySQL to start"
+while ! nc -z mysql 3306; do
+  sleep 1
+done
+echo "MySQL started"
 
 /opt/scripts/init-database.sh
 

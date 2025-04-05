@@ -5,7 +5,7 @@ class WeaponTypesEnum(Enum):
     """Enum class for the weapon types"""
 
     LONGSWORD = 'longsword'
-    QTIP = 'Q-Tip'
+    QTIP = 'qtip'
     CHAIN = 'chain'
     SHIELD = 'shield'
     STAFF = 'staff'

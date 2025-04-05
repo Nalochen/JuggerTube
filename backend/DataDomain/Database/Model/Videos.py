@@ -83,12 +83,12 @@ class Tournaments(BaseModel, db.Model):
 
     team_one_id: int = db.Column(
         db.Integer,
-        db.ForeignKey('team.id'),
+        db.ForeignKey('teams.id'),
         nullable=True)
 
     team_two_id: int = db.Column(
         db.Integer,
-        db.ForeignKey('team.id'),
+        db.ForeignKey('teams.id'),
         nullable=True
     )
 

@@ -45,7 +45,7 @@ def createApp() -> Flask:
 
     Compress(app)
 
-    # from DataDomain.Database.Model import Channels, Logs, Teams, Tournaments, Videos
+    from DataDomain.Database.Model import Channels, Logs, Teams, Tournaments, Videos
 
     return app
 

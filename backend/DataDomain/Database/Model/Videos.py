@@ -72,12 +72,12 @@ class Tournaments(BaseModel, db.Model):
     )
 
     channel: Mapped['Channels'] = db.relationship(
-        'Channels',
+        'channels',
         back_populates='videos'
     )
 
     tournament: Mapped['Tournaments'] = db.relationship(
-        'Tournaments',
+        'tournaments',
         back_populates='videos'
     )
 
@@ -93,12 +93,12 @@ class Tournaments(BaseModel, db.Model):
     )
 
     team_one: Mapped[Teams] = db.relationship(
-        'Team',
+        'teams',
         foreign_keys=[team_one_id]
     )
 
     team_two: Mapped[Teams] = db.relationship(
-        'Team',
+        'teams',
         foreign_keys=[team_two_id]
     )
 

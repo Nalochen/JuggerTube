@@ -44,6 +44,6 @@ class Videos(BaseModel, db.Model):
     )
 
     videos: Mapped[List['Videos']] = db.relationship(
-        'Videos',
+        'videos',
         back_populates='channel'
     )

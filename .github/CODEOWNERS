@@ -1,0 +1,10 @@
+*          @LeanderCS, @Nalochen
+
+/.github/  @ops-team
+/.github/CODEOWNERS @LeanderCS, @Nalochen
+
+/backend/  @backend-team
+
+/docker/   @ops-team
+
+/frontend/ @frontend-team

@@ -1,0 +1,38 @@
+<div class="search-banner">
+  <search-video-tile />
+</div>
+
+<div class="controls-row">
+  <div class="sorting">
+    <svg
+      width="20"
+      height="20"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="m20 12-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8Z" />
+    </svg>
+
+    Alphabetisch
+  </div>
+  <div class="create">
+    neu
+
+    <svg
+      width="20"
+      height="20"
+      fill="currentColor"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z" />
+    </svg>
+  </div>
+</div>
+
+<div class="videos">
+  @for (video of videos; track video.id) {
+  <video-tile [video]="video" />
+  }
+</div>

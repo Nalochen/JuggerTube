@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from backend.DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
-from backend.DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
-from backend.DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
-from backend.DataDomain.Database.Model import Teams
+from DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
+from DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
+from DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
+from DataDomain.Database.Model import Teams
 from sqlalchemy import func
 from sqlalchemy.orm import Mapped
 
@@ -12,7 +12,7 @@ from DataDomain.Database.Model import BaseModel, Channels
 
 
 class Tournaments(BaseModel, db.Model):
-    __tablename__ = 'tournaments'
+    __tablename__ = 'videos'
 
     id: int = db.Column(
         db.Integer,

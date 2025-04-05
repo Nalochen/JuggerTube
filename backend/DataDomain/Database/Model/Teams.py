@@ -7,7 +7,7 @@ from DataDomain.Database.Model import BaseModel
 
 
 class Videos(BaseModel, db.Model):
-    __tablename__ = 'tournaments'
+    __tablename__ = 'teams'
 
     id: int = db.Column(
         db.Integer,

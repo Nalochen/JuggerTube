@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: Customer Frontend API
+  version: 1.0.0
+paths:
+  /api/video-frontend/get-video-overview:
+    get:
+      summary: Get video overview
+      description: Returns a list of all registered videos.
+      responses:
+        '200':
+          description: A list of videos
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      description: The unique ID of the video
+                      example: 123
+                      nullable: false
+                    name:
+                      type: string
+                      description: The name of the video
+                      example: "Summer Cup Finale"
+                      nullable: false
+                    category:
+                      type: string
+                      enum:
+                        - reports
+                        - highlights
+                        - match
+                        - song
+                        - podcast
+                        - awards
+                        - training
+                        - other
+                      description: The Category of the video
+                      example: match
+                      nullable: false
+                    videoLink:
+                      type: string
+                      description: The Link to the original video
+                      example: https://www.youtube.com/watch?v=JCLXq-YgRTo&t=989s
+                      nullable: false
+                    uploadDate:
+                      type: string
+                      description: The Videos upload date
+                      example: 25-07-2024
+                      nullable: false
+                    comment:
+                      type: string
+                      description: A Jugger related Comment to the video
+                      example: Result 4-5
+                      nullable: true
+                    dateOfRecording:
+                      type: string
+                      description: The Day when the Video was recorded
+                      example: 24-07-2024
+                      nullable: true
+                    gameSystem:
+                      type: string
+                      enum:
+                        - nrw
+                        - stones
+                        - sets
+                        - null
+                      description: The Game System a Match had
+                      example: sets
+                      nullable: true
+                    weaponType:
+                      type: string
+                      enum:
+                        - longsword
+                        - qtip
+                        - chain
+                        - shield
+                        - staff
+                        - qwik
+                        - null
+                      description: A specific Weapon Type mentioned in the Video
+                      example: longsword
+                      nullable: true
+                    topic:
+                      type: string
+                      description: The Topic of the Video
+                      example: sparbuilding
+                      nullable: true
+                    guests:
+                      type: string
+                      description: Guests in the video
+                      example: gabo and manu
+                      nullable: true
+
+
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error"

@@ -9,6 +9,8 @@ from DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
 from DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
 from DataDomain.Database.Model import BaseModel, Channels, Teams
 
+from DataDomain.Database.Model.Tournaments import Tournaments
+
 
 class Videos(BaseModel, db.Model):
     __tablename__ = 'videos'
@@ -39,7 +41,7 @@ class Videos(BaseModel, db.Model):
         nullable=False,
     )
 
-    comments: str = db.Column(
+    comment: str = db.Column(
         db.Text,
         nullable=False,
         default=''

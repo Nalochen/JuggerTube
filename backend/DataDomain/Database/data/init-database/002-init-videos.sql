@@ -3,7 +3,7 @@ INSERT IGNORE INTO videos (
     category,
     video_link,
     upload_date,
-    comments,
+    comment,
     date_of_recording
 ) VALUES
 ('Testvideo 1', 'reports', 'https://youtu.be/f27SC622NvE', '2028-03-10T23:00:00', 'comment', '2026-20-4T23:00:00'),

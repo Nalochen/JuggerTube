@@ -87,7 +87,7 @@ def upgrade():
                     sa.Column('category', sa.Enum('REPORTS', 'HIGHLIGHTS', 'SPARBUILDING', 'MATCH', 'SONG', 'PODCAST', 'AWARDS', 'TRAINING', 'OTHER', name='videocategoriesenum'), nullable=False),
                     sa.Column('video_link', sa.String(length=255), nullable=False),
                     sa.Column('upload_date', sa.DateTime(), nullable=False),
-                    sa.Column('comments', sa.Text(), nullable=False),
+                    sa.Column('comment', sa.Text(), nullable=False),
                     sa.Column('date_of_recording', sa.DateTime(), nullable=True),
                     sa.Column('game_system', sa.Enum('NRW', 'STONES', 'SETS', name='gamesystemtypesenum'), nullable=True),
                     sa.Column('weapon_type', sa.Enum('LONGSWORD', 'QTIP', 'CHAIN', 'SHIELD', 'STAFF', 'QWIK', name='weapontypesenum'), nullable=True),

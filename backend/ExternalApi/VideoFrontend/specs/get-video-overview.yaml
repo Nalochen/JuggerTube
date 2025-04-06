@@ -94,6 +94,21 @@ paths:
                       description: Guests in the video
                       example: gabo and manu
                       nullable: true
+                    channelName:
+                      type: string
+                      description: Name of the Channel which uploaded the Video
+                      example: Jugger Basel
+                      nullable: false
+                    tournamentName:
+                      type: string
+                      description: Name of the Tournament where the video was recorded
+                      example: 20. Bayerische Meisterschaft
+                      nullable: true
+                    teamName:
+                      type: string
+                      description: Name of the Team shown in the Video
+                      example: Jugger Basilisken Basel
+                      nullable: true
 
 
         '500':

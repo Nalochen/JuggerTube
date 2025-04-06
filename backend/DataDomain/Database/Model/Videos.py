@@ -7,7 +7,7 @@ from DataDomain.Database import db
 from DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
 from DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
 from DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
-from DataDomain.Database.Model import BaseModel, Channels, Teams
+from DataDomain.Database.Model import BaseModel, Channels, Teams, Tournaments
 
 
 class Videos(BaseModel, db.Model):
@@ -39,7 +39,7 @@ class Videos(BaseModel, db.Model):
         nullable=False,
     )
 
-    comments: str = db.Column(
+    comment: str = db.Column(
         db.Text,
         nullable=False,
         default=''
@@ -70,9 +70,21 @@ class Videos(BaseModel, db.Model):
         nullable=False
     )
 
+    channel_id: int = db.Column(
+        db.Integer,
+        db.ForeignKey('channels.id'),
+        nullable=False
+    )
+
     channel: Mapped['Channels'] = db.relationship(
         'Channels',
         back_populates='videos'
+    )
+
+    tournament_id: int = db.Column(
+        db.Integer,
+        db.ForeignKey('tournaments.id'),
+        nullable=True
     )
 
     tournament: Mapped['Tournaments'] = db.relationship(

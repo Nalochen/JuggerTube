@@ -8,8 +8,8 @@ from DataDomain.Database import db
 from DataDomain.Database.Model import BaseModel
 
 
-class Videos(BaseModel, db.Model):
-    __tablename__ = 'tournaments'
+class Channels(BaseModel, db.Model):
+    __tablename__ = 'channels'
 
     id: int = db.Column(
         db.Integer,

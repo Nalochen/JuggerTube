@@ -1,18 +1,17 @@
 from datetime import datetime
 
-from backend.DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
-from backend.DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
-from backend.DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
-from backend.DataDomain.Database.Model import Teams
 from sqlalchemy import func
 from sqlalchemy.orm import Mapped
 
 from DataDomain.Database import db
-from DataDomain.Database.Model import BaseModel, Channels
+from DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
+from DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
+from DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
+from DataDomain.Database.Model import BaseModel, Channels, Teams
 
 
-class Tournaments(BaseModel, db.Model):
-    __tablename__ = 'tournaments'
+class Videos(BaseModel, db.Model):
+    __tablename__ = 'videos'
 
     id: int = db.Column(
         db.Integer,
@@ -83,22 +82,22 @@ class Tournaments(BaseModel, db.Model):
 
     team_one_id: int = db.Column(
         db.Integer,
-        db.ForeignKey('team.id'),
+        db.ForeignKey('teams.id'),
         nullable=True)
 
     team_two_id: int = db.Column(
         db.Integer,
-        db.ForeignKey('team.id'),
+        db.ForeignKey('teams.id'),
         nullable=True
     )
 
     team_one: Mapped[Teams] = db.relationship(
-        'Team',
+        'Teams',
         foreign_keys=[team_one_id]
     )
 
     team_two: Mapped[Teams] = db.relationship(
-        'Team',
+        'Teams',
         foreign_keys=[team_two_id]
     )
 

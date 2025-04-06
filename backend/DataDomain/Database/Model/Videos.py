@@ -72,9 +72,21 @@ class Videos(BaseModel, db.Model):
         nullable=False
     )
 
+    channel_id: int = db.Column(
+        db.Integer,
+        db.ForeignKey('channels.id'),
+        nullable=False
+    )
+
     channel: Mapped['Channels'] = db.relationship(
         'Channels',
         back_populates='videos'
+    )
+
+    tournament_id: int = db.Column(
+        db.Integer,
+        db.ForeignKey('tournaments.id'),
+        nullable=True
     )
 
     tournament: Mapped['Tournaments'] = db.relationship(

@@ -9,6 +9,7 @@ from redis import Redis
 
 from config import Config, cache, limiter
 from DataDomain.Database import db
+from ExternalApi.VideoFrontend.config.routes import video_frontend
 
 
 def createApp() -> Flask:
@@ -17,8 +18,8 @@ def createApp() -> Flask:
     app = Flask(__name__)
     Config.init_app(app)
 
-    # app.register_blueprint(team_frontend,
-    #                       url_prefix='/api/team-frontend')
+    app.register_blueprint(video_frontend,
+                           url_prefix='/api/video-frontend')
     # app.register_blueprint(tournament_frontend,
     #                       url_prefix='/api/tournament-frontend')
     # app.register_blueprint(user_frontend,

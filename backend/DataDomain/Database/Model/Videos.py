@@ -7,9 +7,7 @@ from DataDomain.Database import db
 from DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
 from DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
 from DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
-from DataDomain.Database.Model import BaseModel, Channels, Teams
-
-from DataDomain.Database.Model.Tournaments import Tournaments
+from DataDomain.Database.Model import BaseModel, Channels, Teams, Tournaments
 
 
 class Videos(BaseModel, db.Model):

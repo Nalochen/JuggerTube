@@ -11,7 +11,7 @@ externalApiFolder = Blueprint(
     'external_api',
     __name__,
     static_folder=os.path.join(
-        '/home/backend/ExternalApi')
+        '/app/ExternalApi')
 )
 
 

@@ -1,5 +1,5 @@
-from DataDomain.Database.Repository.VideoRepository import VideoRepository
-from DataDomain.Model.Response import Response
+from DataDomain.Database.Repository import VideoRepository
+from DataDomain.Model import Response
 
 
 class GetVideoOverviewHandler:

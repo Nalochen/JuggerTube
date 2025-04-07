@@ -1,8 +1,8 @@
 from flask import Blueprint
 
-from config.cache import cache
-from DataDomain.Model.Response import Response
-from ExternalApi.VideoFrontend.Handler.GetVideoOverviewHandler import (
+from config import cache
+from DataDomain.Model import Response
+from ExternalApi.VideoFrontend.Handler import (
     GetVideoOverviewHandler,
 )
 

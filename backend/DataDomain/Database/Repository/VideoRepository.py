@@ -45,7 +45,7 @@ class VideoRepository:
             TeamTwo,
             Videos.team_two_id == TeamTwo.id
         ).filter(
-            Videos.is_deleted is False
+            Videos.is_deleted == False
         ).order_by(
             Videos.upload_date
         ).all())

@@ -104,7 +104,12 @@ paths:
                       description: Name of the Tournament where the video was recorded
                       example: 20. Bayerische Meisterschaft
                       nullable: true
-                    teamName:
+                    teamOneName:
+                      type: string
+                      description: Name of the Team shown in the Video
+                      example: Jugger Basilisken Basel
+                      nullable: true
+                    teamTwoName:
                       type: string
                       description: Name of the Team shown in the Video
                       example: Jugger Basilisken Basel

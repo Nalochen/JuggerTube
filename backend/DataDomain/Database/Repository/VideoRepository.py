@@ -1,12 +1,9 @@
 from typing import List
 
+from sqlalchemy.orm import aliased
+
 from DataDomain.Database import db
-from DataDomain.Database.Model.Videos import Videos
-
-from DataDomain.Database.Model.Channels import Channels
-from DataDomain.Database.Model.Tournaments import Tournaments
-
-from DataDomain.Database.Model.Teams import Teams
+from DataDomain.Database.Model import Channels, Teams, Tournaments, Videos
 
 
 class VideoRepository:
@@ -15,6 +12,9 @@ class VideoRepository:
     @staticmethod
     def getVideoOverview() -> List[dict]:
         """Get Video Overview"""
+
+        TeamOne = aliased(Teams)
+        TeamTwo = aliased(Teams)
 
         videos = (db.session.query(
             Videos.id,
@@ -30,7 +30,8 @@ class VideoRepository:
             Videos.guests,
             Channels.name.label('channel_name'),
             Tournaments.name.label('tournament_name'),
-            Teams.name.label('team_name')
+            TeamOne.name.label('team_one_name'),
+            TeamTwo.name.label('team_two_name')
         ).join(
             Channels,
             Videos.channel_id == Channels.id
@@ -38,15 +39,13 @@ class VideoRepository:
             Tournaments,
             Videos.tournament_id == Tournaments.id
         ).join(
-            Teams,
-            Videos.team_one_id == Teams.id
-        ).join (
-            Teams,
-            Videos.team_two_id == Teams.id
+            TeamOne,
+            Videos.team_one_id == TeamOne.id
+        ).join(
+            TeamTwo,
+            Videos.team_two_id == TeamTwo.id
         ).filter(
-            Videos.is_deleted is False
-        ).group_by(
-            Videos.id
+            Videos.is_deleted == False
         ).order_by(
             Videos.upload_date
         ).all())
@@ -65,5 +64,6 @@ class VideoRepository:
             'guests': video.guests,
             'channelName': video.channel_name,
             'tournamentName': video.tournament_name,
-            'teamName': video.team_name,
+            'teamOneName': video.team_one_name,
+            'teamTwoName': video.team_two_name,
         } for video in videos]

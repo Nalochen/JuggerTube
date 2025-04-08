@@ -10,6 +10,7 @@ from redis import Redis
 from config import Config, cache, limiter
 from DataDomain.Database import db
 from ExternalApi.VideoFrontend.config.routes import video_frontend
+from ExternalApi.Tournament.config.routes import tournament_frontend
 
 
 def createApp() -> Flask:
@@ -20,8 +21,8 @@ def createApp() -> Flask:
 
     app.register_blueprint(video_frontend,
                            url_prefix='/api/video-frontend')
-    # app.register_blueprint(tournament_frontend,
-    #                       url_prefix='/api/tournament-frontend')
+    app.register_blueprint(tournament_frontend,
+                         url_prefix='/api/tournament-frontend')
     # app.register_blueprint(user_frontend,
     #                       url_prefix='/api/user-frontend')
     # app.register_blueprint(system, url_prefix='/api/system')
@@ -37,7 +38,9 @@ def createApp() -> Flask:
             app.config['DATABASE_PATH'],
             'Migration'))
 
-    Talisman(app, content_security_policy={
+    Talisman(app, 
+             force_https=False,  # Disable HTTPS forcing in development
+             content_security_policy={
         'default-src': ["'self'"],
         'script-src': ["'self'", "'unsafe-inline'"],
         'style-src': ["'self'", "'unsafe-inline'"],

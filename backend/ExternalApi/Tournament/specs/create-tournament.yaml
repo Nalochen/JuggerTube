@@ -1,0 +1,98 @@
+openapi: 3.0.0
+info:
+  title: Tournament Frontend API
+  version: 1.0.0
+paths:
+  /api/tournament-frontend/create-tournament:
+    post:
+      summary: Create a new tournament
+      description: Creates a new tournament with the provided data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - city
+                - startDate
+                - endDate
+                - address
+              properties:
+                name:
+                  type: string
+                  description: Name of the tournament
+                  example: "5. Frängsche Meisterschaft"
+                  minLength: 1
+                  maxLength: 100
+                city:
+                  type: string
+                  description: City where the tournament takes place
+                  example: "Erlangen"
+                  minLength: 1
+                  maxLength: 50
+                startDate:
+                  type: string
+                  format: date-time
+                  description: Start date and time of the tournament (ISO 8601 format)
+                  example: "2024-06-15T09:00:00"
+                endDate:
+                  type: string
+                  format: date-time
+                  description: End date and time of the tournament (ISO 8601 format)
+                  example: "2024-06-16T18:00:00"
+                address:
+                  type: string
+                  description: Full address of the tournament venue
+                  example: "Sportplatz Erlangen, Hauptstraße 1, 91054 Erlangen"
+                  minLength: 1
+                  maxLength: 255
+                jtrLink:
+                  type: string
+                  description: Link to JTR-Entry of Tournament (optional)
+                  example: "https://turniere.jugger.org/tournament.php?id=724"
+                  maxLength: 255
+      responses:
+        '201':
+          description: Tournament created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the created tournament
+                    example: 123
+                  message:
+                    type: string
+                    description: Success message
+                    example: "Tournament created successfully"
+        '400':
+          description: Invalid input data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+                    example: "Invalid input data"
+                  errors:
+                    type: object
+                    description: Detailed validation errors
+                    example:
+                      name: "Name is required"
+                      startDate: "Start date must be before end date"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error" 

@@ -1,9 +1,25 @@
 from typing import List
-
+from datetime import datetime
 from sqlalchemy.orm import aliased
 
 from DataDomain.Database import db
-from DataDomain.Database.Model import Channels, Teams, Tournaments, Videos
+from DataDomain.Database.Model import Videos, Teams, Channels, Tournaments
+
+
+def parse_date(date_str) -> str:
+    """Parse date string and return formatted date"""
+    if not date_str:
+        return None
+    try:
+        # Try different date formats
+        for fmt in ['%Y-%m-%d', '%Y-%m-%d %H:%M:%S', '%Y-%m-%dT%H:%M:%S']:
+            try:
+                return datetime.strptime(str(date_str)[:19], fmt).strftime('%d-%m-%Y')
+            except ValueError:
+                continue
+        return str(date_str)
+    except Exception:
+        return str(date_str)
 
 
 class VideoRepository:
@@ -35,35 +51,40 @@ class VideoRepository:
         ).join(
             Channels,
             Videos.channel_id == Channels.id
-        ).join(
+        ).outerjoin(
             Tournaments,
             Videos.tournament_id == Tournaments.id
-        ).join(
+        ).outerjoin(
             TeamOne,
             Videos.team_one_id == TeamOne.id
-        ).join(
+        ).outerjoin(
             TeamTwo,
             Videos.team_two_id == TeamTwo.id
         ).filter(
-            Videos.is_deleted == False
+            Videos.is_deleted != True
         ).order_by(
             Videos.upload_date
         ).all())
 
-        return [{
-            'id': video.id,
-            'name': video.name,
-            'category': video.category,
-            'videoLink': video.video_link,
-            'uploadDate': video.upload_date.isoformat(),
-            'comment': video.comment,
-            'dateOfRecording': video.date_of_recording.isoformat(),
-            'gameSystem': video.game_system,
-            'weaponType': video.weapon_type,
-            'topic': video.topic,
-            'guests': video.guests,
-            'channelName': video.channel_name,
-            'tournamentName': video.tournament_name,
-            'teamOneName': video.team_one_name,
-            'teamTwoName': video.team_two_name,
-        } for video in videos]
+        result = []
+        for video in videos:
+            video_dict = {
+                'id': video.id,
+                'name': video.name,
+                'category': video.category.value if video.category else None,
+                'videoLink': video.video_link,
+                'comment': video.comment,
+                'gameSystem': video.game_system.value if video.game_system else None,
+                'weaponType': video.weapon_type.value if video.weapon_type else None,
+                'topic': video.topic,
+                'guests': video.guests,
+                'uploadDate': parse_date(video.upload_date),
+                'dateOfRecording': parse_date(video.date_of_recording),
+                'channelName': video.channel_name,
+                'tournamentName': video.tournament_name,
+                'teamOneName': video.team_one_name,
+                'teamTwoName': video.team_two_name,
+            }
+            result.append(video_dict)
+
+        return result

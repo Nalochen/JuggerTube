@@ -1,4 +1,5 @@
 from flask import Blueprint
+import logging
 
 from config import cache
 from DataDomain.Model import Response

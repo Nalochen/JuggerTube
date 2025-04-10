@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 
 from DataDomain.Model import Response
-from ExternalApi.Tournament.Handler.CreateTournamentHandler import CreateTournamentHandler
-from ExternalApi.Tournament.InputFilter.CreateTournamentInputFilter import CreateTournamentInputFilter
+from ExternalApi.TournamentFrontend.Handler.CreateTournamentHandler import CreateTournamentHandler
+from ExternalApi.TournamentFrontend.InputFilter.CreateTournamentInputFilter import CreateTournamentInputFilter
 
 tournament_frontend = Blueprint('tournament-frontend', __name__)
 

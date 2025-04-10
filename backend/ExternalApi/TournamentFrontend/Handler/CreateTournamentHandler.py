@@ -6,7 +6,7 @@ from sqlalchemy.exc import SQLAlchemyError
 from DataDomain.Database import db
 from DataDomain.Database.Model import Tournaments
 from DataDomain.Model import Response
-from ExternalApi.Tournament.Validator.CreateTournamentValidator import CreateTournamentValidator
+from ExternalApi.TournamentFrontend.Validator.CreateTournamentValidator import CreateTournamentValidator
 
 
 class CreateTournamentHandler:

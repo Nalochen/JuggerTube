@@ -5,7 +5,7 @@ from typing import Optional
 from flask import request, jsonify
 
 from DataDomain.Model import Response
-from ExternalApi.Tournament.Validator.CreateTournamentValidator import CreateTournamentValidator
+from ExternalApi.TournamentFrontend.Validator.CreateTournamentValidator import CreateTournamentValidator
 
 
 class CreateTournamentInputFilter:

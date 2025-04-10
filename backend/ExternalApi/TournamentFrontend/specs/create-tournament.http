@@ -1,0 +1,26 @@
+### Create new tournament
+POST https://{{host}}/api/tournament-frontend/create-tournament
+Content-Type: application/json
+
+{
+    "name": "Deutsche Meisterschaft 2024",
+    "city": "Berlin",
+    "start_date": "{{$isoDateTime}}",
+    "end_date": "{{$isoDateTime}}",
+    "address": "Sportplatz Musterstraße 1, 10115 Berlin",
+    "jtr_link": "https://jugger-tournament-results.com/tournament/example"
+}
+
+> {%
+    client.test("It should return a successful status code", function() {
+        client.assert(response.status === 201, "Response status is not 201");
+    });
+
+    client.test("Response should contain tournament ID", function() {
+        client.assert(response.body.id !== undefined, "Tournament ID is missing in response");
+    });
+
+    client.test("Response should contain success message", function() {
+        client.assert(response.body.message === "Tournament created successfully", "Success message is incorrect");
+    });
+%} 

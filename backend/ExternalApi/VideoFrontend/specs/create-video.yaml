@@ -1,0 +1,132 @@
+openapi: 3.0.0
+info:
+  title: Video Frontend API
+  version: 1.0.0
+paths:
+  /api/video-frontend/create-video:
+    post:
+      summary: Create a new video
+      description: Creates a new video with the provided data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - channel_id
+                - category
+                - video_link
+                - upload_date
+                - topic
+                - guests
+              properties:
+                name:
+                  type: string
+                  description: Name of the video
+                  example: "Jugger Match - Team A vs Team B"
+                  minLength: 1
+                  maxLength: 100
+                channel_id:
+                  type: integer
+                  description: ID of the channel where the video was uploaded
+                  example: 1
+                category:
+                  type: string
+                  description: Category of the video
+                  enum: [REPORTS, HIGHLIGHTS, SPARBUILDING, MATCH, SONG, PODCAST, AWARDS, TRAINING, OTHER]
+                  example: "MATCH"
+                video_link:
+                  type: string
+                  description: URL of the video
+                  example: "https://www.youtube.com/watch?v=..."
+                  minLength: 1
+                  maxLength: 255
+                upload_date:
+                  type: string
+                  format: date-time
+                  description: Date when the video was uploaded (ISO 8601 format)
+                  example: "2024-03-20T15:30:00"
+                topic:
+                  type: string
+                  description: Topic or subject of the video
+                  example: "Tournament Finals"
+                guests:
+                  type: string
+                  description: Guests featured in the video
+                  example: "Team A, Team B"
+                comment:
+                  type: string
+                  description: Additional comments about the video
+                  example: "Exciting match between two top teams"
+                tournament_id:
+                  type: integer
+                  description: ID of the tournament featured in the video (optional)
+                  example: 1
+                team_one_id:
+                  type: integer
+                  description: ID of the first team in the video (optional)
+                  example: 1
+                team_two_id:
+                  type: integer
+                  description: ID of the second team in the video (optional)
+                  example: 2
+                date_of_recording:
+                  type: string
+                  format: date-time
+                  description: Date when the video was recorded (ISO 8601 format)
+                  example: "2024-03-19T14:00:00"
+                game_system:
+                  type: string
+                  description: Game system used in the match (optional)
+                  enum: [NRW, STONES, SETS]
+                  example: "NRW"
+                weapon_type:
+                  type: string
+                  description: Type of weapon used (optional)
+                  enum: [LONGSWORD, QTIP, CHAIN, SHIELD, STAFF, QWIK]
+                  example: "LONGSWORD"
+      responses:
+        '201':
+          description: Video created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the created video
+                    example: 123
+                  message:
+                    type: string
+                    description: Success message
+                    example: "Video created successfully"
+        '400':
+          description: Invalid input data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+                    example: "Invalid input data"
+                  errors:
+                    type: object
+                    description: Detailed validation errors
+                    example:
+                      name: "Name is required"
+                      video_link: "Invalid URL format"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error" 

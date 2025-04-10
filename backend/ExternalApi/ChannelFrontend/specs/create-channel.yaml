@@ -1,0 +1,74 @@
+openapi: 3.0.0
+info:
+  title: Channel Frontend API
+  version: 1.0.0
+paths:
+  /api/channel-frontend/create-channel:
+    post:
+      summary: Create a new channel
+      description: Creates a new channel with the provided data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - channel_link
+              properties:
+                name:
+                  type: string
+                  description: Name of the channel
+                  example: "Jugger Deutschland"
+                  minLength: 1
+                  maxLength: 100
+                channel_link:
+                  type: string
+                  description: URL of the channel
+                  example: "https://www.youtube.com/channel/UCxYz..."
+                  minLength: 1
+                  maxLength: 255
+      responses:
+        '201':
+          description: Channel created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: The ID of the created channel
+                    example: 123
+                  message:
+                    type: string
+                    description: Success message
+                    example: "Channel successfully created"
+        '400':
+          description: Invalid input data
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Error message
+                    example: "Invalid input data"
+                  errors:
+                    type: object
+                    description: Detailed validation errors
+                    example:
+                      name: "Name is required"
+                      channel_link: "Invalid URL format"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error" 

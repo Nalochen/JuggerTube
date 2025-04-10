@@ -1,0 +1,46 @@
+### Create a new team
+POST https://{{host}}/api/team/create
+Content-Type: application/json
+
+{
+    "name": "Berliner Jugger Team",
+    "country": "DE",
+    "city": "Berlin",
+}
+
+> {%
+    client.test("Response should have status 201", function() {
+        client.assert(response.status === 201, "Response status is not 201");
+    });
+
+    client.test("Response should contain team ID", function() {
+        client.assert(response.body.id !== undefined, "Team ID is missing in response");
+    });
+
+    client.test("Response should contain success message", function() {
+        client.assert(response.body.message === "Team successfully created", "Success message is incorrect");
+    });
+%}
+
+### Create a team with invalid data (should fail)
+POST https://{{host}}/api/team/create
+Content-Type: application/json
+
+{
+    "name": "",
+    "country": "DEU",
+    "city": ""
+}
+
+> {%
+    client.test("Response should have status 400", function() {
+        client.assert(response.status === 400, "Response status is not 400");
+    });
+
+    client.test("Response should contain validation errors", function() {
+        client.assert(response.body.errors !== undefined, "Validation errors are missing");
+        client.assert(response.body.errors.name !== undefined, "Name validation error is missing");
+        client.assert(response.body.errors.country !== undefined, "Country validation error is missing");
+        client.assert(response.body.errors.city !== undefined, "City validation error is missing");
+    });
+%} 

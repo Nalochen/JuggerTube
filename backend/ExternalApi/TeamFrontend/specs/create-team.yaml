@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: Team API
+  version: 1.0.0
+  description: API endpoints for team management
+
+paths:
+  /api/team/create:
+    post:
+      summary: Create a new team
+      description: Add a new team to the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - country
+                - city
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 100
+                  description: Name of the team
+                country:
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  description: ISO country code (e.g. DE, US)
+                city:
+                  type: string
+                  minLength: 1
+                  maxLength: 50
+                  description: City where the team is based
+      responses:
+        '201':
+          description: Team successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                    description: Unique identifier of the created team
+                  message:
+                    type: string
+                    example: "Team successfully created"
+        '400':
+          description: Invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    additionalProperties:
+                      type: string
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string 

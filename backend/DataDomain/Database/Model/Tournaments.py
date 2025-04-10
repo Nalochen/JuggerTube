@@ -67,3 +67,18 @@ class Tournaments(BaseModel, db.Model):
         'Videos',
         back_populates='tournament'
     )
+
+    def __init__(
+            self,
+            name: str,
+            city: str,
+            start_date: datetime,
+            end_date: datetime,
+            address: str,
+            jtr_link: str):
+        self.name = name
+        self.city = city
+        self.start_date = start_date
+        self.end_date = end_date
+        self.address = address
+        self.jtr_link = jtr_link

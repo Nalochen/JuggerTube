@@ -1,37 +1,37 @@
 from datetime import datetime
-from typing import Dict
 
+from flask import g
 from sqlalchemy.exc import SQLAlchemyError
 
 from DataDomain.Database import db
 from DataDomain.Database.Model import Tournaments
 from DataDomain.Model import Response
-from ExternalApi.TournamentFrontend.Validator.CreateTournamentValidator import CreateTournamentValidator
 
 
 class CreateTournamentHandler:
     """Handler for creating new tournaments"""
 
-    def handle(self, data: Dict) -> Response:
-        """
-        Handle tournament creation request
-        
-        Args:
-            data (Dict): Validated tournament data from request
-            
-        Returns:
-            Response: API response
-        """
+    @staticmethod
+    def handle() -> Response:
+
+        data = g.validated_data
         try:
             # Create new tournament using validated data
             tournament = Tournaments(
                 name=data['name'],
                 city=data['city'],
-                start_date=datetime.fromisoformat(data['startDate'].replace('Z', '+00:00')),
-                end_date=datetime.fromisoformat(data['endDate'].replace('Z', '+00:00')),
+                start_date=datetime.fromisoformat(
+                    data['startDate'].replace(
+                        'Z',
+                        '+00:00')),
+                end_date=datetime.fromisoformat(
+                    data['endDate'].replace(
+                        'Z',
+                        '+00:00')),
                 address=data['address'],
-                jtr_link=data.get('jtrLink', '')
-            )
+                jtr_link=data.get(
+                    'jtrLink',
+                    ''))
 
             try:
                 # Save to database
@@ -49,10 +49,10 @@ class CreateTournamentHandler:
             except SQLAlchemyError as db_error:
                 # Rollback transaction on database error
                 db.session.rollback()
-                
+
                 # Log the error for debugging
                 print(f"Database error: {str(db_error)}")
-                
+
                 return Response(
                     response={
                         "message": "Failed to create tournament",
@@ -64,11 +64,11 @@ class CreateTournamentHandler:
         except Exception as e:
             # Log the error for debugging
             print(f"Unexpected error: {str(e)}")
-            
+
             return Response(
                 response={
                     "message": "Internal server error",
                     "error": str(e)
                 },
                 status=500
-            ) 
+            )

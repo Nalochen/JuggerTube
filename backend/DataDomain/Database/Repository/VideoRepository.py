@@ -1,9 +1,10 @@
-from typing import List
 from datetime import datetime
+from typing import List
+
 from sqlalchemy.orm import aliased
 
 from DataDomain.Database import db
-from DataDomain.Database.Model import Videos, Teams, Channels, Tournaments
+from DataDomain.Database.Model import Channels, Teams, Tournaments, Videos
 
 
 def parse_date(date_str) -> str:

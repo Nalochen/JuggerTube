@@ -1,118 +1,149 @@
-from functools import wraps
-import re
-from typing import Optional
+from flask_inputfilter import InputFilter
+from flask_inputfilter.Validator import (
+    InEnumValidator,
+    IsIntegerValidator,
+    IsStringValidator,
+    IsUrlValidator,
+    LengthValidator,
+)
 
-from flask import request, jsonify
+from DataDomain.Database.Enum import (
+    GameSystemTypesEnum,
+    VideoCategoriesEnum,
+    WeaponTypesEnum,
+)
+from ExternalApi.VideoFrontend.Filter import SanitizeStringFilter
 
-from DataDomain.Model import Response
-from ExternalApi.VideoFrontend.Validator.CreateVideoValidator import CreateVideoValidator
 
-
-class CreateVideoInputFilter:
+class CreateVideoInputFilter(InputFilter):
     """Input filter for video creation endpoint"""
 
-    @staticmethod
-    def _sanitize_string(value: Optional[str]) -> Optional[str]:
-        """Sanitize string input to prevent XSS"""
-        if value is None:
-            return None
-        # Remove any HTML tags
-        value = re.sub(r'<[^>]*?>', '', value)
-        # Convert special characters to HTML entities
-        value = value.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
-        value = value.replace('"', '&quot;').replace("'", '&#x27;')
-        return value.strip()
+    def __init__(self):
+        super().__init__()
 
-    @staticmethod
-    def _is_valid_url(url: str) -> bool:
-        """Validate URL format"""
-        if not url:
-            return True
-        
-        # URL pattern
-        url_pattern = re.compile(
-            r'^https?://'  # http:// or https://
-            r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,6}\.?|'  # domain...
-            r'localhost|'  # localhost...
-            r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})'  # ...or ip
-            r'(?::\d+)?'  # optional port
-            r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+        self.add(
+            'name',
+            required=True,
+            filters=[
+                SanitizeStringFilter()
+            ],
+            validators=[
+                IsStringValidator(),
+                LengthValidator(max_length=100)
+            ]
+        )
 
-        return bool(url_pattern.match(url))
+        self.add(
+            'topic',
+            required=True,
+            filters=[
+                SanitizeStringFilter()
+            ],
+            validators=[
+                IsStringValidator(),
+            ]
+        )
 
-    @staticmethod
-    def validate():
-        """
-        Decorator to validate video creation input data
-        """
-        def decorator(f):
-            @wraps(f)
-            def decorated_function(*args, **kwargs):
-                # Check content type
-                if not request.is_json:
-                    return Response(
-                        response=jsonify({
-                            "message": "Invalid content type. Expected application/json",
-                            "errors": {"content_type": "Must be application/json"}
-                        }),
-                        status=400
-                    )
+        self.add(
+            'guests',
+            required=True,
+            filters=[
+                SanitizeStringFilter()
+            ],
+            validators=[
+                IsStringValidator(),
+            ]
+        )
 
-                try:
-                    data = request.get_json()
-                except Exception as e:
-                    return Response(
-                        response=jsonify({
-                            "message": "Invalid JSON format",
-                            "errors": {
-                                "json": "Could not parse JSON data",
-                                "details": str(e)
-                            }
-                        }),
-                        status=400
-                    )
+        self.add(
+            'comment',
+            required=True,
+            filters=[
+                SanitizeStringFilter()
+            ],
+            validators=[
+                IsStringValidator(),
+            ]
+        )
 
-                if not data:
-                    return Response(
-                        response=jsonify({
-                            "message": "Empty request body",
-                            "errors": {"body": "Request body cannot be empty"}
-                        }),
-                        status=400
-                    )
+        self.add(
+            'video_link',
+            required=True,
+            validators=[
+                IsStringValidator(),
+                IsUrlValidator(),
+                LengthValidator(max_length=255),
+            ]
+        )
 
-                # Sanitize string inputs
-                for field in ['name', 'video_link', 'topic', 'guests', 'comment']:
-                    if field in data:
-                        data[field] = CreateVideoInputFilter._sanitize_string(data[field])
+        self.add(
+            'channel_id',
+            required=True,
+            validators=[
+                IsIntegerValidator()
+            ]
+        )
 
-                # Validate URL format for video_link
-                if 'video_link' in data and data['video_link']:
-                    if not CreateVideoInputFilter._is_valid_url(data['video_link']):
-                        return Response(
-                            response=jsonify({
-                                "message": "Invalid input data",
-                                "errors": {
-                                    "video_link": "Invalid URL format"
-                                }
-                            }),
-                            status=400
-                        )
+        self.add(
+            'category',
+            required=True,
+            filters=[
+                SanitizeStringFilter()
+            ],
+            validators=[
+                InEnumValidator(VideoCategoriesEnum)
+            ]
+        )
 
-                # Validate input data
-                is_valid, errors = CreateVideoValidator.validate(data)
-                if not is_valid:
-                    return Response(
-                        response=jsonify({
-                            "message": "Invalid input data",
-                            "errors": errors
-                        }),
-                        status=400
-                    )
+        self.add(
+            'upload_date',
+            required=True,
+            validators=[
+                # IsDateTimeValidator() Existiert noch nicht, füge ich in der lib hinzu
+            ]
+        )
 
-                # Store sanitized data in request context
-                request.validated_data = data
-                return f(*args, **kwargs)
+        self.add(
+            'date_of_recording',
+            required=True,
+            validators=[
+                # IsDateTimeValidator() Existiert noch nicht, füge ich in der lib hinzu
+            ]
+        )
 
-            return decorated_function
-        return decorator 
+        self.add(
+            'game_system',
+            required=True,
+            validators=[
+                InEnumValidator(GameSystemTypesEnum)
+            ]
+        )
+
+        self.add(
+            'weapon_type',
+            required=True,
+            validators=[
+                InEnumValidator(WeaponTypesEnum)
+            ]
+        )
+
+        self.add(
+            'tournament_id',
+            validators=[
+                IsIntegerValidator()
+            ]
+        )
+
+        self.add(
+            'team_one_id',
+            validators=[
+                IsIntegerValidator()
+            ]
+        )
+
+        self.add(
+            'team_two_id',
+            validators=[
+                IsIntegerValidator()
+            ]
+        )

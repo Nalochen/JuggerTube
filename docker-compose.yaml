@@ -2,6 +2,7 @@ services:
 
   mysql:
     image: mysql:8.0.35
+    container_name: mysql
     restart: always
     environment:
       MYSQL_DATABASE: 'juggertube'
@@ -15,11 +16,13 @@ services:
 
   redis:
     image: redis:latest
+    container_name: redis
     networks:
       - backend_network
 
   rabbitmq:
     image: rabbitmq:3-management
+    container_name: rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: mypass
@@ -59,6 +62,7 @@ services:
  #   build:
  #     context: ./
  #     dockerfile: docker/development/frontend.Dockerfile
+ #   container_name: frontend
  #   volumes:
  #     - docker/development/assets:/usr/share/nginx/html/assets
  #   ports:

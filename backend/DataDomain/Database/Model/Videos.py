@@ -129,3 +129,36 @@ class Videos(BaseModel, db.Model):
         server_default=func.now(),
         onupdate=func.now()
     )
+
+    def __init__(
+            self,
+            name: str,
+            category: VideoCategoriesEnum,
+            video_link: str,
+            upload_date: datetime,
+            comment: str,
+            date_of_recording: datetime = None,
+            game_system: GameSystemTypesEnum = None,
+            weapon_type: WeaponTypesEnum = None,
+            topic: str = "",
+            guests: str = "",
+            channel_id: int = None,
+            tournament_id: int = None,
+            team_one_id: int = None,
+            team_two_id: int = None,
+            is_deleted: bool = False):
+        self.name = name
+        self.category = category
+        self.video_link = video_link
+        self.upload_date = upload_date
+        self.comment = comment
+        self.date_of_recording = date_of_recording
+        self.game_system = game_system
+        self.weapon_type = weapon_type
+        self.topic = topic
+        self.guests = guests
+        self.channel_id = channel_id
+        self.tournament_id = tournament_id
+        self.team_one_id = team_one_id
+        self.team_two_id = team_two_id
+        self.is_deleted = is_deleted

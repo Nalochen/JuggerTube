@@ -1,1 +1,1 @@
-from .CreateVideoInputFilter import CreateVideoInputFilter 
+from .CreateVideoInputFilter import CreateVideoInputFilter

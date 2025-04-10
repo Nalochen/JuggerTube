@@ -1,9 +1,7 @@
-import json
 from typing import Any
 
-from flask import Response as FlaskResponse, jsonify
-
-from DataDomain.Model import CustomJSONEncoder
+from flask import Response as FlaskResponse
+from flask import jsonify
 
 
 class Response(FlaskResponse):

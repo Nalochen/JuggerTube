@@ -1,37 +1,36 @@
-from functools import wraps
-
-from flask import request
-
-from DataDomain.Model import Response
-from ExternalApi.TeamFrontend.Validator.CreateTeamValidator import CreateTeamValidator
+from flask_inputfilter import InputFilter
+from flask_inputfilter.Validator import IsStringValidator, LengthValidator
 
 
-class CreateTeamInputFilter:
+class CreateTeamInputFilter(InputFilter):
     """Input filter for team creation endpoint"""
 
-    @staticmethod
-    def validate():
-        """
-        Decorator to validate team creation input data
-        
-        Returns:
-            callable: Decorated function
-        """
-        def decorator(f):
-            @wraps(f)
-            def decorated_function(*args, **kwargs):
-                # Validate request data
-                is_valid, errors = CreateTeamValidator.validate(request.get_json())
-                
-                if not is_valid:
-                    return Response(
-                        response={"errors": errors},
-                        status=400
-                    )
-                
-                # Store validated data
-                request.validated_data = request.get_json()
-                
-                return f(*args, **kwargs)
-            return decorated_function
-        return decorator 
+    def __init__(self):
+        super().__init__()
+
+        self.add(
+            "name",
+            required=True,
+            validators=[
+                IsStringValidator(),
+                LengthValidator(max=100)
+            ]
+        )
+
+        self.add(
+            "country",
+            required=True,
+            validators=[
+                IsStringValidator(),
+                LengthValidator(min=2, max=2)
+            ]
+        )
+
+        self.add(
+            "city",
+            required=True,
+            validators=[
+                IsStringValidator(),
+                LengthValidator(max=50)
+            ]
+        )

@@ -45,3 +45,8 @@ class Teams(BaseModel, db.Model):
         server_default=func.now(),
         onupdate=func.now()
     )
+
+    def __init__(self, name: str, country: str, city: str):
+        self.name = name
+        self.country = country
+        self.city = city

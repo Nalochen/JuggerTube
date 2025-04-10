@@ -1,1 +1,1 @@
-from .CreateTournamentHandler import CreateTournamentHandler 
+from .CreateTournamentHandler import CreateTournamentHandler

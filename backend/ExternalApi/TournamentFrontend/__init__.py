@@ -1,1 +1,1 @@
-from .config.routes import tournament_frontend 
+from .config.routes import tournament_frontend

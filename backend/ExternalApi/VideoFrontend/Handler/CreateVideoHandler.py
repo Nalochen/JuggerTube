@@ -1,6 +1,6 @@
 from datetime import datetime
-from typing import Dict
 
+from flask import g
 from sqlalchemy.exc import SQLAlchemyError
 
 from DataDomain.Database import db
@@ -14,16 +14,11 @@ from DataDomain.Model import Response
 class CreateVideoHandler:
     """Handler for creating new videos"""
 
-    def handle(self, data: Dict) -> Response:
-        """
-        Handle video creation request
-        
-        Args:
-            data (Dict): Validated video data from request
-            
-        Returns:
-            Response: API response
-        """
+    @staticmethod
+    def handle() -> Response:
+
+        data = g.validated_data
+
         try:
             # Create new video using validated data
             video = Videos(
@@ -71,10 +66,10 @@ class CreateVideoHandler:
             except SQLAlchemyError as db_error:
                 # Rollback transaction on database error
                 db.session.rollback()
-                
+
                 # Log the error for debugging
                 print(f"Database error: {str(db_error)}")
-                
+
                 return Response(
                     response={
                         "message": "Failed to create video",
@@ -86,11 +81,11 @@ class CreateVideoHandler:
         except Exception as e:
             # Log the error for debugging
             print(f"Unexpected error: {str(e)}")
-            
+
             return Response(
                 response={
                     "message": "Internal server error",
                     "error": str(e)
                 },
                 status=500
-            ) 
+            )

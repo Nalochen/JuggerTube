@@ -1,5 +1,4 @@
-from typing import Dict
-
+from flask import g
 from sqlalchemy.exc import SQLAlchemyError
 
 from DataDomain.Database import db
@@ -10,16 +9,10 @@ from DataDomain.Model import Response
 class CreateChannelHandler:
     """Handler for creating new channels"""
 
-    def handle(self, data: Dict) -> Response:
-        """
-        Handle channel creation request
-        
-        Args:
-            data (Dict): Validated channel data from request
-            
-        Returns:
-            Response: API response
-        """
+    @staticmethod
+    def handle() -> Response:
+        data = g.validated_data
+
         try:
             # Create new channel using validated data
             channel = Channels(
@@ -43,10 +36,10 @@ class CreateChannelHandler:
             except SQLAlchemyError as db_error:
                 # Rollback transaction on database error
                 db.session.rollback()
-                
+
                 # Log the error for debugging
                 print(f"Database error: {str(db_error)}")
-                
+
                 return Response(
                     response={
                         "message": "Failed to create channel",
@@ -58,11 +51,11 @@ class CreateChannelHandler:
         except Exception as e:
             # Log the error for debugging
             print(f"Unexpected error: {str(e)}")
-            
+
             return Response(
                 response={
                     "message": "Internal server error",
                     "error": str(e)
                 },
                 status=500
-            ) 
+            )

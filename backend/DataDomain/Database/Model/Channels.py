@@ -47,3 +47,7 @@ class Channels(BaseModel, db.Model):
         'Videos',
         back_populates='channel'
     )
+
+    def __init__(self, name: str, channel_link: str):
+        self.name = name
+        self.channel_link = channel_link

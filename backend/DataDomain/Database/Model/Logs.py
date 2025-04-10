@@ -39,3 +39,9 @@ class Logs(BaseModel, db.Model):
         db.DateTime,
         server_default=func.now()
     )
+
+    def __init__(self, logger_name: str, level: str, message: str, data: str):
+        self.logger_name = logger_name
+        self.level = level
+        self.message = message
+        self.data = data

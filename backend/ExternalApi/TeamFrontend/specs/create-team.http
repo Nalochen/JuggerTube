@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "name": "Berliner Jugger Team",
     "country": "DE",
-    "city": "Berlin",
+    "city": "Berlin"
 }
 
 > {%

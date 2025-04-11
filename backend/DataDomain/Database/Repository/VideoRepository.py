@@ -4,7 +4,7 @@ from sqlalchemy.orm import aliased
 
 from DataDomain.Database import db
 from DataDomain.Database.Model import Videos, Teams, Channels, Tournaments
-
+from Infrastructure.Logger.Logger import logger
 
 def parse_date(date_str) -> str:
     """Parse date string and return formatted date"""
@@ -88,3 +88,21 @@ class VideoRepository:
             result.append(video_dict)
 
         return result
+
+
+    @staticmethod
+    def create(video: Videos) -> int:
+        try:
+            db.session.add(video)
+            db.session.commit()
+
+            logger.info(
+                f'VideoRepository | Create | created video {
+                video.id}')
+
+            return video.id
+
+        except Exception as e:
+            db.session.rollback()
+            logger.error(f'VideoRepository | Create | {e}')
+            raise e

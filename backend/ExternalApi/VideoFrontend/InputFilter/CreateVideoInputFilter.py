@@ -22,13 +22,10 @@ from DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
 class CreateVideoInputFilter(InputFilter):
     """The input filter for the create-video route"""
 
-    def __init__(self, func=None):
+    def __init__(self):
         """Initializes the CreateVideoInputFilter"""
 
         super().__init__()
-
-        # Store the decorated function
-        self.func = func
 
         self.add(
             'name',
@@ -208,10 +205,3 @@ class CreateVideoInputFilter(InputFilter):
             filters=[StringTrimFilter()],
             validators=[IsStringValidator()]
         )
-
-    def __call__(self, *args, **kwargs):
-        """Handle the decorator call"""
-        if self.func is None:
-            self.func = args[0]
-            return self
-        return super().__call__(*args, **kwargs) 

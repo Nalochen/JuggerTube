@@ -20,6 +20,6 @@ def getVideoOverview() -> Response:
 @video_frontend.route('/create-video',
                       methods=['POST'], endpoint='create-video')
 @cache.cached(key_prefix='create-video')
-@CreateVideoInputFilter
+@CreateVideoInputFilter.validate()
 def createVideo() -> Response:
     return CreateVideoHandler.handle()

@@ -16,13 +16,24 @@ class CreateVideoHandler:
     @staticmethod
     def handle() -> Response:
         """Create Video"""
-        data = g.validatedData
+        data = g.validated_data
 
         video = CreateVideoHandler._create_base_video(data)
         CreateVideoHandler._handle_category_specific_data(video, data)
 
-        #logische Datenvalidierung
-        
+        if ((video.category == VideoCategoriesEnum.REPORTS
+                and not video.topic)
+            or (video.category == VideoCategoriesEnum.SPARBUILDING
+                and not video.weapon_type)
+            or (video.category == VideoCategoriesEnum.MATCH
+                and not video.game_system
+                and not video.tournament_id
+                and not video.team_one_id
+                and not video.team_two_id
+                )
+        ):
+            return Response(response='missing required data', status=400)
+
         try:
             videoId = VideoRepository.create(video)
 

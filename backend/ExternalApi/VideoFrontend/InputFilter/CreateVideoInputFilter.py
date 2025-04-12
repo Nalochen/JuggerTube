@@ -9,7 +9,6 @@ from flask_inputfilter.Filter import (
 from flask_inputfilter.Validator import (
     InEnumValidator,
     IsArrayValidator,
-    IsBoolValidator,
     IsIntegerValidator,
     IsStringValidator,
     RegexValidator,
@@ -23,10 +22,13 @@ from DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
 class CreateVideoInputFilter(InputFilter):
     """The input filter for the create-video route"""
 
-    def __init__(self):
+    def __init__(self, func=None):
         """Initializes the CreateVideoInputFilter"""
 
         super().__init__()
+
+        # Store the decorated function
+        self.func = func
 
         self.add(
             'name',
@@ -128,7 +130,7 @@ class CreateVideoInputFilter(InputFilter):
         )
 
         self.add(
-            'tournament.tournamentName',
+            'tournament.name',
             required=False,
             filters=[StringTrimFilter()],
             validators=[IsStringValidator()]
@@ -205,4 +207,11 @@ class CreateVideoInputFilter(InputFilter):
             required=False,
             filters=[StringTrimFilter()],
             validators=[IsStringValidator()]
-        ) 
+        )
+
+    def __call__(self, *args, **kwargs):
+        """Handle the decorator call"""
+        if self.func is None:
+            self.func = args[0]
+            return self
+        return super().__call__(*args, **kwargs) 

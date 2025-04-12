@@ -19,11 +19,6 @@ class Teams(BaseModel, db.Model):
         nullable=False
     )
 
-    country: str = db.Column(
-        db.String(50),
-        nullable=False
-    )
-
     city: str = db.Column(
         db.String(50),
         nullable=False

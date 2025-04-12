@@ -36,11 +36,6 @@ class Tournaments(BaseModel, db.Model):
         nullable=False,
     )
 
-    address: str = db.Column(
-        db.String(255),
-        nullable=False
-    )
-
     jtr_link: str = db.Column(
         db.String(255),
         nullable=False

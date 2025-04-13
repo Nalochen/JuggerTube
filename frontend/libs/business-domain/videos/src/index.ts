@@ -1,1 +1,3 @@
-export * from './lib/business-domain-videos/business-domain-videos.component';
+export * from './lib/store/videos-store.module';
+
+export * from './lib/services/videos.data-service'

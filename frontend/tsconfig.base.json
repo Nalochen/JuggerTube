@@ -17,11 +17,12 @@
     "paths": {
       "@frontend/api": ["libs/infrastructure/api/src/index.ts"],
       "@frontend/business-domain-videos": [
-        "libs/business-domain/business-domain-videos/src/index.ts"
+        "libs/business-domain/videos/src/index.ts"
       ],
+      "@frontend/cache": ["libs/infrastructure/cache/src/index.ts"],
       "@frontend/data-domain-videos": [
-        "libs/data-domain/data-domain-videos/src/index.ts"
-      ]
+        "libs/data-domain/videos/src/index.ts"
+      ],
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@frontend/business-domain-videos": [
+        "libs/business-domain/business-domain-videos/src/index.ts"
+      ],
+      "@frontend/data-domain-videos": [
+        "libs/data-domain/data-domain-videos/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

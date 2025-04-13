@@ -11,8 +11,8 @@ const apiUrl = '/api/video-frontend/get-video-overview';
 export class VideosApiClient {
   constructor(private httpClient: HttpClient) {}
 
-  public get(): Observable<VideoApiResponseModel> {
+  public get(): Observable<VideoApiResponseModel[]> {
     return this.httpClient
-      .get<VideoApiResponseModel>(apiUrl)
+      .get<VideoApiResponseModel[]>(apiUrl)
   }
 }

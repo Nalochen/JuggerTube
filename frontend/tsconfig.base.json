@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@frontend/api": ["libs/infrastructure/api/src/index.ts"],
       "@frontend/business-domain-videos": [
         "libs/business-domain/business-domain-videos/src/index.ts"
       ],

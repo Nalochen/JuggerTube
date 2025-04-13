@@ -1,0 +1,60 @@
+openapi: 3.0.0
+info:
+  title: Customer Frontend API
+  version: 1.0.0
+paths:
+  /api/video-frontend/get-tournament-overview:
+    get:
+      summary: Get tournament overview
+      description: Returns a list of all registered tournaments.
+      responses:
+        '200':
+          description: A list of tournaments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      description: The unique ID of the tournament
+                      example: 123
+                      nullable: false
+                    name:
+                      type: string
+                      description: The name of the tournament
+                      example: "Summer Cup"
+                      nullable: false
+                    city:
+                      type: string
+                      description: The city where the tournament takes place
+                      example: "Berlin"
+                      nullable: false
+                    startDate:
+                      type: string
+                      description: The first day of the tournament
+                      example: "2024-07-03"
+                      nullable: false
+                    endDate:
+                      type: string
+                      description: The last day of the tournament
+                      example: "2024-07-04"
+                      nullable: false
+                    jtrLink:
+                      type: string
+                      description: The link to the jtr entry of the tournament
+                      example: "https://turniere.jugger.org/tournament.php?id=810"
+                      nullable: false
+
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error"

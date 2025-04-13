@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  title: Customer Frontend API
+  version: 1.0.0
+paths:
+  /api/video-frontend/get-channel-overview:
+    get:
+      summary: Get team overview
+      description: Returns a list of all registered teams.
+      responses:
+        '200':
+          description: A list of teams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      description: The unique ID of the team
+                      example: 123
+                      nullable: false
+                    name:
+                      type: string
+                      description: The name of the team
+                      example: "Jugger Basel"
+                      nullable: false
+                    city:
+                      type: string
+                      description: The name of the city where the team comes from or Mixteam
+                      example: "Mixteam"
+                      nullable: false
+
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error"

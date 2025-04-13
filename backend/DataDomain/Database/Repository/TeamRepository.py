@@ -8,14 +8,12 @@ class TeamRepository:
     """Repository for team related queries"""
 
     @staticmethod
-    def getAllTeams() -> List[dict]:
+    def getTeamOverview() -> List[dict]:
         """Get all teams from database"""
         teams = (db.session.query(
             Teams.id,
             Teams.name,
-            Teams.country,
             Teams.city,
-            Teams.comment
         ).filter(
             Teams.is_deleted != True
         ).order_by(
@@ -27,9 +25,7 @@ class TeamRepository:
             team_dict = {
                 'id': team.id,
                 'name': team.name,
-                'country': team.country,
                 'city': team.city,
-                'comment': team.comment
             }
             result.append(team_dict)
 

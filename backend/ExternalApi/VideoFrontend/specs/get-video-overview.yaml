@@ -49,7 +49,7 @@ paths:
                     uploadDate:
                       type: string
                       description: The Videos upload date
-                      example: 25-07-2024
+                      example: 2024-07-10
                       nullable: false
                     comment:
                       type: string
@@ -59,7 +59,7 @@ paths:
                     dateOfRecording:
                       type: string
                       description: The Day when the Video was recorded
-                      example: 24-07-2024
+                      example: 2024-07-04
                       nullable: true
                     gameSystem:
                       type: string

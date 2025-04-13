@@ -1,4 +1,4 @@
-import { VideoApiResponseModel } from "../../../../../../data-domain/videos/src";
+import { VideoApiResponseModel } from "@frontend/data-domain-videos";
 import { RequestStateEnum } from "@frontend/api";
 
 export const videosFeatureKey = 'videos';

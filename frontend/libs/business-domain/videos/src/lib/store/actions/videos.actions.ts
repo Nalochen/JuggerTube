@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {VideoApiResponseModel} from "../../../../../../data-domain/videos/src";
+import {VideoApiResponseModel} from "@frontend/data-domain-videos";
 import {HttpErrorResponse} from "@angular/common/http";
 
 enum VideosActionNamesEnum {

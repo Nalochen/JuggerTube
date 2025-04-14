@@ -7,13 +7,12 @@ from flask_migrate import Migrate
 from flask_talisman import Talisman
 from redis import Redis
 
-from ExternalApi.ChannelFrontend.config.routes import channel_frontend
-from ExternalApi.TournamentFrontend.config.routes import tournament_frontend
-from ExternalApi.VideoFrontend.config.routes import video_frontend
-
-from ExternalApi.TeamFrontend.config.routes import team_frontend
 from config import Config, cache, limiter
 from DataDomain.Database import db
+from ExternalApi.ChannelFrontend.config import channel_frontend
+from ExternalApi.TeamFrontend.config import team_frontend
+from ExternalApi.TournamentFrontend.config import tournament_frontend
+from ExternalApi.VideoFrontend.config import video_frontend
 
 
 def createApp() -> Flask:
@@ -25,9 +24,9 @@ def createApp() -> Flask:
     app.register_blueprint(video_frontend,
                            url_prefix='/api/video-frontend')
     app.register_blueprint(channel_frontend,
-                          url_prefix='/api/channel-frontend')
+                           url_prefix='/api/channel-frontend')
     app.register_blueprint(tournament_frontend,
-                          url_prefix='/api/tournament-frontend')
+                           url_prefix='/api/tournament-frontend')
     app.register_blueprint(team_frontend,
                            url_prefix='/api/team-frontend')
     # app.register_blueprint(user_frontend,

@@ -1,11 +1,14 @@
-import { VideoApiResponseModel } from "@frontend/data-domain-videos";
-import { RequestStateEnum } from "@frontend/api";
+import { HttpErrorResponse } from '@angular/common/http';
 
-export const videosFeatureKey = 'videos';
+import { RequestStateEnum } from '@frontend/api';
+import { VideoApiResponseModel } from '@frontend/data-domain-videos';
+
+export const videosFeatureKey = 'videoOverview';
 
 export interface VideosState {
-  videos: VideoApiResponseModel[],
-  requestState: RequestStateEnum,
+  videos: VideoApiResponseModel[];
+  requestState: RequestStateEnum;
+  error: HttpErrorResponse | null;
 }
 
 export interface VideosStateAware {

@@ -1,7 +1,8 @@
 from typing import List
-from DataDomain.Database.db import db
-from DataDomain.Database.Model.Tournaments import Tournaments
-from Infrastructure.Logger.Logger import logger
+
+from DataDomain.Database import db
+from DataDomain.Database.Model import Tournaments
+from Infrastructure.Logger import logger
 
 
 class TournamentRepository:
@@ -36,7 +37,6 @@ class TournamentRepository:
             result.append(tournament_dict)
 
         return result
-
 
     @staticmethod
     def create(tournament: Tournaments) -> int:

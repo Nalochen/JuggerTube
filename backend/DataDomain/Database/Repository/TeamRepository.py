@@ -1,7 +1,8 @@
-from DataDomain.Database.db import db
-from DataDomain.Database.Model import Teams
-from Infrastructure.Logger.Logger import logger
 from typing import List
+
+from DataDomain.Database import db
+from DataDomain.Database.Model import Teams
+from Infrastructure.Logger import logger
 
 
 class TeamRepository:

@@ -2,9 +2,7 @@
   <span class="title">{{ video.name }}</span>
 
   <div class="tags">
-    @for (category of video.category; track category) {
-    <span class="{{ category }}">{{ category }}</span>
-    }
+    <span class="{{ video.category }}">{{ video.category }}</span>
   </div>
 </div>
 

@@ -2,11 +2,8 @@ from flask import Blueprint
 
 from config import cache
 from DataDomain.Model import Response
-from ExternalApi.VideoFrontend.Handler import (
-    GetVideoOverviewHandler,
-)
-from ExternalApi.VideoFrontend.Handler.CreateVideoHandler import CreateVideoHandler
-from ExternalApi.VideoFrontend.InputFilter.CreateVideoInputFilter import CreateVideoInputFilter
+from ExternalApi.VideoFrontend.Handler import CreateVideoHandler, GetVideoOverviewHandler
+from ExternalApi.VideoFrontend.InputFilter import CreateVideoInputFilter
 
 video_frontend = Blueprint('video-frontend', __name__)
 
@@ -16,6 +13,7 @@ video_frontend = Blueprint('video-frontend', __name__)
 @cache.cached(key_prefix='video-overview')
 def getVideoOverview() -> Response:
     return GetVideoOverviewHandler.handle()
+
 
 @video_frontend.route('/create-video',
                       methods=['POST'], endpoint='create-video')

@@ -1,22 +1,22 @@
 from flask_inputfilter import InputFilter
-from flask_inputfilter.Enum.RegexEnum import RegexEnum
+from flask_inputfilter.Enum import RegexEnum
 from flask_inputfilter.Filter import (
     StringTrimFilter,
-    ToBooleanFilter,
     ToIntegerFilter,
     ToNullFilter,
 )
 from flask_inputfilter.Validator import (
     InEnumValidator,
-    IsArrayValidator,
     IsIntegerValidator,
     IsStringValidator,
     RegexValidator,
 )
 
-from DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
-from DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
-from DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
+from DataDomain.Database.Enum import (
+    GameSystemTypesEnum,
+    VideoCategoriesEnum,
+    WeaponTypesEnum,
+)
 
 
 class CreateVideoInputFilter(InputFilter):

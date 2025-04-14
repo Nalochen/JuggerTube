@@ -1,10 +1,12 @@
-from typing import List
 from datetime import datetime
+from typing import List
+
 from sqlalchemy.orm import aliased
 
 from DataDomain.Database import db
-from DataDomain.Database.Model import Videos, Teams, Channels, Tournaments
-from Infrastructure.Logger.Logger import logger
+from DataDomain.Database.Model import Channels, Teams, Tournaments, Videos
+from Infrastructure.Logger import logger
+
 
 def parse_date(date_str) -> str:
     """Parse date string and return formatted date"""
@@ -89,7 +91,6 @@ class VideoRepository:
 
         return result
 
-
     @staticmethod
     def create(video: Videos) -> int:
         try:
@@ -98,7 +99,7 @@ class VideoRepository:
 
             logger.info(
                 f'VideoRepository | Create | created video {
-                video.id}')
+                    video.id}')
 
             return video.id
 

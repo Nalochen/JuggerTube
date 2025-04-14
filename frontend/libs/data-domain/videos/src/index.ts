@@ -4,4 +4,4 @@ export * from './lib/enums/weapon-types.enum';
 
 export * from './lib/models/video-api-response.model';
 
-export * from './lib/services/videos-api.client'
+export * from './lib/services/videos-api.client';

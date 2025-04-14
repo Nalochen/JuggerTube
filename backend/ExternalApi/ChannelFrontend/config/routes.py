@@ -1,9 +1,8 @@
 from flask import Blueprint
+
 from config import cache
-
 from DataDomain.Model import Response
-from ExternalApi.ChannelFrontend.Handler.GetChannelOverviewHandler import GetChannelOverviewHandler
-
+from ExternalApi.ChannelFrontend.Handler import GetChannelOverviewHandler
 
 channel_frontend = Blueprint('channel-frontend', __name__)
 

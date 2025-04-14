@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
-import { Video } from '../../../../app.component';
+import { VideoApiResponseModel } from '@frontend/video-data';
 
 @Component({
   selector: 'video-tile',
@@ -11,5 +11,5 @@ import { Video } from '../../../../app.component';
   styleUrl: './video-tile.component.less',
 })
 export class VideoTileComponent {
-  @Input() public video!: Video;
+  @Input() public video!: VideoApiResponseModel;
 }

@@ -58,15 +58,38 @@ def upgrade():
                     sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
                     sa.PrimaryKeyConstraint('id')
                     )
-    op.create_table('teams',
-                    sa.Column('id', sa.Integer(), nullable=False),
-                    sa.Column('name', sa.String(length=100), nullable=False),
-                    sa.Column('city', sa.String(length=50), nullable=False),
-                    sa.Column('is_deleted', sa.Boolean(), server_default='0', nullable=False),
-                    sa.Column('created_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-                    sa.Column('updated_at', sa.DateTime(), server_default=sa.text('now()'), nullable=True),
-                    sa.PrimaryKeyConstraint('id')
-                    )
+    op.create_table(
+        'teams',
+        sa.Column(
+            'id',
+            sa.Integer(),
+            nullable=False),
+        sa.Column(
+            'name',
+            sa.String(
+                length=100),
+            nullable=False),
+        sa.Column(
+            'city',
+            sa.String(
+                length=50),
+            nullable=False),
+        sa.Column(
+            'is_deleted',
+            sa.Boolean(),
+            server_default='0',
+            nullable=False),
+        sa.Column(
+            'created_at',
+            sa.DateTime(),
+            server_default=sa.text('now()'),
+            nullable=True),
+        sa.Column(
+            'updated_at',
+            sa.DateTime(),
+            server_default=sa.text('now()'),
+            nullable=True),
+        sa.PrimaryKeyConstraint('id'))
     op.create_table('tournaments',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('name', sa.String(length=100), nullable=False),

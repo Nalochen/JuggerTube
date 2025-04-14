@@ -1,6 +1,6 @@
 {
   "root": true,
-  "ignorePatterns": ["**/*"],
+  "ignorePatterns": ["node_modules/"],
   "overrides": [
     {
       "files": ["*.ts"],
@@ -44,17 +44,11 @@
           1,
           {
             "groups": [
-              // @NOTE 1st: Zone.js and Jest to not break tests
               ["zone\\.js\\/?", "@?jest(\\/|-)"],
-              // @NOTE 2nd: Angular related packages
               ["^@angular\\/"],
-              // @NOTE 3rd: Material related packages
               ["^@angular\\/material"],
-              // @NOTE 4th: RxJS related packages
               ["^rxjs\\/?"],
-              // @NOTE 5th: NgRx related packages
               ["^@?ngrx\\/?", "^ngrx-store-localstorage"],
-              // @NOTE 6th: Other packages
               [
                 "^date-fns\\/?",
                 "^@fortawesome\\/?",
@@ -65,15 +59,12 @@
                 "^text-mask-addons\\/?",
                 "^@maskito\\/?"
               ],
-              // @NOTE 7th: Imports from other layers (non-Nx)
               [
                 "\\/business-rules\\/",
                 "\\/data-domain\\/",
                 "\\/infrastructure\\/"
               ],
-              // @NOTE 8th: Environments
               ["\\/environments\\/environment"],
-              // @NOTE 9th: AppComponent, Module and RoutingModule
               ["app\\.component", "app\\.module", "app-routing\\.module"]
             ]
           }

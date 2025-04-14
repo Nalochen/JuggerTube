@@ -3,6 +3,7 @@ from typing import List
 from DataDomain.Database import db
 from DataDomain.Database.Model import Channels
 
+
 class ChannelRepository:
     """Repository for channel related queries"""
 

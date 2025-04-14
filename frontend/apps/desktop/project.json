@@ -62,6 +62,7 @@
           "buildTarget": "desktop:build:production"
         },
         "development": {
+          "proxyConfig": "proxy.conf.json",
           "buildTarget": "desktop:build:development"
         }
       },

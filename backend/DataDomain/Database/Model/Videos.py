@@ -4,9 +4,11 @@ from sqlalchemy import func
 from sqlalchemy.orm import Mapped
 
 from DataDomain.Database import db
-from DataDomain.Database.Enum.GameSystemTypesEnum import GameSystemTypesEnum
-from DataDomain.Database.Enum.VideoCategoriesEnum import VideoCategoriesEnum
-from DataDomain.Database.Enum.WeaponTypesEnum import WeaponTypesEnum
+from DataDomain.Database.Enum import (
+    GameSystemTypesEnum,
+    VideoCategoriesEnum,
+    WeaponTypesEnum,
+)
 from DataDomain.Database.Model import BaseModel, Channels, Teams, Tournaments
 
 

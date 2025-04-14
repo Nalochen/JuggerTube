@@ -1,5 +1,5 @@
+from DataDomain.Database.Repository import TeamRepository
 from DataDomain.Model import Response
-from DataDomain.Database.Repository.TeamRepository import TeamRepository
 
 
 class GetTeamOverviewHandler:

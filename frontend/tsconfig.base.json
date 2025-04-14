@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@frontend/api": ["libs/infrastructure/api/src/index.ts"],
+      "@frontend/cache": ["libs/infrastructure/cache/src/index.ts"],
+      "@frontend/video": ["libs/business-domain/video/src/index.ts"],
+      "@frontend/video-data": ["libs/data-domain/video-data/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

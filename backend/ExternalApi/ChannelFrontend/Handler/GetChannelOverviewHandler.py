@@ -1,5 +1,5 @@
+from DataDomain.Database.Repository import ChannelRepository
 from DataDomain.Model import Response
-from DataDomain.Database.Repository.ChannelRepository import ChannelRepository
 
 
 class GetChannelOverviewHandler:

@@ -12,7 +12,7 @@ from DataDomain.Database.Enum import (
 from DataDomain.Database.Model import BaseModel, Channels, Teams, Tournaments
 
 
-class Videos(BaseModel, db.Model):
+class Videos(BaseModel):
     __tablename__ = 'videos'
 
     id: int = db.Column(

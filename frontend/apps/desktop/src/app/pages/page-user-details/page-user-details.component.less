@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  width: 680px;
+  justify-self: center;
+
+  .details-row {
+    display: flex;
+    gap: 30px;
+
+    img {
+      width: 100px;
+      height: 100px;
+      border-radius: 100%;
+    }
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    grid-row-gap: 24px;
+    margin-top: 24px;
+    flex-direction: column;
+
+    .password-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 30px;
+
+      ui-input {
+        width: -webkit-fill-available;
+
+        ::ng-deep input:disabled {
+          background-color: #f0f0f0;
+        }
+      }
+
+      ui-button {
+        width: 330px;
+      }
+    }
+
+    .button-row {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+
+      ui-button {
+        width: 48%;
+      }
+    }
+  }
+}

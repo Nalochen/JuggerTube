@@ -1,5 +1,7 @@
+from DataDomain.Database import db
 
-class BaseModel:
+
+class BaseModel(db.Model):
     """Base model class for all models"""
 
     __abstract__ = True

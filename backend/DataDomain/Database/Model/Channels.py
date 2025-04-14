@@ -8,7 +8,7 @@ from DataDomain.Database import db
 from DataDomain.Database.Model import BaseModel
 
 
-class Channels(BaseModel, db.Model):
+class Channels(BaseModel):
     __tablename__ = 'channels'
 
     id: int = db.Column(

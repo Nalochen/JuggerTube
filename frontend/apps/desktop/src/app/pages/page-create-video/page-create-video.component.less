@@ -1,0 +1,39 @@
+@import 'colors-desktop';
+
+:host {
+  display: block;
+  width: 680px;
+  justify-self: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  grid-row-gap: 24px;
+  margin-top: 24px;
+  flex-direction: column;
+
+  ::ng-deep {
+    label {
+      width: 140px;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+
+  .team-row {
+    display: flex;
+    gap: 20px;
+
+    ui-input {
+      width: 100%;
+    }
+  }
+}
+
+ui-button {
+  width: 110px;
+  align-self: end;
+}

@@ -6,7 +6,7 @@ from DataDomain.Database import db
 from DataDomain.Database.Model import BaseModel
 
 
-class Logs(BaseModel, db.Model):
+class Logs(BaseModel):
 
     __tablename__ = 'logs'
 

@@ -19,7 +19,7 @@ export class LoadVideosEffects {
   public readonly loadVideos: Observable<Action> = createEffect(() =>
     this.actions$.pipe(
       ofType(loadVideosAction),
-      exhaustMap((action: ReturnType<typeof loadVideosAction>) =>
+      exhaustMap(() =>
         this.videosApiClient
           .get()
           .pipe(

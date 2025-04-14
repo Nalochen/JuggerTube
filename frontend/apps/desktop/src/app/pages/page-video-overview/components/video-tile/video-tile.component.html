@@ -1,21 +1,21 @@
 <div class="title-row">
-  <span class="title">{{ video.title }}</span>
+  <span class="title">{{ video.name }}</span>
 
   <div class="tags">
-    @for (tag of video.tags; track tag) {
-    <span class="{{ tag }}">{{ tag }}</span>
+    @for (category of video.category; track category) {
+    <span class="{{ category }}">{{ category }}</span>
     }
   </div>
 </div>
 
 <div class="date-row">
-  <span>Upload: {{ video.createdAt | date : 'dd.MM.YYYY' }}</span>
-  <span>Aufnahme: {{ video.uploadedAt | date : 'dd.MM.YYYY' }}</span>
+  <span>Upload: {{ video.dateOfRecording | date : 'dd.MM.YYYY' }}</span>
+  <span>Aufnahme: {{ video.uploadDate | date : 'dd.MM.YYYY' }}</span>
 </div>
 
 <div class="description-row">
-  <span>{{ video.channel.name }}</span>
-  <span>{{ video.description }}</span>
+  <span>{{ video.channelName }}</span>
+  <span>{{ video.comment }}</span>
 </div>
 
 <div class="url-row">

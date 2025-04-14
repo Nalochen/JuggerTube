@@ -32,7 +32,7 @@
 </div>
 
 <div class="videos">
-  @for (video of videos; track video.id) {
+  @for (video of videos(); track video.videoId) {
   <video-tile [video]="video" />
   }
 </div>

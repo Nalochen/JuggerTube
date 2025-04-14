@@ -8,12 +8,8 @@ import { provideRouter } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 
-import {
-  metaReducers,
-  reducers,
-} from '../../../../libs/business-domain/videos/src/lib/store/reducers';
 import { appRoutes } from './app.routes';
-import { LoadVideosEffects } from '@frontend/business-domain-videos';
+import { LoadVideosEffects,metaReducers, reducers } from '@frontend/video';
 
 export const appConfig: ApplicationConfig = {
   providers: [

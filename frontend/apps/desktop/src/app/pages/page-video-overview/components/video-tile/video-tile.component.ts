@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
-import { VideoApiResponseModel } from '@frontend/data-domain-videos';
+import { VideoApiResponseModel } from '@frontend/video-data';
 
 @Component({
   selector: 'video-tile',

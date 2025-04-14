@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { RequestStateEnum } from '@frontend/api';
-import { VideoApiResponseModel } from '@frontend/data-domain-videos';
+import { VideoApiResponseModel } from '@frontend/video-data';
 
 export const videosFeatureKey = 'videoOverview';
 

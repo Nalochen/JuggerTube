@@ -1,9 +1,8 @@
 export default {
-  displayName: 'business-domain-videos',
+  displayName: 'videos',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory:
-    '../../../coverage/libs/business-domain/business-domain-videos',
+  coverageDirectory: '../../../coverage/libs/data-domain/video-data',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

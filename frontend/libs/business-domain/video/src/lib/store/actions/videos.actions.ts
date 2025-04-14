@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { createAction, props } from '@ngrx/store';
 
-import { VideoApiResponseModel } from '@frontend/data-domain-videos';
+import { VideoApiResponseModel } from '@frontend/video-data';
 
 enum VideosActionNamesEnum {
   LoadVideos = '[Videos] Load Videos',

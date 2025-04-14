@@ -1,7 +1,7 @@
 {
-  "name": "data-domain-videos",
+  "name": "video",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/data-domain/data-domain-videos/src",
+  "sourceRoot": "libs/data-domain/video-data/src",
   "prefix": "lib",
   "projectType": "library",
   "tags": [],
@@ -10,7 +10,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "libs/data-domain/data-domain-videos/jest.config.ts"
+        "jestConfig": "libs/data-domain/video-data/jest.config.ts"
       }
     },
     "lint": {

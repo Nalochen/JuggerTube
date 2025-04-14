@@ -10,7 +10,7 @@ import { videosDataSelector } from '../store/selectors/videos-data.selector';
 import { videosRequestStateSelector } from '../store/selectors/videos-request-state.selector';
 import { RequestStateEnum } from '@frontend/api';
 import { SingletonGetter } from '@frontend/cache';
-import { VideoApiResponseModel } from '@frontend/data-domain-videos';
+import { VideoApiResponseModel } from '@frontend/video-data';
 
 @Injectable({ providedIn: 'root' })
 export class VideosDataService {

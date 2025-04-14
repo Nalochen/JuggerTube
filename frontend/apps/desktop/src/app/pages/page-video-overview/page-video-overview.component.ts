@@ -3,8 +3,8 @@ import { Component, Signal } from '@angular/core';
 
 import { SearchVideoTileComponent } from './components/search-video-tile/search-video-tile.component';
 import { VideoTileComponent } from './components/video-tile/video-tile.component';
-import { VideosDataService } from '@frontend/business-domain-videos';
-import { VideoApiResponseModel } from '@frontend/data-domain-videos';
+import { VideosDataService } from '@frontend/video';
+import { VideoApiResponseModel } from '@frontend/video-data';
 
 @Component({
   imports: [CommonModule, VideoTileComponent, SearchVideoTileComponent],

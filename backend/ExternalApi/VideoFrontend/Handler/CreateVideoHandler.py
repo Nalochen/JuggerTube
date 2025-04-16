@@ -17,11 +17,18 @@ class CreateVideoHandler:
     """Handler for creating a video"""
 
     @staticmethod
-    def handle() -> Response:
+    def handle(videoData: Videos) -> Response:
         """Create Video"""
-        data = g.validated_data
+        data = g.validated_data | videoData
 
         video = CreateVideoHandler._create_base_video(data)
+
+        if VideoRepository.getVideoByName(video.name):
+            return Response(
+                response='Video with this name already exists',
+                status=400
+            )
+
         CreateVideoHandler._handle_category_specific_data(video, data)
 
         if ((video.category == VideoCategoriesEnum.REPORTS

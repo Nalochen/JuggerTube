@@ -39,6 +39,26 @@ class TournamentRepository:
         return result
 
     @staticmethod
+    def getTournamentByName(tournamentName: str) -> dict | None:
+        """get all Tournament by Name"""
+        tournament = (db.session.query(
+            Tournaments.id,
+            Tournaments.name,
+            Tournaments.city,
+            Tournaments.start_date,
+            Tournaments.end_date,
+            Tournaments.jtr_link
+        ).filter(
+            Tournaments.is_deleted != True,
+            Tournaments.name == tournamentName
+        ).order_by(
+            Tournaments.name
+        ).first())
+
+        return tournament
+
+
+    @staticmethod
     def create(tournament: Tournaments) -> int:
         try:
             db.session.add(tournament)

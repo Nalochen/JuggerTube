@@ -1,0 +1,46 @@
+<div class="details-row">
+  <img src="{{ user.profilePicture }}" alt="Profil von {{ user.username }}" />
+
+  <div class="names-column">
+    <h1>{{ user.name }}</h1>
+
+    <h3>&#64;{{ user.username }}</h3>
+  </div>
+</div>
+
+<form [formGroup]="form">
+  <ui-input
+    [labelText]="'Email *'"
+    [type]="UiInputTypeEnum.EMAIL"
+    [formControlElement]="form.controls.email"
+    [placeholder]="user.email"
+  />
+
+  <div class="password-row">
+    <ui-input
+      [labelText]="'Passwort *'"
+      [type]="UiInputTypeEnum.PASSWORD"
+      [formControlElement]="form.controls.password"
+    />
+
+    <ui-button
+      (click)="form.controls.password.enable()"
+      [text]="'Passwort zurücksetzen'"
+      [color]="UiButtonColorEnum.SECONDARY"
+    />
+  </div>
+
+  <div class="button-row">
+    <ui-button
+      (click)="onDelete()"
+      [text]="'Account löschen'"
+      [color]="UiButtonColorEnum.SECONDARY"
+    />
+
+    <ui-button
+      (click)="onSubmit()"
+      [text]="'speichern'"
+      [color]="UiButtonColorEnum.PRIMARY"
+    />
+  </div>
+</form>

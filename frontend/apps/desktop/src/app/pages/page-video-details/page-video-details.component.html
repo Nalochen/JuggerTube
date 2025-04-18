@@ -1,0 +1,143 @@
+<ui-redirect
+  [text]="'Zurück zur Videoübersicht'"
+  [routerLink]="['/video-overview']"
+/>
+
+<div class="content">
+  <main>
+    <iframe
+      src="https://www.youtube.com/embed/f27SC622NvE?si=tkrwZRDEUWp8bLy0"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+
+    <div class="title-row">
+      <h3>
+        {{ video.name }}
+      </h3>
+      <div>
+        <ui-tag [category]="video.category" />
+
+        <span>{{ video.gameSystem }}</span>
+      </div>
+    </div>
+
+    <div class="details-row">
+      <a href="{{ video.channelLink }}">{{ video.channelName }}</a>
+
+      <div>
+        <span>Upload: {{ video.dateOfRecording | date : 'dd.MM.YYYY' }}</span>
+        <span>Aufnahme: {{ video.uploadDate | date : 'dd.MM.YYYY' }}</span>
+      </div>
+    </div>
+  </main>
+
+  <aside>
+    <div
+      (click)="showTournamentDetails = !showTournamentDetails"
+      class="toggle-details"
+    >
+      <div class="toggle">
+        <span>{{ video.tournament.name }}</span>
+
+        <svg
+          [ngClass]="{ rotated: showTournamentDetails }"
+          width="18"
+          height="18"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6.49 20.13 1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13Z"
+          />
+        </svg>
+      </div>
+
+      <div
+        [@slideDown]="showTournamentDetails ? 'visible' : 'hidden'"
+        [style.visibility]="showTournamentDetails ? 'visible' : 'hidden'"
+        class="details"
+      >
+        <p>{{ video.tournament.city }}</p>
+        <p>Startdatum: {{ video.tournament.startDate }}</p>
+        <p>Enddatum: {{ video.tournament.endDate }}</p>
+        <a href="{{ video.tournament.jtrLink }}">Auf jtr besuchen</a>
+      </div>
+    </div>
+
+    <div
+      (click)="showTeamOneDetails = !showTeamOneDetails"
+      class="toggle-details"
+    >
+      <div class="toggle">
+        <span>{{ video.teamOne.name }}</span>
+
+        <svg
+          [ngClass]="{ rotated: showTeamOneDetails }"
+          width="18"
+          height="18"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6.49 20.13 1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13Z"
+          />
+        </svg>
+      </div>
+
+      <div
+        [@slideDown]="showTeamOneDetails ? 'visible' : 'hidden'"
+        [style.visibility]="showTeamOneDetails ? 'visible' : 'hidden'"
+        class="details"
+      >
+        <p>{{ video.teamOne.city }}</p>
+      </div>
+    </div>
+
+    <span>vs.</span>
+
+    <div
+      (click)="showTeamTwoDetails = !showTeamTwoDetails"
+      class="toggle-details"
+    >
+      <div class="toggle">
+        <span>{{ video.teamTwo.name }}</span>
+
+        <svg
+          [ngClass]="{ rotated: showTeamTwoDetails }"
+          width="18"
+          height="18"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="m6.49 20.13 1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13Z"
+          />
+        </svg>
+      </div>
+
+      <div
+        [@slideDown]="showTeamTwoDetails ? 'visible' : 'hidden'"
+        [style.visibility]="showTeamTwoDetails ? 'visible' : 'hidden'"
+        class="details"
+      >
+        <p>{{ video.teamTwo.city }}</p>
+      </div>
+    </div>
+
+    @if (video.topic) {
+    <span>{{ video.topic }}</span>
+    } @if (video.guests) {
+    <span>{{ video.guests }}</span>
+    }
+
+    <ui-tag [category]="video.weaponType" />
+
+    @if (video.comment) {
+    <span>{{ video.comment }}</span>
+    }
+  </aside>
+</div>

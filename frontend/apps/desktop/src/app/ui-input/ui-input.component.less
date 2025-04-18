@@ -1,0 +1,63 @@
+@import 'colors-desktop';
+
+:host {
+  display: flex;
+
+  &.column {
+    flex-direction: column;
+  }
+
+  &.row {
+    flex-direction: row;
+
+    input,
+    select {
+      margin-top: 0;
+    }
+  }
+
+  input,
+  select {
+    background-color: @color-bg-white;
+    border-radius: 8px;
+    border: 1px solid @color-green;
+    margin-top: 8px;
+    height: 35px;
+    font-size: 16px;
+    padding: 4px 8px;
+
+    &.invalid {
+      border: 2px solid @color-red;
+    }
+  }
+
+  select {
+    width: 100%;
+  }
+
+  .label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      color: @color-green;
+    }
+
+    .i-headline {
+      margin-bottom: 8px !important;
+    }
+
+    .headline {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .error-message {
+      margin-top: 4px !important;
+      color: @color-red;
+    }
+  }
+}

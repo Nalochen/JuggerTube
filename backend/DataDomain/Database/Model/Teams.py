@@ -6,7 +6,7 @@ from DataDomain.Database import db
 from DataDomain.Database.Model import BaseModel
 
 
-class Teams(BaseModel, db.Model):
+class Teams(BaseModel):
     __tablename__ = 'teams'
 
     id: int = db.Column(

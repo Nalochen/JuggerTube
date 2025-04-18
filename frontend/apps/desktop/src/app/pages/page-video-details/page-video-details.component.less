@@ -1,0 +1,100 @@
+@import 'colors-desktop';
+
+.content {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+  gap: 30px;
+
+  main {
+    width: 78%;
+
+    iframe {
+      width: 100%;
+      height: 405px;
+    }
+
+    .title-row,
+    .details-row {
+      display: flex;
+      padding: 14px 0;
+      justify-content: space-between;
+    }
+
+    .title-row {
+      border-bottom: 1px solid #4a7c7b;
+
+      h3 {
+        font-weight: bold;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+    }
+
+    .details-row {
+      a {
+        font-size: 16px;
+      }
+
+      div {
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+        gap: 14px;
+        color: #4a7c7b;
+      }
+    }
+  }
+
+  aside {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .toggle-details {
+      .toggle {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        span {
+          font-size: 16px;
+        }
+
+        svg {
+          display: block;
+          transition: transform 0.3s ease-in-out;
+
+          &.rotated {
+            transform: rotate(90deg);
+          }
+        }
+      }
+
+      .details {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-left: 12px;
+
+        p:first-of-type {
+          margin-top: 12px;
+        }
+      }
+    }
+
+    ui-tag {
+      width: fit-content;
+    }
+  }
+}

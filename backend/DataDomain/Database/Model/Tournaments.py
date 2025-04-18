@@ -8,7 +8,7 @@ from DataDomain.Database import db
 from DataDomain.Database.Model import BaseModel
 
 
-class Tournaments(BaseModel, db.Model):
+class Tournaments(BaseModel):
     __tablename__ = 'tournaments'
 
     id: int = db.Column(

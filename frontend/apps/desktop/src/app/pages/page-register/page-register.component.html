@@ -1,0 +1,47 @@
+<h1>Willkommen</h1>
+
+<h3>Registrierung</h3>
+
+<form [formGroup]="form">
+  <ui-input
+    [labelText]="'Email *'"
+    [type]="UiInputTypeEnum.EMAIL"
+    [formControlElement]="form.controls.email"
+  />
+
+  <ui-input
+    [labelText]="'Benutzername (einzigartig) *'"
+    [formControlElement]="form.controls.username"
+    [infoButtonHeadline]="'Benutzername'"
+    [infoButtonContent]="
+      'Dein Benutzername muss eine eindeutige Abfolge von Zahlen und Buchstaben sein, damit dich jeder eindeutig zuordnen kann.'
+    "
+  />
+
+  <ui-input
+    [labelText]="'Passwort *'"
+    [type]="UiInputTypeEnum.PASSWORD"
+    [formControlElement]="form.controls.password"
+  />
+
+  <ui-input
+    [labelText]="'Passwort wiederholen *'"
+    [type]="UiInputTypeEnum.PASSWORD"
+    [formControlElement]="form.controls.confirmPassword"
+  />
+
+  <ui-input
+    [labelText]="'Name'"
+    [formControlElement]="form.controls.name"
+    [infoButtonHeadline]="'Name'"
+    [infoButtonContent]="
+      'Dein Anzeige-Name. Trage hier am besten den Namen ein, unter dem dich die meisten Menschen in der Community kennen.'
+    "
+  />
+
+  <ui-button
+    (click)="onSubmit()"
+    [text]="'registrieren'"
+    [color]="UiButtonColorEnum.PRIMARY"
+  />
+</form>

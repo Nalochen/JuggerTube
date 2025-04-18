@@ -1,0 +1,9 @@
+@if (text) {
+{{ text }}
+} @else { @switch (type) { @case (UiButtonTypeEnum.ICON) {
+<span class="material-icons-outlined">info_i</span>
+} @default {
+<button [attr.type]="type">
+  <ng-content />
+</button>
+} } }

@@ -16,7 +16,7 @@
 
     Alphabetisch
   </div>
-  <div class="create">
+  <div [routerLink]="['/create-video']" class="create">
     neu
 
     <svg
@@ -33,6 +33,6 @@
 
 <div class="videos">
   @for (video of videos(); track video.id) {
-  <video-tile [video]="video" />
+  <video-tile [video]="video" [routerLink]="['/video-details', video.id]" />
   }
 </div>

@@ -8,6 +8,7 @@ h1 {
   color: @color-red;
   font-size: 56px;
   margin: 0;
+  font-weight: 300;
 }
 
 h2 {
@@ -23,7 +24,7 @@ h3 {
   color: @color-red;
   font-size: 24px;
   margin: 0;
-  font-weight: normal;
+  font-weight: 300;
 }
 
 h4 {
@@ -45,9 +46,11 @@ h5 {
 
 p {
   font-family: @helveticaNeue;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
+  margin-top: 0;
+  margin-bottom: 0;
   font-size: 16px;
+  height: 16px;
+  place-content: center;
 }
 
 .small-text {
@@ -63,9 +66,10 @@ body {
   margin: 0;
   font-family: @helveticaNeue;
   background-color: @color-bg-light;
+  color: @color-green;
 }
 
 a {
-  color: @color-blue;
+  color: @color-green;
   text-decoration: underline;
 }

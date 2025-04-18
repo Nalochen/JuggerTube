@@ -1,0 +1,118 @@
+<h1>neues Video hinzufügen</h1>
+
+<form [formGroup]="form">
+  <ui-input
+    [labelText]="'Videoname:'"
+    [type]="UiInputTypeEnum.TEXT"
+    [formControlElement]="form.controls.name"
+    [direction]="UiInputDirectionEnum.ROW"
+  />
+
+  <ui-input
+    [labelText]="'Link:'"
+    [type]="UiInputTypeEnum.TEXT"
+    [formControlElement]="form.controls.videoLink"
+    [direction]="UiInputDirectionEnum.ROW"
+  />
+
+  <ui-input
+    [labelText]="'Channellink:'"
+    [type]="UiInputTypeEnum.TEXT"
+    [formControlElement]="form.controls.channelLink"
+    [direction]="UiInputDirectionEnum.ROW"
+  />
+
+  <ui-input
+    [labelText]="'Kategorie:'"
+    [type]="UiInputTypeEnum.DROPDOWN"
+    [formControlElement]="form.controls.category"
+    [direction]="UiInputDirectionEnum.ROW"
+    [dropdownOptions]="Object.values(VideoCategoriesEnum)"
+  />
+
+  <ui-input
+    [labelText]="'Upload-Datum:'"
+    [type]="UiInputTypeEnum.DATE"
+    [formControlElement]="form.controls.uploadDate"
+    [direction]="UiInputDirectionEnum.ROW"
+  />
+
+  <ui-input
+    [labelText]="'Aufnahme-Datum:'"
+    [type]="UiInputTypeEnum.DATE"
+    [formControlElement]="form.controls.dateOfRecording"
+    [direction]="UiInputDirectionEnum.ROW"
+  />
+
+  @for (field of additionalFields; track additionalFields) { @switch (field) {
+  @case (AdditionalFieldsEnum.TOPIC) {
+  <ui-input
+    [labelText]="'Thema:'"
+    [type]="UiInputTypeEnum.TEXT"
+    [formControlElement]="form.controls.topic"
+    [direction]="UiInputDirectionEnum.ROW"
+  />
+  } @case (AdditionalFieldsEnum.GUESTS) {
+  <ui-input
+    [labelText]="'Gäste:'"
+    [type]="UiInputTypeEnum.TEXT"
+    [formControlElement]="form.controls.guests"
+    [direction]="UiInputDirectionEnum.ROW"
+  />
+  } @case (AdditionalFieldsEnum.TOURNAMENT) {
+  <ui-input
+    [labelText]="'Turnier:'"
+    [type]="UiInputTypeEnum.DROPDOWN"
+    [formControlElement]="form.controls.tournamentId"
+    [direction]="UiInputDirectionEnum.ROW"
+    [dropdownOptions]="tournamentOptions"
+  />
+  } @case (AdditionalFieldsEnum.TEAMS) {
+  <div class="team-row">
+    <ui-input
+      [labelText]="'Team 1:'"
+      [type]="UiInputTypeEnum.DROPDOWN"
+      [formControlElement]="form.controls.teamOneId"
+      [direction]="UiInputDirectionEnum.ROW"
+      [dropdownOptions]="teamOptions"
+    />
+    <ui-input
+      [labelText]="'Team 2:'"
+      [type]="UiInputTypeEnum.DROPDOWN"
+      [formControlElement]="form.controls.teamTwoId"
+      [direction]="UiInputDirectionEnum.ROW"
+      [dropdownOptions]="teamOptions"
+    />
+  </div>
+
+  } @case (AdditionalFieldsEnum.WEAPON_TYPE) {
+  <ui-input
+    [labelText]="'Pompfenart:'"
+    [type]="UiInputTypeEnum.DROPDOWN"
+    [formControlElement]="form.controls.weaponType"
+    [direction]="UiInputDirectionEnum.ROW"
+    [dropdownOptions]="Object.values(WeaponTypesEnum)"
+  />
+  } @case (AdditionalFieldsEnum.GAME_SYSTEM) {
+  <ui-input
+    [labelText]="'Spielsystem:'"
+    [type]="UiInputTypeEnum.DROPDOWN"
+    [formControlElement]="form.controls.gameSystem"
+    [direction]="UiInputDirectionEnum.ROW"
+    [dropdownOptions]="Object.values(GameSystemTypesEnum)"
+  />
+  } } }
+
+  <ui-input
+    [labelText]="'Kommentar:'"
+    [type]="UiInputTypeEnum.TEXT"
+    [formControlElement]="form.controls.comment"
+    [direction]="UiInputDirectionEnum.ROW"
+  />
+
+  <ui-button
+    (click)="onSubmit()"
+    [text]="'hinzufügen'"
+    [color]="UiButtonColorEnum.PRIMARY"
+  />
+</form>

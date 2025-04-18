@@ -1,0 +1,23 @@
+<h1>Willkommen, zurück</h1>
+
+<h3>Login</h3>
+
+<form [formGroup]="form">
+  <ui-input
+    [labelText]="'Email'"
+    [type]="UiInputTypeEnum.EMAIL"
+    [formControlElement]="form.controls.email"
+  />
+
+  <ui-input
+    [labelText]="'Passwort'"
+    [type]="UiInputTypeEnum.PASSWORD"
+    [formControlElement]="form.controls.password"
+  />
+
+  <ui-button
+    (click)="onSubmit()"
+    [text]="'einloggen'"
+    [color]="UiButtonColorEnum.PRIMARY"
+  />
+</form>

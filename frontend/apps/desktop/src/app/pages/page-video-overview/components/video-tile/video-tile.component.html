@@ -1,9 +1,7 @@
 <div class="title-row">
   <span class="title">{{ video.name }}</span>
 
-  <div class="tags">
-    <span class="{{ video.category }}">{{ video.category }}</span>
-  </div>
+  <ui-tag [category]="video.category" />
 </div>
 
 <div class="date-row">

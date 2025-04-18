@@ -1,0 +1,29 @@
+:host {
+  display: inline-block;
+  position: relative;
+}
+
+button {
+  padding: 0;
+  cursor: pointer;
+  font-size: 24px;
+  height: 24px;
+  width: 24px;
+}
+
+span {
+  width: 20px;
+}
+
+::ng-deep .p-popover {
+  max-width: 20%;
+
+  &::before,
+  &::after {
+    display: none !important;
+  }
+}
+
+.material-icons-outlined {
+  font-size: 20px;
+}

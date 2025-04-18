@@ -1,0 +1,32 @@
+<div class="label-row">
+  <label for="{{ labelText }}">{{ labelText }}</label>
+
+  @if (infoButtonHeadline) {
+  <ui-info-button>
+    <p class="i-headline">{{ infoButtonHeadline }}</p>
+    <p>{{ infoButtonContent }}</p>
+  </ui-info-button>
+  }
+</div>
+
+@switch (type) { @case (UiInputTypeEnum.DROPDOWN) {
+<select
+  id="{{ labelText }}"
+  [formControl]="formControlElement"
+  [disabled]="disabled"
+>
+  @for (option of dropdownOptions; track option) {
+  <option [value]="option">
+    {{ option }}
+  </option>
+  }
+</select>
+} @default {
+<input
+  id="{{ labelText }}"
+  [type]="type"
+  [placeholder]="placeholder"
+  [disabled]="disabled"
+  [formControl]="formControlElement"
+/>
+} }

@@ -141,9 +141,7 @@ class VideoRepository:
             db.session.add(video)
             db.session.commit()
 
-            logger.info(
-                f'VideoRepository | Create | created video {
-                    video.id}')
+            logger.info(f'VideoRepository | Create | created video {video.id}')
 
             return video.id
 

@@ -1,2 +1,3 @@
 from .CreateVideoHandler import CreateVideoHandler
 from .GetVideoOverviewHandler import GetVideoOverviewHandler
+from .CreateMultipleVideosHandler import CreateMultipleVideosHandler

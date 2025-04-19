@@ -1,0 +1,237 @@
+openapi: 3.0.0
+info:
+  title: Customer Frontend API
+  version: 1.0.0
+paths:
+  /api/video-frontend/create-videos:
+    post:
+      summary: Create multiple new videos
+      description: Creates multiple new video entries with the provided data. Required fields vary based on video category for each video in the array.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - videos
+              properties:
+                videos:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - name
+                      - category
+                      - videoLink
+                      - uploadDate
+                      - channelLink
+                    properties:
+                      name:
+                        type: string
+                        description: The name of the video
+                        example: "Summer Cup Finale"
+                      category:
+                        type: string
+                        enum:
+                          - reports
+                          - highlights
+                          - match
+                          - song
+                          - podcast
+                          - awards
+                          - training
+                          - sparbuilding
+                          - other
+                        description: The category of the video
+                        example: match
+                      videoLink:
+                        type: string
+                        description: The link to the original video
+                        example: https://www.youtube.com/watch?v=JCLXq-YgRTo
+                      uploadDate:
+                        type: string
+                        format: date-time
+                        description: The video's upload date
+                        example: "2024-07-25T14:30:00Z"
+                      channelLink:
+                        type: string
+                        description: The link to the channel
+                        example: https://www.youtube.com/c/JuggerBasel
+                      comment:
+                        type: string
+                        description: A Jugger related comment to the video
+                        example: "Result 4-5"
+                      dateOfRecording:
+                        type: string
+                        format: date-time
+                        description: The day when the video was recorded
+                        example: "2024-07-24T14:30:00Z"
+                      topic:
+                        type: string
+                        description: The topic of the video (required for REPORTS, optional for SPARBUILDING, TRAINING, OTHER, PODCAST, HIGHLIGHTS)
+                        example: "Tournament Review"
+                      guests:
+                        type: string
+                        description: Guests in the video (optional for SPARBUILDING, OTHER, PODCAST, HIGHLIGHTS)
+                        example: "gabo and manu"
+                      weaponType:
+                        type: string
+                        enum:
+                          - longsword
+                          - qtip
+                          - chain
+                          - shield
+                          - staff
+                          - qwik
+                        description: A specific weapon type (required for SPARBUILDING, optional for TRAINING)
+                        example: "longsword"
+                      gameSystem:
+                        type: string
+                        enum:
+                          - nrw
+                          - stones
+                          - sets
+                        description: The game system used in the match (required for MATCH)
+                        example: "sets"
+                      tournament:
+                        type: object
+                        description: Tournament information (optional for HIGHLIGHTS and AWARDS, required for MATCH)
+                        oneOf:
+                          - type: object
+                            required:
+                              - id
+                            properties:
+                              id:
+                                type: integer
+                                description: ID of an existing tournament
+                                example: 123
+                          - type: object
+                            required:
+                              - tournamentName
+                              - city
+                              - startDate
+                              - endDate
+                            properties:
+                              tournamentName:
+                                type: string
+                                description: Name of the tournament
+                                example: "20. Bayerische Meisterschaft"
+                              city:
+                                type: string
+                                description: City where the tournament takes place
+                                example: "München"
+                              startDate:
+                                type: string
+                                format: date-time
+                                description: Start date of the tournament
+                                example: "2024-07-24T00:00:00Z"
+                              endDate:
+                                type: string
+                                format: date-time
+                                description: End date of the tournament
+                                example: "2024-07-26T23:59:59Z"
+                      teamOne:
+                        type: object
+                        description: First team information (required for MATCH)
+                        oneOf:
+                          - type: object
+                            required:
+                              - id
+                            properties:
+                              id:
+                                type: integer
+                                description: ID of an existing team
+                                example: 123
+                          - type: object
+                            required:
+                              - teamName
+                              - city
+                            properties:
+                              teamName:
+                                type: string
+                                description: Name of the team
+                                example: "Jugger Basilisken Basel"
+                              city:
+                                type: string
+                                description: City of the team
+                                example: "Basel"
+                      teamTwo:
+                        type: object
+                        description: Second team information (required for MATCH)
+                        oneOf:
+                          - type: object
+                            required:
+                              - id
+                            properties:
+                              id:
+                                type: integer
+                                description: ID of an existing team
+                                example: 124
+                          - type: object
+                            required:
+                              - teamName
+                              - city
+                            properties:
+                              teamName:
+                                type: string
+                                description: Name of the team
+                                example: "Rigor Mortis München"
+                              city:
+                                type: string
+                                description: City of the team
+                                example: "München"
+      responses:
+        '201':
+          description: Videos successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  videos:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the newly created video
+                          example: 123
+                  message:
+                    type: string
+                    example: "Videos successfully created"
+        '400':
+          description: Bad request - missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid request parameters"
+                  errors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        index:
+                          type: integer
+                          description: Index of the video in the array that caused the error
+                          example: 0
+                        errors:
+                          type: array
+                          items:
+                            type: string
+                          example: ["weaponType is required for SPARBUILDING category"]
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error" 

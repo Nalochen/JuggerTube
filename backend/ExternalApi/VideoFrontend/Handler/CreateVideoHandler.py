@@ -17,9 +17,9 @@ class CreateVideoHandler:
     """Handler for creating a video"""
 
     @staticmethod
-    def handle(videoData: Videos) -> Response:
+    def handle() -> Response:
         """Create Video"""
-        data = g.validated_data | videoData
+        data = g.validated_data
 
         video = CreateVideoHandler._create_base_video(data)
 

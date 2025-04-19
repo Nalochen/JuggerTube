@@ -47,3 +47,21 @@ class TeamRepository:
             db.session.rollback()
             logger.error(f'TeamRepository | Create | {e}')
             raise e
+
+    @staticmethod
+    def getTeamIdByName(teamName: str) -> int | None:
+        """Get Team by name"""
+
+        team = db.session.query(
+            Teams.id,
+            Teams.name
+        ).filter(
+            Teams.name == teamName
+        ).group_by(
+            Teams.id
+        ).first()
+
+        if not team:
+            return None
+
+        return team.id

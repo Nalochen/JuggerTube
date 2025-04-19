@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: Customer Frontend API
+  version: 1.0.0
+paths:
+  /api/tournament-frontend/create-multiple-tournaments:
+    post:
+      summary: Create multiple tournaments
+      description: Creates multiple tournament entries with the provided data.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - tournaments
+              properties:
+                tournaments:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - name
+                      - city
+                      - startDate
+                      - endDate
+                    properties:
+                      name:
+                        type: string
+                        description: The name of the tournament
+                        example: "Summer Cup"
+                      city:
+                        type: string
+                        description: The city where the tournament takes place
+                        example: "Kiel"
+                      startDate:
+                        type: string
+                        format: date-time
+                        description: The tournament's start date
+                        example: "2024-07-25T14:30:00Z"
+                      endDate:
+                        type: string
+                        format: date-time
+                        description: The tournament's end date
+                        example: "2024-07-25T14:30:00Z"
+                      jtrLink:
+                        type: string
+                        description: The link to the jtr entry
+                        example: https://turniere.jugger.org/tournament.php?id=785
+
+      responses:
+        '201':
+          description: Tournaments successfully created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  createdTournaments:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: The ID of the newly created tournament
+                          example: 123
+                  message:
+                    type: string
+                    example: "Videos successfully created"
+        '400':
+          description: Bad request - missing or invalid parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Invalid request parameters"
+                  errors:
+                    type: array
+                    items:
+                      type: string
+                    example: ["tournaments array is required", "tournament at index 0 is missing city"]
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error" 

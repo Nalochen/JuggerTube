@@ -1,0 +1,1 @@
+from .CreateTournamentInputFilter import CreateVideoInputFilter

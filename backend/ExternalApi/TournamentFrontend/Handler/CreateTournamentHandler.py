@@ -14,15 +14,15 @@ class CreateTournamentHandler:
     """Handler for creating a tournament"""
 
     @staticmethod
-    def handle(tournamentData: Tournaments) -> Response:
+    def handle() -> Response:
         """Create Video"""
-        data = g.validated_data | tournamentData
+        data = g.validated_data
 
         tournament = Tournaments(
             name=data.get('name'),
             city=data.get('city'),
             start_date=data.get('startDate'),
-            end_date=data.get('end_date'),
+            end_date=data.get('endDate'),
             jtr_link=data.get('jtrLink')
         )
 

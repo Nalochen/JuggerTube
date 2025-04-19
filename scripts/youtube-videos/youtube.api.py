@@ -1,8 +1,12 @@
 from googleapiclient.discovery import build
+import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
-from ExternalApi.VideoFrontend.Handler import CreateVideoHandler
-from video import Video
+# Disable SSL verification warnings
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
+# Change URL depending on the environment
+create_videos_url = 'https://localhost:8080/api/video-frontend/create-multiple-videos'
 
 def main(channel_id):
     api_key = 'AIzaSyCd4irgsASp6cb393tAgYBTXacjGq2YG3E'
@@ -44,8 +48,8 @@ def main(channel_id):
         if not next_page_token:
             break
 
-    # Extract video URLs
-    videos = []
+    # Extract video URLs and prepare data for API
+    videos_data = []
     videos_other_naming = []
 
     for youtube_video in youtube_videos:
@@ -53,9 +57,8 @@ def main(channel_id):
 
         video_title = youtube_video['snippet']['title']
         video_name = video_title
-        video_category = 'MATCH'
         video_channel = youtube_video['snippet']['channelTitle']
-        video_system = 'SETS'
+        video_system = 'sets'  # Default to sets system
         video_link = f"https://www.youtube.com/watch?v={video_id}"
         video_upload_date = youtube_video['snippet']['publishedAt']
         video_team_one = None
@@ -100,27 +103,56 @@ def main(channel_id):
             video_tournament = video_name.split(' (')[1].split(') [Jugger]')[0]
 
         if video_team_two and video_team_one and video_tournament:
-            video = Video(
-                name=video_title,
-                category=video_category,
-                channel=video_channel,
-                game_system=video_system,
-                link=video_link,
-                upload_date=video_upload_date,
-                team_one=video_team_one,
-                team_two=video_team_two,
-                tournament=video_tournament
-            )
-            videos.append(video)
+            video_data = {
+                "name": video_title,
+                "category": "match",  # Default category for matches
+                "videoLink": video_link,
+                "uploadDate": video_upload_date,
+                "channelName": video_channel,
+                "gameSystem": video_system,
+                "teamOneName": video_team_one,
+                "teamTwoName": video_team_two,
+                "tournamentName": video_tournament,
+            }
+            videos_data.append(video_data)
         else:
             videos_other_naming.append({video_name, video_link})
 
-    for video in videos:
-        CreateVideoHandler.handle(video)
+    # Send request to create videos API
+    if videos_data:
+        payload = {"videos": videos_data}
+        try:
+            # Print the payload for debugging
+            print("Sending payload:")
+            print(payload)
+            
+            # Add headers and ensure SSL verification is disabled for local development
+            headers = {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Host': 'localhost:8080'
+            }
+            response = requests.post(
+                create_videos_url, 
+                json=payload,
+                headers=headers,
+                verify=False  # Disable SSL verification for local development only
+            )
+            print(f"API Response Status: {response.status_code}")
+            if response.status_code != 200:
+                print(f"Error: Server returned status code {response.status_code}")
+            if response.text:  # Only try to print JSON if there's content
+                try:
+                    print(f"Response content: {response.json()}")
+                except ValueError:
+                    print(f"Raw response: {response.text}")
+        except requests.exceptions.ConnectionError as e:
+            print(f"Connection Error: Could not connect to the server. Is it running? Error: {str(e)}")
+        except Exception as e:
+            print(f"Error sending data to API: {str(e)}")
 
-    # open file
+    # Write unmatched videos to file
     out_file = open(f"{channel_id}OtherNaming.txt", "w", encoding="utf-8")
-    # Print the extracted video URLs
     for video in videos_other_naming:
         line = (f'{video}' + "\n")
         out_file.write(line)

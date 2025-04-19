@@ -25,7 +25,7 @@ paths:
                       - category
                       - videoLink
                       - uploadDate
-                      - channelLink
+                      - channelName
                     properties:
                       name:
                         type: string
@@ -54,10 +54,10 @@ paths:
                         format: date-time
                         description: The video's upload date
                         example: "2024-07-25T14:30:00Z"
-                      channelLink:
+                      channelName:
                         type: string
-                        description: The link to the channel
-                        example: https://www.youtube.com/c/JuggerBasel
+                        description: The Name of the Channel
+                        example: JuggerBasel
                       comment:
                         type: string
                         description: A Jugger related comment to the video

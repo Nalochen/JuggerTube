@@ -2,6 +2,7 @@ from typing import List
 
 from DataDomain.Database import db
 from DataDomain.Database.Model import Channels
+from Infrastructure.Logger import logger
 
 
 class ChannelRepository:
@@ -63,7 +64,7 @@ class ChannelRepository:
             Channels.id,
             Channels.channel_link
         ).filter(
-            Channels.id == channelLink
+            Channels.channel_link == channelLink
         ).group_by(
             Channels.id
         ).first()
@@ -72,3 +73,38 @@ class ChannelRepository:
             return None
 
         return channel.id
+
+    @staticmethod
+    def getChannelIdByName(channelName: str) -> int | None:
+        """Get Channel by name"""
+
+        channel = db.session.query(
+            Channels.id,
+            Channels.channel_link,
+            Channels.name
+        ).filter(
+            Channels.name == channelName
+        ).group_by(
+            Channels.id
+        ).first()
+
+        if not channel:
+            return None
+
+        return channel.id
+
+    @staticmethod
+    def create(channel: Channels) -> int:
+        """Create a new channel"""
+        try:
+            db.session.add(channel)
+            db.session.commit()
+
+            logger.info(f'ChannelRepository | Create | created channel {channel.id}')
+
+            return channel.id
+
+        except Exception as e:
+            db.session.rollback()
+            logger.error(f'ChannelRepository | Create | {e}')
+            raise e

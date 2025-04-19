@@ -2,7 +2,7 @@ import requests
 
 from TournamentDetailsParser import parser as tournament_parser
 from TournamentOverviewParser import parser as overview_parser
-from backend.ExternalApi.TournamentFrontend.Handler.CreateTournamentHandler import CreateTournamentHandler
+from ExternalApi.TournamentFrontend.Handler.CreateTournamentHandler import CreateTournamentHandler
 
 tournament_url = 'https://turniere.jugger.org/'
 previous_suffix = 'index.event.php#previous'
@@ -20,8 +20,6 @@ def main():
                                        overview_parser.tournament_array[0].tournament_id)
     tournament_html = tournament_response.text
     tournament_parser.feed(tournament_html)
-
-    start, end = tournament_parser.get_temp_dates()
 
     tournaments = []
 

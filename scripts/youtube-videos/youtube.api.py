@@ -1,6 +1,6 @@
 from googleapiclient.discovery import build
 
-from backend.ExternalApi.VideoFrontend.Handler import CreateVideoHandler
+from ExternalApi.VideoFrontend.Handler import CreateVideoHandler
 from video import Video
 
 

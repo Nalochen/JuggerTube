@@ -39,21 +39,14 @@ class TournamentRepository:
         return result
 
     @staticmethod
-    def getTournamentByName(tournamentName: str) -> dict | None:
-        """get all Tournament by Name"""
+    def getTournamentByName(tournamentName: str) -> int | None:
+        """get Tournament ID by Name"""
         tournament = (db.session.query(
-            Tournaments.id,
-            Tournaments.name,
-            Tournaments.city,
-            Tournaments.start_date,
-            Tournaments.end_date,
-            Tournaments.jtr_link
+            Tournaments.id
         ).filter(
             Tournaments.is_deleted != True,
             Tournaments.name == tournamentName
-        ).order_by(
-            Tournaments.name
-        ).first())
+        ).scalar())
 
         return tournament
 

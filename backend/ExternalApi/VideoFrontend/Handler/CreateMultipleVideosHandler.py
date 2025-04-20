@@ -76,6 +76,8 @@ class CreateMultipleVideosHandler:
             video.category = VideoCategoriesEnum.MATCH
             video.video_link = video_data.get('videoLink')
             video.channel_id = channel_id
+            video.topic = ''
+            video.guests = ''
 
             video.game_system = GameSystemTypesEnum.SETS
 
@@ -110,16 +112,10 @@ class CreateMultipleVideosHandler:
             video.comment = video_data.get('comment', '')
             video.upload_date = datetime.fromisoformat(video_data.get('uploadDate'))
 
-            if ((video.category == VideoCategoriesEnum.REPORTS
-                 and not video.topic)
-                    or (video.category == VideoCategoriesEnum.SPARBUILDING
-                        and not video.weapon_type)
-                    or (video.category == VideoCategoriesEnum.MATCH
-                        and not video.game_system
-                        and not video.tournament_id
-                        and not video.team_one_id
-                        and not video.team_two_id
-                        )
+            if (video.game_system
+                    and not video.tournament_id
+                    and not video.team_one_id
+                    and not video.team_two_id
                 ):
                 failed_videos.append({
                     'name': video.name,

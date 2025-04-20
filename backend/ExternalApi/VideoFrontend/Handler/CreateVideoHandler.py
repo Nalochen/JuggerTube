@@ -81,8 +81,8 @@ class CreateVideoHandler:
 
         if category == VideoCategoriesEnum.SPARBUILDING:
             video.weapon_type = data.get('weaponType')
-            video.topic = data.get('topic')
-            video.guests = data.get('guests')
+            video.topic = data.get('topic') | ''
+            video.guests = data.get('guests') | ''
 
         elif category == VideoCategoriesEnum.HIGHLIGHTS:
             video.tournament_id = CreateVideoHandler._handle_tournament_data(

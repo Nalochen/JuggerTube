@@ -22,6 +22,13 @@ class CreateVideoHandler:
         data = g.validated_data
 
         video = CreateVideoHandler._create_base_video(data)
+
+        if VideoRepository.getVideoByName(video.name):
+            return Response(
+                response='Video with this name already exists',
+                status=400
+            )
+
         CreateVideoHandler._handle_category_specific_data(video, data)
 
         if ((video.category == VideoCategoriesEnum.REPORTS
@@ -74,8 +81,8 @@ class CreateVideoHandler:
 
         if category == VideoCategoriesEnum.SPARBUILDING:
             video.weapon_type = data.get('weaponType')
-            video.topic = data.get('topic')
-            video.guests = data.get('guests')
+            video.topic = data.get('topic') | ''
+            video.guests = data.get('guests') | ''
 
         elif category == VideoCategoriesEnum.HIGHLIGHTS:
             video.tournament_id = CreateVideoHandler._handle_tournament_data(

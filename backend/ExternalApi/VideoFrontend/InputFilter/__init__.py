@@ -1,1 +1,2 @@
 from .CreateVideoInputFilter import CreateVideoInputFilter
+from .CreateMultipleVideosInputFilter import CreateMultipleVideosInputFilter

@@ -2,8 +2,9 @@ from flask import Blueprint
 
 from config import cache
 from DataDomain.Model import Response
-from ExternalApi.VideoFrontend.Handler import CreateVideoHandler, GetVideoOverviewHandler
-from ExternalApi.VideoFrontend.InputFilter import CreateVideoInputFilter
+from ExternalApi.VideoFrontend.Handler import CreateVideoHandler, GetVideoOverviewHandler, CreateMultipleVideosHandler
+from ExternalApi.VideoFrontend.InputFilter.CreateVideoInputFilter import CreateVideoInputFilter
+from ExternalApi.VideoFrontend.InputFilter.CreateMultipleVideosInputFilter import CreateMultipleVideosInputFilter
 
 video_frontend = Blueprint('video-frontend', __name__)
 
@@ -17,7 +18,15 @@ def getVideoOverview() -> Response:
 
 @video_frontend.route('/create-video',
                       methods=['POST'], endpoint='create-video')
-@cache.cached(key_prefix='create-video')
 @CreateVideoInputFilter.validate()
+@cache.cached(key_prefix='create-video')
 def createVideo() -> Response:
     return CreateVideoHandler.handle()
+
+
+@video_frontend.route('/create-multiple-videos',
+                      methods=['POST'], endpoint='create-multiple-videos')
+@CreateMultipleVideosInputFilter.validate()
+@cache.cached(key_prefix='create-multiple-videos')
+def createMultipleVideos() -> Response:
+    return CreateMultipleVideosHandler.handle()

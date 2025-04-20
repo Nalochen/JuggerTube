@@ -1,0 +1,108 @@
+openapi: 3.0.0
+info:
+  title: Create Multiple Teams API
+  version: 1.0.0
+  description: API endpoint for creating multiple teams at once
+
+paths:
+  /api/team-frontend/create-multiple-teams:
+    post:
+      summary: Create multiple teams
+      description: Creates multiple teams in a single request
+      operationId: createMultipleTeams
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teams:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: Name of the team
+                        example: "Berlin Juggers"
+                      city:
+                        type: string
+                        description: City where the team is based
+                        example: "Berlin"
+                    required:
+                      - name
+                      - city
+              required:
+                - teams
+      responses:
+        '200':
+          description: All teams created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_teams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        id:
+                          type: integer
+                  failed_teams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        reason:
+                          type: string
+        '207':
+          description: Some teams created successfully, others failed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_teams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        id:
+                          type: integer
+                  failed_teams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        reason:
+                          type: string
+        '400':
+          description: Invalid request or no teams created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  created_teams:
+                    type: array
+                    items:
+                      type: object
+                  failed_teams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        reason:
+                          type: string 

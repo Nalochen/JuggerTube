@@ -1,5 +1,7 @@
 FROM python:3.13-alpine
 
+RUN apk add --no-cache g++ musl-dev linux-headers python3-dev
+
 WORKDIR /app
 
 COPY ../../backend .

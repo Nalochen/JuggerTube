@@ -39,6 +39,19 @@ class TournamentRepository:
         return result
 
     @staticmethod
+    def getTournamentByName(tournamentName: str) -> int | None:
+        """get Tournament ID by Name"""
+        tournament = (db.session.query(
+            Tournaments.id
+        ).filter(
+            Tournaments.is_deleted != True,
+            Tournaments.name == tournamentName
+        ).scalar())
+
+        return tournament
+
+
+    @staticmethod
     def create(tournament: Tournaments) -> int:
         try:
             db.session.add(tournament)

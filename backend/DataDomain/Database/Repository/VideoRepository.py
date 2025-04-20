@@ -92,14 +92,56 @@ class VideoRepository:
         return result
 
     @staticmethod
+    def getVideoByName(videoName: str) -> dict | None:
+        """get Video by Name"""
+
+        TeamOne = aliased(Teams)
+        TeamTwo = aliased(Teams)
+
+        video = (db.session.query(
+            Videos.id,
+            Videos.name,
+            Videos.category,
+            Videos.video_link,
+            Videos.upload_date,
+            Videos.comment,
+            Videos.date_of_recording,
+            Videos.game_system,
+            Videos.weapon_type,
+            Videos.topic,
+            Videos.guests,
+            Channels.name.label('channel_name'),
+            Tournaments.name.label('tournament_name'),
+            TeamOne.name.label('team_one_name'),
+            TeamTwo.name.label('team_two_name')
+        ).join(
+            Channels,
+            Videos.channel_id == Channels.id
+        ).outerjoin(
+            Tournaments,
+            Videos.tournament_id == Tournaments.id
+        ).outerjoin(
+            TeamOne,
+            Videos.team_one_id == TeamOne.id
+        ).outerjoin(
+            TeamTwo,
+            Videos.team_two_id == TeamTwo.id
+        ).filter(
+            Videos.is_deleted != True,
+            Videos.name == videoName
+        ).order_by(
+            Videos.upload_date
+        ).first())
+
+        return video
+
+    @staticmethod
     def create(video: Videos) -> int:
         try:
             db.session.add(video)
             db.session.commit()
 
-            logger.info(
-                f'VideoRepository | Create | created video {
-                    video.id}')
+            logger.info(f'VideoRepository | Create | created video {video.id}')
 
             return video.id
 

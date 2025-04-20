@@ -1,4 +1,6 @@
-FROM python:3.11-alpine
+FROM python:3.13-alpine
+
+RUN apk add --no-cache g++ musl-dev linux-headers python3-dev
 
 WORKDIR /app
 
@@ -11,15 +13,6 @@ COPY docker/development/scripts /usr/local/bin
 
 RUN find /opt/scripts -type f -name "*" -exec chmod +x {} \;
 RUN find /usr/local/bin -type f -name "*" -exec chmod +x {} \;
-
-# Install build dependencies and git
-RUN apk add --no-cache gcc musl-dev linux-headers git
-
-# Install Python packages
-COPY backend/requirements.txt .
-RUN pip uninstall -y flask-inputfilter && \
-    pip install --no-cache-dir git+https://github.com/LeanderCS/flask-inputfilter.git && \
-    pip install --no-cache-dir -r requirements.txt
 
 ENV PYTHONPATH=/app
 

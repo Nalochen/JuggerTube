@@ -30,23 +30,23 @@ class CreateMultipleTournamentsHandler:
         failed_tournaments: List[Dict] = []
 
         for tournament_data in tournaments_data:
-            tournament = Tournaments(
-                name=tournament_data.get('name'),
-                city=tournament_data.get('city'),
-                start_date=tournament_data.get('startDate'),
-                end_date=tournament_data.get('end_date'),
-                jtr_link=tournament_data.get('jtrLink')
-            )
-
-            # Check if tournament already exists
-            if TournamentRepository.getTournamentByName(tournament.name):
-                failed_tournaments.append({
-                    'name': tournament.name,
-                    'reason': 'Tournament with this name already exists'
-                })
-                continue
-
             try:
+                tournament = Tournaments(
+                    name=tournament_data.get('name'),
+                    city=tournament_data.get('city'),
+                    start_date=tournament_data.get('startDate'),
+                    end_date=tournament_data.get('endDate'),
+                    jtr_link=tournament_data.get('jtrLink')
+                )
+
+                # Check if tournament already exists
+                if TournamentRepository.getTournamentByName(tournament.name):
+                    failed_tournaments.append({
+                        'name': tournament.name,
+                        'reason': 'Tournament with this name already exists'
+                    })
+                    continue
+
                 tournament_id = TournamentRepository.create(tournament)
                 created_tournaments.append({
                     'name': tournament.name,
@@ -54,7 +54,7 @@ class CreateMultipleTournamentsHandler:
                 })
             except Exception as e:
                 failed_tournaments.append({
-                    'name': tournament.name,
+                    'name': tournament_data.get('name', 'Unknown'),
                     'reason': str(e)
                 })
 

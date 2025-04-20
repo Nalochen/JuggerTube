@@ -77,5 +77,4 @@ class CreateMultipleTournamentsInputFilter(InputFilter):
                 IsArrayValidator(),
                 ArrayLengthValidator(min_length=1),
             ],
-            filters=[CreateTournamentInputFilter()]
         )

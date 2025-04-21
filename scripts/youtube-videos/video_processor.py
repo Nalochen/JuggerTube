@@ -70,7 +70,7 @@ def process_video_data(youtube_video):
         "category": "match",  # Default category for matches
         "videoLink": f"https://www.youtube.com/watch?v={video_id}",
         "uploadDate": youtube_video['snippet']['publishedAt'],
-        "channelName": youtube_video['snippet']['channelTitle'],
+        "channelName": youtube_video['snippet']['customUrl'],
         "gameSystem": "sets",  # Default to sets system
     }
     

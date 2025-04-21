@@ -122,6 +122,10 @@ class CreateVideoHandler:
             return tournament_data.get('id')
 
         tournament = Tournaments()
+
+        if TournamentRepository.getTournamentByName(tournament_data.get('name')):
+            return None
+
         tournament.name = tournament_data.get('name')
         tournament.city = tournament_data.get('city')
         tournament.start_date = tournament_data.get('startDate')
@@ -129,12 +133,16 @@ class CreateVideoHandler:
         return TournamentRepository.create(tournament)
 
     @staticmethod
-    def _handle_team_data(team_data: dict) -> int:
+    def _handle_team_data(team_data: dict) -> int | None:
         """Handle team data and return team ID"""
+
         if 'id' in team_data:
             return team_data.get('id')
 
         team = Teams()
+        if not TeamRepository.getTeamIdByName(team_data.get('name')):
+            return None
+
         team.name = team_data.get('name')
         team.city = team_data.get('city')
         return TeamRepository.create(team)

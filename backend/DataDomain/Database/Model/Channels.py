@@ -13,17 +13,21 @@ class Channels(BaseModel):
 
     id: int = db.Column(
         db.Integer,
-        primary_key=True
+        primary_key=True,
+        unique=True,
     )
 
     name: str = db.Column(
+        #use unique Youtube @-names
         db.String(100),
-        nullable=False
+        nullable=False,
+        unique = True,
     )
 
     channel_link: str = db.Column(
         db.String(255),
-        nullable=False
+        nullable=False,
+        unique = True,
     )
 
     is_deleted: bool = db.Column(

@@ -131,16 +131,21 @@ def process_tournament(data_fetcher, tournament, cached_tournaments):
         # Parse tournament details
         tournament_parser.feed(details_html)
         dates = tournament_parser.get_dates()
+        tournament_name = tournament_parser.get_name()
         tournament_parser.__init__()
         
         # Use end date from details if available, otherwise use start date
         end_date = format_date(dates['end_date']) if dates['end_date'] else start_date
         
-        # Remove year suffix if present (e.g., " 2023")
-        tournament_name = tournament.name[:-5] if has_year_suffix(tournament.name) else tournament.name
+        # Remove year suffix from both names before choosing
+        details_name = tournament_name[:-5] if tournament_name and has_year_suffix(tournament_name) else tournament_name
+        overview_name = tournament.name[:-5] if has_year_suffix(tournament.name) else tournament.name
+        
+        # Use name from details page if available, otherwise use overview name
+        final_name = details_name if details_name else overview_name
         
         return {
-            "name": tournament_name,
+            "name": final_name,
             "city": tournament.city,
             "startDate": start_date,
             "endDate": end_date,

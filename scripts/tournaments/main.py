@@ -2,7 +2,6 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 from datetime import datetime
 import json
-import os
 from pathlib import Path
 
 from TournamentDetailsParser import parser as tournament_parser
@@ -102,6 +101,19 @@ def get_teams_from_tournament(tournament_id):
         print(f"Error fetching teams for tournament {tournament_id}: {str(e)}")
         return []
 
+def has_year_suffix(name):
+    """
+    Check if the tournament name ends with a space followed by a 4-digit year starting with '20'.
+    Example: 'Tournament 2023' -> True, 'Tournament2023' -> False
+    """
+    if len(name) < 5:
+        return False
+    
+    potential_year = name[-4:]
+    has_space = name[-5] == " "
+    
+    return has_space and potential_year.startswith("20") and potential_year.isdigit()
+
 def process_tournament(data_fetcher, tournament, cached_tournaments):
     """Process a single tournament and return its data"""
     tournament_id = tournament.tournament_id
@@ -124,8 +136,11 @@ def process_tournament(data_fetcher, tournament, cached_tournaments):
         # Use end date from details if available, otherwise use start date
         end_date = format_date(dates['end_date']) if dates['end_date'] else start_date
         
+        # Remove year suffix if present (e.g., " 2023")
+        tournament_name = tournament.name[:-5] if has_year_suffix(tournament.name) else tournament.name
+        
         return {
-            "name": tournament.name[:-5],  # Remove the last 5 characters (year and space)
+            "name": tournament_name,
             "city": tournament.city,
             "startDate": start_date,
             "endDate": end_date,

@@ -2,6 +2,7 @@ services:
 
   mysql:
     image: mysql:8.0.35
+    container_name: mysql
     restart: always
     environment:
       MYSQL_DATABASE: 'juggertube'
@@ -15,46 +16,48 @@ services:
 
   redis:
     image: redis:latest
+    container_name: redis
     networks:
       - backend_network
 
   backend:
     build:
-      context: ./
-      dockerfile: docker/development/backend.Dockerfile
+      context: ../../
+      dockerfile: docker/production/backend.Dockerfile
+    container_name: backend
     environment:
-      FLASK_ENV: 'development'
+      FLASK_ENV: 'production'
       CACHE_REDIS_HOST: 'redis'
       CACHE_REDIS_PORT: '6379'
       DATABASE_URL: 'mysql+pymysql://user:password@mysql/juggertube'
       SECRET_KEY: 'secret'
       GENERATE_TEST_DATA: True
     volumes:
-      - ./backend:/app
-      - ./docker/development/assets:/app/DataDomain/assets
-    ports:
-      - "8080:8080"
+      - ./nginx/cert:/etc/letsencrypt/live/juggertube.de # This path is to fake the certbot certificate generation
+      - ./assets:/app/DataDomain/assets
     depends_on:
       - mysql
       - redis
     networks:
       - backend_network
 
- # frontend:
- #   build:
- #     context: ./
- #     dockerfile: docker/development/frontend.Dockerfile
- #   volumes:
- #     - docker/development/assets:/usr/share/nginx/html/assets
- #   ports:
- #     - "80:80"
- #     - "443:443"
- #   networks:
- #     - backend_network
+  frontend:
+    build:
+      context: ../../
+      dockerfile: docker/production/frontend.Dockerfile
+    container_name: frontend
+    volumes:
+      - ./nginx/cert:/etc/letsencrypt/live/juggertube.de # This path is to fake the certbot certificate generation
+      - ./assets:/usr/share/nginx/html/assets
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - backend_network
 
 networks:
   backend_network:
     driver: bridge
 
 volumes:
-  mysql_db_data: { }
+  mysql_db_data: {}

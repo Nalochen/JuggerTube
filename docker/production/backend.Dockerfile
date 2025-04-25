@@ -8,15 +8,15 @@ WORKDIR /app
 
 COPY ../../backend .
 
-RUN mkdir /opt/scripts
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY docker/development/provisioning /opt/scripts
-COPY docker/development/scripts /usr/local/bin
+COPY docker/production/provisioning /opt/scripts
 
 RUN find /opt/scripts -type f -name "*" -exec chmod +x {} \;
-RUN find /usr/local/bin -type f -name "*" -exec chmod +x {} \;
 
 ENV PYTHONPATH=/app
+ENV SSL_CERT_PATH=/etc/letsencrypt/live/juggertube.de/fullchain.pem
+ENV SSL_KEY_PATH=/etc/letsencrypt/live/juggertube.de/privkey.pem
 
 EXPOSE 8080
 

@@ -14,6 +14,8 @@ COPY docker/production/provisioning /opt/scripts
 
 RUN find /opt/scripts -type f -name "*" -exec chmod +x {} \;
 
+VOLUME ["/etc/letsencrypt"]
+
 ENV PYTHONPATH=/app
 ENV SSL_CERT_PATH=/etc/letsencrypt/live/juggertube.de/fullchain.pem
 ENV SSL_KEY_PATH=/etc/letsencrypt/live/juggertube.de/privkey.pem

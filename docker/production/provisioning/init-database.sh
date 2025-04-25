@@ -2,8 +2,6 @@
 
 cd /app
 
-. venv/bin/activate
-
 python - <<END
 
 from config.app import createApp

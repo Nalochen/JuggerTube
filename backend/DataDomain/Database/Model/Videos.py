@@ -17,12 +17,14 @@ class Videos(BaseModel):
 
     id: int = db.Column(
         db.Integer,
-        primary_key=True
+        primary_key=True,
+        unique = True,
     )
 
     name: str = db.Column(
         db.String(100),
-        nullable=False
+        nullable=False,
+        unique=True,
     )
 
     category: VideoCategoriesEnum = db.Column(
@@ -33,7 +35,8 @@ class Videos(BaseModel):
 
     video_link: str = db.Column(
         db.String(255),
-        nullable=False
+        nullable=False,
+        unique = True,
     )
 
     upload_date: datetime = db.Column(

@@ -90,13 +90,14 @@ create_videos_url = 'https://localhost:8080/api/video-frontend/create-multiple-v
 
 def fetch_youtube_videos(youtube, channel_id, videos_cache):
     """Fetch videos from YouTube channel and process them"""
-    # Get uploads playlist ID
+    # Get channel data including customUrl
     response = youtube.channels().list(
-        part='contentDetails',
+        part='contentDetails,snippet',
         id=channel_id
     ).execute()
-    
+
     playlist_id = response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
+    channel_custom_url = response['items'][0]['snippet'].get('customUrl', '')
     
     # Fetch all videos from the playlist
     youtube_videos = []
@@ -109,10 +110,13 @@ def fetch_youtube_videos(youtube, channel_id, videos_cache):
             maxResults=50,
             pageToken=next_page_token
         ).execute()
-        
+
         for item in playlist_items_response['items']:
             video_id = item['snippet']['resourceId']['videoId']
             
+            # Add channel custom URL to each video item
+            item['snippet']['customUrl'] = channel_custom_url
+
             # Check cache
             if video_id in videos_cache:
                 print(f"Using cached data for video {video_id}")

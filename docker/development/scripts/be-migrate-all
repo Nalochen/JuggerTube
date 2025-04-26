@@ -2,8 +2,6 @@
 
 cd /app
 
-. venv/bin/activate
-
 echo 'Running migrations'
 
 flask db upgrade

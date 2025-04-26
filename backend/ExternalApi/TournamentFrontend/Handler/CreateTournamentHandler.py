@@ -1,11 +1,8 @@
 from flask import g
 
-from DataDomain.Database.Model import Teams, Tournaments, Videos
+from DataDomain.Database.Model import Tournaments
 from DataDomain.Database.Repository import (
-    ChannelRepository,
-    TeamRepository,
     TournamentRepository,
-    VideoRepository,
 )
 from DataDomain.Model import Response
 

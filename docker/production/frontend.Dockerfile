@@ -13,6 +13,8 @@ RUN nx build desktop
 # Stage 2
 FROM nginx:1.27.1-alpine AS ngi
 
+RUN apk add --no-cache certbot
+
 COPY docker/production/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist/apps /usr/share/nginx/html
 

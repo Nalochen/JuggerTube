@@ -1,18 +1,16 @@
 FROM python:3.13-alpine
 
-RUN apk add --no-cache  \
-    g++ \
-    linux-headers
-
 WORKDIR /app
+
+COPY ../../backend/pyproject.toml .
+
+RUN python -m pip install .
 
 COPY ../../backend .
 
-RUN pip install --no-cache-dir -r requirements.txt
+COPY docker/production/provisioning /usr/local/bin
 
-COPY docker/production/provisioning /opt/scripts
-
-RUN find /opt/scripts -type f -name "*" -exec chmod +x {} \;
+RUN find /usr/local/bin -type f -name "*" -exec chmod +x {} \;
 
 VOLUME ["/etc/letsencrypt"]
 
@@ -22,4 +20,4 @@ ENV SSL_KEY_PATH=/etc/letsencrypt/live/juggertube.de/privkey.pem
 
 EXPOSE 8080
 
-CMD ["/opt/scripts/entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]

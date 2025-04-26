@@ -1,23 +1,24 @@
 FROM python:3.13-alpine
 
-RUN apk add --no-cache  \
-    g++ \
-    linux-headers
-
 WORKDIR /app
+
+COPY ../../backend/pyproject.toml .
+
+RUN python -m pip install .
 
 COPY ../../backend .
 
 RUN mkdir /opt/scripts
 
-COPY docker/development/provisioning /opt/scripts
+COPY docker/development/provision /usr/local/bin
 COPY docker/development/scripts /usr/local/bin
 
-RUN find /opt/scripts -type f -name "*" -exec chmod +x {} \;
 RUN find /usr/local/bin -type f -name "*" -exec chmod +x {} \;
 
 ENV PYTHONPATH=/app
 
 EXPOSE 8080
 
-CMD ["/opt/scripts/entrypoint.sh"]
+ENTRYPOINT ["wait-for-mysql.sh"]
+
+CMD ["python", "run.py"]

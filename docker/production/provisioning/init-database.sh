@@ -1,7 +1,5 @@
 #!/bin/sh
 
-cd /app
-
 python - <<END
 
 from config.app import createApp

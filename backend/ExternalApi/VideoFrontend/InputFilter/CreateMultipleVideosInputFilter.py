@@ -1,11 +1,9 @@
 from flask_inputfilter import InputFilter
-from flask_inputfilter.Validator import (
-    InEnumValidator,
-    IsStringValidator,
-    RegexValidator,
-    IsArrayValidator,
+from flask_inputfilter.validators import (
     ArrayLengthValidator,
+    IsArrayValidator,
 )
+
 
 class CreateMultipleVideosInputFilter(InputFilter):
     """The input filter for the create-multiple-videos route"""

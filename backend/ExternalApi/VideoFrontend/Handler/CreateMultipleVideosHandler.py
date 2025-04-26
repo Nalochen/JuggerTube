@@ -1,10 +1,10 @@
 from datetime import datetime
-from typing import List, Dict
+from typing import Dict, List
 
 from flask import g
 
-from DataDomain.Database.Enum import VideoCategoriesEnum, GameSystemTypesEnum
-from DataDomain.Database.Model import Teams, Tournaments, Videos, Channels
+from DataDomain.Database.Enum import GameSystemTypesEnum, VideoCategoriesEnum
+from DataDomain.Database.Model import Channels, Videos
 from DataDomain.Database.Repository import (
     ChannelRepository,
     TeamRepository,
@@ -44,7 +44,7 @@ class CreateMultipleVideosHandler:
 
             video = Videos()
             channel_name = video_data.get('channelName')
-            
+
             if not channel_name:
                 failed_videos.append({
                     'name': video_name,
@@ -94,7 +94,7 @@ class CreateMultipleVideosHandler:
 
             team_one_name = video_data.get('teamOneName')
             team_two_name = video_data.get('teamTwoName')
-            
+
             team_one_id = TeamRepository.getTeamIdByName(team_one_name)
             team_two_id = TeamRepository.getTeamIdByName(team_two_name)
 
@@ -113,10 +113,10 @@ class CreateMultipleVideosHandler:
             video.upload_date = datetime.fromisoformat(video_data.get('uploadDate'))
 
             if (video.game_system
-                    and not video.tournament_id
-                    and not video.team_one_id
-                    and not video.team_two_id
-                ):
+                        and not video.tournament_id
+                        and not video.team_one_id
+                        and not video.team_two_id
+                    ):
                 failed_videos.append({
                     'name': video.name,
                     'reason': 'Missing required data'
@@ -159,4 +159,3 @@ class CreateMultipleVideosHandler:
             response=response_data,
             status=200
         )
-

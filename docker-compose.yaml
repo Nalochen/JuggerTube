@@ -2,6 +2,7 @@ services:
 
   mysql:
     image: mysql:8.0.35
+    container_name: mysql
     restart: always
     environment:
       MYSQL_DATABASE: 'juggertube'
@@ -15,6 +16,7 @@ services:
 
   redis:
     image: redis:latest
+    container_name: redis
     networks:
       - backend_network
 
@@ -22,13 +24,14 @@ services:
     build:
       context: ./
       dockerfile: docker/development/backend.Dockerfile
+    container_name: backend
     environment:
       FLASK_ENV: 'development'
       CACHE_REDIS_HOST: 'redis'
       CACHE_REDIS_PORT: '6379'
       DATABASE_URL: 'mysql+pymysql://user:password@mysql/juggertube'
       SECRET_KEY: 'secret'
-      GENERATE_TEST_DATA: True
+      GENERATE_TEST_DATA: 'True'
     volumes:
       - ./backend:/app
       - ./docker/development/assets:/app/DataDomain/assets

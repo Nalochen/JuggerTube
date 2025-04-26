@@ -2,7 +2,7 @@ services:
 
   mysql:
     image: mysql:8.0.35
-    container_name: mysql
+    container_name: juggertube-mysql
     restart: always
     environment:
       MYSQL_DATABASE: 'juggertube'
@@ -16,7 +16,7 @@ services:
 
   redis:
     image: redis:latest
-    container_name: redis
+    container_name: juggertube-redis
     networks:
       - backend_network
 
@@ -24,7 +24,7 @@ services:
     build:
       context: ../../
       dockerfile: docker/production/backend.Dockerfile
-    container_name: backend
+    container_name: juggertube-backend
     environment:
       FLASK_ENV: 'production'
       CACHE_REDIS_HOST: 'redis'
@@ -45,7 +45,7 @@ services:
     build:
       context: ../../
       dockerfile: docker/production/frontend.Dockerfile
-    container_name: frontend
+    container_name: juggertube-frontend
     volumes:
       - certs:/etc/letsencrypt
       - ./assets:/usr/share/nginx/html/assets

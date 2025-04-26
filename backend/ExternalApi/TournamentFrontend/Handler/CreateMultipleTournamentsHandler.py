@@ -1,14 +1,12 @@
+from typing import Dict, List
+
 from flask import g
 
-from DataDomain.Database.Model import Teams, Tournaments, Videos
+from DataDomain.Database.Model import Tournaments
 from DataDomain.Database.Repository import (
-    ChannelRepository,
-    TeamRepository,
     TournamentRepository,
-    VideoRepository,
 )
 from DataDomain.Model import Response
-from typing import List, Dict
 
 
 class CreateMultipleTournamentsHandler:
@@ -19,7 +17,7 @@ class CreateMultipleTournamentsHandler:
         """Create multiple tournaments from an array of tournament data"""
         data = g.validated_data
         tournaments_data = data.get('tournaments', [])
-        
+
         if not tournaments_data:
             return Response(
                 response='No tournaments provided',
@@ -82,4 +80,3 @@ class CreateMultipleTournamentsHandler:
             response=response_data,
             status=200
         )
-

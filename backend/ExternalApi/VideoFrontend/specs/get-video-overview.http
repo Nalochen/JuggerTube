@@ -1,5 +1,5 @@
 ### Get videos overview
-GET https://{{host}}/api/video-frontend/get-video-overview
+GET https://localhost:8080/api/video-frontend/get-video-overview
 
 > {%
     client.test("It should return a successful status code", function() {

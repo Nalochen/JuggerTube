@@ -47,6 +47,9 @@ export class PageLoginComponent {
 
   protected readonly form = loginForm;
 
+  protected readonly UiButtonColorEnum = UiButtonColorEnum;
+  protected readonly UiInputTypeEnum = UiInputTypeEnum;
+
   public onSubmit(): void {
     if (!this.form.valid) {
       this.markAllFieldsAsTouched();
@@ -68,7 +71,4 @@ export class PageLoginComponent {
       }
     });
   }
-
-  protected readonly UiButtonColorEnum = UiButtonColorEnum;
-  protected readonly UiInputTypeEnum = UiInputTypeEnum;
 }

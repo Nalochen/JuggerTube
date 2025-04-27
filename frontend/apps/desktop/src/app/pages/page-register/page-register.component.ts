@@ -76,6 +76,9 @@ export class PageRegisterComponent {
 
   protected readonly form = registerForm;
 
+  protected readonly UiButtonColorEnum = UiButtonColorEnum;
+  protected readonly UiInputTypeEnum = UiInputTypeEnum;
+
   public onSubmit(): void {
     if (!this.form.valid) {
       this.markAllFieldsAsTouched();
@@ -97,7 +100,4 @@ export class PageRegisterComponent {
       }
     });
   }
-
-  protected readonly UiButtonColorEnum = UiButtonColorEnum;
-  protected readonly UiInputTypeEnum = UiInputTypeEnum;
 }

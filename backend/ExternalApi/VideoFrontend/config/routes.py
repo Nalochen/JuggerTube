@@ -2,9 +2,17 @@ from flask import Blueprint
 
 from config import cache
 from DataDomain.Model import Response
-from ExternalApi.VideoFrontend.Handler import CreateVideoHandler, GetVideoOverviewHandler, CreateMultipleVideosHandler
-from ExternalApi.VideoFrontend.InputFilter.CreateVideoInputFilter import CreateVideoInputFilter
-from ExternalApi.VideoFrontend.InputFilter.CreateMultipleVideosInputFilter import CreateMultipleVideosInputFilter
+from ExternalApi.VideoFrontend.Handler import (
+    CreateMultipleVideosHandler,
+    CreateVideoHandler,
+    GetVideoOverviewHandler,
+)
+from ExternalApi.VideoFrontend.InputFilter.CreateMultipleVideosInputFilter import (
+    CreateMultipleVideosInputFilter,
+)
+from ExternalApi.VideoFrontend.InputFilter.CreateVideoInputFilter import (
+    CreateVideoInputFilter,
+)
 
 video_frontend = Blueprint('video-frontend', __name__)
 

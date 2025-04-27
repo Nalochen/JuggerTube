@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;" fill="currentColor">
+  <symbol id="icon-arrow" viewBox="0 0 24 24">
+    <path
+      d="m6.49 20.13 1.77 1.77 9.9-9.9-9.9-9.9-1.77 1.77L14.62 12l-8.13 8.13Z"
+    />
+  </symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24">
+    <path
+      fill-rule="evenodd"
+      d="M14.71 14h.79l4.99 5L19 20.49l-5-4.99v-.79l-.27-.28A6.471 6.471 0 0 1 9.5 16 6.5 6.5 0 1 1 16 9.5c0 1.61-.59 3.09-1.57 4.23l.28.27ZM5 9.5C5 11.99 7.01 14 9.5 14S14 11.99 14 9.5 11.99 5 9.5 5 5 7.01 5 9.5Z"
+      clip-rule="evenodd"
+    />
+  </symbol>
+  <symbol id="icon-plus" viewBox="0 0 24 24">
+    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2Z" />
+  </symbol>
+</svg>

@@ -46,7 +46,7 @@
 ## New Migration
 
 ```sh
-  flask db migrate -m "Migration Message"
+  docker exec backend be-migrate-create "Migration Message"
 ```
 
 ## Run Migrations

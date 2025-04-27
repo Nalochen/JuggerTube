@@ -2,6 +2,7 @@ services:
 
   mysql:
     image: mysql:8.0.35
+    container_name: mysql
     restart: always
     environment:
       MYSQL_DATABASE: 'juggertube'
@@ -15,16 +16,7 @@ services:
 
   redis:
     image: redis:latest
-    networks:
-      - backend_network
-
-  rabbitmq:
-    image: rabbitmq:3-management
-    environment:
-      RABBITMQ_DEFAULT_USER: admin
-      RABBITMQ_DEFAULT_PASS: mypass
-    ports:
-      - "15672:15672"
+    container_name: redis
     networks:
       - backend_network
 
@@ -34,15 +26,12 @@ services:
       dockerfile: docker/development/backend.Dockerfile
     container_name: backend
     environment:
-      FLASK_ENV: 'production'
+      FLASK_ENV: 'development'
       CACHE_REDIS_HOST: 'redis'
       CACHE_REDIS_PORT: '6379'
-      CELERY_BROKER_NAME: 'worker'
-      CELERY_BACKEND_URL: 'amqp://admin:mypass@rabbitmq:5672'
-      CELERY_RESULT_BACKEND: 'rpc://'
       DATABASE_URL: 'mysql+pymysql://user:password@mysql/juggertube'
       SECRET_KEY: 'secret'
-      GENERATE_TEST_DATA: True
+      GENERATE_TEST_DATA: 'True'
     volumes:
       - ./backend:/app
       - ./docker/development/assets:/app/DataDomain/assets
@@ -51,7 +40,6 @@ services:
     depends_on:
       - mysql
       - redis
-      - rabbitmq
     networks:
       - backend_network
 

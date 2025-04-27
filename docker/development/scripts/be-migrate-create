@@ -1,0 +1,14 @@
+#!/bin/sh
+
+cd /app
+
+if [ -z "$1" ]; then
+  echo "Please enter description for migration."
+  exit 1
+fi
+
+echo "Creating new migration: $1"
+
+flask db migrate -m "$1"
+
+echo "Migration created"

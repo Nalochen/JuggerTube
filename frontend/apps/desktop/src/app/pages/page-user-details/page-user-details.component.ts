@@ -60,6 +60,9 @@ export class PageUserDetailsComponent {
 
   protected readonly form = userForm;
 
+  protected readonly UiButtonColorEnum = UiButtonColorEnum;
+  protected readonly UiInputTypeEnum = UiInputTypeEnum;
+
   public onSubmit(): void {
     if (!this.form.valid) {
       this.markAllFieldsAsTouched();
@@ -88,7 +91,4 @@ export class PageUserDetailsComponent {
       }
     });
   }
-
-  protected readonly UiButtonColorEnum = UiButtonColorEnum;
-  protected readonly UiInputTypeEnum = UiInputTypeEnum;
 }

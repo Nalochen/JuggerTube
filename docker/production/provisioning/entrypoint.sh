@@ -14,7 +14,7 @@ if ! nc -z mysql 3306; then
   echo "MySQL started"
 fi
 
-/usr/local/bin/init-database.sh
+flask db upgrade
 
 exec gunicorn \
   --certfile="${SSL_CERT_PATH}" \

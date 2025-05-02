@@ -1,3 +1,6 @@
+@let videosSnapshot = videos();
+@let paginatedVideosSnapshot = paginatedVideos();
+
 <div class="search-banner">
   <search-video-tile />
 </div>
@@ -20,7 +23,14 @@
 </div>
 
 <div class="videos">
-  @for (video of videos(); track video.id) {
-  <video-tile [video]="video" [routerLink]="['/video-details', video.id]" />
+  @for (video of paginatedVideosSnapshot; track video.id) {
+    <video-tile [video]="video" [routerLink]="['/video-details', video.id]" />
   }
 </div>
+<mat-paginator [length]="videosSnapshot.length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               [showFirstLastButtons]="showFirstLastButtons"
+               (page)="handlePageEvent($event)"
+               [pageIndex]="pageIndex"
+               aria-label="Select page" />

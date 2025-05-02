@@ -32,10 +32,6 @@ class CreateMultipleChannelsHandler:
 
                 # Check if channel already exists
                 if ChannelRepository.getChannelIdByName(channel.name):
-                    failed_channels.append({
-                        'name': channel.name,
-                        'reason': 'Channel with this name already exists'
-                    })
                     continue
 
                 channel_id = ChannelRepository.create(channel)

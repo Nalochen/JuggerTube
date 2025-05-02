@@ -36,10 +36,6 @@ class CreateMultipleVideosHandler:
             video_name = video_data.get('name')
 
             if VideoRepository.getVideoByName(video_name):
-                failed_videos.append({
-                    'name': video_name,
-                    'reason': 'Video with this name already exists'
-                })
                 continue
 
             video = Videos()

@@ -1,8 +1,6 @@
 from flask_inputfilter import InputFilter
-from flask_inputfilter.Validator import (
-    IsArrayValidator,
-    ArrayLengthValidator
-)
+from flask_inputfilter.validators import ArrayLengthValidator, IsArrayValidator
+
 
 class CreateMultipleTournamentsInputFilter(InputFilter):
     """The input filter for the create-multiple-tournaments route"""

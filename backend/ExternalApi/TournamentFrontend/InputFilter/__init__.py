@@ -1,2 +1,2 @@
-from .CreateTournamentInputFilter import CreateTournamentInputFilter
 from .CreateMultipleTournamentsInputFilter import CreateMultipleTournamentsInputFilter
+from .CreateTournamentInputFilter import CreateTournamentInputFilter

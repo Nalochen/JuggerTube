@@ -20,6 +20,11 @@
           {
             "glob": "**/*",
             "input": "apps/desktop/public"
+          },
+          {
+            "glob": "sprite.svg",
+            "input": "apps/desktop/src/assets/icons",
+            "output": "/assets/icons"
           }
         ],
         "styles": [

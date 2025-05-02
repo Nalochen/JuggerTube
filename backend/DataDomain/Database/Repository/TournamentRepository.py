@@ -50,7 +50,6 @@ class TournamentRepository:
 
         return tournament
 
-
     @staticmethod
     def create(tournament: Tournaments) -> int:
         try:

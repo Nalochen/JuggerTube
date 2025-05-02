@@ -52,5 +52,5 @@ def initDatabase(app: Flask) -> None:
         if current() != 'head':
             upgrade()
 
-        if os.getenv('GENERATE_TEST_DATA'):
+        if bool(os.getenv('GENERATE_TEST_DATA')):
             executeSqlCommandsToInitDatabase(app)

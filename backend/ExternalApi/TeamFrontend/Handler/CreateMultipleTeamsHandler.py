@@ -1,9 +1,10 @@
+from typing import Dict, List
+
 from flask import g
 
 from DataDomain.Database.Model import Teams
 from DataDomain.Database.Repository import TeamRepository
 from DataDomain.Model import Response
-from typing import List, Dict
 
 
 class CreateMultipleTeamsHandler:
@@ -14,7 +15,7 @@ class CreateMultipleTeamsHandler:
         """Create multiple teams from an array of team data"""
         data = g.validated_data
         teams_data = data.get('teams', [])
-        
+
         if not teams_data:
             return Response(
                 response='No teams provided',
@@ -69,4 +70,4 @@ class CreateMultipleTeamsHandler:
         return Response(
             response=response_data,
             status=200
-        ) 
+        )

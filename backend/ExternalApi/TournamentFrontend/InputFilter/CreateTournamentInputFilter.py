@@ -1,15 +1,16 @@
 from flask_inputfilter import InputFilter
-from flask_inputfilter.Enum import RegexEnum
-from flask_inputfilter.Filter import (
+from flask_inputfilter.enums import RegexEnum
+from flask_inputfilter.filters import (
     StringTrimFilter,
     ToNullFilter,
 )
-from flask_inputfilter.Validator import (
+from flask_inputfilter.validators import (
+    ArrayLengthValidator,
+    IsArrayValidator,
     IsStringValidator,
     RegexValidator,
-    IsArrayValidator,
-    ArrayLengthValidator
 )
+
 
 class CreateTournamentInputFilter(InputFilter):
     """The input filter for the create-tournament route"""

@@ -57,37 +57,30 @@ def main():
         'teams'
     )
 
-    if teams_success:
-        print("Teams data sent successfully")
-        
-        # Send channels data
-        channels_success = send_data_to_backend(
-            '/api/channel-frontend/create-multiple-channels',
-            {"channels": channels_list},
-            'channels'
-        )
+    # Send channels data
+    print("\nProceeding with channels...")
+    channels_success = send_data_to_backend(
+        '/api/channel-frontend/create-multiple-channels',
+        {"channels": channels_list},
+        'channels'
+    )
 
-        if channels_success:
-            print("Channels data sent successfully")
-            
-            # Wait for teams and channels to be processed
-            time.sleep(2)
-            
-            # Send videos data
-            videos_success = send_data_to_backend(
-                '/api/video-frontend/create-multiple-videos',
-                {"videos": videos_list},
-                'videos'
-            )
+    # Wait a bit before sending videos to allow backend processing
+    time.sleep(2)
+    
+    # Send videos data
+    print("\nProceeding with videos...")
+    videos_success = send_data_to_backend(
+        '/api/video-frontend/create-multiple-videos',
+        {"videos": videos_list},
+        'videos'
+    )
 
-            if videos_success:
-                print("All data successfully sent to backend!")
-            else:
-                print("Failed to send videos data")
-        else:
-            print("Failed to send channels data")
-    else:
-        print("Failed to send teams data")
+    # Print final status
+    print("\nProcessing completed!")
+    print(f"Teams status: {'Success' if teams_success else 'Failed'}")
+    print(f"Channels status: {'Success' if channels_success else 'Failed'}")
+    print(f"Videos status: {'Success' if videos_success else 'Failed'}")
 
 if __name__ == "__main__":
     main()

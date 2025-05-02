@@ -1,7 +1,26 @@
 import pandas as pd
 from typing import Dict, List
+from datetime import datetime
 from helpers import clean_value
 from enums import CATEGORY_MAPPING
+from validation_logger import log_validation_error
+
+def convert_date_to_iso(date_value) -> str:
+    """Convert date to ISO format string."""
+    if pd.isna(date_value):
+        return None
+    
+    if isinstance(date_value, str):
+        try:
+            # Try German format (DD.MM.YYYY)
+            day, month, year = date_value.split('.')
+            date_obj = datetime(int(year), int(month), int(day))
+            return date_obj.isoformat()
+        except (ValueError, AttributeError):
+            return None
+    
+    # If it's already a datetime object (from pandas)
+    return date_value.isoformat()
 
 class DataProcessor:
     def __init__(self, excel_file: str):
@@ -109,8 +128,8 @@ class DataProcessor:
             "category": clean_value(video["category"]).lower(),
             "videoLink": clean_value(video["videoLink"]),
             "channelName": clean_value(video["channel"]),
-            "uploadDate": clean_value(video["uploadDate"]),
-            "dateOfRecording": clean_value(video.get("dateOfRecording")),
+            "uploadDate": convert_date_to_iso(video["uploadDate"]),
+            "dateOfRecording": convert_date_to_iso(video.get("dateOfRecording")),
             "comment": clean_value(video.get("comment"))
         }
 
@@ -129,10 +148,18 @@ class DataProcessor:
                 "weaponType": clean_value(video.get("weaponType")),
                 "topic": clean_value(video.get("topic"))
             })
+        elif video_data["category"] in ["highlights", "awards"]:
+            video_data["tournamentName"] = clean_value(video.get("tournamentName"))
 
         return video_data
 
     def _validate_video_data(self, video_data: Dict) -> bool:
         """Validate required fields for video data."""
         required_fields = ["name", "category", "videoLink", "uploadDate", "channelName"]
-        return all(video_data.get(field) for field in required_fields) 
+        missing_fields = [field for field in required_fields if not video_data.get(field)]
+        
+        if missing_fields:
+            log_validation_error(video_data, missing_fields)
+            return False
+            
+        return True 

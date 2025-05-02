@@ -79,49 +79,55 @@ class CreateMultipleVideosHandler:
             video.topic = ''
             video.guests = ''
 
-            video.game_system = GameSystemTypesEnum.SETS
+            # Handle category-specific fields
+            if video.category == VideoCategoriesEnum.MATCH:
+                video.game_system = GameSystemTypesEnum.SETS
 
-            tournament_name = video_data.get('tournamentName')
-            tournament_id = TournamentRepository.getTournamentByName(tournament_name)
-            if not tournament_id:
-                failed_videos.append({
-                    'name': video.name,
-                    'reason': f'Tournament not found: {tournament_name}'
-                })
-                continue
+                tournament_name = video_data.get('tournamentName')
+                if tournament_name:
+                    tournament_id = TournamentRepository.getTournamentByName(tournament_name)
+                    if not tournament_id:
+                        failed_videos.append({
+                            'name': video.name,
+                            'reason': f'Tournament not found: {tournament_name}'
+                        })
+                        continue
+                    video.tournament_id = tournament_id
 
-            video.tournament_id = tournament_id
+                team_one_name = video_data.get('teamOneName')
+                team_two_name = video_data.get('teamTwoName')
+                
+                team_one_id = TeamRepository.getTeamIdByName(team_one_name)
+                team_two_id = TeamRepository.getTeamIdByName(team_two_name)
 
-            team_one_name = video_data.get('teamOneName')
-            team_two_name = video_data.get('teamTwoName')
-            
-            team_one_id = TeamRepository.getTeamIdByName(team_one_name)
-            team_two_id = TeamRepository.getTeamIdByName(team_two_name)
+                if not team_one_id or not team_two_id:
+                    failed_videos.append({
+                        'name': video.name,
+                        'reason': f'Teams not found: {team_one_name} or {team_two_name}'
+                    })
+                    continue
 
-            if not team_one_id or not team_two_id:
-                failed_videos.append({
-                    'name': video.name,
-                    'reason': f'Teams not found: {team_one_name} or {team_two_name}'
-                })
-                continue
+                video.team_one_id = team_one_id
+                video.team_two_id = team_two_id
 
-            video.team_one_id = team_one_id
-            video.team_two_id = team_two_id
+            elif video.category in [VideoCategoriesEnum.HIGHLIGHTS, VideoCategoriesEnum.AWARDS]:
+                tournament_name = video_data.get('tournamentName')
+                if tournament_name:
+                    tournament_id = TournamentRepository.getTournamentByName(tournament_name)
+                    if not tournament_id:
+                        failed_videos.append({
+                            'name': video.name,
+                            'reason': f'Tournament not found: {tournament_name}'
+                        })
+                        continue
+                    video.tournament_id = tournament_id
+
+            elif video.category == VideoCategoriesEnum.REPORTS:
+                video.topic = video_data.get('topic', '')
 
             # Set optional fields
             video.comment = video_data.get('comment', '')
             video.upload_date = datetime.fromisoformat(video_data.get('uploadDate'))
-
-            if (video.game_system
-                    and not video.tournament_id
-                    and not video.team_one_id
-                    and not video.team_two_id
-                ):
-                failed_videos.append({
-                    'name': video.name,
-                    'reason': 'Missing required data'
-                })
-                continue
 
             try:
                 video_id = VideoRepository.create(video)
@@ -135,28 +141,11 @@ class CreateMultipleVideosHandler:
                     'reason': str(e)
                 })
 
-        response_data = {
-            'created_videos': created_videos,
-            'failed_videos': failed_videos
-        }
-
-        # If no videos were created successfully, return 400
-        if not created_videos:
-            return Response(
-                response=response_data,
-                status=400
-            )
-
-        # If some videos failed but others succeeded, return 207 (Multi-Status)
-        if failed_videos:
-            return Response(
-                response=response_data,
-                status=207
-            )
-
-        # If all videos were created successfully, return 200
         return Response(
-            response=response_data,
-            status=200
+            response={
+                'created_videos': created_videos,
+                'failed_videos': failed_videos
+            },
+            status=200 if created_videos else 400
         )
 

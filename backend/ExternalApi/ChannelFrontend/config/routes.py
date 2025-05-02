@@ -18,5 +18,5 @@ def getChannelOverview() -> Response:
 @channel_frontend.route('/create-multiple-channels',
                            methods=['POST'], endpoint='create-multiple-channels')
 @CreateMultipleChannelsInputFilter.validate()
-def createMultipleTeams() -> Response:
+def createMultipleChannels() -> Response:
     return CreateMultipleChannelsHandler.handle()

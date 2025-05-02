@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Signal, computed, signal } from '@angular/core';
+import {Component, Signal, computed, signal} from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { SearchVideoTileComponent } from './components/search-video-tile/search-video-tile.component';
@@ -23,6 +23,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 export class PageVideoOverviewComponent {
   public readonly videos: Signal<VideoApiResponseModel[]>;
   public readonly paginatedVideos: Signal<VideoApiResponseModel[]>;
+  public readonly totalVideos: Signal<number>;
   public readonly pageSizeOptions = [5, 10, 25, 50];
   public readonly showFirstLastButtons = true;
   private readonly _pageSize = signal(10);
@@ -39,10 +40,19 @@ export class PageVideoOverviewComponent {
   constructor(private readonly videosDataService: VideosDataService) {
     this.videosDataService.loadVideos();
     this.videos = this.videosDataService.videos;
+
+    // Create a signal for the total number of videos
+    this.totalVideos = computed(() => this.videos()?.length ?? 0);
+
+    // Update paginated videos computation
     this.paginatedVideos = computed(() => {
+      const allVideos = this.videos();
+      if (!allVideos?.length) {
+        return [];
+      }
       const start = this._pageIndex() * this._pageSize();
-      const end = (this._pageIndex() + 1) * this._pageSize();
-      return this.videos().slice(start, end);
+      const end = Math.min((this._pageIndex() + 1) * this._pageSize(), allVideos.length);
+      return allVideos.slice(start, end);
     });
   }
 

@@ -1,5 +1,5 @@
-@let videosSnapshot = videos();
 @let paginatedVideosSnapshot = paginatedVideos();
+@let totalVideosSnapshot = totalVideos();
 
 <div class="search-banner">
   <search-video-tile />
@@ -27,7 +27,7 @@
     <video-tile [video]="video" [routerLink]="['/video-details', video.id]" />
   }
 </div>
-<mat-paginator [length]="videosSnapshot.length"
+<mat-paginator [length]="totalVideosSnapshot"
                [pageSize]="pageSize"
                [pageSizeOptions]="pageSizeOptions"
                [showFirstLastButtons]="showFirstLastButtons"

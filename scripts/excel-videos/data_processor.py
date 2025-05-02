@@ -4,6 +4,7 @@ from datetime import datetime
 from helpers import clean_value
 from enums import CATEGORY_MAPPING
 from validation_logger import log_validation_error
+import re
 
 def convert_date_to_iso(date_value) -> str:
     """Convert date to ISO format string."""
@@ -99,6 +100,14 @@ class DataProcessor:
         elif category in ['highlights', 'awards'] and pd.notna(row.get('Tournament')):
             video_obj['tournamentName'] = row['Tournament']
 
+    def _clean_youtube_url_from_name(self, name: str) -> str:
+        """Remove YouTube URLs from video names."""
+        if not name:
+            return name
+        # Pattern matches both youtu.be and youtube.com URLs at the end of the string
+        youtube_pattern = r'\s*(?:https?://)?(?:(?:www\.)?youtube\.com/\S+|youtu\.be/\S+)\s*$'
+        return re.sub(youtube_pattern, '', name).strip()
+
     def prepare_data_for_api(self) -> tuple[List[Dict], List[Dict], List[Dict]]:
         """Prepare processed data for API submission."""
         teams_list = [
@@ -124,7 +133,7 @@ class DataProcessor:
     def _prepare_video_for_api(self, video: Dict) -> Dict:
         """Prepare a single video for API submission."""
         video_data = {
-            "name": clean_value(video["name"]),
+            "name": clean_value(self._clean_youtube_url_from_name(video["name"])),
             "category": clean_value(video["category"]).lower(),
             "videoLink": clean_value(video["videoLink"]),
             "channelName": clean_value(video["channel"]),

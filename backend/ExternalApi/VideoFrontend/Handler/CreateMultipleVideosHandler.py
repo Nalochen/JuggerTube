@@ -73,7 +73,7 @@ class CreateMultipleVideosHandler:
 
             # Set required fields
             video.name = video_data.get('name')
-            video.category = VideoCategoriesEnum.MATCH
+            video.category = video_data.get('category')
             video.video_link = video_data.get('videoLink')
             video.channel_id = channel_id
             video.topic = ''

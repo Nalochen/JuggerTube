@@ -1,10 +1,10 @@
 from flask_inputfilter import InputFilter
-from flask_inputfilter.enums import RegexEnum
-from flask_inputfilter.filters import (
+from flask_inputfilter.Enum import RegexEnum
+from flask_inputfilter.Filter import (
     StringTrimFilter,
     ToNullFilter,
 )
-from flask_inputfilter.validators import (
+from flask_inputfilter.Validator import (
     ArrayLengthValidator,
     IsArrayValidator,
     IsStringValidator,

@@ -1,5 +1,4 @@
 @let paginatedVideosSnapshot = paginatedVideos();
-@let totalVideosSnapshot = totalVideos();
 
 <div class="search-banner">
   <search-video-tile />
@@ -22,15 +21,16 @@
   </div>
 </div>
 
+<p>{{ paginatedVideosSnapshot.length }}</p>
 <div class="videos">
   @for (video of paginatedVideosSnapshot; track video.id) {
     <video-tile [video]="video" [routerLink]="['/video-details', video.id]" />
   }
 </div>
-<mat-paginator [length]="totalVideosSnapshot"
-               [pageSize]="pageSize"
+<mat-paginator [length]="totalVideos()"
+               [pageSize]="limit"
                [pageSizeOptions]="pageSizeOptions"
-               [showFirstLastButtons]="showFirstLastButtons"
+               [showFirstLastButtons]="false"
                (page)="handlePageEvent($event)"
-               [pageIndex]="pageIndex"
+               [pageIndex]="currentPageIndex"
                aria-label="Select page" />

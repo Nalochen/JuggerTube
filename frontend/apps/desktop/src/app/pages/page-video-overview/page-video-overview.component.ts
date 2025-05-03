@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
-import {Component, Signal, computed, signal} from '@angular/core';
+import {Component, Signal} from '@angular/core';
 import { RouterLink } from '@angular/router';
+
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 
 import { SearchVideoTileComponent } from './components/search-video-tile/search-video-tile.component';
 import { VideoTileComponent } from './components/video-tile/video-tile.component';
 import { VideosDataService } from '@frontend/video';
 import { VideoApiResponseModel } from '@frontend/video-data';
-import {MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   imports: [
@@ -21,43 +22,41 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   styleUrl: './page-video-overview.component.less',
 })
 export class PageVideoOverviewComponent {
-  public readonly videos: Signal<VideoApiResponseModel[]>;
   public readonly paginatedVideos: Signal<VideoApiResponseModel[]>;
   public readonly totalVideos: Signal<number>;
   public readonly pageSizeOptions = [5, 10, 25, 50];
-  public readonly showFirstLastButtons = true;
-  private readonly _pageSize = signal(10);
-  private readonly _pageIndex = signal(0);
-
-  public get pageSize(): number {
-    return this._pageSize();
-  }
-
-  public get pageIndex(): number {
-    return this._pageIndex();
-  }
+  public limit = 20;
+  public start = 1;
+  private loadedRanges: Set<number> = new Set();
 
   constructor(private readonly videosDataService: VideosDataService) {
-    this.videosDataService.loadVideos();
-    this.videos = this.videosDataService.videos;
-
-    // Create a signal for the total number of videos
-    this.totalVideos = computed(() => this.videos()?.length ?? 0);
-
-    // Update paginated videos computation
-    this.paginatedVideos = computed(() => {
-      const allVideos = this.videos();
-      if (!allVideos?.length) {
-        return [];
-      }
-      const start = this._pageIndex() * this._pageSize();
-      const end = Math.min((this._pageIndex() + 1) * this._pageSize(), allVideos.length);
-      return allVideos.slice(start, end);
-    });
+    this.videosDataService.loadPaginatedVideos(this.start, this.limit);
+    this.paginatedVideos = this.videosDataService.paginatedVideos;
+    this.totalVideos = this.videosDataService.totalCountVideos;
+    this.loadedRanges.add(this.limit);
   }
 
-  public handlePageEvent(event: any): void {
-    this._pageSize.set(event.pageSize);
-    this._pageIndex.set(event.pageIndex);
+  private isRangeLoaded(startIndex: number): boolean {
+    return this.loadedRanges.has(startIndex);
+  }
+
+  public handlePageEvent(event: PageEvent): void {
+    const newStart = event.pageIndex + 1; // Convert from 0-based to 1-based indexing
+    this.start = newStart;
+    this.limit = event.pageSize;
+
+    // Check if we need to load this range
+    if (!this.isRangeLoaded(newStart)) {
+      this.loadedRanges.add(newStart);
+      this.videosDataService.loadNextVideos(newStart, this.limit);
+    } else {
+      // If range is already loaded, just update the view
+      this.videosDataService.loadPaginatedVideos(newStart, this.limit);
+    }
+  }
+
+  // Helper method to convert 1-based index to 0-based for the paginator
+  public get currentPageIndex(): number {
+    return this.start - 1;
   }
 }

@@ -9,12 +9,12 @@ import { provideRouter } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 
+import { appRoutes } from './app.routes';
 import {
   metaReducers,
   reducers,
-} from '../../../../libs/business-domain/video/src/lib/store/reducers';
-import { appRoutes } from './app.routes';
-import { LoadVideosEffects } from '@frontend/video';
+} from '@frontend/video';
+import {LoadPaginatedVideosEffects, LoadVideosEffects, LoadNextVideosEffects} from '@frontend/video';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideAnimationsAsync(),
     provideStore(reducers, { metaReducers }),
-    provideEffects([LoadVideosEffects]),
+    provideEffects([LoadVideosEffects, LoadPaginatedVideosEffects, LoadNextVideosEffects]),
     provideHttpClient(withInterceptorsFromDi()),
   ],
 };

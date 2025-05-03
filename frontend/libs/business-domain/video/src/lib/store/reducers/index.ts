@@ -2,7 +2,7 @@ import { ActionReducer, ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 import { VideosState } from '../models/videos-state.model';
-import { videosReducer } from '@frontend/video';
+import { videosReducer } from './videos.reducer';
 
 export interface State {
   videoOverview: VideosState;
@@ -18,7 +18,7 @@ export function localStorageSyncReducer(
   // eslint-disable-next-line
 ): ActionReducer<any> {
   return localStorageSync({
-    keys: ['videosReducer'],
+    keys: ['videoOverview'],
     storage: localStorage,
     rehydrate: true,
   })(reducer);

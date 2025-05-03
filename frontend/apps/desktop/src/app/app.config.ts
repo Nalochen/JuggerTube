@@ -14,7 +14,7 @@ import {
   metaReducers,
   reducers,
 } from '@frontend/video';
-import {LoadPaginatedVideosEffects, LoadVideosEffects, LoadNextVideosEffects} from '@frontend/video';
+import {LoadPaginatedVideosEffects, LoadNextVideosEffects} from '@frontend/video';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideAnimationsAsync(),
     provideStore(reducers, { metaReducers }),
-    provideEffects([LoadVideosEffects, LoadPaginatedVideosEffects, LoadNextVideosEffects]),
+    provideEffects([LoadPaginatedVideosEffects, LoadNextVideosEffects]),
     provideHttpClient(withInterceptorsFromDi()),
   ],
 };

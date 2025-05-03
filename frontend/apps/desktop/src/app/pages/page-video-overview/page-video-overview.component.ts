@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import {Component, Signal} from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 import { SearchVideoTileComponent } from './components/search-video-tile/search-video-tile.component';
 import { VideoTileComponent } from './components/video-tile/video-tile.component';
@@ -25,33 +25,44 @@ export class PageVideoOverviewComponent {
   public readonly paginatedVideos: Signal<VideoApiResponseModel[]>;
   public readonly totalVideos: Signal<number>;
   public readonly pageSizeOptions = [5, 10, 25, 50];
-  public limit = 20;
-  public start = 0;
-  private loadedRanges: Set<number> = new Set();
+  public pageSize = 20;
+  public startIndex = 0;
+  public pageIndex = 0;
 
   constructor(private readonly videosDataService: VideosDataService) {
-    this.videosDataService.loadPaginatedVideos(this.start, this.limit);
+    this.videosDataService.loadPaginatedVideos(this.startIndex, this.pageSize);
     this.paginatedVideos = this.videosDataService.paginatedVideos;
     this.totalVideos = this.videosDataService.totalCountVideos;
-    this.loadedRanges.add(this.limit);
-  }
-
-  private isRangeLoaded(startIndex: number): boolean {
-    return this.loadedRanges.has(startIndex);
   }
 
   public handlePageEvent(event: PageEvent): void {
-    const newStart = event.pageIndex;
-    this.start = newStart;
-    this.limit = event.pageSize;
+    const newPageSize = event.pageSize;
+    let targetPageIndex = event.pageIndex;
 
-    // Check if we need to load this range
-    if (!this.isRangeLoaded(newStart)) {
-      this.loadedRanges.add(newStart);
-      this.videosDataService.loadNextVideos(newStart, this.limit);
+    if (newPageSize !== this.pageSize) {
+      targetPageIndex = Math.floor(this.startIndex / newPageSize);
+    }
+
+    const targetStartIndex = targetPageIndex * newPageSize;
+    const maxStartIndex = Math.max(0, Math.ceil(this.totalVideos() / newPageSize) - 1) * newPageSize;
+
+    if (targetStartIndex >= this.totalVideos()) {
+      this.navigateToPage(maxStartIndex, newPageSize);
+      return;
+    }
+
+    this.navigateToPage(targetStartIndex, newPageSize);
+  }
+
+  private navigateToPage(startIndex: number, pageSize: number): void {
+    this.pageIndex = startIndex / pageSize;
+    this.startIndex = startIndex;
+    this.pageSize = pageSize;
+
+    if (!this.videosDataService.isRangeCached(startIndex, pageSize)) {
+      this.videosDataService.loadNextVideos(startIndex, pageSize);
     } else {
-      // If range is already loaded, just update the view
-      this.videosDataService.loadPaginatedVideos(newStart, this.limit);
+      this.videosDataService.updateCurrentView(startIndex, pageSize);
     }
   }
 }

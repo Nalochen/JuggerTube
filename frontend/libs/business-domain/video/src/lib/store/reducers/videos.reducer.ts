@@ -1,75 +1,58 @@
 import { createReducer, on } from '@ngrx/store';
 
+import { getDisplayedVideoIndices,mergeRanges, videosToDict } from '../../utils/range-utils';
 import {
-  loadNextVideos, loadNextVideosError, loadNextVideosSuccess,
-  loadPaginatedVideosAction, loadPaginatedVideosActionError, loadPaginatedVideosActionSuccess,
-  loadVideosAction,
-  loadVideosActionError,
-  loadVideosActionSuccess,
-} from '../actions/videos.actions';
+  cacheVideos,
+  loadNextVideos,
+  loadNextVideosError,
+  loadNextVideosSuccess,
+  loadPaginatedVideosAction,
+  loadPaginatedVideosActionError,
+  loadPaginatedVideosActionSuccess,
+  mergeVideoRanges,
+  requestVideoRange,
+  updateCurrentView} from '../actions/videos.actions';
 import { VideosState } from '../models/videos-state.model';
 import { RequestStateEnum } from '@frontend/api';
-import { VideoApiResponseModel } from '@frontend/video-data';
 
 export const initialState: VideosState = {
-  videos: [],
+  allVideos: {},
+  loadedRanges: [],
   requestState: RequestStateEnum.Initial,
   count: 0,
   error: null,
-  currentPage: {
-    start: 1,
-    limit: 20
+  currentView: {
+    start: 0,
+    limit: 20,
+    displayedVideos: []
   }
 };
 
-function mergeVideos(existingVideos: VideoApiResponseModel[], newVideos: VideoApiResponseModel[], startIndex: number): VideoApiResponseModel[] {
-  // Erstelle eine Kopie des existierenden Arrays
-  const result = [...existingVideos];
-  
-  // Fülle das Array mit den neuen Videos an den richtigen Positionen
-  for (let i = 0; i < newVideos.length; i++) {
-    result[startIndex - 1 + i] = newVideos[i];
-  }
-  
-  // Entferne undefined Einträge und gib das Array zurück
-  return result.filter(video => video !== undefined);
-}
-
 export const videosReducer = createReducer(
   initialState,
-  on(loadVideosAction, (state: VideosState): VideosState => {
-    return {
-      ...state,
-      requestState: RequestStateEnum.Pending,
-      error: null,
-    };
-  }),
-  on(loadVideosActionSuccess, (state: VideosState, action): VideosState => {
-    return {
-      ...state,
-      videos: action.videos,
-      requestState: RequestStateEnum.Success,
-    };
-  }),
-  on(loadVideosActionError, (state: VideosState, { error }): VideosState => {
-    return {
-      ...state,
-      requestState: RequestStateEnum.Error,
-      error: error,
-    };
-  }),
   on(loadPaginatedVideosAction, (state: VideosState, { start, limit }): VideosState => {
     return {
       ...state,
-      currentPage: { start, limit },
+      currentView: {
+        start,
+        limit,
+        displayedVideos: getDisplayedVideoIndices(start, limit)
+      },
       requestState: RequestStateEnum.Pending,
       error: null,
     };
   }),
   on(loadPaginatedVideosActionSuccess, (state: VideosState, action): VideosState => {
+    const videoDict = videosToDict(action.videos, state.currentView.start);
+    const newRange = {
+      start: state.currentView.start,
+      end: state.currentView.start + action.videos.length - 1
+    };
+
     return {
       ...state,
-      videos: action.videos,
+      allVideos: { ...state.allVideos, ...videoDict },
+      loadedRanges: mergeRanges([...state.loadedRanges, newRange]),
       count: action.count,
       requestState: RequestStateEnum.Success,
     };
@@ -84,15 +67,26 @@ export const videosReducer = createReducer(
   on(loadNextVideos, (state: VideosState, { start, limit }): VideosState => {
     return {
       ...state,
-      currentPage: { start, limit },
+      currentView: {
+        start,
+        limit,
+        displayedVideos: getDisplayedVideoIndices(start, limit)
+      },
       requestState: RequestStateEnum.Pending,
       error: null,
     };
   }),
   on(loadNextVideosSuccess, (state: VideosState, action): VideosState => {
+    const videoDict = videosToDict(action.videos, state.currentView.start);
+    const newRange = {
+      start: state.currentView.start,
+      end: state.currentView.start + action.videos.length - 1
+    };
+
     return {
       ...state,
-      videos: mergeVideos(state.videos, action.videos, state.currentPage.start),
+      allVideos: { ...state.allVideos, ...videoDict },
+      loadedRanges: mergeRanges([...state.loadedRanges, newRange]),
       count: action.count,
       requestState: RequestStateEnum.Success,
     };
@@ -102,6 +96,37 @@ export const videosReducer = createReducer(
       ...state,
       requestState: RequestStateEnum.Error,
       error: error,
+    };
+  }),
+  on(mergeVideoRanges, (state: VideosState, { ranges }): VideosState => {
+    return {
+      ...state,
+      loadedRanges: mergeRanges(ranges),
+    };
+  }),
+  on(updateCurrentView, (state: VideosState, { start, limit, displayedVideos }): VideosState => {
+    return {
+      ...state,
+      currentView: {
+        start,
+        limit,
+        displayedVideos
+      },
+    };
+  }),
+  on(cacheVideos, (state: VideosState, { videos, range }): VideosState => {
+    const videoDict = videosToDict(videos, range.start);
+    return {
+      ...state,
+      allVideos: { ...state.allVideos, ...videoDict },
+      loadedRanges: mergeRanges([...state.loadedRanges, range]),
+    };
+  }),
+  on(requestVideoRange, (state: VideosState): VideosState => {
+    return {
+      ...state,
+      requestState: RequestStateEnum.Pending,
+      error: null,
     };
   })
 );

@@ -5,17 +5,24 @@ import { VideoApiResponseModel } from '@frontend/video-data';
 
 export const videosFeatureKey = 'videoOverview';
 
-export interface CurrentPage {
+export interface LoadedRange {
+  start: number;
+  end: number;
+}
+
+export interface CurrentView {
   start: number;
   limit: number;
+  displayedVideos: number[];
 }
 
 export interface VideosState {
-  videos: VideoApiResponseModel[];
+  allVideos: { [key: number]: VideoApiResponseModel };
+  loadedRanges: LoadedRange[];
   requestState: RequestStateEnum;
   error: HttpErrorResponse | null;
   count: number;
-  currentPage: CurrentPage;
+  currentView: CurrentView;
 }
 
 export interface VideosStateAware {

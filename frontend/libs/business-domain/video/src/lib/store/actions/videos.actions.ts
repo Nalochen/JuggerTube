@@ -2,35 +2,21 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 import { createAction, props } from '@ngrx/store';
 
+import { LoadedRange } from '../models/videos-state.model';
 import { VideoApiResponseModel } from '@frontend/video-data';
 
 enum VideosActionNamesEnum {
-  LoadVideos = '[Videos] Load Videos',
-  LoadVideosSuccess = '[Videos] Load Videos Success',
-  LoadVideosError = '[Videos] Load Videos Error',
   LoadPaginatedVideos = '[Videos] Load Paginated Videos',
   LoadPaginatedVideosSuccess = '[Videos] Load Paginated Videos Success',
   LoadPaginatedVideosError = '[Videos] Load Paginated Videos Error',
   LoadNextVideos = '[Videos] Load Next Videos',
   LoadNextVideosSuccess = '[Videos] Load Next Videos Success',
   LoadNextVideosError = '[Videos] Load Next Videos Error',
+  MergeVideoRanges = '[Videos] Merge Video Ranges',
+  UpdateCurrentView = '[Videos] Update Current View',
+  CacheVideos = '[Videos] Cache Videos',
+  RequestVideoRange = '[Videos] Request Video Range'
 }
-
-export const loadVideosAction = createAction(VideosActionNamesEnum.LoadVideos);
-
-export const loadVideosActionSuccess = createAction(
-  VideosActionNamesEnum.LoadVideosSuccess,
-  props<{
-    videos: VideoApiResponseModel[];
-  }>()
-);
-
-export const loadVideosActionError = createAction(
-  VideosActionNamesEnum.LoadVideosError,
-  props<{
-    error: HttpErrorResponse;
-  }>()
-);
 
 export const loadPaginatedVideosAction = createAction(
   VideosActionNamesEnum.LoadPaginatedVideos,
@@ -79,5 +65,37 @@ export const loadNextVideosError = createAction(
   VideosActionNamesEnum.LoadNextVideosError,
   props<{
     error: HttpErrorResponse;
+  }>()
+);
+
+export const mergeVideoRanges = createAction(
+  VideosActionNamesEnum.MergeVideoRanges,
+  props<{
+    ranges: LoadedRange[];
+  }>()
+);
+
+export const updateCurrentView = createAction(
+  VideosActionNamesEnum.UpdateCurrentView,
+  props<{
+    start: number;
+    limit: number;
+    displayedVideos: number[];
+  }>()
+);
+
+export const cacheVideos = createAction(
+  VideosActionNamesEnum.CacheVideos,
+  props<{
+    videos: VideoApiResponseModel[];
+    range: LoadedRange;
+  }>()
+);
+
+export const requestVideoRange = createAction(
+  VideosActionNamesEnum.RequestVideoRange,
+  props<{
+    start: number;
+    limit: number;
   }>()
 );

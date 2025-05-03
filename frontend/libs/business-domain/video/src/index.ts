@@ -1,4 +1,3 @@
-export * from './lib/store/effects/load-videos.effects';
 export * from './lib/store/effects/load-paginated-videos.effects';
 export * from './lib/store/effects/load-next-videos.effects';
 

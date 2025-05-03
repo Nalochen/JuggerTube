@@ -21,16 +21,15 @@
   </div>
 </div>
 
-<p>{{ paginatedVideosSnapshot.length }}</p>
 <div class="videos">
   @for (video of paginatedVideosSnapshot; track video.id) {
     <video-tile [video]="video" [routerLink]="['/video-details', video.id]" />
   }
 </div>
 <mat-paginator [length]="totalVideos()"
-               [pageSize]="limit"
+               [pageSize]="pageSize"
                [pageSizeOptions]="pageSizeOptions"
-               [showFirstLastButtons]="false"
+               [showFirstLastButtons]="true"
                (page)="handlePageEvent($event)"
-               [pageIndex]="start"
+               [pageIndex]="pageIndex"
                aria-label="Select page" />

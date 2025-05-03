@@ -17,7 +17,7 @@ class GetPaginatedVideosHandler:
         limit = int(request.args.get('limit'))
         count = len(videos)
 
-        if count < start or limit < 0:
+        if count < start or limit < -1:
             return Response(
                 response="No videos at this index or limit must be higher then 0",
                 status=404
@@ -27,11 +27,11 @@ class GetPaginatedVideosHandler:
         response = {'start': start, 'limit': limit, 'count': count}
         # make URLs
         # make previous url
-        if start == 1:
+        if start == 0:
             response['previous'] = ''
         else:
-            start_copy = max(1, start - limit)
-            limit_copy = start - 1
+            start_copy = max(0, start - limit)
+            limit_copy = start
             response['previous'] = url + '?start=%d&limit=%d' % (start_copy, limit_copy)
         # make next url
         if start + limit > count:
@@ -49,7 +49,7 @@ class GetPaginatedVideosHandler:
         else:
             response['last'] = url + '?start=%d&limit=%d' % (count - count % limit, limit)
         # finally extract result according to bounds
-        response['results'] = videos[(start - 1):(start - 1 + limit)]
+        response['results'] = videos[start:(start + limit)]
 
         return Response(
             response=response,

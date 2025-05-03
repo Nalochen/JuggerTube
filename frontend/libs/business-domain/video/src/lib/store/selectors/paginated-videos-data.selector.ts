@@ -28,17 +28,14 @@ export const paginatedVideosDataSelector = createSelector(
       return [];
     }
 
-    // Berechne den Index für das erste Video der aktuellen Seite (0-basiert)
-    const startIndex = page.start - 1;
-    
     // Stelle sicher, dass wir nicht über das Array hinaus gehen
-    const endIndex = Math.min(startIndex + page.limit, videos.length);
-    
+    const endIndex = Math.min(page.start + page.limit, videos.length);
+
     // Wenn der Startindex gültig ist, gib die entsprechende Teilmenge zurück
-    if (startIndex >= 0 && startIndex < videos.length) {
-      return videos.slice(startIndex, endIndex);
+    if (page.start >= 0 && page.start < videos.length) {
+      return videos.slice(page.start, endIndex);
     }
-    
+
     // Fallback: Gib leeres Array zurück, wenn der Index ungültig ist
     return [];
   }

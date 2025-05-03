@@ -26,7 +26,7 @@ export class PageVideoOverviewComponent {
   public readonly totalVideos: Signal<number>;
   public readonly pageSizeOptions = [5, 10, 25, 50];
   public limit = 20;
-  public start = 1;
+  public start = 0;
   private loadedRanges: Set<number> = new Set();
 
   constructor(private readonly videosDataService: VideosDataService) {
@@ -41,7 +41,7 @@ export class PageVideoOverviewComponent {
   }
 
   public handlePageEvent(event: PageEvent): void {
-    const newStart = event.pageIndex + 1; // Convert from 0-based to 1-based indexing
+    const newStart = event.pageIndex;
     this.start = newStart;
     this.limit = event.pageSize;
 
@@ -53,10 +53,5 @@ export class PageVideoOverviewComponent {
       // If range is already loaded, just update the view
       this.videosDataService.loadPaginatedVideos(newStart, this.limit);
     }
-  }
-
-  // Helper method to convert 1-based index to 0-based for the paginator
-  public get currentPageIndex(): number {
-    return this.start - 1;
   }
 }

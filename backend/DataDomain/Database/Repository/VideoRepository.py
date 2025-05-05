@@ -129,9 +129,10 @@ class VideoRepository:
         ).filter(
             Videos.is_deleted != True,
             Videos.name == videoName
-        ).order_by(
-            Videos.upload_date
         ).first())
+
+        if not video:
+            return None
 
         return video
 

@@ -94,93 +94,18 @@ paths:
                           - sets
                         description: The game system used in the match (required for MATCH)
                         example: "sets"
-                      tournament:
-                        type: object
-                        description: Tournament information (optional for HIGHLIGHTS and AWARDS, required for MATCH)
-                        oneOf:
-                          - type: object
-                            required:
-                              - id
-                            properties:
-                              id:
-                                type: integer
-                                description: ID of an existing tournament
-                                example: 123
-                          - type: object
-                            required:
-                              - tournamentName
-                              - city
-                              - startDate
-                              - endDate
-                            properties:
-                              tournamentName:
-                                type: string
-                                description: Name of the tournament
-                                example: "20. Bayerische Meisterschaft"
-                              city:
-                                type: string
-                                description: City where the tournament takes place
-                                example: "München"
-                              startDate:
-                                type: string
-                                format: date-time
-                                description: Start date of the tournament
-                                example: "2024-07-24T00:00:00Z"
-                              endDate:
-                                type: string
-                                format: date-time
-                                description: End date of the tournament
-                                example: "2024-07-26T23:59:59Z"
-                      teamOne:
-                        type: object
-                        description: First team information (required for MATCH)
-                        oneOf:
-                          - type: object
-                            required:
-                              - id
-                            properties:
-                              id:
-                                type: integer
-                                description: ID of an existing team
-                                example: 123
-                          - type: object
-                            required:
-                              - teamName
-                              - city
-                            properties:
-                              teamName:
-                                type: string
-                                description: Name of the team
-                                example: "Jugger Basilisken Basel"
-                              city:
-                                type: string
-                                description: City of the team
-                                example: "Basel"
+                      tournamentName:
+                        type: string
+                        description: The name of the tournament where the videos was filmed
+                        example: "1. Summer Tournament"
+                      teamOneName:
+                        type: string
+                        description: The name of the first team that plays in the video
+                        example: "Munich Monks"
                       teamTwo:
-                        type: object
-                        description: Second team information (required for MATCH)
-                        oneOf:
-                          - type: object
-                            required:
-                              - id
-                            properties:
-                              id:
-                                type: integer
-                                description: ID of an existing team
-                                example: 124
-                          - type: object
-                            required:
-                              - teamName
-                              - city
-                            properties:
-                              teamName:
-                                type: string
-                                description: Name of the team
-                                example: "Rigor Mortis München"
-                              city:
-                                type: string
-                                description: City of the team
-                                example: "München"
+                        type: string
+                        description: The name of the second team that plays in the video
+                        example: "Rigot Mortis"
       responses:
         '201':
           description: Videos successfully created

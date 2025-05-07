@@ -19,3 +19,10 @@ export interface VideoApiResponseModel {
   teamOneName: string;
   teamTwoName: string;
 }
+
+export interface PaginatedVideosApiResponseModel {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: VideoApiResponseModel[];
+}

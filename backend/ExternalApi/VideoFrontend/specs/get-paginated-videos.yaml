@@ -1,0 +1,172 @@
+openapi: 3.0.0
+info:
+  title: Customer Frontend API
+  version: 1.0.0
+paths:
+  /api/video-frontend/get-paginated-videos:
+    get:
+      summary: Get paginated video overview
+      parameters:
+        - in: query
+          name: start
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The index of the first video to return (1-based indexing)
+        - in: query
+          name: limit
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+          description: The number of videos to return
+      description: Returns a paginated list of all registered videos.
+      responses:
+        '200':
+          description: A paginated list of videos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  start:
+                    type: integer
+                    description: The starting index of the returned videos
+                    example: 1
+                  limit:
+                    type: integer
+                    description: The maximum number of videos to return
+                    example: 10
+                  count:
+                    type: integer
+                    description: Total number of available videos
+                    example: 100
+                  previous:
+                    type: string
+                    description: URL for the previous page of results, empty if on first page
+                    example: "/api/video-frontend/get-paginated-videos?start=1&limit=10"
+                  next:
+                    type: string
+                    description: URL for the next page of results, empty if on last page
+                    example: "/api/video-frontend/get-paginated-videos?start=11&limit=10"
+                  results:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                          description: The unique ID of the video
+                          example: 123
+                          nullable: false
+                        name:
+                          type: string
+                          description: The name of the video
+                          example: "Summer Cup Finale"
+                          nullable: false
+                        category:
+                          type: string
+                          enum:
+                            - reports
+                            - highlights
+                            - match
+                            - song
+                            - podcast
+                            - awards
+                            - training
+                            - other
+                          description: The Category of the video
+                          example: match
+                          nullable: true
+                        videoLink:
+                          type: string
+                          description: The Link to the original video
+                          example: https://www.youtube.com/watch?v=JCLXq-YgRTo&t=989s
+                          nullable: false
+                        uploadDate:
+                          type: string
+                          description: The Videos upload date
+                          example: "10-07-2024"
+                          nullable: false
+                        comment:
+                          type: string
+                          description: A Jugger related Comment to the video
+                          example: Result 4-5
+                          nullable: true
+                        dateOfRecording:
+                          type: string
+                          description: The Day when the Video was recorded
+                          example: "04-07-2024"
+                          nullable: true
+                        gameSystem:
+                          type: string
+                          enum:
+                            - nrw
+                            - stones
+                            - sets
+                          description: The Game System a Match had
+                          example: sets
+                          nullable: true
+                        weaponType:
+                          type: string
+                          enum:
+                            - longsword
+                            - qtip
+                            - chain
+                            - shield
+                            - staff
+                            - qwik
+                          description: A specific Weapon Type mentioned in the Video
+                          example: longsword
+                          nullable: true
+                        topic:
+                          type: string
+                          description: The Topic of the Video
+                          example: sparbuilding
+                          nullable: true
+                        guests:
+                          type: string
+                          description: Guests in the video
+                          example: gabo and manu
+                          nullable: true
+                        channelName:
+                          type: string
+                          description: Name of the Channel which uploaded the Video
+                          example: Jugger Basel
+                          nullable: false
+                        tournamentName:
+                          type: string
+                          description: Name of the Tournament where the video was recorded
+                          example: 20. Bayerische Meisterschaft
+                          nullable: true
+                        teamOneName:
+                          type: string
+                          description: Name of the Team shown in the Video
+                          example: Jugger Basilisken Basel
+                          nullable: true
+                        teamTwoName:
+                          type: string
+                          description: Name of the Team shown in the Video
+                          example: Jugger Basilisken Basel
+                          nullable: true
+        '404':
+          description: No videos found at the specified index or invalid limit
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "No videos at this index or limit must be higher then 0"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Internal server error"

@@ -14,6 +14,8 @@ from ExternalApi.VideoFrontend.InputFilter.CreateVideoInputFilter import (
     CreateVideoInputFilter,
 )
 
+from ExternalApi.VideoFrontend.Handler.GetPaginatedVideosHandler import GetPaginatedVideosHandler
+
 video_frontend = Blueprint('video-frontend', __name__)
 
 
@@ -22,6 +24,13 @@ video_frontend = Blueprint('video-frontend', __name__)
 @cache.cached(key_prefix='video-overview')
 def getVideoOverview() -> Response:
     return GetVideoOverviewHandler.handle()
+
+
+@video_frontend.route('/get-paginated-videos',
+                      methods=['GET'], endpoint='get-paginated-videos')
+@cache.cached(key_prefix='paginated-videos')
+def getPaginatedVideos() -> Response:
+    return GetPaginatedVideosHandler.handle()
 
 
 @video_frontend.route('/create-video',

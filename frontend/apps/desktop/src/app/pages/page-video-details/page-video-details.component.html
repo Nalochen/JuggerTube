@@ -3,129 +3,138 @@
   [routerLink]="['/video-overview']"
 />
 
-<div class="content">
-  <main>
-    <iframe
-      src="https://www.youtube.com/embed/f27SC622NvE?si=tkrwZRDEUWp8bLy0"
-      frameborder="0"
-      allowfullscreen
-    ></iframe>
+@if (video) {
+  <div class="content">
+    <main>
+      <iframe
+        src="https://www.youtube.com/embed/f27SC622NvE?si=tkrwZRDEUWp8bLy0"
+        frameborder="0"
+        allowfullscreen
+      ></iframe>
 
-    <div class="title-row">
-      <h3>
-        {{ video.name }}
-      </h3>
-      <div>
-        <ui-tag [category]="video.category" />
+      <div class="title-row">
+        <h3>
+          {{ video.name }}
+        </h3>
+        <div>
+          <ui-tag [category]="video.category" />
 
-        <span>{{ video.gameSystem }}</span>
-      </div>
-    </div>
-
-    <div class="details-row">
-      <a href="{{ video.channelLink }}">{{ video.channelName }}</a>
-
-      <div>
-        <span>Upload: {{ video.dateOfRecording | date : 'dd.MM.YYYY' }}</span>
-        <span>Aufnahme: {{ video.uploadDate | date : 'dd.MM.YYYY' }}</span>
-      </div>
-    </div>
-  </main>
-
-  <aside>
-    <div
-      (click)="showTournamentDetails = !showTournamentDetails"
-      class="toggle-details"
-    >
-      <div class="toggle">
-        <span>{{ video.tournament.name }}</span>
-
-        <svg
-          [ngClass]="{ rotated: showTournamentDetails }"
-          width="18"
-          height="18"
-          fill="currentColor"
-        >
-          <use href="assets/icons/sprite.svg#icon-arrow" />
-        </svg>
+          <span>{{ video.gameSystem }}</span>
+        </div>
       </div>
 
+      <div class="details-row">
+        @if (video.channel) {
+          <a href="{{ video.channel.link }}">{{ video.channel.name }}</a>
+        }
+        <div>
+          <span>Upload: {{ video.uploadDate | date : 'dd.MM.YYYY' }}</span>
+          <span>Aufnahme: {{ video.dateOfRecording | date : 'dd.MM.YYYY' }}</span>
+        </div>
+      </div>
+    </main>
+
+    <aside>
+      @if (video.tournament) {
       <div
-        [@slideDown]="showTournamentDetails ? 'visible' : 'hidden'"
-        [style.visibility]="showTournamentDetails ? 'visible' : 'hidden'"
-        class="details"
+        (click)="showTournamentDetails = !showTournamentDetails"
+        class="toggle-details"
       >
-        <p>{{ video.tournament.city }}</p>
-        <p>Startdatum: {{ video.tournament.startDate }}</p>
-        <p>Enddatum: {{ video.tournament.endDate }}</p>
-        <a href="{{ video.tournament.jtrLink }}">Auf jtr besuchen</a>
-      </div>
-    </div>
+        <div class="toggle">
+          <span>{{ video.tournament.name }}</span>
 
-    <div
-      (click)="showTeamOneDetails = !showTeamOneDetails"
-      class="toggle-details"
-    >
-      <div class="toggle">
-        <span>{{ video.teamOne.name }}</span>
+          <svg
+            [ngClass]="{ rotated: showTournamentDetails }"
+            width="18"
+            height="18"
+            fill="currentColor"
+          >
+            <use href="assets/icons/sprite.svg#icon-arrow" />
+          </svg>
+        </div>
 
-        <svg
-          [ngClass]="{ rotated: showTeamOneDetails }"
-          width="18"
-          height="18"
-          fill="currentColor"
+        <div
+          [@slideDown]="showTournamentDetails ? 'visible' : 'hidden'"
+          [style.visibility]="showTournamentDetails ? 'visible' : 'hidden'"
+          class="details"
         >
-          <use href="assets/icons/sprite.svg#icon-arrow" />
-        </svg>
+          <p>{{ video.tournament.city }}</p>
+          <p>Startdatum: {{ video.tournament.startDate }}</p>
+          <p>Enddatum: {{ video.tournament.endDate }}</p>
+          <a href="{{ video.tournament.jtrLink }}">Auf jtr besuchen</a>
+        </div>
       </div>
+      }
 
+      @if (video.teamOne) {
       <div
-        [@slideDown]="showTeamOneDetails ? 'visible' : 'hidden'"
-        [style.visibility]="showTeamOneDetails ? 'visible' : 'hidden'"
-        class="details"
+        (click)="showTeamOneDetails = !showTeamOneDetails"
+        class="toggle-details"
       >
-        <p>{{ video.teamOne.city }}</p>
-      </div>
-    </div>
+        <div class="toggle">
+          <span>{{ video.teamOne.name }}</span>
 
-    <span>vs.</span>
+          <svg
+            [ngClass]="{ rotated: showTeamOneDetails }"
+            width="18"
+            height="18"
+            fill="currentColor"
+          >
+            <use href="assets/icons/sprite.svg#icon-arrow" />
+          </svg>
+        </div>
 
-    <div
-      (click)="showTeamTwoDetails = !showTeamTwoDetails"
-      class="toggle-details"
-    >
-      <div class="toggle">
-        <span>{{ video.teamTwo.name }}</span>
-
-        <svg
-          [ngClass]="{ rotated: showTeamTwoDetails }"
-          width="18"
-          height="18"
-          fill="currentColor"
+        <div
+          [@slideDown]="showTeamOneDetails ? 'visible' : 'hidden'"
+          [style.visibility]="showTeamOneDetails ? 'visible' : 'hidden'"
+          class="details"
         >
-          <use href="assets/icons/sprite.svg#icon-arrow" />
-        </svg>
+          <p>{{ video.teamOne.city }}</p>
+        </div>
       </div>
+      }
 
+      <span>vs.</span>
+
+      @if (video.teamTwo) {
       <div
-        [@slideDown]="showTeamTwoDetails ? 'visible' : 'hidden'"
-        [style.visibility]="showTeamTwoDetails ? 'visible' : 'hidden'"
-        class="details"
+        (click)="showTeamTwoDetails = !showTeamTwoDetails"
+        class="toggle-details"
       >
-        <p>{{ video.teamTwo.city }}</p>
+        <div class="toggle">
+          <span>{{ video.teamTwo.name }}</span>
+
+          <svg
+            [ngClass]="{ rotated: showTeamTwoDetails }"
+            width="18"
+            height="18"
+            fill="currentColor"
+          >
+            <use href="assets/icons/sprite.svg#icon-arrow" />
+          </svg>
+        </div>
+
+        <div
+          [@slideDown]="showTeamTwoDetails ? 'visible' : 'hidden'"
+          [style.visibility]="showTeamTwoDetails ? 'visible' : 'hidden'"
+          class="details"
+        >
+          <p>{{ video.teamTwo.city }}</p>
+        </div>
       </div>
-    </div>
+      }
 
-    @if (video.topic) {
-    <span>{{ video.topic }}</span>
-    } @if (video.guests) {
-    <span>{{ video.guests }}</span>
-    }
+      @if (video.topic) {
+      <span>{{ video.topic }}</span>
+      } @if (video.guests) {
+      <span>{{ video.guests }}</span>
+      }
 
-    <ui-tag [category]="video.weaponType" />
+      <ui-tag [category]="video.weaponType" />
 
-    @if (video.comment) {
-    <span>{{ video.comment }}</span>
-    }
-  </aside>
-</div>
+      @if (video.comment) {
+        <span>{{ video.comment }}</span>
+      }
+    </aside>
+  </div>
+}

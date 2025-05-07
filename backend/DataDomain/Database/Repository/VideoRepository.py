@@ -47,9 +47,16 @@ class VideoRepository:
             Videos.topic,
             Videos.guests,
             Channels.name.label('channel_name'),
+            Channels.channel_link.label('channel_link'),
             Tournaments.name.label('tournament_name'),
+            Tournaments.city.label('tournament_city'),
+            Tournaments.start_date.label('tournament_start_date'),
+            Tournaments.end_date.label('tournament_end_date'),
+            Tournaments.jtr_link.label('tournament_jtr_link'),
             TeamOne.name.label('team_one_name'),
-            TeamTwo.name.label('team_two_name')
+            TeamOne.city.label('team_one_city'),
+            TeamTwo.name.label('team_two_name'),
+            TeamTwo.city.label('team_two_city')
         ).join(
             Channels,
             Videos.channel_id == Channels.id
@@ -82,10 +89,25 @@ class VideoRepository:
                 'guests': video.guests,
                 'uploadDate': parse_date(video.upload_date),
                 'dateOfRecording': parse_date(video.date_of_recording),
-                'channelName': video.channel_name,
-                'tournamentName': video.tournament_name,
-                'teamOneName': video.team_one_name,
-                'teamTwoName': video.team_two_name,
+                'channel':{
+                    'name': video.channel_name,
+                    'link': video.channel_link,
+                },
+                'tournament': {
+                    'name': video.tournament_name,
+                    'city': video.tournament_city,
+                    'startDate': video.tournament_start_date,
+                    'endDate': video.tournament_end_date,
+                    'jtrLink': video.tournament_jtr_link,
+                },
+                'teamOne': {
+                    'name': video.team_one_name,
+                    'city': video.team_one_city,
+                },
+                'teamTwo': {
+                    'name': video.team_two_name,
+                    'city': video.team_two_city,
+                },
             }
             result.append(video_dict)
 

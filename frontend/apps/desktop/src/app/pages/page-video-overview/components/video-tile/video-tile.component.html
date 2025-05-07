@@ -10,7 +10,9 @@
 </div>
 
 <div class="description-row">
-  <span>{{ video.channelName }}</span>
+  @if (video.channel) {
+    <a href="{{ video.channel.link }}">{{ video.channel.name }}</a>
+  }
   <span>{{ video.comment }}</span>
 </div>
 

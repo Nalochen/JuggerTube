@@ -1,20 +1,15 @@
 import { createSelector } from '@ngrx/store';
 
-import { getVideosFromDict } from '../../utils/range-utils';
 import { VideosState, VideosStateAware } from '../models/videos-state.model';
 import { videosStateFeatureSelector } from './videos-state-feature.selector';
 import { VideoApiResponseModel } from '@frontend/video-data';
 
-export const paginatedVideosDataSelector = createSelector<
-  VideosStateAware,
-  [VideosState],
-  VideoApiResponseModel[]
->(videosStateFeatureSelector, (state: VideosState) => {
-  return getVideosFromDict(state.allVideos, state.currentView.displayedVideos);
-});
-
 export const selectVideoById = (videoId: number) =>
   createSelector<VideosStateAware, [VideosState], VideoApiResponseModel | undefined>(
     videosStateFeatureSelector,
-    (state: VideosState) => state.allVideos[videoId]
+    (state: VideosState) => {
+      const entries = Object.entries(state.allVideos);
+      const found = entries.find(([, video]) => video.id === videoId);
+      return found ? found[1] : undefined;
+    }
   );

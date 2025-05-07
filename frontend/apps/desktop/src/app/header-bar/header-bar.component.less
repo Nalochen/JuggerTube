@@ -1,3 +1,5 @@
+@import 'colors-desktop';
+
 :host {
   display: flex;
   justify-content: space-between;
@@ -10,4 +12,24 @@
       cursor: pointer;
     }
   }
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: @color-red;
+  }
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
 }

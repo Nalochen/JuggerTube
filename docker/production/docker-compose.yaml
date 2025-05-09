@@ -20,6 +20,14 @@ services:
     networks:
       - backend_network
 
+  cron:
+    build:
+      context: ../../
+      dockerfile: docker/production/cron.Dockerfile
+    container_name: juggertube-cron
+    networks:
+      - backend_network
+
   backend:
     build:
       context: ../../
@@ -31,7 +39,7 @@ services:
       CACHE_REDIS_PORT: '6379'
       DATABASE_URL: 'mysql+pymysql://user:password@mysql/juggertube'
       SECRET_KEY: 'secret'
-      GENERATE_TEST_DATA: True
+      GENERATE_TEST_DATA: 'True'
     volumes:
       - certs:/etc/letsencrypt
       - ./assets:/app/DataDomain/assets

@@ -97,8 +97,8 @@ def fetch_youtube_videos(youtube, channel_id, videos_cache):
     ).execute()
 
     playlist_id = response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
-    channel_custom_url = response['items'][0]['snippet'].get('customUrl', '')
-    
+    channel_name = response['items'][0]['snippet'].get('title', '')
+
     # Fetch all videos from the playlist
     youtube_videos = []
     next_page_token = None
@@ -115,7 +115,7 @@ def fetch_youtube_videos(youtube, channel_id, videos_cache):
             video_id = item['snippet']['resourceId']['videoId']
             
             # Add channel custom URL to each video item
-            item['snippet']['customUrl'] = channel_custom_url
+            item['snippet']['title'] = channel_name
 
             # Check cache
             if video_id in videos_cache:

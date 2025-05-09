@@ -7,6 +7,8 @@ from sqlalchemy.orm import Mapped
 from DataDomain.Database import db
 from DataDomain.Database.Model import BaseModel
 
+from DataDomain.Database.Enum import ChannelLinkTypesEnum
+
 
 class Channels(BaseModel):
     __tablename__ = 'channels'
@@ -28,6 +30,11 @@ class Channels(BaseModel):
         db.String(255),
         nullable=False,
         unique = True,
+    )
+
+    link_type: ChannelLinkTypesEnum = db.Column(
+        db.Enum(ChannelLinkTypesEnum),
+        nullable=True,
     )
 
     is_deleted: bool = db.Column(

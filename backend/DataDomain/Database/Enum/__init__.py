@@ -1,3 +1,5 @@
 from .GameSystemTypesEnum import GameSystemTypesEnum
 from .VideoCategoriesEnum import VideoCategoriesEnum
 from .WeaponTypesEnum import WeaponTypesEnum
+from .VideoLinkTypesEnum import VideoLinkTypesEnum
+from .ChannelLinkTypesEnum import ChannelLinkTypesEnum

@@ -8,6 +8,7 @@ from DataDomain.Database.Enum import (
     GameSystemTypesEnum,
     VideoCategoriesEnum,
     WeaponTypesEnum,
+    VideoLinkTypesEnum,
 )
 from DataDomain.Database.Model import BaseModel, Channels, Teams, Tournaments
 
@@ -37,6 +38,11 @@ class Videos(BaseModel):
         db.String(255),
         nullable=False,
         unique = True,
+    )
+
+    link_type: VideoLinkTypesEnum = db.Column(
+        db.Enum(VideoLinkTypesEnum),
+        nullable=True,
     )
 
     upload_date: datetime = db.Column(

@@ -1,0 +1,3 @@
+0 0 1 * * python /app/scripts/excel-videos/read_excel.py
+0 0 1 * * python /app/scripts/tournaments/main.py
+0 0 1 * * python /app/scripts/youtube-videos/youtube.api.py

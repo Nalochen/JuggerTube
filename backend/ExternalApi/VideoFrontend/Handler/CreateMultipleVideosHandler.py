@@ -18,13 +18,6 @@ class CreateMultipleVideosHandler:
     """Handler for creating multiple videos"""
 
     @staticmethod
-    def _process_video_link(video_link: str) -> tuple[str, str]:
-        """Process video link and return tuple of (processed_link, link_type)"""
-        if video_link.startswith("https://youtu.be/"):
-            return video_link.replace("https://youtu.be/", ""), "youtube"
-        return video_link, "other"
-
-    @staticmethod
     def handle() -> Response:
         """Create Video"""
         data = g.validated_data
@@ -55,7 +48,6 @@ class CreateMultipleVideosHandler:
                 })
                 continue
 
-            # Logik überarbeiten
             channel_id = ChannelRepository.getChannelIdByName(channelName=channel_name)
 
             # If channel doesn't exist, create it
@@ -78,12 +70,7 @@ class CreateMultipleVideosHandler:
             # Set required fields
             video.name = video_data.get('name')
             video.category = video_data.get('category')
-            
-            # Process video link
-            video_link, link_type = CreateMultipleVideosHandler._process_video_link(video_data.get('videoLink'))
-            video.video_link = video_link
-            video.link_type = link_type
-            
+            video.video_link = video_data.get('videoLink')
             video.channel_id = channel_id
             video.topic = ''
             video.guests = ''

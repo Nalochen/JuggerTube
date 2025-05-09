@@ -5,7 +5,7 @@ info:
   description: API endpoint for creating multiple channels at once
 
 paths:
-  /api/channel-frontend/create-multiple-channels:
+  /api/team-frontend/create-multiple-teams:
     post:
       summary: Create multiple channels
       description: Creates multiple channels in a single request
@@ -17,29 +17,24 @@ paths:
             schema:
               type: object
               properties:
-                channels:
+                teams:
                   type: array
                   items:
                     type: object
                     properties:
                       name:
                         type: string
-                        description: Display name of the channel
-                        example: "Jugger e. V."
-                      channelIdentifier:
+                        description: Name of the channels
+                        example: "Jugger Basilisken Basel"
+                      channelLink:
                         type: string
-                        description: Either YouTube handle, full channel URL, or external URL
-                        example: "@JuggereV"
-                      linkType:
-                        type: string
-                        enum: [YOUTUBE_CUSTOM, YOUTUBE_CHANNEL, EXTERNAL]
-                        description: Type of the channel link
-                        example: "YOUTUBE_CUSTOM"
+                        description: Link to the Channel
+                        example: "https://www.youtube.com/@juggerbasel"
                     required:
-                      - channelIdentifier
-                      - linkType
+                      - name
+                      - channelLink
               required:
-                - channels
+                - teams
       responses:
         '200':
           description: All channels created successfully
@@ -48,7 +43,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  created_channels:
+                  created_teams:
                     type: array
                     items:
                       type: object
@@ -57,14 +52,12 @@ paths:
                           type: string
                         id:
                           type: integer
-                        channelLink:
-                          type: string
-                  failed_channels:
+                  failed_teams:
                     type: array
                     items:
                       type: object
                       properties:
-                        identifier:
+                        name:
                           type: string
                         reason:
                           type: string
@@ -73,36 +66,43 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateChannelsResponse'
+                type: object
+                properties:
+                  created_teams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        id:
+                          type: integer
+                  failed_teams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        reason:
+                          type: string
         '400':
           description: Invalid request or no channels created
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateChannelsResponse'
-
-components:
-  schemas:
-    CreateChannelsResponse:
-      type: object
-      properties:
-        created_channels:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              id:
-                type: integer
-              channelLink:
-                type: string
-        failed_channels:
-          type: array
-          items:
-            type: object
-            properties:
-              identifier:
-                type: string
-              reason:
-                type: string 
+                type: object
+                properties:
+                  created_teams:
+                    type: array
+                    items:
+                      type: object
+                  failed_teams:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        reason:
+                          type: string 

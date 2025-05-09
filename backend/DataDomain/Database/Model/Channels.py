@@ -18,7 +18,6 @@ class Channels(BaseModel):
     )
 
     name: str = db.Column(
-        #use unique Youtube @-names
         db.String(100),
         nullable=False,
         unique = True,

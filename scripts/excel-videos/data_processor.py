@@ -34,12 +34,11 @@ class DataProcessor:
     def process_channels(self, df: pd.DataFrame) -> Dict:
         """Process channels data from DataFrame."""
         for _, row in df.iterrows():
-            if pd.isna(row['CustomUrl']) and pd.isna(row['Link']):
+            if pd.isna(row['Link']):
                 continue
             
-            channel_link = row['CustomUrl'] if pd.notna(row['CustomUrl']) else row['Link']
             self.channels_dict[row['name']] = {
-                'channelLink': channel_link,
+                'channelLink': row['Link'],
                 'name': row['name']
             }
         return self.channels_dict

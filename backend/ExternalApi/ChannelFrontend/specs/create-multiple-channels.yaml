@@ -5,7 +5,7 @@ info:
   description: API endpoint for creating multiple channels at once
 
 paths:
-  /api/team-frontend/create-multiple-teams:
+  /api/channel-frontend/create-multiple-channels:
     post:
       summary: Create multiple channels
       description: Creates multiple channels in a single request
@@ -17,24 +17,29 @@ paths:
             schema:
               type: object
               properties:
-                teams:
+                channels:
                   type: array
                   items:
                     type: object
                     properties:
                       name:
                         type: string
-                        description: Name of the channels
-                        example: "Jugger Basilisken Basel"
-                      channelLink:
+                        description: Display name of the channel
+                        example: "Jugger e. V."
+                      channelIdentifier:
                         type: string
-                        description: Link to the Channel
-                        example: "https://www.youtube.com/@juggerbasel"
+                        description: Either YouTube handle, full channel URL, or external URL
+                        example: "@JuggereV"
+                      linkType:
+                        type: string
+                        enum: [YOUTUBE_CUSTOM, YOUTUBE_CHANNEL, EXTERNAL]
+                        description: Type of the channel link
+                        example: "YOUTUBE_CUSTOM"
                     required:
-                      - name
-                      - channelLink
+                      - channelIdentifier
+                      - linkType
               required:
-                - teams
+                - channels
       responses:
         '200':
           description: All channels created successfully
@@ -43,7 +48,7 @@ paths:
               schema:
                 type: object
                 properties:
-                  created_teams:
+                  created_channels:
                     type: array
                     items:
                       type: object
@@ -52,12 +57,14 @@ paths:
                           type: string
                         id:
                           type: integer
-                  failed_teams:
+                        channelLink:
+                          type: string
+                  failed_channels:
                     type: array
                     items:
                       type: object
                       properties:
-                        name:
+                        identifier:
                           type: string
                         reason:
                           type: string
@@ -66,43 +73,36 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  created_teams:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        id:
-                          type: integer
-                  failed_teams:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        reason:
-                          type: string
+                $ref: '#/components/schemas/CreateChannelsResponse'
         '400':
           description: Invalid request or no channels created
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  created_teams:
-                    type: array
-                    items:
-                      type: object
-                  failed_teams:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        name:
-                          type: string
-                        reason:
-                          type: string 
+                $ref: '#/components/schemas/CreateChannelsResponse'
+
+components:
+  schemas:
+    CreateChannelsResponse:
+      type: object
+      properties:
+        created_channels:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              id:
+                type: integer
+              channelLink:
+                type: string
+        failed_channels:
+          type: array
+          items:
+            type: object
+            properties:
+              identifier:
+                type: string
+              reason:
+                type: string 

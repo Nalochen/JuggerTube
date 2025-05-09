@@ -56,6 +56,13 @@ class CreateVideoHandler:
         )
 
     @staticmethod
+    def _process_video_link(video_link: str) -> tuple[str, str]:
+        """Process video link and return tuple of (processed_link, link_type)"""
+        if video_link.startswith("https://youtu.be/"):
+            return video_link.replace("https://youtu.be/", ""), "youtube"
+        return video_link, "other"
+
+    @staticmethod
     def _create_base_video(data: dict) -> Videos:
         """Create a video with base properties"""
         video = Videos()
@@ -65,7 +72,12 @@ class CreateVideoHandler:
         # Set required fields
         video.name = data.get('name')
         video.category = data.get('category')
-        video.video_link = data.get('videoLink')
+        
+        # Process video link
+        video_link, link_type = CreateVideoHandler._process_video_link(data.get('videoLink'))
+        video.video_link = video_link
+        video.link_type = link_type
+        
         video.channel_id = channelId
 
         # Set optional fields
